@@ -24,10 +24,10 @@
     background:var(--bg);
     color:var(--ink);
     font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
-    overflow-x:hidden; /* prevent page-wide horizontal scroll */
+    overflow-x:hidden;
   }
 
-  /* Header (center title, left logo) */
+  /* Header */
   .site-header{
     position:sticky; top:0; z-index:1000;
     display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px;
@@ -77,25 +77,24 @@
   }
   .controls .secondary{background:#eef2ff;color:#1e3a8a}
 
-  /* Card = white container for table; scroll only this, not the page */
+  /* Card */
   .card{
     background:#fff;
     border:1px solid var(--line);
     border-radius:12px;
     padding:10px;
     box-shadow:0 4px 12px rgba(0,0,0,.06);
-    overflow-x:auto; /* horizontal scroll here */
+    overflow-x:auto;
     overflow-y:hidden;
   }
   .card::-webkit-scrollbar{height:8px}
   .card::-webkit-scrollbar-thumb{background:#b0b0b0;border-radius:4px}
   .card::-webkit-scrollbar-track{background:#f1f1f1}
 
-  /* DataTable visuals */
   .dataTables_wrapper{min-width:900px}
   table.dataTable{
     border-collapse:collapse !important;
-    width:max-content !important;  /* grow wider than card => scrollbar */
+    width:max-content !important;
     min-width:900px;
   }
   table.dataTable thead th{background:#f8fafc}
@@ -142,10 +141,7 @@
   }
   .gate-err{color:#b91c1c; font-size:12px; margin-top:6px; display:none}
 
-  /* name suggestions list */
-  .suggest{
-    border:1px solid var(--line); border-radius:10px; margin-top:6px; max-height:180px; overflow:auto; background:#fff;
-  }
+  .suggest{border:1px solid var(--line); border-radius:10px; margin-top:6px; max-height:180px; overflow:auto; background:#fff;}
   .suggest .item{padding:8px 10px; cursor:pointer}
   .suggest .item:hover{background:#f3f4f6}
 </style>
@@ -153,7 +149,7 @@
 <body>
 
 <header class="site-header">
-  <img class="logo" src="data:image/png;base64,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" alt="PW Gulf Logo" alt="PW Gulf Logo" />
+  <img class="logo" src="data:image/png;base64,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" alt="PW Gulf Logo" />
   <h1>PW Gulf — Student Performance Dashboard</h1>
   <div class="header-spacer"></div>
 </header>
@@ -162,7 +158,7 @@
 <div id="gate" class="gate-backdrop" aria-modal="true" role="dialog">
   <div class="gate-card">
     <h2>Load your data</h2>
-    <p>Enter <b>Student Name</b> and <b>Grade</b>.
+    <p>Enter <b>Student Name</b> and <b>Grade</b>. Use <b>ADITYA</b> + <b>12</b> for admin view.</p>
 
     <div class="gate-grid">
       <div class="gate-row">
@@ -282,12 +278,13 @@ const CSV_OBJECTIVE_URL  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAl
 const CSV_SUBJECTIVE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1445613757&single=true&output=csv";
 
 /* Column hints */
-const ATTENDANCE_NAME_KEYS = ["Student Names","Student Name","Name"];
+const ATTENDANCE_NAME_KEYS = ["Student Names","Student Name","Name","Student","Candidate Name","StudentName"];
+const NAME_KEYS            = ["Student Names","Student Name","Name","Student","Candidate Name","StudentName"];
 const TOTAL_PRESENT_KEYS   = ["Total Present","TotalPresent","Present Count","Present"];
 const TOTAL_CLASSES_KEYS   = ["Total Classes","TotalClasses","Classes","Total Class"];
-const GRADE_KEYS   = ["Grade","Class","Std"];
-const SECTION_KEYS = ["Section","Sec"];
-const STREAM_KEYS  = ["Stream","Course","Program"];
+const GRADE_KEYS           = ["Grade","Class","Std"];
+const SECTION_KEYS         = ["Section","Sec"];
+const STREAM_KEYS          = ["Stream","Course","Program"];
 
 /* Helpers */
 const pct = (n)=> (isFinite(n) ? (Math.round(n*10000)/100).toFixed(2)+"%" : "0%");
@@ -335,6 +332,13 @@ const uniqueByKey = (rows, key)=> {
   rows.forEach(r => { const v=(r[key]||"").toString().trim(); if (v) set.add(v); });
   return set.size;
 };
+// Normalize grade – "12", "12th", "Grade 12", "Class-12" sabko "12" bana dega
+function normGrade(v){
+  const s = String(v ?? "").trim();
+  const m = s.match(/\d+/);
+  return m ? m[0] : s.toLowerCase();
+}
+const NORM = s => String(s||"").trim().toLowerCase();
 
 /* ===== Multi-select (checkbox) widget ===== */
 function buildMultiSelect({mountId,label,options=[],selected=new Set(),onChange}){
@@ -415,9 +419,7 @@ let attWidgets={}, objWidgets={}, subWidgets={};
 const ADMIN_NAME  = "ADITYA";
 const ADMIN_GRADE = "12";
 const gate = { ready:false, admin:false, name:null, grade:null };
-const catalog = { header:[], names:[], grades:[] };
-const NAME_KEYS  = ["Student Names","Student Name","Name"];
-const NORM = s => String(s||"").trim().toLowerCase();
+const catalog = { names:[], grades:[] };
 
 /* nearby suggestions */
 function buildNameSuggestions(query, list, limit=10){
@@ -436,33 +438,45 @@ function buildNameSuggestions(query, list, limit=10){
   return out.slice(0,limit);
 }
 
-/* preload catalogs from Attendance for Name + Grade universe */
+/* preload catalogs from ALL three sheets now (so Objective-only student bhi mil jaaye) */
 async function preloadCatalogs(){
-  const url = CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?")?"&":"?") + "_pre=" + Date.now();
-  const txt = await fetch(url, {cache:"no-store"}).then(r=>r.text());
-  const parsed = Papa.parse(txt, {header:true, skipEmptyLines:true});
-  const header = parsed.meta.fields || [];
-  const rows = parsed.data || [];
-  catalog.header = header;
-  const nameKey  = findKey(header, NAME_KEYS);
-  const gradeKey = findKey(header, GRADE_KEYS);
+  const [attTxt, objTxt, subTxt] = await Promise.all([
+    fetch(CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?")?"&":"?") + "_pre=" + Date.now(), {cache:"no-store"}).then(r=>r.text()),
+    fetch(CSV_OBJECTIVE_URL  + (CSV_OBJECTIVE_URL.includes("?") ?"&":"?")  + "_pre=" + Date.now(), {cache:"no-store"}).then(r=>r.text()),
+    fetch(CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes("?")?"&":"?") + "_pre=" + Date.now(), {cache:"no-store"}).then(r=>r.text())
+  ]);
 
-  catalog.names  = rows.map(r=>r?.[nameKey]).filter(Boolean);
-  catalog.grades = [...new Set(rows.map(r=>r?.[gradeKey]).filter(Boolean).map(String))].sort((a,b)=>Number(a)-Number(b));
+  function extract(txt){
+    const p = Papa.parse(txt, {header:true, skipEmptyLines:true});
+    const h = p.meta.fields || [];
+    const rows = p.data || [];
+    const nameKey  = findKey(h, NAME_KEYS);
+    const gradeKey = findKey(h, GRADE_KEYS);
+    const names  = rows.map(r=>r?.[nameKey]).filter(Boolean);
+    const grades = rows.map(r=>r?.[gradeKey]).filter(Boolean).map(String);
+    return {names, grades};
+  }
 
-  // fill grade dropdown
+  const e1 = extract(attTxt), e2 = extract(objTxt), e3 = extract(subTxt);
+  const allNames  = [...e1.names, ...e2.names, ...e3.names];
+  const allGrades = [...e1.grades, ...e2.grades, ...e3.grades];
+
+  catalog.names  = [...new Set(allNames)];
+  catalog.grades = [...new Set(allGrades.map(normGrade))].filter(Boolean).sort((a,b)=>Number(a)-Number(b));
+
+  // Gate grade dropdown fill (show original style: just number strings)
   const gSel = document.getElementById('gateGrade');
   gSel.innerHTML = '<option value="">Select Grade</option>' + catalog.grades.map(g=>`<option value="${g}">${g}</option>`).join("");
 }
 
-/* gate filter apply */
+/* gate filter apply (safe if columns missing + normalized grade) */
 function filterByGate(rows, header){
   if (gate.admin) return rows;
   const nameKey  = findKey(header, NAME_KEYS);
   const gradeKey = findKey(header, GRADE_KEYS);
   return rows.filter(r=>{
-    const okName  = !gate.name  || NORM(r?.[nameKey]) === NORM(gate.name);
-    const okGrade = !gate.grade || NORM(String(r?.[gradeKey])) === NORM(String(gate.grade));
+    const okName  = !gate.name  || (!nameKey  ? true : NORM(r?.[nameKey]) === NORM(gate.name));
+    const okGrade = !gate.grade || (!gradeKey ? true : normGrade(r?.[gradeKey]) === normGrade(gate.grade));
     return okName && okGrade;
   });
 }
@@ -475,7 +489,7 @@ async function loadAttendance(){
   const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
   const header = parsed.meta.fields || [];
   const rawAll = parsed.data || [];
-  const raw = filterByGate(rawAll, header); // gate applied
+  const raw = filterByGate(rawAll, header);
 
   const nameKey   = findKey(header, ATTENDANCE_NAME_KEYS);
   const presentKey= findKey(header, TOTAL_PRESENT_KEYS);
@@ -521,13 +535,15 @@ async function loadAttendance(){
 
 /* -------------- OBJECTIVE -------------- */
 let objectiveRaw = [];
+let objectiveHeader = [];
 async function loadObjective(){
   const url = CSV_OBJECTIVE_URL + (CSV_OBJECTIVE_URL.includes("?") ? "&" : "?") + "_=" + Date.now();
   const res = await fetch(url, {cache:"no-store"});
   const csv = await res.text();
   const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
   const header = parsed.meta.fields || [];
-  objectiveRaw = filterByGate(parsed.data || [], header); // gate applied
+  objectiveHeader = header.slice(); // store
+  objectiveRaw = filterByGate(parsed.data || [], header);
 
   const gradeKey  = findKey(header, GRADE_KEYS);
   const sectionKey= findKey(header, SECTION_KEYS);
@@ -552,14 +568,31 @@ async function loadObjective(){
   renderObjectiveTableAndKpis();
 }
 function renderObjectiveTableAndKpis(){
-  if (!objectiveRaw.length){ if (objTable){ objTable.clear().draw(); } return; }
-  const headers = Object.keys(objectiveRaw[0]);
+  const headers = (objectiveHeader && objectiveHeader.length)
+    ? objectiveHeader
+    : (objectiveRaw.length ? Object.keys(objectiveRaw[0]) : []);
 
-  const nameKey   = headers.find(h=>/student\s*names?/i.test(h)) || "Student Names";
+  if (!headers.length){
+    if (objTable){ objTable.clear().draw(); }
+    else {
+      objTable = $('#objectiveTable').DataTable({
+        data: [],
+        columns: [],
+        pageLength: 10,
+        order: [],
+        autoWidth: false
+      });
+    }
+    return;
+  }
+
+  const nameKey   = headers.find(h=>/student\s*name?s?/i.test(h)) 
+                 || headers.find(h=>/candidate\s*name/i.test(h))
+                 || "Student Name";
   const objNameK  = headers.find(h=>/objective\s*name/i.test(h)) || "Objective Name";
-  const marksKey  = headers.find(h=>/marks\s*achieved/i.test(h)) || "Marks Achieved";
-  const totalKey  = headers.find(h=>/total\s*marks/i.test(h)) || "Total Marks";
-  const tpKey     = headers.find(h=>/test\s*percentage/i.test(h)) || "Test Percentage";
+  const marksKey  = headers.find(h=>/marks?\s*achieved/i.test(h)) || "Marks Achieved";
+  const totalKey  = headers.find(h=>/total\s*marks?/i.test(h))   || "Total Marks";
+  const tpKey     = headers.find(h=>/(test\s*)?percentage/i.test(h)) || "Percentage";
 
   const gradeKey  = headers.find(h=> GRADE_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
   const sectionKey= headers.find(h=> SECTION_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
@@ -606,7 +639,7 @@ async function loadSubjective(){
   const csv = await res.text();
   const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
   const header = parsed.meta.fields || [];
-  subjectiveRaw = filterByGate(parsed.data || [], header); // gate applied
+  subjectiveRaw = filterByGate(parsed.data || [], header);
 
   // Decide Week column
   const hasWeek = header.some(h=>/^week$/i.test(h));
@@ -643,12 +676,15 @@ async function loadSubjective(){
   renderSubjectiveTableAndKpis();
 }
 function renderSubjectiveTableAndKpis(){
-  if (!subjectiveRaw.length){ if (subTable){ subTable.clear().draw(); } return; }
+  if (!subjectiveRaw.length){ 
+    if (subTable){ subTable.clear().draw(); } 
+    return; 
+  }
   const headers = Object.keys(subjectiveRaw[0]);
 
   const nameKey   = headers.find(h=>/student\s*names?/i.test(h)) || "Student Names";
-  const marksKey  = headers.find(h=>/marks\s*achieved/i.test(h)) || "Marks Achieved";
-  const totalKey  = headers.find(h=>/total\s*marks/i.test(h)) || "Total Marks";
+  const marksKey  = headers.find(h=>/marks?\s*achieved/i.test(h)) || "Marks Achieved";
+  const totalKey  = headers.find(h=>/total\s*marks?/i.test(h)) || "Total Marks";
   const percentKey= headers.find(h=>/^percentage$/i.test(h)) || headers.find(h=>/test\s*percentage/i.test(h)) || "Percentage";
   const weekKey   = headers.find(h=>/^week$/i.test(h)) || "Week";
 
@@ -712,10 +748,10 @@ document.getElementById('subWeekFilter').addEventListener('change', renderSubjec
 
 /* ---------- Gate Boot ---------- */
 async function bootAfterGate(){
-  // default first tab
-  await loadAttendance();
+  await loadAttendance(); // first tab default
 }
 
+/* Gate init + validation across 3 sheets (with normalized grade) */
 (async function initGate(){
   try { await preloadCatalogs(); } catch(e){ console.warn("Catalog preload failed", e); }
   const nameInput = document.getElementById('gateName');
@@ -749,27 +785,44 @@ async function bootAfterGate(){
     }
 
     // Admin rule
-    if (NORM(name)===NORM(ADMIN_NAME) && NORM(grade)===NORM(ADMIN_GRADE)){
+    if (NORM(name)===NORM(ADMIN_NAME) && NORM(normGrade(grade))===NORM(ADMIN_GRADE)){
       gate.admin = true; gate.name=null; gate.grade=null; gate.ready=true;
       document.getElementById('gate').style.display = 'none';
       bootAfterGate();
       return;
     }
 
-    // Validate exact name+grade exists in Attendance
+    // Validate exact name+grade in ANY sheet (grade normalized; if grade column missing in a sheet, ignore it)
     try{
-      const url = CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?")?"&":"?") + "_vt=" + Date.now();
-      const txt = await fetch(url, {cache:"no-store"}).then(r=>r.text());
-      const parsed = Papa.parse(txt, {header:true, skipEmptyLines:true});
-      const header = parsed.meta.fields || [];
-      const rows = parsed.data || [];
-      const nameKey  = findKey(header, NAME_KEYS);
-      const gradeKey = findKey(header, GRADE_KEYS);
+      const [attTxt, objTxt, subTxt] = await Promise.all([
+        fetch(CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?")?"&":"?") + "_vt=" + Date.now(), {cache:"no-store"}).then(r=>r.text()),
+        fetch(CSV_OBJECTIVE_URL  + (CSV_OBJECTIVE_URL.includes("?") ?"&":"?")  + "_vt=" + Date.now(), {cache:"no-store"}).then(r=>r.text()),
+        fetch(CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes("?")?"&":"?") + "_vt=" + Date.now(), {cache:"no-store"}).then(r=>r.text())
+      ]);
 
-      const exact = rows.find(r => NORM(r?.[nameKey])===NORM(name) && NORM(String(r?.[gradeKey]))===NORM(grade));
-      if (!exact){
-        const near = buildNameSuggestions(name, rows.map(r=>r?.[nameKey]).filter(Boolean), 10);
-        errEl.innerHTML = `No exact match for <b>${name}</b> in Grade <b>${grade}</b>.<br/>Try: ${near.slice(0,5).join(", ") || "no close matches"}.`;
+      function hasExact(txt){
+        const p = Papa.parse(txt, {header:true, skipEmptyLines:true});
+        const h = p.meta.fields || [];
+        const rows = p.data || [];
+        const nameKey  = findKey(h, NAME_KEYS);
+        const gradeKey = findKey(h, GRADE_KEYS);
+        const nameOk = (r)=> !nameKey  ? false : NORM(r?.[nameKey])===NORM(name);
+        const gradeOk= (r)=> !gradeKey ? true  : normGrade(r?.[gradeKey])===normGrade(grade);
+        return rows.some(r => nameOk(r) && gradeOk(r));
+      }
+
+      const ok = hasExact(attTxt) || hasExact(objTxt) || hasExact(subTxt);
+      if (!ok){
+        function namesFrom(txt){
+          const p = Papa.parse(txt, {header:true, skipEmptyLines:true});
+          const h = p.meta.fields || [];
+          const rows = p.data || [];
+          const nk = findKey(h, NAME_KEYS);
+          return rows.map(r=>r?.[nk]).filter(Boolean);
+        }
+        const allNames = [...new Set([...namesFrom(attTxt), ...namesFrom(objTxt), ...namesFrom(subTxt)])];
+        const near = buildNameSuggestions(name, allNames, 10);
+        errEl.innerHTML = `No exact match for <b>${name}</b> (Grade <b>${grade}</b>).<br/>Try: ${near.slice(0,5).join(", ") || "no close matches"}.`;
         errEl.style.display='block';
         showSuggestions();
         return;
@@ -779,7 +832,7 @@ async function bootAfterGate(){
       document.getElementById('gate').style.display = 'none';
       bootAfterGate();
     }catch(e){
-      // best-effort fallback
+      // best-effort fallback if network hiccup
       gate.admin = false; gate.name = name; gate.grade = grade; gate.ready = true;
       document.getElementById('gate').style.display = 'none';
       bootAfterGate();
