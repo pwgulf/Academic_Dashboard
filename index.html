@@ -18,7 +18,14 @@
     --line:#e5e7eb;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+  html,body{width:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    overflow-x:hidden; /* prevent page-wide horizontal scroll */
+  }
 
   /* Header (center title, left logo) */
   .site-header{
@@ -48,7 +55,7 @@
   .tab-btn.active{background:var(--accent);color:#fff;border-color:transparent}
   .panel{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 6px 14px rgba(0,0,0,.06)}
 
-  /* KPI cards (optional container) */
+  /* KPI cards */
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:10px 0 16px}
   .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}
   .kpi-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
@@ -70,18 +77,27 @@
   }
   .controls .secondary{background:#eef2ff;color:#1e3a8a}
 
-  /* Card = scroll container for table */
+  /* Card = white container for table; scroll only this, not the page */
   .card{
-    background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:10px;
     box-shadow:0 4px 12px rgba(0,0,0,.06);
-    overflow-x:auto; /* horizontal scroll */
+    overflow-x:auto; /* horizontal scroll here */
+    overflow-y:hidden;
   }
   .card::-webkit-scrollbar{height:8px}
   .card::-webkit-scrollbar-thumb{background:#b0b0b0;border-radius:4px}
   .card::-webkit-scrollbar-track{background:#f1f1f1}
 
   /* DataTable visuals */
-  table.dataTable{border-collapse:collapse !important; width:100% !important; min-width:900px}
+  .dataTables_wrapper{min-width:900px}
+  table.dataTable{
+    border-collapse:collapse !important;
+    width:max-content !important;  /* grow wider than card => scrollbar */
+    min-width:900px;
+  }
   table.dataTable thead th{background:#f8fafc}
   table.dataTable th, table.dataTable td{
     border:1px solid var(--line); padding:8px 12px; font-size:14px; text-align:center; vertical-align:middle; white-space:nowrap;
@@ -90,13 +106,12 @@
   .dataTables_wrapper .dataTables_filter input{border:1px solid var(--line); border-radius:8px; padding:6px 8px}
 
   .help{font-size:12px;color:var(--muted)}
-  .section-title{font-size:18px;font-weight:700;margin:0 0 10px;text-align:center}
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <!-- 🔁 Use the SAME base64 logo from Helpdesk here -->
+  <!-- ❗Replace LOGO_BASE64_HERE with the SAME working base64 from your helpdesk page -->
   <img class="logo" src="data:image/png;base64,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" alt="PW Gulf Logo" />
   <h1>PW Gulf — Student Performance Dashboard</h1>
   <div class="header-spacer"></div>
@@ -115,39 +130,31 @@
   <section id="attendance" class="panel">
     <div class="controls">
       <button id="refreshAttendance" class="secondary" type="button">Refresh</button>
-      <span class="help">KPIs are computed from the loaded CSV rows.</span>
+      <span class="help">KPIs use Total Present & Total Classes columns.</span>
     </div>
 
     <div class="kpis">
-      <div class="kpi accent">
-        <div class="kpi-label">Total Students (Unique)</div>
-        <div id="attTotalStudents" class="kpi-value">0</div>
-      </div>
-      <div class="kpi ok">
-        <div class="kpi-label">Present %</div>
-        <div id="attPresentPct" class="kpi-value">0%</div>
-      </div>
-      <div class="kpi warn">
-        <div class="kpi-label">Absent %</div>
-        <div id="attAbsentPct" class="kpi-value">0%</div>
-      </div>
-      <div class="kpi accent">
-        <div class="kpi-label">Attendance %</div>
-        <div id="attAttendancePct" class="kpi-value">0%</div>
-      </div>
+      <div class="kpi accent"><div class="kpi-label">Total Students (Unique)</div><div id="attTotalStudents" class="kpi-value">0</div></div>
+      <div class="kpi ok"><div class="kpi-label">Present %</div><div id="attPresentPct" class="kpi-value">0</div></div>
+      <div class="kpi warn"><div class="kpi-label">Absent %</div><div id="attAbsentPct" class="kpi-value">0</div></div>
+      <div class="kpi accent"><div class="kpi-label">Attendance %</div><div id="attAttendancePct" class="kpi-value">0%</div></div>
     </div>
 
-    <table id="attendanceTable" class="display" style="width:100%"></table>
+    <div class="card">
+      <table id="attendanceTable" class="display"></table>
+    </div>
   </section>
 
   <!-- OBJECTIVE -->
   <section id="objective" class="panel" style="display:none">
     <div class="controls">
-      <select id="objNameFilter">
-        <option value="__ALL__">All Objective Names</option>
-      </select>
+      <div class="controls-left">
+        <select id="objNameFilter">
+          <option value="__ALL__">All Objective Names</option>
+        </select>
+      </div>
       <button id="refreshObjective" class="secondary" type="button">Refresh</button>
-      <span class="help">Filter by Objective Name to update the KPIs below.</span>
+      <span class="help">Filter by Objective Name to update KPIs.</span>
     </div>
 
     <div class="kpis">
@@ -157,17 +164,21 @@
       <div class="kpi warn"><div class="kpi-label">Min %</div><div id="objMin" class="kpi-value">0%</div></div>
     </div>
 
-    <table id="objectiveTable" class="display" style="width:100%"></table>
+    <div class="card">
+      <table id="objectiveTable" class="display"></table>
+    </div>
   </section>
 
   <!-- SUBJECTIVE -->
   <section id="subjective" class="panel" style="display:none">
     <div class="controls">
-      <select id="subWeekFilter">
-        <option value="__ALL__">All Weeks</option>
-      </select>
+      <div class="controls-left">
+        <select id="subWeekFilter">
+          <option value="__ALL__">All Weeks</option>
+        </select>
+      </div>
       <button id="refreshSubjective" class="secondary" type="button">Refresh</button>
-      <span class="help">Week filter uses ISO week derived from Test Result Date.</span>
+      <span class="help">Week filter uses existing Week or ISO week (from date).</span>
     </div>
 
     <div class="kpis">
@@ -177,144 +188,126 @@
       <div class="kpi warn"><div class="kpi-label">Min %</div><div id="subMin" class="kpi-value">0%</div></div>
     </div>
 
-    <table id="subjectiveTable" class="display" style="width:100%"></table>
+    <div class="card">
+      <table id="subjectiveTable" class="display"></table>
+    </div>
   </section>
 
 </div>
 
 <script>
-/* ====================== CONFIG: UPDATE THESE CSV LINKS ====================== */
+/* ====== CSV LINKS ====== */
 const CSV_ATTENDANCE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=0&single=true&output=csv";
 const CSV_OBJECTIVE_URL  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1944265869&single=true&output=csv";
 const CSV_SUBJECTIVE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1445613757&single=true&output=csv";
 
-/* Optional: column names (in case your headers vary slightly).
-   Attendance is flexible: it looks for a student name column and a status column.
-*/
-const ATTENDANCE_NAME_KEYS  = ["Student Name","Student Names","Name"]; // try in order
-const ATTENDANCE_STATUS_KEYS= ["Status","Attendance","Present/Absent"]; // try in order
-const ATTENDANCE_PRESENT_VALUES = ["present","p","yes","1"]; // case-insensitive
-/* ========================================================================== */
+/* Attendance column hints (dynamic) */
+const ATTENDANCE_NAME_KEYS     = ["Student Names","Student Name","Name"];
+const TOTAL_PRESENT_KEYS       = ["Total Present","TotalPresent","Present Count","Present"];
+const TOTAL_CLASSES_KEYS       = ["Total Classes","TotalClasses","Classes","Total Class"];
 
-/* ---------- Helpers ---------- */
+/* Helpers */
 const pct = (n)=> (isFinite(n) ? (Math.round(n*10000)/100).toFixed(2)+"%" : "0%");
-const num = (v)=> {
+const toNum = (v)=> {
   if (v==null) return 0;
-  if (typeof v === "number") return v;
-  const s = String(v).trim().replace(/[,]/g,"");
-  if (/^-?\d+(\.\d+)?$/.test(s)) return parseFloat(s);
+  if (typeof v==="number") return v;
+  const s = String(v).trim().replace(/,/g,"");
   if (/%$/.test(s)) return parseFloat(s.replace("%",""));
-  return parseFloat(s) || 0;
+  const f = parseFloat(s);
+  return isNaN(f) ? 0 : f;
 };
 const parseDate = (s)=>{
-  // Accepts formats like "22-Jul-2025" or "20 Jun, 2025"
   if (!s) return null;
-  const try1 = Date.parse(s);
-  if (!isNaN(try1)) return new Date(try1);
-  // try dd-MMM-yyyy manually
+  const d = Date.parse(s);
+  if (!isNaN(d)) return new Date(d);
   const m = String(s).match(/^(\d{1,2})[-\s]([A-Za-z]{3,})[-,\s]+(\d{4})$/);
   if (m){
     const map = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
-    const d = parseInt(m[1],10); const mon = map[m[2].toLowerCase().slice(0,3)]; const y = parseInt(m[3],10);
-    if (mon>=0) return new Date(y, mon, d);
+    const dd=+m[1], mon=map[m[2].toLowerCase().slice(0,3)], yy=+m[3];
+    if (mon>=0) return new Date(yy,mon,dd);
   }
   return null;
 };
 const isoWeek = (date)=>{
-  // https://en.wikipedia.org/wiki/ISO_week_date#Algorithms
   const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-  const dayNum = (d.getUTCDay() + 6) % 7;
-  d.setUTCDate(d.getUTCDate() - dayNum + 3);
+  const dayNum = (d.getUTCDay()+6)%7;
+  d.setUTCDate(d.getUTCDate()-dayNum+3);
   const firstThursday = new Date(Date.UTC(d.getUTCFullYear(),0,4));
-  const diff = d - firstThursday;
-  return 1 + Math.round(diff / (7*24*3600*1000));
+  return 1 + Math.round((d-firstThursday)/(7*24*3600*1000));
+};
+const findKey = (header, candidates) => {
+  // exact first, then contains
+  for (const n of candidates){
+    const k = header.find(h => (h||"").trim().toLowerCase() === n.toLowerCase());
+    if (k) return k;
+  }
+  for (const n of candidates){
+    const k = header.find(h => (h||"").toLowerCase().includes(n.toLowerCase()));
+    if (k) return k;
+  }
+  return null;
+};
+const uniqueByKey = (rows, key)=> {
+  if (!key) return 0;
+  const set = new Set();
+  rows.forEach(r => { const v=(r[key]||"").toString().trim(); if (v) set.add(v); });
+  return set.size;
 };
 
-function findColumnIndex(header, candidates){
-  for (const key of candidates){
-    const idx = header.findIndex(h => h.trim().toLowerCase() === key.trim().toLowerCase());
-    if (idx !== -1) return idx;
-  }
-  // fuzzy contains
-  for (const key of candidates){
-    const idx = header.findIndex(h => h.toLowerCase().includes(key.toLowerCase()));
-    if (idx !== -1) return idx;
-  }
-  return -1;
-}
-
-function uniqueCount(rows, idx){
-  const set = new Set();
-  rows.forEach(r => { const v = (r[idx]||"").trim(); if (v) set.add(v); });
-  return set.size;
-}
-
-function statusIsPresent(s){
-  if (!s) return false;
-  const v = String(s).trim().toLowerCase();
-  return ATTENDANCE_PRESENT_VALUES.includes(v);
-}
-
-/* ---------- DataTables holders ---------- */
+/* DataTables refs */
 let attTable=null, objTable=null, subTable=null;
 
-/* ================= ATTENDANCE ================= */
+/* ============== ATTENDANCE ============== */
 async function loadAttendance(){
-  const res = await fetch(CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?") ? "&" : "?") + "_=" + Date.now(), {cache:"no-store"});
-  const csv = await res.text();
-  const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
+  const url = CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?") ? "&" : "?") + "_=" + Date.now();
+  const res = await fetch(url, {cache:"no-store"});
+  const text = await res.text();
+  const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
   const header = parsed.meta.fields || [];
   const data = parsed.data || [];
 
-  // find columns
-  const nameIdx   = findColumnIndex(header, ATTENDANCE_NAME_KEYS);
-  const statusIdx = findColumnIndex(header, ATTENDANCE_STATUS_KEYS);
+  const nameKey   = findKey(header, ATTENDANCE_NAME_KEYS);
+  const presentKey= findKey(header, TOTAL_PRESENT_KEYS);
+  const classesKey= findKey(header, TOTAL_CLASSES_KEYS);
 
-  // KPIs
-  const totalRows = data.length;
-  const totalStudents = (nameIdx>-1) ? uniqueCount(data.map(r=>header.map(h=>r[h])), nameIdx) : 0;
-  let presentRows = 0;
-  if (statusIdx>-1){
-    for (const r of data){
-      const arr = header.map(h=>r[h]);
-      if (statusIsPresent(arr[statusIdx])) presentRows++;
-    }
-  }
-  const presentPct = totalRows ? (presentRows/totalRows) : 0;
-  const absentPct  = 1 - presentPct;
+  // KPIs (as per your exact ask)
+  const totalStudents = uniqueByKey(data, nameKey);
+  const sumPresent = presentKey ? data.reduce((a,r)=> a + toNum(r[presentKey]), 0) : 0;
+  const sumClasses = classesKey ? data.reduce((a,r)=> a + toNum(r[classesKey]), 0) : 0;
+  const sumAbsent = Math.max(0, sumClasses - sumPresent);
+  const attendancePct = (sumClasses>0) ? (sumPresent/sumClasses) : 0;
 
-  document.getElementById('attTotalStudents').textContent = totalStudents;
-  document.getElementById('attPresentPct').textContent    = pct(presentPct);
-  document.getElementById('attAbsentPct').textContent     = pct(absentPct);
-  document.getElementById('attAttendancePct').textContent = pct(presentPct);
+  document.getElementById('attTotalStudents').textContent = totalStudents.toLocaleString();
+  document.getElementById('attPresentPct').textContent    = Math.round(sumPresent).toLocaleString(); // count only
+  document.getElementById('attAbsentPct').textContent     = Math.round(sumAbsent).toLocaleString();  // count only
+  document.getElementById('attAttendancePct').textContent = pct(attendancePct);
 
-  // Build table columns dynamically
+  // Table (fully dynamic)
   const columns = header.map(h => ({title:h, data:h}));
   if (attTable){ attTable.clear().destroy(); }
   attTable = $('#attendanceTable').DataTable({
     data,
     columns,
     pageLength: 10,
-    responsive: true,
     order: [],
+    autoWidth: false
   });
 }
 
-/* ================= OBJECTIVE ================= */
-// Expected headers (exact spellings from you):
-// "Test Result Date","Objective Name","Student Names","Registered Student Names","Admission Dates","Grades","Sections","Streams","Batchs","Countrys","Total Eligible","Total Participants","Total Absent","Avg. Participation","Physics","Chemistry","Maths","Zoology","Botany","Marks Achieved","SUBJECTS","Total Marks","Test Percentage"
+/* ============== OBJECTIVE ============== */
 let objectiveRaw = [];
-
 async function loadObjective(){
-  const res = await fetch(CSV_OBJECTIVE_URL + (CSV_OBJECTIVE_URL.includes("?") ? "&" : "?") + "_=" + Date.now(), {cache:"no-store"});
+  const url = CSV_OBJECTIVE_URL + (CSV_OBJECTIVE_URL.includes("?") ? "&" : "?") + "_=" + Date.now();
+  const res = await fetch(url, {cache:"no-store"});
   const csv = await res.text();
   const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
   const header = parsed.meta.fields || [];
   objectiveRaw = parsed.data || [];
 
-  // fill Objective Name filter
+  // Fill filter (Objective Name if present)
+  const objectiveNameKey = header.find(h=>/objective\s*name/i.test(h)) || "Objective Name";
   const nameSet = new Set();
-  objectiveRaw.forEach(r => { if (r["Objective Name"]) nameSet.add(r["Objective Name"]); });
+  objectiveRaw.forEach(r => { if (r[objectiveNameKey]) nameSet.add(r[objectiveNameKey]); });
   const sel = document.getElementById('objNameFilter');
   const current = sel.value;
   sel.innerHTML = `<option value="__ALL__">All Objective Names</option>` + 
@@ -323,116 +316,131 @@ async function loadObjective(){
 
   renderObjectiveTableAndKpis();
 }
-
 function renderObjectiveTableAndKpis(){
+  if (!objectiveRaw.length){
+    if (objTable){ objTable.clear().draw(); }
+    return;
+  }
+  const headers = Object.keys(objectiveRaw[0]);
+
+  const nameKey   = headers.find(h=>/student\s*names?/i.test(h)) || "Student Names";
+  const objNameK  = headers.find(h=>/objective\s*name/i.test(h)) || "Objective Name";
+  const marksKey  = headers.find(h=>/marks\s*achieved/i.test(h)) || "Marks Achieved";
+  const totalKey  = headers.find(h=>/total\s*marks/i.test(h)) || "Total Marks";
+  const tpKey     = headers.find(h=>/test\s*percentage/i.test(h)) || "Test Percentage";
+
   const filterName = document.getElementById('objNameFilter').value;
-  let rows = objectiveRaw;
+  let rows = objectiveRaw.slice();
   if (filterName !== "__ALL__"){
-    rows = rows.filter(r => String(r["Objective Name"]||"") === filterName);
+    rows = rows.filter(r => String(r[objNameK]||"") === filterName);
   }
 
   // KPIs
-  const uniqStudents = new Set(rows.map(r => (r["Student Names"]||"").trim()).filter(Boolean)).size;
+  const uniqStudents = uniqueByKey(rows, nameKey);
   let sumAch=0, sumTot=0, maxPct=-Infinity, minPct=Infinity;
-
   rows.forEach(r=>{
-    const ach = num(r["Marks Achieved"]);
-    const tot = num(r["Total Marks"]);
-    sumAch += ach; sumTot += (tot||0);
-
-    const tp = num(r["Test Percentage"]); // already % string or number
-    if (isFinite(tp)){
-      if (tp>maxPct) maxPct = tp;
-      if (tp<minPct) minPct = tp;
-    }
+    sumAch += toNum(r[marksKey]);
+    sumTot += toNum(r[totalKey]);
+    const tp = toNum(r[tpKey]);
+    if (isFinite(tp)){ if (tp>maxPct) maxPct=tp; if (tp<minPct) minPct=tp; }
   });
 
   document.getElementById('objTotal').textContent = uniqStudents || 0;
-  document.getElementById('objAvg').textContent   = (sumTot>0) ? (Math.round((sumAch/sumTot)*10000)/100).toFixed(2)+"%" : "0%";
+  document.getElementById('objAvg').textContent   = sumTot>0 ? (Math.round((sumAch/sumTot)*10000)/100).toFixed(2)+"%" : "0%";
   document.getElementById('objMax').textContent   = isFinite(maxPct) ? (Math.round(maxPct*100)/100).toFixed(2)+"%" : "0%";
   document.getElementById('objMin').textContent   = isFinite(minPct) ? (Math.round(minPct*100)/100).toFixed(2)+"%" : "0%";
 
   // Table
-  const header = objectiveRaw.length ? Object.keys(objectiveRaw[0]) : [];
-  const columns = header.map(h => ({title:h, data:h}));
+  const columns = headers.map(h => ({title:h, data:h}));
   if (objTable){ objTable.clear().destroy(); }
   objTable = $('#objectiveTable').DataTable({
     data: rows,
     columns,
     pageLength: 10,
-    responsive: true,
     order: [],
+    autoWidth: false
   });
 }
 
-/* ================= SUBJECTIVE ================= */
-// We assume Subjective CSV has similar columns to Objective: it MUST have
-// "Test Result Date","Student Names","Marks Achieved","Total Marks","Test Percentage"
-// If names differ slightly, you can remap below in code.
+/* ============== SUBJECTIVE ============== */
 let subjectiveRaw = [];
-
 async function loadSubjective(){
-  const res = await fetch(CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes("?") ? "&" : "?") + "_=" + Date.now(), {cache:"no-store"});
+  const url = CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes("?") ? "&" : "?") + "_=" + Date.now();
+  const res = await fetch(url, {cache:"no-store"});
   const csv = await res.text();
   const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
   const header = parsed.meta.fields || [];
   subjectiveRaw = parsed.data || [];
 
-  // Add derived Week column
-  subjectiveRaw.forEach(r=>{
-    const d = parseDate(r["Test Result Date"]);
-    r.__Week = d ? isoWeek(d) : "";
-  });
+  // Decide Week column (use existing Week or derive from date)
+  const hasWeek = header.some(h=>/^week$/i.test(h));
+  if (!hasWeek){
+    const dateKey = header.find(h=>/test\s*result\s*date/i.test(h)) || header.find(h=>/date/i.test(h));
+    if (dateKey){
+      subjectiveRaw.forEach(r=>{
+        const d = parseDate(r[dateKey]);
+        r.Week = d ? isoWeek(d) : "";
+      });
+    } else {
+      subjectiveRaw.forEach(r=> r.Week = "");
+    }
+  }
 
-  // fill week filter
-  const weekSet = new Set(subjectiveRaw.map(r=>r.__Week).filter(Boolean));
+  // Week filter
+  const weekKey = hasWeek ? header.find(h=>/^week$/i.test(h)) : "Week";
+  const weeks = Array.from(new Set(subjectiveRaw.map(r=>r[weekKey]).filter(Boolean))).sort((a,b)=>a-b);
   const sel = document.getElementById('subWeekFilter');
   const current = sel.value;
   sel.innerHTML = `<option value="__ALL__">All Weeks</option>` + 
-                  [...weekSet].sort((a,b)=>a-b).map(w=>`<option value="${w}">Week ${w}</option>`).join("");
-  if ([...weekSet].includes(+current)) sel.value = current; else sel.value="__ALL__";
+                  weeks.map(w=>`<option value="${w}">Week ${w}</option>`).join("");
+  if (weeks.includes(+current) || weeks.includes(current)) sel.value = current; else sel.value="__ALL__";
 
   renderSubjectiveTableAndKpis();
 }
-
 function renderSubjectiveTableAndKpis(){
+  if (!subjectiveRaw.length){
+    if (subTable){ subTable.clear().draw(); }
+    return;
+  }
+  const headers = Object.keys(subjectiveRaw[0]);
+
+  const nameKey   = headers.find(h=>/student\s*names?/i.test(h)) || "Student Names";
+  const marksKey  = headers.find(h=>/marks\s*achieved/i.test(h)) || "Marks Achieved";
+  const totalKey  = headers.find(h=>/total\s*marks/i.test(h)) || "Total Marks";
+  // Subjective percentage may be "Percentage" OR "Test Percentage"
+  const percentKey= headers.find(h=>/^percentage$/i.test(h)) || headers.find(h=>/test\s*percentage/i.test(h)) || "Percentage";
+  const weekKey   = headers.find(h=>/^week$/i.test(h)) || "Week";
+
   const week = document.getElementById('subWeekFilter').value;
-  let rows = subjectiveRaw;
+  let rows = subjectiveRaw.slice();
   if (week !== "__ALL__"){
-    rows = rows.filter(r => String(r.__Week) === String(week));
+    rows = rows.filter(r => String(r[weekKey]) === String(week));
   }
 
   // KPIs
-  const uniqStudents = new Set(rows.map(r => (r["Student Names"]||"").trim()).filter(Boolean)).size;
+  const uniqStudents = uniqueByKey(rows, nameKey);
   let sumAch=0, sumTot=0, maxPct=-Infinity, minPct=Infinity;
-
   rows.forEach(r=>{
-    const ach = num(r["Marks Achieved"]);
-    const tot = num(r["Total Marks"]);
-    sumAch += ach; sumTot += (tot||0);
-
-    const tp = num(r["Test Percentage"]);
-    if (isFinite(tp)){
-      if (tp>maxPct) maxPct = tp;
-      if (tp<minPct) minPct = tp;
-    }
+    sumAch += toNum(r[marksKey]);
+    sumTot += toNum(r[totalKey]);
+    const tp = toNum(r[percentKey]);
+    if (isFinite(tp)){ if (tp>maxPct) maxPct=tp; if (tp<minPct) minPct=tp; }
   });
 
   document.getElementById('subTotal').textContent = uniqStudents || 0;
-  document.getElementById('subAvg').textContent   = (sumTot>0) ? (Math.round((sumAch/sumTot)*10000)/100).toFixed(2)+"%" : "0%";
+  document.getElementById('subAvg').textContent   = sumTot>0 ? (Math.round((sumAch/sumTot)*10000)/100).toFixed(2)+"%" : "0%";
   document.getElementById('subMax').textContent   = isFinite(maxPct) ? (Math.round(maxPct*100)/100).toFixed(2)+"%" : "0%";
   document.getElementById('subMin').textContent   = isFinite(minPct) ? (Math.round(minPct*100)/100).toFixed(2)+"%" : "0%";
 
   // Table
-  const header = subjectiveRaw.length ? Object.keys(subjectiveRaw[0]) : [];
-  const columns = header.map(h => ({title: (h==="__Week"?"Week":h), data:h}));
+  const columns = headers.map(h => ({title:h, data:h}));
   if (subTable){ subTable.clear().destroy(); }
   subTable = $('#subjectiveTable').DataTable({
     data: rows,
     columns,
     pageLength: 10,
-    responsive: true,
     order: [],
+    autoWidth: false
   });
 }
 
@@ -444,25 +452,19 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
     const tab = btn.dataset.tab;
     document.querySelectorAll('section.panel').forEach(s=> s.style.display='none');
     document.getElementById(tab).style.display='block';
-    // Lazy refresh when switching
     if (tab==="attendance" && !attTable) loadAttendance();
     if (tab==="objective" && !objTable) loadObjective();
     if (tab==="subjective" && !subTable) loadSubjective();
   });
 });
 
-/* ---------- Listeners ---------- */
+/* ---------- Buttons / Filters ---------- */
 document.getElementById('refreshAttendance').addEventListener('click', loadAttendance);
 document.getElementById('refreshObjective').addEventListener('click', loadObjective);
 document.getElementById('refreshSubjective').addEventListener('click', loadSubjective);
-
 document.getElementById('objNameFilter').addEventListener('change', renderObjectiveTableAndKpis);
 document.getElementById('subWeekFilter').addEventListener('change', renderSubjectiveTableAndKpis);
 
 /* ---------- Boot ---------- */
-// Load the first tab by default
-loadAttendance();
+loadAttendance(); // first tab by default
 </script>
-
-</body>
-</html>
