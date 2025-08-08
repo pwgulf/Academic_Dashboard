@@ -4,125 +4,87 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>PW Gulf | Student Dashboard</title>
+
+<!-- DataTables + Papa Parse -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-dt@1.13.8/css/jquery.dataTables.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.8/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
 <style>
   :root{
-    --bg:#f7f9fc; --card:#ffffff; --ink:#111827; --muted:#6b7280;
-    --accent:#2563eb; --accent-2:#1e40af;
-    --ok:#16a34a; --warn:#f59e0b; --danger:#ef4444;
+    --bg:#f6f8fb; --card:#ffffff; --ink:#0f172a; --muted:#6b7280;
+    --accent:#2563eb; --accent2:#1e40af; --ok:#16a34a; --warn:#f59e0b; --danger:#ef4444;
     --line:#e5e7eb;
   }
   *{box-sizing:border-box}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
 
   /* Header */
   .site-header{
     position:sticky; top:0; z-index:1000;
-    display:grid; grid-template-columns:auto 1fr auto;
-    align-items:center; gap:12px;
-    padding:14px 18px;
-    color:#fff; background:linear-gradient(90deg,var(--accent-2),var(--accent),var(--accent-2));
-    box-shadow:0 8px 24px rgba(37,99,235,.25);
+    display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px;
+    padding:14px 18px; color:#fff;
+    background:linear-gradient(90deg,var(--accent2),var(--accent),var(--accent2));
+    box-shadow:0 8px 18px rgba(37,99,235,.25);
   }
-  .logo{height:42px; width:auto; border-radius:6px; box-shadow:0 0 0 2px rgba(255,255,255,.12)}
-  .site-header h1{margin:0; text-align:center; font-size:18px; font-weight:800; letter-spacing:.2px}
-  .header-spacer{width:42px}
-  @media (max-width:640px){
+  .site-header .logo{height:40px;width:auto;border-radius:6px;box-shadow:0 0 0 2px rgba(255,255,255,.18)}
+  .site-header h1{margin:0;text-align:center;font-size:18px;letter-spacing:.2px;font-weight:800}
+  .header-spacer{width:40px}
+  @media(max-width:640px){
     .site-header{grid-template-columns:1fr; text-align:center}
     .header-spacer{display:none}
+    .site-header h1{font-size:16px}
+    .site-header .logo{justify-self:center}
   }
 
-  .wrap{max-width:1300px; margin:0 auto; padding:16px}
-
-  /* Tabs */
-  .tabs{display:flex; gap:8px; margin:10px 0 14px; flex-wrap:wrap}
+  /* Layout */
+  .wrap{max-width:1200px;margin:0 auto;padding:16px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
   .tab-btn{
-    appearance:none; border:1px solid var(--line); background:#fff; color:var(--ink);
-    padding:10px 14px; border-radius:999px; cursor:pointer; font-weight:600;
+    background:#fff;border:1px solid var(--line);color:var(--ink);
+    padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:600
   }
-  .tab-btn.active{ background:var(--accent); color:#fff; border-color:transparent }
-  .tab-panel{ display:none }
-  .tab-panel.active{ display:block }
+  .tab-btn.active{background:var(--accent);color:#fff;border-color:transparent}
+  .panel{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 6px 14px rgba(0,0,0,.06)}
 
-  /* Cards / KPI */
-  .panel{
-    background:var(--card); border:1px solid var(--line); border-radius:14px;
-    padding:16px; box-shadow:0 4px 12px rgba(0,0,0,.06);
-  }
-  .panel h2{margin:0 0 10px; font-size:18px}
-  .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:10px 0 14px}
-  .kpi{
-    background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px;
-  }
-  .kpi-label{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em}
-  .kpi-value{font-size:26px; font-weight:800; margin-top:2px}
+  /* KPI cards */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:10px 0 16px}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}
+  .kpi-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+  .kpi-value{font-size:26px;font-weight:800;line-height:1.1;margin-top:2px}
+  .kpi.accent{border-left:4px solid var(--accent)}
   .kpi.ok{border-left:4px solid var(--ok)}
   .kpi.warn{border-left:4px solid var(--warn)}
-  .kpi.info{border-left:4px solid var(--accent)}
+  .kpi.danger{border-left:4px solid var(--danger)}
+  @media(max-width:800px){ .kpis{grid-template-columns:repeat(2,1fr)} }
 
-  /* Actions row */
-  .actions{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:6px 0 10px}
-  .btn{
-    appearance:none; border:0; background:var(--accent); color:#fff;
-    padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:700;
+  /* Controls */
+  .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+  .controls select,.controls input{
+    padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff
   }
-  .btn.secondary{ background:#eef2ff; color:#1e3a8a; border:1px solid #c7d2fe }
-  .btn.ghost{ background:#fff; color:var(--ink); border:1px solid var(--line) }
+  .controls button{
+    border:0;border-radius:10px;padding:8px 12px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer
+  }
+  .controls .secondary{background:#eef2ff;color:#1e3a8a}
 
-  /* Uploader */
-  .uploader{
-    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
-    border:1px dashed var(--line); border-radius:10px; padding:10px 12px; background:#fff;
-  }
-  .uploader.drag{ background:#eff6ff; border-color:#93c5fd }
+  /* DataTable tweaks */
+  table.dataTable thead th{background:#f8fafc}
+  .dataTables_wrapper .dataTables_filter input{border:1px solid var(--line); border-radius:8px; padding:6px 8px}
+  .status-pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}
+  .status-new{background:#e0ecff;color:#1d4ed8}
+  .status-wip{background:#fff7ed;color:#b45309}
+  .status-resolved{background:#ecfdf5;color:#047857}
 
-  /* Table */
-  .table-wrap{
-    background:#fff; border:1px solid var(--line); border-radius:12px; overflow:auto;
-  }
-  table{width:100%; border-collapse:separate; border-spacing:0}
-  thead th{
-    position:sticky; top:0; z-index:5;
-    background:#f8fafc; border-bottom:1px solid var(--line); padding:10px; text-align:left; font-size:13px;
-    white-space:nowrap;
-  }
-  tbody td{
-    border-bottom:1px solid var(--line); padding:9px 10px; font-size:14px;
-    vertical-align:top;
-  }
-  tr:hover td{ background:#f9fafb }
-  .filter-row input{
-    width:100%; padding:6px 8px; border:1px solid var(--line); border-radius:8px; font-size:12px;
-    background:#fff;
-  }
-  .sortable{cursor:pointer; user-select:none}
-  .sortable:after{content:" ⬍"; opacity:.35; font-size:11px}
-
-  .pill{display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:700}
-  .pill.ok{ background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0 }
-  .pill.warn{ background:#fffbeb; color:#92400e; border:1px solid #fde68a }
-  .pill.bad{ background:#fef2f2; color:#991b1b; border:1px solid #fecaca }
-
-  /* Topper panel */
-  .topper{
-    display:grid; grid-template-columns:1fr; gap:10px;
-    background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px;
-  }
-  .topper .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-  .select{padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:#fff}
-
-  .muted{color:var(--muted); font-size:12px}
+  .help{font-size:12px;color:var(--muted)}
 </style>
 </head>
 <body>
 
 <header class="site-header">
-  <!-- Replace src with your base64 if you want logo embedded -->
-  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/9/98/OOjs_UI_icon_userAvatar.svg" alt="Logo">
-  <h1>PW Gulf — Academic Dashboard</h1>
+  <img class="logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQC..." alt="Logo" />
+  <h1>PW Gulf — Student Performance Dashboard</h1>
   <div class="header-spacer"></div>
 </header>
 
@@ -135,443 +97,358 @@
     <button class="tab-btn" data-tab="subjective">Subjective Tests</button>
   </div>
 
-  <!-- Attendance Panel -->
-  <section id="attendance" class="tab-panel active">
-    <div class="panel">
-      <h2>Attendance Overview</h2>
-      <div class="kpis">
-        <div class="kpi info"><div class="kpi-label">Total Rows</div><div id="attRows" class="kpi-value">0</div></div>
-        <div class="kpi ok"><div class="kpi-label">Present</div><div id="attPresent" class="kpi-value">0</div></div>
-        <div class="kpi warn"><div class="kpi-label">Absent</div><div id="attAbsent" class="kpi-value">0</div></div>
-        <div class="kpi info"><div class="kpi-label">Attendance %</div><div id="attRate" class="kpi-value">0%</div></div>
-      </div>
-
-      <div class="actions">
-        <div class="uploader" id="attDrop">
-          <strong>Upload CSV</strong>
-          <input id="attFile" type="file" accept=".csv" />
-          <span class="muted">or drag & drop</span>
-        </div>
-        <button id="attRefresh" class="btn">Refresh from Sheet</button>
-        <span class="muted">Filters appear under headers. Click headers to sort.</span>
-      </div>
-
-      <div class="table-wrap" id="attTableWrap"></div>
+  <!-- ATTENDANCE -->
+  <section id="attendance" class="panel">
+    <div class="controls">
+      <button id="refreshAttendance" class="secondary" type="button">Refresh</button>
+      <span class="help">KPIs are computed from the loaded CSV rows.</span>
     </div>
+
+    <div class="kpis">
+      <div class="kpi accent">
+        <div class="kpi-label">Total Students (Unique)</div>
+        <div id="attTotalStudents" class="kpi-value">0</div>
+      </div>
+      <div class="kpi ok">
+        <div class="kpi-label">Present %</div>
+        <div id="attPresentPct" class="kpi-value">0%</div>
+      </div>
+      <div class="kpi warn">
+        <div class="kpi-label">Absent %</div>
+        <div id="attAbsentPct" class="kpi-value">0%</div>
+      </div>
+      <div class="kpi accent">
+        <div class="kpi-label">Attendance %</div>
+        <div id="attAttendancePct" class="kpi-value">0%</div>
+      </div>
+    </div>
+
+    <table id="attendanceTable" class="display" style="width:100%"></table>
   </section>
 
-  <!-- Objective Tests Panel -->
-  <section id="objective" class="tab-panel">
-    <div class="panel">
-      <h2>Objective Tests</h2>
-      <div class="kpis">
-        <div class="kpi info"><div class="kpi-label">Total Records</div><div id="objRows" class="kpi-value">0</div></div>
-        <div class="kpi ok"><div class="kpi-label">Average Score</div><div id="objAvg" class="kpi-value">-</div></div>
-        <div class="kpi info"><div class="kpi-label">Max Score</div><div id="objMax" class="kpi-value">-</div></div>
-        <div class="kpi warn"><div class="kpi-label">Min Score</div><div id="objMin" class="kpi-value">-</div></div>
-      </div>
-
-      <div class="actions">
-        <div class="uploader" id="objDrop">
-          <strong>Upload CSV</strong>
-          <input id="objFile" type="file" accept=".csv" />
-          <span class="muted">or drag & drop</span>
-        </div>
-        <button id="objRefresh" class="btn">Refresh from Sheet</button>
-        <select id="objScoreCol" class="select"></select>
-        <span class="muted">Pick score column if needed</span>
-      </div>
-
-      <div class="topper" id="objTopperBox">
-        <div class="row"><strong>Topper(s):</strong> <span id="objTopper" class="muted">—</span></div>
-      </div>
-
-      <div class="table-wrap" id="objTableWrap"></div>
+  <!-- OBJECTIVE -->
+  <section id="objective" class="panel" style="display:none">
+    <div class="controls">
+      <select id="objNameFilter">
+        <option value="__ALL__">All Objective Names</option>
+      </select>
+      <button id="refreshObjective" class="secondary" type="button">Refresh</button>
+      <span class="help">Filter by Objective Name to update the KPIs below.</span>
     </div>
+
+    <div class="kpis">
+      <div class="kpi accent"><div class="kpi-label">Total Students (Unique)</div><div id="objTotal" class="kpi-value">0</div></div>
+      <div class="kpi ok"><div class="kpi-label">Average Score</div><div id="objAvg" class="kpi-value">0%</div></div>
+      <div class="kpi accent"><div class="kpi-label">Max %</div><div id="objMax" class="kpi-value">0%</div></div>
+      <div class="kpi warn"><div class="kpi-label">Min %</div><div id="objMin" class="kpi-value">0%</div></div>
+    </div>
+
+    <table id="objectiveTable" class="display" style="width:100%"></table>
   </section>
 
-  <!-- Subjective Tests Panel -->
-  <section id="subjective" class="tab-panel">
-    <div class="panel">
-      <h2>Subjective Tests</h2>
-      <div class="kpis">
-        <div class="kpi info"><div class="kpi-label">Total Records</div><div id="subRows" class="kpi-value">0</div></div>
-        <div class="kpi ok"><div class="kpi-label">Average Marks</div><div id="subAvg" class="kpi-value">-</div></div>
-        <div class="kpi info"><div class="kpi-label">Max Marks</div><div id="subMax" class="kpi-value">-</div></div>
-        <div class="kpi warn"><div class="kpi-label">Min Marks</div><div id="subMin" class="kpi-value">-</div></div>
-      </div>
-
-      <div class="actions">
-        <div class="uploader" id="subDrop">
-          <strong>Upload CSV</strong>
-          <input id="subFile" type="file" accept=".csv" />
-          <span class="muted">or drag & drop</span>
-        </div>
-        <button id="subRefresh" class="btn">Refresh from Sheet</button>
-        <select id="subScoreCol" class="select"></select>
-        <span class="muted">Pick score column if needed</span>
-      </div>
-
-      <div class="topper">
-        <div class="row"><strong>Topper(s):</strong> <span id="subTopper" class="muted">—</span></div>
-      </div>
-
-      <div class="table-wrap" id="subTableWrap"></div>
+  <!-- SUBJECTIVE -->
+  <section id="subjective" class="panel" style="display:none">
+    <div class="controls">
+      <select id="subWeekFilter">
+        <option value="__ALL__">All Weeks</option>
+      </select>
+      <button id="refreshSubjective" class="secondary" type="button">Refresh</button>
+      <span class="help">Week filter uses ISO week derived from Test Result Date.</span>
     </div>
+
+    <div class="kpis">
+      <div class="kpi accent"><div class="kpi-label">Total Students (Unique)</div><div id="subTotal" class="kpi-value">0</div></div>
+      <div class="kpi ok"><div class="kpi-label">Average Marks</div><div id="subAvg" class="kpi-value">0%</div></div>
+      <div class="kpi accent"><div class="kpi-label">Max %</div><div id="subMax" class="kpi-value">0%</div></div>
+      <div class="kpi warn"><div class="kpi-label">Min %</div><div id="subMin" class="kpi-value">0%</div></div>
+    </div>
+
+    <table id="subjectiveTable" class="display" style="width:100%"></table>
   </section>
+
 </div>
 
 <script>
-/* ======= CONFIG: paste your published CSV links here ======= */
+/* ====================== CONFIG: UPDATE THESE CSV LINKS ====================== */
 const CSV_ATTENDANCE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=0&single=true&output=csv";
 const CSV_OBJECTIVE_URL  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1944265869&single=true&output=csvE";
 const CSV_SUBJECTIVE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1445613757&single=true&output=csv";
-/* ========================================================== */
 
-/* ======= Tiny CSV parser (handles quoted commas) ======= */
-function parseCSV(text){
-  const rows=[]; let cur=[], field='', inQuotes=false;
-  for(let i=0;i<text.length;i++){
-    const ch=text[i], next=text[i+1];
-    if(ch==='\"'){
-      if(inQuotes && next==='\"'){ field+='\"'; i++; }
-      else inQuotes=!inQuotes;
-    }else if(ch===',' && !inQuotes){
-      cur.push(field); field='';
-    }else if((ch==='\n' || ch==='\r') && !inQuotes){
-      if(field!=='' || cur.length){ cur.push(field); rows.push(cur); cur=[]; field=''; }
-      if(ch==='\r' && next==='\n'){ i++; } // CRLF
-    }else{
-      field+=ch;
+/* Optional: column names (in case your headers vary slightly).
+   Attendance is flexible: it looks for a student name column and a status column.
+*/
+const ATTENDANCE_NAME_KEYS  = ["Student Name","Student Names","Name"]; // try in order
+const ATTENDANCE_STATUS_KEYS= ["Status","Attendance","Present/Absent"]; // try in order
+const ATTENDANCE_PRESENT_VALUES = ["present","p","yes","1"]; // case-insensitive
+/* ========================================================================== */
+
+/* ---------- Helpers ---------- */
+const pct = (n)=> (isFinite(n) ? (Math.round(n*10000)/100).toFixed(2)+"%" : "0%");
+const num = (v)=> {
+  if (v==null) return 0;
+  if (typeof v === "number") return v;
+  const s = String(v).trim().replace(/[,]/g,"");
+  if (/^-?\d+(\.\d+)?$/.test(s)) return parseFloat(s);
+  if (/%$/.test(s)) return parseFloat(s.replace("%",""));
+  return parseFloat(s) || 0;
+};
+const parseDate = (s)=>{
+  // Accepts formats like "22-Jul-2025" or "20 Jun, 2025"
+  if (!s) return null;
+  const try1 = Date.parse(s);
+  if (!isNaN(try1)) return new Date(try1);
+  // try dd-MMM-yyyy manually
+  const m = String(s).match(/^(\d{1,2})[-\s]([A-Za-z]{3,})[-,\s]+(\d{4})$/);
+  if (m){
+    const map = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+    const d = parseInt(m[1],10); const mon = map[m[2].toLowerCase().slice(0,3)]; const y = parseInt(m[3],10);
+    if (mon>=0) return new Date(y, mon, d);
+  }
+  return null;
+};
+const isoWeek = (date)=>{
+  // https://en.wikipedia.org/wiki/ISO_week_date#Algorithms
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = (d.getUTCDay() + 6) % 7;
+  d.setUTCDate(d.getUTCDate() - dayNum + 3);
+  const firstThursday = new Date(Date.UTC(d.getUTCFullYear(),0,4));
+  const diff = d - firstThursday;
+  return 1 + Math.round(diff / (7*24*3600*1000));
+};
+
+function findColumnIndex(header, candidates){
+  for (const key of candidates){
+    const idx = header.findIndex(h => h.trim().toLowerCase() === key.trim().toLowerCase());
+    if (idx !== -1) return idx;
+  }
+  // fuzzy contains
+  for (const key of candidates){
+    const idx = header.findIndex(h => h.toLowerCase().includes(key.toLowerCase()));
+    if (idx !== -1) return idx;
+  }
+  return -1;
+}
+
+function uniqueCount(rows, idx){
+  const set = new Set();
+  rows.forEach(r => { const v = (r[idx]||"").trim(); if (v) set.add(v); });
+  return set.size;
+}
+
+function statusIsPresent(s){
+  if (!s) return false;
+  const v = String(s).trim().toLowerCase();
+  return ATTENDANCE_PRESENT_VALUES.includes(v);
+}
+
+/* ---------- DataTables holders ---------- */
+let attTable=null, objTable=null, subTable=null;
+
+/* ================= ATTENDANCE ================= */
+async function loadAttendance(){
+  const res = await fetch(CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?") ? "&" : "?") + "_=" + Date.now(), {cache:"no-store"});
+  const csv = await res.text();
+  const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
+  const header = parsed.meta.fields || [];
+  const data = parsed.data || [];
+
+  // find columns
+  const nameIdx   = findColumnIndex(header, ATTENDANCE_NAME_KEYS);
+  const statusIdx = findColumnIndex(header, ATTENDANCE_STATUS_KEYS);
+
+  // KPIs
+  const totalRows = data.length;
+  const totalStudents = (nameIdx>-1) ? uniqueCount(data.map(r=>header.map(h=>r[h])), nameIdx) : 0;
+  let presentRows = 0;
+  if (statusIdx>-1){
+    for (const r of data){
+      const arr = header.map(h=>r[h]);
+      if (statusIsPresent(arr[statusIdx])) presentRows++;
     }
   }
-  if(field!=='' || cur.length) cur.push(field), rows.push(cur);
-  return rows.map(r => r.map(c => c.trim()));
+  const presentPct = totalRows ? (presentRows/totalRows) : 0;
+  const absentPct  = 1 - presentPct;
+
+  document.getElementById('attTotalStudents').textContent = totalStudents;
+  document.getElementById('attPresentPct').textContent    = pct(presentPct);
+  document.getElementById('attAbsentPct').textContent     = pct(absentPct);
+  document.getElementById('attAttendancePct').textContent = pct(presentPct);
+
+  // Build table columns dynamically
+  const columns = header.map(h => ({title:h, data:h}));
+  if (attTable){ attTable.clear().destroy(); }
+  attTable = $('#attendanceTable').DataTable({
+    data,
+    columns,
+    pageLength: 10,
+    responsive: true,
+    order: [],
+  });
 }
-function escapeHtml(s){ return (s||"").replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
 
-/* ======= Tabs ======= */
-document.querySelectorAll('.tab-btn').forEach(b=>{
-  b.addEventListener('click', ()=>{
-    document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-    document.getElementById(b.dataset.tab).classList.add('active');
-  });
-});
+/* ================= OBJECTIVE ================= */
+// Expected headers (exact spellings from you):
+// "Test Result Date","Objective Name","Student Names","Registered Student Names","Admission Dates","Grades","Sections","Streams","Batchs","Countrys","Total Eligible","Total Participants","Total Absent","Avg. Participation","Physics","Chemistry","Maths","Zoology","Botany","Marks Achieved","SUBJECTS","Total Marks","Test Percentage"
+let objectiveRaw = [];
 
-/* ======= Generic table renderer with filters & sorting ======= */
-function renderTable(container, rows){
-  if(!rows || !rows.length){ container.innerHTML = `<div class="muted" style="padding:10px">No data</div>`; return { header:[], data:[] }; }
-  const header = rows[0], data = rows.slice(1);
+async function loadObjective(){
+  const res = await fetch(CSV_OBJECTIVE_URL + (CSV_OBJECTIVE_URL.includes("?") ? "&" : "?") + "_=" + Date.now(), {cache:"no-store"});
+  const csv = await res.text();
+  const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
+  const header = parsed.meta.fields || [];
+  objectiveRaw = parsed.data || [];
 
-  // DOM
-  const wrap = document.createElement('div');
-  const table = document.createElement('table');
+  // fill Objective Name filter
+  const nameSet = new Set();
+  objectiveRaw.forEach(r => { if (r["Objective Name"]) nameSet.add(r["Objective Name"]); });
+  const sel = document.getElementById('objNameFilter');
+  const current = sel.value;
+  sel.innerHTML = `<option value="__ALL__">All Objective Names</option>` + 
+                  [...nameSet].map(n=>`<option value="${String(n).replace(/"/g,'&quot;')}">${n}</option>`).join("");
+  if ([...nameSet].includes(current)) sel.value = current; else sel.value="__ALL__";
 
-  // Header + filter row
-  const thead = document.createElement('thead');
-  const trh = document.createElement('tr');
-  const trf = document.createElement('tr'); trf.className = 'filter-row';
+  renderObjectiveTableAndKpis();
+}
 
-  header.forEach((h, idx)=>{
-    const th = document.createElement('th');
-    th.innerHTML = `<span class="sortable" data-col="${idx}">${escapeHtml(h||'')}</span>`;
-    trh.appendChild(th);
-
-    const tf = document.createElement('th');
-    tf.innerHTML = `<input type="text" data-col="${idx}" placeholder="Filter ${escapeHtml(h||'')}">`;
-    trf.appendChild(tf);
-  });
-  thead.appendChild(trh); thead.appendChild(trf);
-
-  // Body
-  const tbody = document.createElement('tbody');
-
-  let sortCol = -1, sortDir = 1;
-  let filtered = data.slice();
-  const inputs = [];
-
-  function applyFilters(){
-    filtered = data.filter(r=>{
-      return inputs.every(inp=>{
-        const col = +inp.dataset.col;
-        const val = (r[col]||'')+'';
-        const q = inp.value.trim().toLowerCase();
-        return q ? val.toLowerCase().includes(q) : true;
-      });
-    });
-    drawBody();
+function renderObjectiveTableAndKpis(){
+  const filterName = document.getElementById('objNameFilter').value;
+  let rows = objectiveRaw;
+  if (filterName !== "__ALL__"){
+    rows = rows.filter(r => String(r["Objective Name"]||"") === filterName);
   }
 
-  function drawBody(){
-    tbody.innerHTML = '';
-    let arr = filtered.slice();
-    if(sortCol>=0){
-      arr.sort((a,b)=>{
-        const A = a[sortCol]??'', B = b[sortCol]??'';
-        const nA = parseFloat(A.replace(/[^0-9.\-]/g,'')), nB = parseFloat(B.replace(/[^0-9.\-]/g,''));
-        const numA = !isNaN(nA), numB = !isNaN(nB);
-        if(numA && numB) return (nA-nB)*sortDir;
-        return A.localeCompare(B)*sortDir;
-      });
+  // KPIs
+  const uniqStudents = new Set(rows.map(r => (r["Student Names"]||"").trim()).filter(Boolean)).size;
+  let sumAch=0, sumTot=0, maxPct=-Infinity, minPct=Infinity;
+
+  rows.forEach(r=>{
+    const ach = num(r["Marks Achieved"]);
+    const tot = num(r["Total Marks"]);
+    sumAch += ach; sumTot += (tot||0);
+
+    const tp = num(r["Test Percentage"]); // already % string or number
+    if (isFinite(tp)){
+      if (tp>maxPct) maxPct = tp;
+      if (tp<minPct) minPct = tp;
     }
-    for(const r of arr){
-      const tr = document.createElement('tr');
-      r.forEach(c=>{
-        const td = document.createElement('td');
-        td.innerHTML = linkify(c);
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
+  });
+
+  document.getElementById('objTotal').textContent = uniqStudents || 0;
+  document.getElementById('objAvg').textContent   = (sumTot>0) ? (Math.round((sumAch/sumTot)*10000)/100).toFixed(2)+"%" : "0%";
+  document.getElementById('objMax').textContent   = isFinite(maxPct) ? (Math.round(maxPct*100)/100).toFixed(2)+"%" : "0%";
+  document.getElementById('objMin').textContent   = isFinite(minPct) ? (Math.round(minPct*100)/100).toFixed(2)+"%" : "0%";
+
+  // Table
+  const header = objectiveRaw.length ? Object.keys(objectiveRaw[0]) : [];
+  const columns = header.map(h => ({title:h, data:h}));
+  if (objTable){ objTable.clear().destroy(); }
+  objTable = $('#objectiveTable').DataTable({
+    data: rows,
+    columns,
+    pageLength: 10,
+    responsive: true,
+    order: [],
+  });
+}
+
+/* ================= SUBJECTIVE ================= */
+// We assume Subjective CSV has similar columns to Objective: it MUST have
+// "Test Result Date","Student Names","Marks Achieved","Total Marks","Test Percentage"
+// If names differ slightly, you can remap below in code.
+let subjectiveRaw = [];
+
+async function loadSubjective(){
+  const res = await fetch(CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes("?") ? "&" : "?") + "_=" + Date.now(), {cache:"no-store"});
+  const csv = await res.text();
+  const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
+  const header = parsed.meta.fields || [];
+  subjectiveRaw = parsed.data || [];
+
+  // Add derived Week column
+  subjectiveRaw.forEach(r=>{
+    const d = parseDate(r["Test Result Date"]);
+    r.__Week = d ? isoWeek(d) : "";
+  });
+
+  // fill week filter
+  const weekSet = new Set(subjectiveRaw.map(r=>r.__Week).filter(Boolean));
+  const sel = document.getElementById('subWeekFilter');
+  const current = sel.value;
+  sel.innerHTML = `<option value="__ALL__">All Weeks</option>` + 
+                  [...weekSet].sort((a,b)=>a-b).map(w=>`<option value="${w}">Week ${w}</option>`).join("");
+  if ([...weekSet].includes(+current)) sel.value = current; else sel.value="__ALL__";
+
+  renderSubjectiveTableAndKpis();
+}
+
+function renderSubjectiveTableAndKpis(){
+  const week = document.getElementById('subWeekFilter').value;
+  let rows = subjectiveRaw;
+  if (week !== "__ALL__"){
+    rows = rows.filter(r => String(r.__Week) === String(week));
+  }
+
+  // KPIs
+  const uniqStudents = new Set(rows.map(r => (r["Student Names"]||"").trim()).filter(Boolean)).size;
+  let sumAch=0, sumTot=0, maxPct=-Infinity, minPct=Infinity;
+
+  rows.forEach(r=>{
+    const ach = num(r["Marks Achieved"]);
+    const tot = num(r["Total Marks"]);
+    sumAch += ach; sumTot += (tot||0);
+
+    const tp = num(r["Test Percentage"]);
+    if (isFinite(tp)){
+      if (tp>maxPct) maxPct = tp;
+      if (tp<minPct) minPct = tp;
     }
-  }
-
-  // Sorting
-  trh.querySelectorAll('.sortable').forEach(s=>{
-    s.addEventListener('click', ()=>{
-      const col = +s.dataset.col;
-      if(sortCol===col) sortDir = -sortDir;
-      else { sortCol = col; sortDir = 1; }
-      drawBody();
-    });
   });
 
-  // Filters
-  trf.querySelectorAll('input').forEach(inp=>{
-    inputs.push(inp);
-    inp.addEventListener('input', applyFilters);
-  });
+  document.getElementById('subTotal').textContent = uniqStudents || 0;
+  document.getElementById('subAvg').textContent   = (sumTot>0) ? (Math.round((sumAch/sumTot)*10000)/100).toFixed(2)+"%" : "0%";
+  document.getElementById('subMax').textContent   = isFinite(maxPct) ? (Math.round(maxPct*100)/100).toFixed(2)+"%" : "0%";
+  document.getElementById('subMin').textContent   = isFinite(minPct) ? (Math.round(minPct*100)/100).toFixed(2)+"%" : "0%";
 
-  table.appendChild(thead); table.appendChild(tbody);
-  wrap.appendChild(table);
-  container.innerHTML = '';
-  container.appendChild(wrap);
-
-  // Initial draw
-  drawBody();
-
-  return { header, data: rows.slice(1), getFiltered: ()=>filtered.slice() };
-}
-
-/* Turn links / meets / drive into clickable */
-function linkify(val){
-  const s = (val??'')+'';
-  if(!s) return '';
-  const isURL = /^https?:\/\/\S+/i.test(s);
-  if(isURL){
-    // if looks like drive/download/meet render with nicer text
-    let label = s;
-    if(/meet\.google\.com/i.test(s)) label = 'Join Google Meet';
-    else if(/drive\.google\.com/i.test(s)) label = 'Open Drive File';
-    else if(/\.(pdf|jpg|jpeg|png|docx?|xlsx?|pptx?)($|\?)/i.test(s)) label = 'Download';
-    return `<a href="${s}" target="_blank" rel="noopener">${escapeHtml(label)}</a>`;
-  }
-  return escapeHtml(s);
-}
-
-/* ======= Attendance logic ======= */
-let attState = { header:[], data:[] };
-
-async function fetchCSV(url){
-  const res = await fetch(url + (url.includes('?') ? '&' : '?') + '_=' + Date.now(), {cache:'no-store'});
-  if(!res.ok) throw new Error('Failed to fetch CSV');
-  return parseCSV(await res.text());
-}
-function computeAttendanceKpi(header, rows){
-  // Try to find a Status-like column
-  const statusIdx = header.findIndex(h=>/status|present|attendance/i.test(h));
-  let present=0, absent=0;
-  if(statusIdx>-1){
-    rows.forEach(r=>{
-      const v=(r[statusIdx]||'').toLowerCase();
-      if(/present|p\b|yes/.test(v)) present++;
-      else if(/absent|a\b|no/.test(v)) absent++;
-    });
-  }
-  const total = rows.length;
-  const rate = total ? Math.round((present/total)*100) : 0;
-  document.getElementById('attRows').textContent = total;
-  document.getElementById('attPresent').textContent = present;
-  document.getElementById('attAbsent').textContent = absent;
-  document.getElementById('attRate').textContent = rate + '%';
-}
-
-async function loadAttendanceFromURL(){
-  const rows = await fetchCSV(CSV_ATTENDANCE_URL);
-  const {header, data} = renderTable(document.getElementById('attTableWrap'), rows);
-  attState = {header, data};
-  computeAttendanceKpi(header, data);
-}
-
-/* ======= Tests (Objective/Subjective) shared helpers ======= */
-function autoPickScoreColumn(header){
-  // Prefer column names that look like score/marks/percent
-  const prefer = [/percent|percentage/i, /score|marks?/i, /total/i];
-  for(const rx of prefer){
-    const idx = header.findIndex(h=>rx.test(h));
-    if(idx>-1) return idx;
-  }
-  // else pick last numeric-looking column
-  return header.length-1;
-}
-function fillScoreColumnSelect(sel, header, picked){
-  sel.innerHTML = '';
-  header.forEach((h,i)=>{
-    const opt = document.createElement('option');
-    opt.value = i; opt.textContent = `${i+1}. ${h||'(blank)'}`;
-    if(i===picked) opt.selected = true;
-    sel.appendChild(opt);
-  });
-}
-function computeScoreKPIs(header, rows, scoreIdx, ids={}){
-  const nums = rows
-    .map(r => parseFloat((r[scoreIdx]||'').toString().replace(/[^0-9.\-]/g,'')))
-    .filter(v => !isNaN(v));
-  const total = rows.length;
-  const avg = nums.length ? (nums.reduce((a,b)=>a+b,0)/nums.length) : NaN;
-  const max = nums.length ? Math.max(...nums) : NaN;
-  const min = nums.length ? Math.min(...nums) : NaN;
-  if(ids.avg) ids.avg.textContent = isNaN(avg) ? '-' : avg.toFixed(2);
-  if(ids.max) ids.max.textContent = isNaN(max) ? '-' : max.toFixed(2);
-  if(ids.min) ids.min.textContent = isNaN(min) ? '-' : min.toFixed(2);
-  if(ids.rows) ids.rows.textContent = total;
-
-  // toppers (could be multiple ties)
-  if(ids.topper){
-    if(nums.length){
-      const topperRows = rows.filter(r=>{
-        const v = parseFloat((r[scoreIdx]||'').toString().replace(/[^0-9.\-]/g,''));
-        return v===max;
-      });
-      // Try to infer a name column
-      const nameIdx = header.findIndex(h=>/name|student/i.test(h));
-      const names = topperRows.map(r => (nameIdx>-1 ? r[nameIdx] : r.join(' | '))).slice(0,5);
-      ids.topper.textContent = names.join(', ') + (topperRows.length>5 ? ' …' : '');
-    }else{
-      ids.topper.textContent = '—';
-    }
-  }
-}
-
-/* ======= Objective ======= */
-let objState = { header:[], data:[], scoreIdx:0 };
-async function loadObjectiveFromURL(){
-  const rows = await fetchCSV(CSV_OBJECTIVE_URL);
-  const {header, data} = renderTable(document.getElementById('objTableWrap'), rows);
-  objState.header = header; objState.data = data;
-  objState.scoreIdx = autoPickScoreColumn(header);
-  fillScoreColumnSelect(document.getElementById('objScoreCol'), header, objState.scoreIdx);
-  computeScoreKPIs(header, data, objState.scoreIdx, {
-    avg:document.getElementById('objAvg'),
-    max:document.getElementById('objMax'),
-    min:document.getElementById('objMin'),
-    rows:document.getElementById('objRows'),
-    topper:document.getElementById('objTopper')
+  // Table
+  const header = subjectiveRaw.length ? Object.keys(subjectiveRaw[0]) : [];
+  const columns = header.map(h => ({title: (h==="__Week"?"Week":h), data:h}));
+  if (subTable){ subTable.clear().destroy(); }
+  subTable = $('#subjectiveTable').DataTable({
+    data: rows,
+    columns,
+    pageLength: 10,
+    responsive: true,
+    order: [],
   });
 }
 
-/* ======= Subjective ======= */
-let subState = { header:[], data:[], scoreIdx:0 };
-async function loadSubjectiveFromURL(){
-  const rows = await fetchCSV(CSV_SUBJECTIVE_URL);
-  const {header, data} = renderTable(document.getElementById('subTableWrap'), rows);
-  subState.header = header; subState.data = data;
-  subState.scoreIdx = autoPickScoreColumn(header);
-  fillScoreColumnSelect(document.getElementById('subScoreCol'), header, subState.scoreIdx);
-  computeScoreKPIs(header, data, subState.scoreIdx, {
-    avg:document.getElementById('subAvg'),
-    max:document.getElementById('subMax'),
-    min:document.getElementById('subMin'),
-    rows:document.getElementById('subRows'),
-    topper:document.getElementById('subTopper')
-  });
-}
-
-/* ======= Upload handlers (drag & drop or file) ======= */
-function wireDropZone(zoneEl, inputEl, onRows){
-  zoneEl.addEventListener('dragover', (e)=>{ e.preventDefault(); zoneEl.classList.add('drag'); });
-  zoneEl.addEventListener('dragleave', ()=> zoneEl.classList.remove('drag'));
-  zoneEl.addEventListener('drop', async (e)=>{
-    e.preventDefault(); zoneEl.classList.remove('drag');
-    if(!e.dataTransfer.files?.length) return;
-    const f=e.dataTransfer.files[0];
-    const text = await f.text();
-    onRows(parseCSV(text));
-  });
-  inputEl.addEventListener('change', async ()=>{
-    if(!inputEl.files?.length) return;
-    const text = await inputEl.files[0].text();
-    onRows(parseCSV(text));
-    inputEl.value = '';
-  });
-}
-
-/* ======= Wire everything ======= */
-document.getElementById('attRefresh').addEventListener('click', ()=> loadAttendanceFromURL().catch(console.error));
-document.getElementById('objRefresh').addEventListener('click', ()=> loadObjectiveFromURL().catch(console.error));
-document.getElementById('subRefresh').addEventListener('click', ()=> loadSubjectiveFromURL().catch(console.error));
-
-wireDropZone(document.getElementById('attDrop'), document.getElementById('attFile'), (rows)=>{
-  const {header, data} = renderTable(document.getElementById('attTableWrap'), rows);
-  attState = {header, data};
-  computeAttendanceKpi(header, data);
-});
-wireDropZone(document.getElementById('objDrop'), document.getElementById('objFile'), (rows)=>{
-  const {header, data} = renderTable(document.getElementById('objTableWrap'), rows);
-  objState.header=header; objState.data=data;
-  objState.scoreIdx = autoPickScoreColumn(header);
-  fillScoreColumnSelect(document.getElementById('objScoreCol'), header, objState.scoreIdx);
-  computeScoreKPIs(header, data, objState.scoreIdx, {
-    avg:document.getElementById('objAvg'),
-    max:document.getElementById('objMax'),
-    min:document.getElementById('objMin'),
-    rows:document.getElementById('objRows'),
-    topper:document.getElementById('objTopper')
-  });
-});
-wireDropZone(document.getElementById('subDrop'), document.getElementById('subFile'), (rows)=>{
-  const {header, data} = renderTable(document.getElementById('subTableWrap'), rows);
-  subState.header=header; subState.data=data;
-  subState.scoreIdx = autoPickScoreColumn(header);
-  fillScoreColumnSelect(document.getElementById('subScoreCol'), header, subState.scoreIdx);
-  computeScoreKPIs(header, data, subState.scoreIdx, {
-    avg:document.getElementById('subAvg'),
-    max:document.getElementById('subMax'),
-    min:document.getElementById('subMin'),
-    rows:document.getElementById('subRows'),
-    topper:document.getElementById('subTopper')
+/* ---------- Tabs ---------- */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('section.panel').forEach(s=> s.style.display='none');
+    document.getElementById(tab).style.display='block';
+    // Lazy refresh when switching
+    if (tab==="attendance" && !attTable) loadAttendance();
+    if (tab==="objective" && !objTable) loadObjective();
+    if (tab==="subjective" && !subTable) loadSubjective();
   });
 });
 
-/* Score column selectors */
-document.getElementById('objScoreCol').addEventListener('change', (e)=>{
-  objState.scoreIdx = +e.target.value;
-  computeScoreKPIs(objState.header, objState.data, objState.scoreIdx, {
-    avg:document.getElementById('objAvg'),
-    max:document.getElementById('objMax'),
-    min:document.getElementById('objMin'),
-    rows:document.getElementById('objRows'),
-    topper:document.getElementById('objTopper')
-  });
-});
-document.getElementById('subScoreCol').addEventListener('change', (e)=>{
-  subState.scoreIdx = +e.target.value;
-  computeScoreKPIs(subState.header, subState.data, subState.scoreIdx, {
-    avg:document.getElementById('subAvg'),
-    max:document.getElementById('subMax'),
-    min:document.getElementById('subMin'),
-    rows:document.getElementById('subRows'),
-    topper:document.getElementById('subTopper')
-  });
-});
+/* ---------- Listeners ---------- */
+document.getElementById('refreshAttendance').addEventListener('click', loadAttendance);
+document.getElementById('refreshObjective').addEventListener('click', loadObjective);
+document.getElementById('refreshSubjective').addEventListener('click', loadSubjective);
 
-/* Initial load (from Google Sheet URLs if provided) */
-(async function init(){
-  try{ if(CSV_ATTENDANCE_URL.startsWith('http')) await loadAttendanceFromURL(); }catch(e){ console.warn('Attendance:', e.message) }
-  try{ if(CSV_OBJECTIVE_URL.startsWith('http'))  await loadObjectiveFromURL(); }catch(e){ console.warn('Objective:', e.message) }
-  try{ if(CSV_SUBJECTIVE_URL.startsWith('http')) await loadSubjectiveFromURL(); }catch(e){ console.warn('Subjective:', e.message) }
-})();
+document.getElementById('objNameFilter').addEventListener('change', renderObjectiveTableAndKpis);
+document.getElementById('subWeekFilter').addEventListener('change', renderSubjectiveTableAndKpis);
+
+/* ---------- Boot ---------- */
+// Load the first tab by default
+loadAttendance();
 </script>
+
 </body>
 </html>
