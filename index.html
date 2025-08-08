@@ -106,6 +106,17 @@
   .dataTables_wrapper .dataTables_filter input{border:1px solid var(--line); border-radius:8px; padding:6px 8px}
 
   .help{font-size:12px;color:var(--muted)}
+  /* Multi-select checkbox dropdowns */
+.multi{position:relative; display:inline-block}
+.multi > button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:8px 10px;cursor:pointer;font-weight:600}
+.multi.open > button{outline:2px solid var(--accent)}
+.multi .panel{position:absolute; z-index:50; top:110%; left:0; min-width:220px; background:#fff; border:1px solid var(--line); border-radius:10px; box-shadow:0 10px 22px rgba(0,0,0,.12); padding:8px; display:none; max-height:280px; overflow:auto}
+.multi.open .panel{display:block}
+.multi .search{width:100%; padding:6px 8px; border:1px solid var(--line); border-radius:8px; margin-bottom:6px}
+.multi .opt{display:flex; align-items:center; gap:8px; padding:6px 6px; border-radius:8px; cursor:pointer}
+.multi .opt:hover{background:#f3f4f6}
+.multi .badge{display:inline-flex; gap:6px; align-items:center; margin-left:8px; font-size:12px; color:var(--muted)}
+
 </style>
 </head>
 <body>
@@ -128,13 +139,21 @@
 
   <!-- ATTENDANCE -->
   <section id="attendance" class="panel">
-    <div class="controls">
-      <button id="refreshAttendance" class="secondary" type="button">Refresh</button>
-      <span class="help">KPIs use Total Present & Total Classes columns.</span>
-    </div>
+<div class="controls">
+  <div class="controls-left">
+    <div id="attFilterGrade" class="multi"></div>
+    <div id="attFilterSection" class="multi"></div>
+    <div id="attFilterStream" class="multi"></div>
+  </div>
+  <div class="controls-left">
+    <button id="refreshAttendance" class="secondary" type="button">Refresh</button>
+    <span class="help">KPIs use Total Present & Total Classes columns.</span>
+  </div>
+</div>
+
 
     <div class="kpis">
-      <div class="kpi accent"><div class="kpi-label">Total Students </div><div id="attTotalStudents" class="kpi-value">0</div></div>
+      <div class="kpi accent"><div class="kpi-label">Total Students (Unique)</div><div id="attTotalStudents" class="kpi-value">0</div></div>
       <div class="kpi ok"><div class="kpi-label">Present </div><div id="attPresentPct" class="kpi-value">0</div></div>
       <div class="kpi warn"><div class="kpi-label">Absent </div><div id="attAbsentPct" class="kpi-value">0</div></div>
       <div class="kpi accent"><div class="kpi-label">Attendance %</div><div id="attAttendancePct" class="kpi-value">0%</div></div>
@@ -147,15 +166,19 @@
 
   <!-- OBJECTIVE -->
   <section id="objective" class="panel" style="display:none">
-    <div class="controls">
-      <div class="controls-left">
-        <select id="objNameFilter">
-          <option value="__ALL__">All Objective Names</option>
-        </select>
-      </div>
-      <button id="refreshObjective" class="secondary" type="button">Refresh</button>
-      <span class="help">Filter by Objective Name to update KPIs.</span>
-    </div>
+<div class="controls">
+  <div class="controls-left">
+    <div id="objFilterGrade" class="multi"></div>
+    <div id="objFilterSection" class="multi"></div>
+    <div id="objFilterStream" class="multi"></div>
+    <select id="objNameFilter">
+      <option value="__ALL__">All Objective Names</option>
+    </select>
+  </div>
+  <button id="refreshObjective" class="secondary" type="button">Refresh</button>
+  <span class="help">Filter by Objective Name to update KPIs.</span>
+</div>
+
 
     <div class="kpis">
       <div class="kpi accent"><div class="kpi-label">Total Students (Unique)</div><div id="objTotal" class="kpi-value">0</div></div>
@@ -171,15 +194,19 @@
 
   <!-- SUBJECTIVE -->
   <section id="subjective" class="panel" style="display:none">
-    <div class="controls">
-      <div class="controls-left">
-        <select id="subWeekFilter">
-          <option value="__ALL__">All Weeks</option>
-        </select>
-      </div>
-      <button id="refreshSubjective" class="secondary" type="button">Refresh</button>
-      <span class="help">Week filter uses existing Week or ISO week (from date).</span>
-    </div>
+<div class="controls">
+  <div class="controls-left">
+    <div id="subFilterGrade" class="multi"></div>
+    <div id="subFilterSection" class="multi"></div>
+    <div id="subFilterStream" class="multi"></div>
+    <select id="subWeekFilter">
+      <option value="__ALL__">All Weeks</option>
+    </select>
+  </div>
+  <button id="refreshSubjective" class="secondary" type="button">Refresh</button>
+  <span class="help">Week filter uses existing Week or ISO week (from date).</span>
+</div>
+
 
     <div class="kpis">
       <div class="kpi accent"><div class="kpi-label">Total Students (Unique)</div><div id="subTotal" class="kpi-value">0</div></div>
@@ -202,9 +229,14 @@ const CSV_OBJECTIVE_URL  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAl
 const CSV_SUBJECTIVE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1445613757&single=true&output=csv";
 
 /* Attendance column hints (dynamic) */
-const ATTENDANCE_NAME_KEYS     = ["Student Names","Student Name","Name"];
-const TOTAL_PRESENT_KEYS       = ["Total Present","TotalPresent","Present Count","Present"];
-const TOTAL_CLASSES_KEYS       = ["Total Classes","TotalClasses","Classes","Total Class"];
+const ATTENDANCE_NAME_KEYS = ["Student Names","Student Name","Name"];
+const TOTAL_PRESENT_KEYS   = ["Total Present","TotalPresent","Present Count","Present"];
+const TOTAL_CLASSES_KEYS   = ["Total Classes","TotalClasses","Classes","Total Class"];
+
+/* Common dim columns */
+const GRADE_KEYS   = ["Grade","Class","Std"];
+const SECTION_KEYS = ["Section","Sec"];
+const STREAM_KEYS  = ["Stream","Course","Program"];
 
 /* Helpers */
 const pct = (n)=> (isFinite(n) ? (Math.round(n*10000)/100).toFixed(2)+"%" : "0%");
@@ -236,7 +268,6 @@ const isoWeek = (date)=>{
   return 1 + Math.round((d-firstThursday)/(7*24*3600*1000));
 };
 const findKey = (header, candidates) => {
-  // exact first, then contains
   for (const n of candidates){
     const k = header.find(h => (h||"").trim().toLowerCase() === n.toLowerCase());
     if (k) return k;
@@ -254,8 +285,79 @@ const uniqueByKey = (rows, key)=> {
   return set.size;
 };
 
+/* ===== Multi-select (checkbox) widget ===== */
+function buildMultiSelect({mountId,label,options=[],selected=new Set(),onChange}){
+  const el = document.getElementById(mountId);
+  if (!el) return;
+  options = [...new Set(options.filter(Boolean).map(o=>String(o)))].sort();
+  el.classList.add('multi');
+  el.innerHTML = `
+    <button type="button">${label} <span class="badge" id="${mountId}-badge"></span></button>
+    <div class="panel">
+      <input class="search" type="text" placeholder="Search ${label}..." />
+      <label class="opt"><input type="checkbox" data-role="all" ${selected.size===0? 'checked': ''}/> All</label>
+      <div class="opts"></div>
+    </div>`;
+  const btn = el.querySelector('button');
+  const panel = el.querySelector('.panel');
+  const search = el.querySelector('.search');
+  const optsDiv = el.querySelector('.opts');
+  function renderOpts(){
+    const q = search.value.toLowerCase();
+    const html = options
+      .filter(o=>o.toLowerCase().includes(q))
+      .map(o=>`<label class="opt"><input type="checkbox" value="${o.replace(/"/g,'&quot;')}" ${selected.size===0? '' : (selected.has(o)?'checked':'')}/> ${o}</label>`)
+      .join("");
+    optsDiv.innerHTML = html || '<div class="opt" style="color:var(--muted)">No options</div>';
+  }
+  function updateBadge(){
+    const badge = document.getElementById(`${mountId}-badge`);
+    badge.textContent = selected.size===0? 'All' : `${selected.size} selected`;
+  }
+  renderOpts(); updateBadge();
+  btn.onclick = ()=>{ el.classList.toggle('open'); };
+  document.addEventListener('click', (e)=>{ if (!el.contains(e.target)) el.classList.remove('open'); });
+  search.oninput = renderOpts;
+  panel.addEventListener('change', (e)=>{
+    const t = e.target;
+    if (t.matches('input[type="checkbox"][data-role="all"]')){
+      selected.clear();
+      panel.querySelectorAll('input[type="checkbox"][value]').forEach(c=> c.checked=false);
+    } else if (t.matches('input[type="checkbox"][value]')){
+      const v = t.value;
+      if (t.checked){ selected.add(v); }
+      else { selected.delete(v); }
+      panel.querySelector('input[data-role="all"]').checked = selected.size===0;
+    }
+    updateBadge();
+    onChange && onChange(new Set(selected));
+  });
+  return {getSelected:()=>new Set(selected), setOptions:(arr)=>{ options=[...new Set(arr.map(String))].sort(); renderOpts(); }};
+}
+
+/* generic filter by selected sets */
+function applyDimFilters(rows, keys, sel){
+  return rows.filter(r=>{
+    const g = keys.grade? String(r[keys.grade]||"") : "";
+    const s = keys.section? String(r[keys.section]||"") : "";
+    const t = keys.stream? String(r[keys.stream]||"") : "";
+    const gOk = sel.grade.size===0 || sel.grade.has(g);
+    const sOk = sel.section.size===0 || sel.section.has(s);
+    const tOk = sel.stream.size===0 || sel.stream.has(t);
+    return gOk && sOk && tOk;
+  });
+}
+
 /* DataTables refs */
 let attTable=null, objTable=null, subTable=null;
+
+// selected sets per tab
+const attSel = {grade:new Set(), section:new Set(), stream:new Set()};
+const objSel = {grade:new Set(), section:new Set(), stream:new Set()};
+const subSel = {grade:new Set(), section:new Set(), stream:new Set()};
+
+// widget refs (optional if you want later updates)
+let attWidgets={}, objWidgets={}, subWidgets={};
 
 /* ============== ATTENDANCE ============== */
 async function loadAttendance(){
@@ -264,34 +366,51 @@ async function loadAttendance(){
   const text = await res.text();
   const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
   const header = parsed.meta.fields || [];
-  const data = parsed.data || [];
+  const raw = parsed.data || [];
 
   const nameKey   = findKey(header, ATTENDANCE_NAME_KEYS);
   const presentKey= findKey(header, TOTAL_PRESENT_KEYS);
   const classesKey= findKey(header, TOTAL_CLASSES_KEYS);
+  const gradeKey  = findKey(header, GRADE_KEYS);
+  const sectionKey= findKey(header, SECTION_KEYS);
+  const streamKey = findKey(header, STREAM_KEYS);
 
-  // KPIs (as per your exact ask)
-  const totalStudents = uniqueByKey(data, nameKey);
-  const sumPresent = presentKey ? data.reduce((a,r)=> a + toNum(r[presentKey]), 0) : 0;
-  const sumClasses = classesKey ? data.reduce((a,r)=> a + toNum(r[classesKey]), 0) : 0;
-  const sumAbsent = Math.max(0, sumClasses - sumPresent);
-  const attendancePct = (sumClasses>0) ? (sumPresent/sumClasses) : 0;
+  // Build multi-selects with unique options
+  const gradeOpts = [...new Set(raw.map(r=>r[gradeKey]).filter(Boolean))];
+  const sectOpts  = [...new Set(raw.map(r=>r[sectionKey]).filter(Boolean))];
+  const strmOpts  = [...new Set(raw.map(r=>r[streamKey]).filter(Boolean))];
 
-  document.getElementById('attTotalStudents').textContent = totalStudents.toLocaleString();
-  document.getElementById('attPresentPct').textContent    = Math.round(sumPresent).toLocaleString(); // count only
-  document.getElementById('attAbsentPct').textContent     = Math.round(sumAbsent).toLocaleString();  // count only
-  document.getElementById('attAttendancePct').textContent = pct(attendancePct);
+  attWidgets.grade   = buildMultiSelect({mountId:'attFilterGrade', label:'Grade', options:gradeOpts, selected:attSel.grade, onChange:()=>renderAtt()});
+  attWidgets.section = buildMultiSelect({mountId:'attFilterSection', label:'Section', options:sectOpts, selected:attSel.section, onChange:()=>renderAtt()});
+  attWidgets.stream  = buildMultiSelect({mountId:'attFilterStream', label:'Stream', options:strmOpts, selected:attSel.stream, onChange:()=>renderAtt()});
 
-  // Table (fully dynamic)
-  const columns = header.map(h => ({title:h, data:h}));
-  if (attTable){ attTable.clear().destroy(); }
-  attTable = $('#attendanceTable').DataTable({
-    data,
-    columns,
-    pageLength: 10,
-    order: [],
-    autoWidth: false
-  });
+  function renderAtt(){
+    const filtered = applyDimFilters(raw, {grade:gradeKey, section:sectionKey, stream:streamKey}, attSel);
+
+    // KPIs
+    const totalStudents = uniqueByKey(filtered, nameKey);
+    const sumPresent = presentKey ? filtered.reduce((a,r)=> a + toNum(r[presentKey]), 0) : 0;
+    const sumClasses = classesKey ? filtered.reduce((a,r)=> a + toNum(r[classesKey]), 0) : 0;
+    const sumAbsent = Math.max(0, sumClasses - sumPresent);
+    const attendancePct = (sumClasses>0) ? (sumPresent/sumClasses) : 0;
+
+    document.getElementById('attTotalStudents').textContent = totalStudents.toLocaleString();
+    document.getElementById('attPresentPct').textContent    = Math.round(sumPresent).toLocaleString();
+    document.getElementById('attAbsentPct').textContent     = Math.round(sumAbsent).toLocaleString();
+    document.getElementById('attAttendancePct').textContent = pct(attendancePct);
+
+    // Table
+    const columns = header.map(h => ({title:h, data:h}));
+    if (attTable){ attTable.clear().destroy(); }
+    attTable = $('#attendanceTable').DataTable({
+      data: filtered,
+      columns,
+      pageLength: 10,
+      order: [],
+      autoWidth: false
+    });
+  }
+  renderAtt();
 }
 
 /* ============== OBJECTIVE ============== */
@@ -304,15 +423,27 @@ async function loadObjective(){
   const header = parsed.meta.fields || [];
   objectiveRaw = parsed.data || [];
 
-  // Fill filter (Objective Name if present)
+  const gradeKey  = findKey(header, GRADE_KEYS);
+  const sectionKey= findKey(header, SECTION_KEYS);
+  const streamKey = findKey(header, STREAM_KEYS);
+
+  // Objective Name filter
   const objectiveNameKey = header.find(h=>/objective\s*name/i.test(h)) || "Objective Name";
   const nameSet = new Set();
   objectiveRaw.forEach(r => { if (r[objectiveNameKey]) nameSet.add(r[objectiveNameKey]); });
   const sel = document.getElementById('objNameFilter');
   const current = sel.value;
-  sel.innerHTML = `<option value="__ALL__">All Objective Names</option>` + 
+  sel.innerHTML = `<option value="__ALL__">All Objective Names</option>` +
                   [...nameSet].map(n=>`<option value="${String(n).replace(/"/g,'&quot;')}">${n}</option>`).join("");
   if ([...nameSet].includes(current)) sel.value = current; else sel.value="__ALL__";
+
+  // Build G/S/Stream widgets
+  const gradeOpts = [...new Set(objectiveRaw.map(r=>r[gradeKey]).filter(Boolean))];
+  const sectOpts  = [...new Set(objectiveRaw.map(r=>r[sectionKey]).filter(Boolean))];
+  const strmOpts  = [...new Set(objectiveRaw.map(r=>r[streamKey]).filter(Boolean))];
+  objWidgets.grade   = buildMultiSelect({mountId:'objFilterGrade', label:'Grade', options:gradeOpts, selected:objSel.grade, onChange:renderObjectiveTableAndKpis});
+  objWidgets.section = buildMultiSelect({mountId:'objFilterSection', label:'Section', options:sectOpts, selected:objSel.section, onChange:renderObjectiveTableAndKpis});
+  objWidgets.stream  = buildMultiSelect({mountId:'objFilterStream', label:'Stream', options:strmOpts, selected:objSel.stream, onChange:renderObjectiveTableAndKpis});
 
   renderObjectiveTableAndKpis();
 }
@@ -329,11 +460,17 @@ function renderObjectiveTableAndKpis(){
   const totalKey  = headers.find(h=>/total\s*marks/i.test(h)) || "Total Marks";
   const tpKey     = headers.find(h=>/test\s*percentage/i.test(h)) || "Test Percentage";
 
+  const gradeKey  = headers.find(h=> GRADE_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
+  const sectionKey= headers.find(h=> SECTION_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
+  const streamKey = headers.find(h=> STREAM_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
+
   const filterName = document.getElementById('objNameFilter').value;
   let rows = objectiveRaw.slice();
   if (filterName !== "__ALL__"){
     rows = rows.filter(r => String(r[objNameK]||"") === filterName);
   }
+
+  rows = applyDimFilters(rows, {grade:gradeKey, section:sectionKey, stream:streamKey}, objSel);
 
   // KPIs
   const uniqStudents = uniqueByKey(rows, nameKey);
@@ -350,7 +487,6 @@ function renderObjectiveTableAndKpis(){
   document.getElementById('objMax').textContent   = isFinite(maxPct) ? (Math.round(maxPct*100)/100).toFixed(2)+"%" : "0%";
   document.getElementById('objMin').textContent   = isFinite(minPct) ? (Math.round(minPct*100)/100).toFixed(2)+"%" : "0%";
 
-  // Table
   const columns = headers.map(h => ({title:h, data:h}));
   if (objTable){ objTable.clear().destroy(); }
   objTable = $('#objectiveTable').DataTable({
@@ -372,7 +508,7 @@ async function loadSubjective(){
   const header = parsed.meta.fields || [];
   subjectiveRaw = parsed.data || [];
 
-  // Decide Week column (use existing Week or derive from date)
+  // Decide Week column
   const hasWeek = header.some(h=>/^week$/i.test(h));
   if (!hasWeek){
     const dateKey = header.find(h=>/test\s*result\s*date/i.test(h)) || header.find(h=>/date/i.test(h));
@@ -386,14 +522,24 @@ async function loadSubjective(){
     }
   }
 
-  // Week filter
   const weekKey = hasWeek ? header.find(h=>/^week$/i.test(h)) : "Week";
   const weeks = Array.from(new Set(subjectiveRaw.map(r=>r[weekKey]).filter(Boolean))).sort((a,b)=>a-b);
   const sel = document.getElementById('subWeekFilter');
   const current = sel.value;
-  sel.innerHTML = `<option value="__ALL__">All Weeks</option>` + 
+  sel.innerHTML = `<option value="__ALL__">All Weeks</option>` +
                   weeks.map(w=>`<option value="${w}">Week ${w}</option>`).join("");
   if (weeks.includes(+current) || weeks.includes(current)) sel.value = current; else sel.value="__ALL__";
+
+  // Build G/S/Stream widgets
+  const gradeKey  = findKey(header, GRADE_KEYS);
+  const sectionKey= findKey(header, SECTION_KEYS);
+  const streamKey = findKey(header, STREAM_KEYS);
+  const gradeOpts = [...new Set(subjectiveRaw.map(r=>r[gradeKey]).filter(Boolean))];
+  const sectOpts  = [...new Set(subjectiveRaw.map(r=>r[sectionKey]).filter(Boolean))];
+  const strmOpts  = [...new Set(subjectiveRaw.map(r=>r[streamKey]).filter(Boolean))];
+  subWidgets.grade   = buildMultiSelect({mountId:'subFilterGrade', label:'Grade', options:gradeOpts, selected:subSel.grade, onChange:renderSubjectiveTableAndKpis});
+  subWidgets.section = buildMultiSelect({mountId:'subFilterSection', label:'Section', options:sectOpts, selected:subSel.section, onChange:renderSubjectiveTableAndKpis});
+  subWidgets.stream  = buildMultiSelect({mountId:'subFilterStream', label:'Stream', options:strmOpts, selected:subSel.stream, onChange:renderSubjectiveTableAndKpis});
 
   renderSubjectiveTableAndKpis();
 }
@@ -407,9 +553,12 @@ function renderSubjectiveTableAndKpis(){
   const nameKey   = headers.find(h=>/student\s*names?/i.test(h)) || "Student Names";
   const marksKey  = headers.find(h=>/marks\s*achieved/i.test(h)) || "Marks Achieved";
   const totalKey  = headers.find(h=>/total\s*marks/i.test(h)) || "Total Marks";
-  // Subjective percentage may be "Percentage" OR "Test Percentage"
   const percentKey= headers.find(h=>/^percentage$/i.test(h)) || headers.find(h=>/test\s*percentage/i.test(h)) || "Percentage";
   const weekKey   = headers.find(h=>/^week$/i.test(h)) || "Week";
+
+  const gradeKey  = headers.find(h=> GRADE_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
+  const sectionKey= headers.find(h=> SECTION_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
+  const streamKey = headers.find(h=> STREAM_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
 
   const week = document.getElementById('subWeekFilter').value;
   let rows = subjectiveRaw.slice();
@@ -417,7 +566,8 @@ function renderSubjectiveTableAndKpis(){
     rows = rows.filter(r => String(r[weekKey]) === String(week));
   }
 
-  // KPIs
+  rows = applyDimFilters(rows, {grade:gradeKey, section:sectionKey, stream:streamKey}, subSel);
+
   const uniqStudents = uniqueByKey(rows, nameKey);
   let sumAch=0, sumTot=0, maxPct=-Infinity, minPct=Infinity;
   rows.forEach(r=>{
@@ -432,7 +582,6 @@ function renderSubjectiveTableAndKpis(){
   document.getElementById('subMax').textContent   = isFinite(maxPct) ? (Math.round(maxPct*100)/100).toFixed(2)+"%" : "0%";
   document.getElementById('subMin').textContent   = isFinite(minPct) ? (Math.round(minPct*100)/100).toFixed(2)+"%" : "0%";
 
-  // Table
   const columns = headers.map(h => ({title:h, data:h}));
   if (subTable){ subTable.clear().destroy(); }
   subTable = $('#subjectiveTable').DataTable({
@@ -462,6 +611,7 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
 document.getElementById('refreshAttendance').addEventListener('click', loadAttendance);
 document.getElementById('refreshObjective').addEventListener('click', loadObjective);
 document.getElementById('refreshSubjective').addEventListener('click', loadSubjective);
+
 document.getElementById('objNameFilter').addEventListener('change', renderObjectiveTableAndKpis);
 document.getElementById('subWeekFilter').addEventListener('change', renderSubjectiveTableAndKpis);
 
