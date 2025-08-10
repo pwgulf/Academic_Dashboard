@@ -12,6 +12,26 @@
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <style>
+  /* === Helpdesk slide-over === */
+.helpdesk-btn{
+  margin-left:10px; padding:8px 12px; border:0; border-radius:10px;
+  background:var(--accent); color:#fff; font-weight:700; cursor:pointer;
+}
+#helpdeskPanel{ position:fixed; inset:0; z-index:9998; display:none; }
+#helpdeskBackdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); backdrop-filter:blur(2px); }
+#helpdeskCard{
+  position:absolute; right:0; top:0; height:100%; width:min(920px,96vw);
+  background:#fff; border-left:1px solid var(--line); box-shadow:-12px 0 30px rgba(0,0,0,.25);
+  display:flex; flex-direction:column;
+}
+#helpdeskHead{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 14px; background:linear-gradient(90deg,#1e40af,#2563eb,#1e40af);
+  color:#fff; font-weight:800;
+}
+#helpdeskClose{ all:unset; cursor:pointer; font-weight:900; font-size:18px; }
+#helpdeskFrame{ flex:1; width:100%; border:0; }
+
   :root{
     --bg:#f6f8fb; --card:#ffffff; --ink:#0f172a; --muted:#6b7280;
     --accent:#2563eb; --accent2:#1e40af; --ok:#16a34a; --warn:#f59e0b; --danger:#ef4444;
@@ -144,7 +164,37 @@
   .suggest{border:1px solid var(--line); border-radius:10px; margin-top:6px; max-height:180px; overflow:auto; background:#fff;}
   .suggest .item{padding:8px 10px; cursor:pointer}
   .suggest .item:hover{background:#f3f4f6}
+  /* === Report Preview (slide-over) === */
+#reportPanel{position:fixed;inset:0;z-index:9999;display:none;}
+#reportBackdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);}
+#reportCard{
+  position:absolute;right:0;top:0;height:100%;width:min(980px,96vw);
+  background:#fff;border-left:1px solid var(--line);box-shadow:-12px 0 30px rgba(0,0,0,.25);
+  display:flex;flex-direction:column;
+}
+#reportHead{
+  display:flex;align-items:center;gap:10px;justify-content:space-between;
+  padding:12px 14px;background:linear-gradient(90deg,#1e40af,#2563eb,#1e40af);color:#fff;font-weight:800;
+}
+#reportClose{all:unset;cursor:pointer;font-weight:900;font-size:18px}
+.report-actions button{margin-left:8px;border:0;border-radius:10px;padding:8px 12px;background:#0ea5e9;color:#fff;font-weight:700;cursor:pointer}
+.report-actions button.secondary{background:#eef2ff;color:#1e3a8a}
+#reportBody{flex:1;overflow:auto;padding:14px;background:#f8fafc}
+.report-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px}
+.report-title{font-weight:800;font-size:18px}
+.report-sub{color:#6b7280;font-size:13px;margin-top:2px}
+.report-empty{color:#6b7280;padding:18px;border:1px dashed var(--line);border-radius:10px;background:#fff}
+.report-table{width:100%;border-collapse:collapse}
+.report-table th,.report-table td{border:1px solid var(--line);padding:8px 10px;font-size:13px;text-align:center;white-space:nowrap}
+.report-table thead th{background:#f3f4f6}
+.report-chart{height:260px}
+
 </style>
+<!-- Reports: html2canvas + jsPDF + Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
 </head>
 <body>
 
@@ -158,7 +208,7 @@
 <div id="gate" class="gate-backdrop" aria-modal="true" role="dialog">
   <div class="gate-card">
     <h2>Load your data</h2>
-    <p>Enter <b>Student Name</b> and <b>Grade</b>.
+    <p>Enter <b>Student Name</b> and <b>Grade</b>.</p>
 
     <div class="gate-grid">
       <div class="gate-row">
@@ -187,6 +237,10 @@
     <button class="tab-btn active" data-tab="attendance">Attendance</button>
     <button class="tab-btn" data-tab="objective">Objective Tests</button>
     <button class="tab-btn" data-tab="subjective">Subjective Tests</button>
+    <button class="helpdesk-btn" id="helpdeskOpen" type="button">Helpdesk</button>
+    <button id="openReport" class="secondary" type="button">Report Preview</button>
+
+    
   </div>
 
   <!-- ATTENDANCE -->
@@ -840,5 +894,410 @@ async function bootAfterGate(){
   });
 })();
 </script>
+  <!-- Helpdesk Slide-over Panel -->
+<div id="helpdeskPanel" aria-hidden="true">
+  <div id="helpdeskBackdrop"></div>
+  <div id="helpdeskCard" role="dialog" aria-modal="true" aria-label="PW Gulf Helpdesk">
+    <div id="helpdeskHead">
+      <span>PW Gulf Helpdesk</span>
+      <button id="helpdeskClose" aria-label="Close">✕</button>
+    </div>
+    <!-- helpdesk.html same folder me hai -->
+    <iframe id="helpdeskFrame" src="helpdesk.html"></iframe>
+  </div>
+</div>
+
+<script>
+(function(){
+  const openBtn  = document.getElementById('helpdeskOpen');
+  const panel    = document.getElementById('helpdeskPanel');
+  const closeBtn = document.getElementById('helpdeskClose');
+  const backdrop = document.getElementById('helpdeskBackdrop');
+  const frame    = document.getElementById('helpdeskFrame');
+
+  // Optional: name/grade pass karna ho to query bana do
+  function prefillQS(){
+    try{
+      const name  = (window.gate && gate.name)  ? gate.name  : (document.getElementById('gateName')?.value || "");
+      const grade = (window.gate && gate.grade) ? gate.grade : (document.getElementById('gateGrade')?.value || "");
+      const p = new URLSearchParams();
+      if (name)  p.set('prefill_name',  name);
+      if (grade) p.set('prefill_grade', grade);
+      return p.toString();
+    }catch(e){ return ""; }
+  }
+
+  function openPanel(){
+    const base = 'helpdesk.html';
+    const q = prefillQS();
+    frame.src = q ? `${base}?${q}` : base;
+    panel.style.display = 'block';
+    panel.setAttribute('aria-hidden','false');
+  }
+  function closePanel(){
+    panel.style.display = 'none';
+    panel.setAttribute('aria-hidden','true');
+  }
+
+  openBtn && openBtn.addEventListener('click', openPanel);
+  closeBtn && closeBtn.addEventListener('click', closePanel);
+  backdrop && backdrop.addEventListener('click', closePanel);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePanel(); });
+})();
+</script>
+<script>
+// ====== tiny utils we use here
+// ====== tiny utils we use here
+const _isDT = id => $.fn.dataTable.isDataTable('#'+id);
+const N = v => parseFloat(String(v).replace('%',''));
+const fmtPct = v => isFinite(v) ? (Math.round(v*100)/100) : 0;
+
+// build a simple HTML table card
+function buildTable(headers, rows, title){
+  let html = `<div class="report-card"><div class="report-title">${title}</div>`;
+  if (!headers.length || !rows.length){
+    html += `<div class="report-empty">No data.</div></div>`;
+    return html;
+  }
+  html += `<div style="overflow:auto;margin-top:8px"><table class="report-table"><thead><tr>${
+    headers.map(h=>`<th>${h}</th>`).join('')
+  }</tr></thead><tbody>${
+    rows.map(r=>`<tr>${headers.map(h=>`<td>${(r[h]??'')}</td>`).join('')}</tr>`).join('')
+  }</tbody></table></div></div>`;
+  return html;
+}
+
+// Grab filtered data + headers from a DataTable
+function dtGrab(id){
+  if(!_isDT(id)) return {headers:[], rows:[]};
+  const dt = $('#'+id).DataTable();
+  const headers = dt.columns().header().toArray().map(th=>th.textContent.trim());
+  const rows = dt.rows({search:'applied'}).data().toArray();
+  return {headers, rows};
+}
+
+// header helper
+const findKeyLike = (headers, patterns) =>
+  headers.find(h => patterns.some(rx => rx.test(h))) || "";
+
+// ---- Trend builders with fixed X/Y -----------------------------------
+function addLineChart(root, title, labels, data, sub=''){
+  if(!labels.length || !data.length) return;
+  const card = document.createElement('div');
+  card.className = 'report-card';
+  card.innerHTML = `<div class="report-title">${title}</div>${sub?`<div class="report-sub">${sub}</div>`:''}<div class="report-chart"><canvas></canvas></div>`;
+  root.appendChild(card);
+  const ctx = card.querySelector('canvas').getContext('2d');
+  new Chart(ctx,{
+    type:'line',
+    data:{labels,datasets:[{label:title,data:data.map(v=>fmtPct(v)),fill:false,tension:.25}]},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      scales:{ y:{ ticks:{ callback:(v)=>`${v}%` } } },
+      plugins:{ legend:{display:false} }
+    }
+  });
+}
+
+// Attendance: Week vs Attendance %
+function buildAttendanceTrend(root){
+  const att = dtGrab('attendanceTable');
+  if(!att.headers.length || !att.rows.length) return;
+
+  const weekKey   = findKeyLike(att.headers, [/^week$/i,/week\s*number/i]);
+  const dateKey   = findKeyLike(att.headers, [/date/i]);
+  const presentK  = findKeyLike(att.headers, [/^total\s*present$/i,/present\s*count/i,/present$/i]);
+  const classesK  = findKeyLike(att.headers, [/^total\s*classes?$/i,/classes?$/i]);
+
+  // Need week + present + classes
+  if(!presentK || !classesK || (!weekKey && !dateKey)) return;
+
+  const wkMap = new Map(); // week -> {p,c}
+  const getWeek = (r)=>{
+    if(weekKey) return String(r[weekKey]).trim();
+    const d = Date.parse(r[dateKey]);
+    if(!isNaN(d)){
+      const date = new Date(d);
+      // ISO week
+      const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+      const dayNum = (tmp.getUTCDay()+6)%7;
+      tmp.setUTCDate(tmp.getUTCDate()-dayNum+3);
+      const firstThu = new Date(Date.UTC(tmp.getUTCFullYear(),0,4));
+      return String(1 + Math.round((tmp-firstThu)/(7*24*3600*1000)));
+    }
+    return '';
+  };
+
+  att.rows.forEach(r=>{
+    const wk = getWeek(r);
+    if(!wk) return;
+    const p = Number(N(r[presentK])) || 0;
+    const c = Number(N(r[classesK])) || 0;
+    if(!wkMap.has(wk)) wkMap.set(wk,{p:0,c:0});
+    const o = wkMap.get(wk);
+    o.p += p; o.c += c;
+  });
+
+  const weeks = [...wkMap.keys()].sort((a,b)=>Number(a)-Number(b));
+  const pct   = weeks.map(w => {
+    const o = wkMap.get(w);
+    return o.c>0 ? (o.p/o.c*100) : 0;
+  });
+
+  addLineChart(root,'Attendance Trend', weeks.map(w=>`W${w}`), pct, 'Attendance % vs Week');
+}
+
+// Objective: WeekNumber vs TestPercentage
+function buildObjectiveTrend(root){
+  const obj = dtGrab('objectiveTable');
+  if(!obj.headers.length || !obj.rows.length) return;
+
+  const weekKey  = findKeyLike(obj.headers, [/^week$/i,/week\s*number/i]);
+  const dateKey  = findKeyLike(obj.headers, [/date/i]);
+  const percKey  = findKeyLike(obj.headers, [/(^|\s)test\s*percentage/i,/^percentage$/i,/percent/i]);
+
+  if(!percKey || (!weekKey && !dateKey)) return;
+
+  const wkMap = new Map(); // week -> {sum,count}
+  const toWeek = (r)=>{
+    if(weekKey) return String(r[weekKey]).trim();
+    const d = Date.parse(r[dateKey]);
+    if(!isNaN(d)){
+      const dt = new Date(d);
+      const t = new Date(Date.UTC(dt.getFullYear(), dt.getMonth(), dt.getDate()));
+      const dn = (t.getUTCDay()+6)%7; t.setUTCDate(t.getUTCDate()-dn+3);
+      const firstThu = new Date(Date.UTC(t.getUTCFullYear(),0,4));
+      return String(1 + Math.round((t-firstThu)/(7*24*3600*1000)));
+    }
+    return '';
+  };
+
+  obj.rows.forEach(r=>{
+    const wk = toWeek(r); if(!wk) return;
+    const p  = Number(N(r[percKey])) || 0;
+    if(!wkMap.has(wk)) wkMap.set(wk,{sum:0,cnt:0});
+    const o = wkMap.get(wk); o.sum+=p; o.cnt++;
+  });
+
+  const weeks = [...wkMap.keys()].sort((a,b)=>Number(a)-Number(b));
+  const avg   = weeks.map(w => {
+    const o = wkMap.get(w); return o.cnt? (o.sum/o.cnt) : 0;
+  });
+
+  addLineChart(root,'Objective Trend', weeks.map(w=>`W${w}`), avg, 'Test % vs Week');
+}
+
+// Subjective: DateRange vs Percentage
+function buildSubjectiveTrend(root){
+  const sub = dtGrab('subjectiveTable');
+  if(!sub.headers.length || !sub.rows.length) return;
+
+  const dateRangeKey = findKeyLike(sub.headers, [/date\s*range/i,/result\s*date/i,/date/i]);
+  const percKey      = findKeyLike(sub.headers, [/^percentage$/i,/test\s*percentage/i,/percent/i]);
+  if(!percKey || !dateRangeKey) return;
+
+  // Group by dateRangeKey and average %
+  const map = new Map(); // label -> {sum,cnt}
+  sub.rows.forEach(r=>{
+    const label = String(r[dateRangeKey] ?? '').trim();
+    if(!label) return;
+    const p = Number(N(r[percKey])) || 0;
+    if(!map.has(label)) map.set(label,{sum:0,cnt:0});
+    const o = map.get(label); o.sum+=p; o.cnt++;
+  });
+
+  const labels = [...map.keys()];
+  const avg    = labels.map(k => {
+    const o = map.get(k); return o.cnt? (o.sum/o.cnt) : 0;
+  });
+
+  addLineChart(root,'Subjective Trend', labels, avg, 'Percentage vs Date Range');
+}
+
+// Build the report DOM each time panel opens
+function buildReportDOM(){
+  const root = document.getElementById('reportContent');
+  root.innerHTML = '';
+
+  // Header (name/grade)
+  const whoName  = (gate && gate.admin) ? 'ADMIN VIEW' : (gate?.name || '—');
+  const whoGrade = (gate && gate.admin) ? 'ALL'        : (gate?.grade || '—');
+  root.insertAdjacentHTML('beforeend',
+    `<div class="report-card">
+       <div class="report-title">${whoName}</div>
+       <div class="report-sub">Grade: <b>${whoGrade}</b></div>
+     </div>`
+  );
+
+  // Tables (whatever is currently visible in DataTables)
+  const att = dtGrab('attendanceTable');
+  const obj = dtGrab('objectiveTable');
+  const sub = dtGrab('subjectiveTable');
+
+  root.insertAdjacentHTML('beforeend', buildTable(att.headers, att.rows, 'Attendance (Current View)'));
+  root.insertAdjacentHTML('beforeend', buildTable(obj.headers, obj.rows, 'Objective (Current View)'));
+  root.insertAdjacentHTML('beforeend', buildTable(sub.headers, sub.rows, 'Subjective (Current View)'));
+
+  // Fixed-axis charts
+  buildAttendanceTrend(root);
+  buildObjectiveTrend(root);
+  buildSubjectiveTrend(root);
+
+  if(!att.rows.length && !obj.rows.length && !sub.rows.length){
+    root.insertAdjacentHTML('beforeend', `<div class="report-empty">No data in current filters.</div>`);
+  }
+}
+
+// ---- Open/Close panel (unchanged) ----
+async function openReportPanel(){
+  const jobs = [];
+  if (!_isDT('attendanceTable')) jobs.push(loadAttendance());
+  if (!_isDT('objectiveTable'))  jobs.push(loadObjective());
+  if (!_isDT('subjectiveTable')) jobs.push(loadSubjective());
+  if (jobs.length) await Promise.allSettled(jobs);
+
+  buildReportDOM();
+  const p = document.getElementById('reportPanel');
+  p.style.display = 'block';
+  p.setAttribute('aria-hidden','false');
+}
+function closeReportPanel(){
+  const p = document.getElementById('reportPanel');
+  p.style.display = 'none';
+  p.setAttribute('aria-hidden','true');
+}
+
+// ---- Downloads: JPG as-is, PDF with pagination ----
+
+// ---- FULL REPORT CAPTURE HELPERS ----
+async function captureFullReportCanvas(){
+  const body  = document.getElementById('reportBody');
+  const card  = document.getElementById('reportCard');
+
+  const prev = {
+    bodyStyle: body.getAttribute('style') || '',
+    cardStyle: card.getAttribute('style') || '',
+    bodyOverflow: document.body.style.overflow || ''
+  };
+
+  body.style.overflow  = 'visible';
+  body.style.maxHeight = 'none';
+  body.style.height    = body.scrollHeight + 'px';
+  card.style.height    = 'auto';
+  document.body.style.overflow = 'auto';
+
+  await new Promise(r => requestAnimationFrame(()=>requestAnimationFrame(r)));
+
+  const canvas = await html2canvas(body, {
+    scale: 2,
+    backgroundColor: '#ffffff',
+    windowWidth:  body.scrollWidth,
+    windowHeight: body.scrollHeight,
+    logging: false
+  });
+
+  if (prev.bodyStyle) body.setAttribute('style', prev.bodyStyle); else body.removeAttribute('style');
+  if (prev.cardStyle) card.setAttribute('style', prev.cardStyle); else card.removeAttribute('style');
+  document.body.style.overflow = prev.bodyOverflow;
+
+  return canvas;
+}
+
+// ---- DOWNLOADS: JPG full-page, PDF multi-page ----
+async function downloadJPG(){
+  const canvas = await captureFullReportCanvas();
+  const a = document.createElement('a');
+  const who = (gate && gate.admin) ? 'ADMIN' : (gate?.name || 'report');
+  a.download = `${who}-report.jpg`;
+  a.href = canvas.toDataURL('image/jpeg', 0.92);
+  a.click();
+}
+
+async function downloadPDF(){
+  const canvas = await captureFullReportCanvas();
+
+  const imgW = canvas.width, imgH = canvas.height;
+  const pdf = new jspdf.jsPDF({ orientation: imgW >= imgH ? 'l' : 'p', unit:'px', format:'a4' });
+  const pageW = pdf.internal.pageSize.getWidth();
+  const pageH = pdf.internal.pageSize.getHeight();
+  const margin = 20, boxW = pageW - margin*2, boxH = pageH - margin*2;
+
+  // how many source pixels correspond to one page box height
+  const renderH = boxW / (imgW / imgH);
+  const pageBoxToSrc = imgH / renderH;
+  const srcSliceH = Math.max(1, Math.floor(boxH * pageBoxToSrc));
+
+  let ySrc = 0, first = true, page = 1;
+  while (ySrc < imgH) {
+    const hThis = Math.min(srcSliceH, imgH - ySrc);
+    const slice = document.createElement('canvas');
+    slice.width = imgW; slice.height = hThis;
+    slice.getContext('2d').drawImage(canvas, 0, ySrc, imgW, hThis, 0, 0, imgW, hThis);
+
+    const img = slice.toDataURL('image/jpeg', 0.92);
+
+    if (!first) pdf.addPage();
+    first = false;
+
+    const drawW = boxW;
+    const drawH = drawW / (imgW / hThis);
+    const x = (pageW - drawW)/2;
+    const y = margin;
+
+    pdf.addImage(img, 'JPEG', x, y, drawW, Math.min(drawH, boxH));
+
+    // footer / header
+    const who = (gate && gate.admin)?'ADMIN VIEW':(gate?.name||'');
+    pdf.setFontSize(10);
+    pdf.text(`${who} — PW Gulf Report`, margin, 12);
+    pdf.text(`Page ${page++}`, pageW - margin - 40, pageH - 8);
+
+    ySrc += hThis;
+  }
+
+  const who = (gate && gate.admin) ? 'ADMIN' : (gate?.name || 'report');
+  pdf.save(`${who}-report.pdf`);
+}
+
+
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // open/close
+  const openBtn  = document.getElementById('openReport');
+  const closeBtn = document.getElementById('reportClose');
+  const backdrop = document.getElementById('reportBackdrop');
+  const jpgBtn   = document.getElementById('reportJpg');
+  const pdfBtn   = document.getElementById('reportPdf');
+
+  if (openBtn)  openBtn.addEventListener('click', openReportPanel);
+  if (closeBtn) closeBtn.addEventListener('click', closeReportPanel);
+  if (backdrop) backdrop.addEventListener('click', closeReportPanel);
+  if (jpgBtn)   jpgBtn.addEventListener('click', downloadJPG);
+  if (pdfBtn)   pdfBtn.addEventListener('click', downloadPDF);
+});
+</script>
+
+
+<div id="reportPanel" aria-hidden="true">
+  <div id="reportBackdrop"></div>
+  <div id="reportCard" role="dialog" aria-modal="true" aria-label="Report Preview">
+    <div id="reportHead">
+      <span>Report Preview</span>
+      <div class="report-actions">
+        <button id="reportJpg" class="secondary" type="button">Download JPG</button>
+        <button id="reportPdf" type="button">Download PDF</button>
+      </div>
+      <button id="reportClose" aria-label="Close">✕</button>
+    </div>
+    <div id="reportBody">
+      <div id="reportContent">
+        <div class="report-empty">No data in current filters<br><small>Please open a tab, load data, and try again.</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
