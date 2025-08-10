@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PW Gulf Online CBSE Student Helpdesk | Issue Form</title>
+<style>
+.site-header{
+  display:grid;
+  grid-template-columns:auto 1fr auto; /* logo | title | spacer */
+  align-items:center;
+  gap:12px;
+  padding:16px 20px;
+  position:sticky; top:0; z-index:1000;
+  background: linear-gradient(90deg, #1e40af 0%, #2563eb 50%, #1e40af 100%);
+  color:#fff;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  box-shadow:0 6px 16px rgba(37,99,235,.28);
+}
+.site-header .logo{
+  height:44px; width:auto;
+  border-radius:6px;
+  box-shadow:0 0 0 2px rgba(255,255,255,.15), 0 4px 14px rgba(0,0,0,.25);
+}
+.site-header h1{
+  margin:0;
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:.3px;
+  text-align:center;               /* keep title centered */
+}
+.site-header .header-spacer{ width:44px; } /* balance logo on right */
+
+/* Mobile tweaks */
+@media(max-width: 520px){
+  .site-header{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .site-header .logo{
+    justify-self:center;
+    height:38px;
+  }
+  .site-header .header-spacer{ display:none; }
+  .site-header h1{ font-size:16px; }
+}
+
+/* Optional: colorful accents for buttons/panels used elsewhere */
+button{
+  transition: transform .05s ease, box-shadow .15s ease;
+  box-shadow: 0 2px 8px rgba(96,165,250,.25);
+}
+button:hover{ transform: translateY(-1px); }
+button:active{ transform: translateY(0); }
+.panel{
+  background: linear-gradient(180deg, #0b1220 0%, #0b1020 100%);
+  border:1px solid #1f2737;
+  box-shadow: 0 8px 30px rgba(0,0,0,.25);
+}
+.pill.ok{    background:#052e20; border-color:#14532d; color:#86efac; }
+.pill.warn{  background:#3a2a07; border-color:#a16207; color:#fde68a; }
+.pill.danger{background:#3b0a0a; border-color:#7f1d1d; color:#fecaca; }
+/* Mobile tweaks: center everything on small screens */
+@media(max-width: 520px){
+  .site-header{
+    grid-template-columns: 1fr;
+    text-align:center;
+  }
+  .site-header .logo{
+    justify-self:center;
+    height:36px;
+  }
+  .header-spacer{ display:none; }
+}
+
+.site-header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+   :root{
+    --bg:#f7f9fc; --card:#ffffff; --ink:#111827; --muted:#6b7280;
+    --accent:#2563eb; --ok:#22c55e; --warn:#f59e0b; --danger:#ef4444;
+    --line:#e5e7eb;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    padding:16px 20px;
+    border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    background:var(--accent);
+    color:#fff;
+    text-align:center;
+    z-index:100;
+  }
+  header h1{
+    margin:0;
+    font-size:18px;
+    letter-spacing:.2px;
+    font-weight:700;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:16px}
+  .grid{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:960px){ .grid{grid-template-columns:1.1fr .9fr} }
+  .panel{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  }
+  h2{margin:0 0 10px 0;font-size:18px;font-weight:700;color:var(--ink)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .stack>*+*{margin-top:10px}
+  label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+  input[type=text],input[type=number],select,textarea{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    border-radius:8px;
+    font-size:14px;
+    outline:none;
+    transition:border-color 0.2s, box-shadow 0.2s;
+  }
+  input:focus, select:focus, textarea:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(37,99,235,0.2);
+  }
+  textarea{min-height:120px;resize:vertical}
+  input[type=file]{color:var(--muted);font-size:13px}
+  button{
+    appearance:none;
+    border:0;
+    border-radius:10px;
+    padding:10px 14px;
+    background:var(--accent);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    transition:background 0.2s, transform 0.1s;
+  }
+  button:hover{background:#1e4fd6}
+  button:active{transform:scale(0.98)}
+  button.secondary{background:#e5e7eb;color:var(--ink)}
+  .help{font-size:12px;color:var(--muted)}
+  .right{
+    max-height:70vh;
+    overflow:auto;
+    border-radius:10px;
+    border:1px solid var(--line);
+    padding:12px;
+    background:#fff;
+  }
+  .timeline{
+    background:#f9fafb;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px;
+  }
+  .pill{
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:600;
+  }
+  .ok{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+  .warn{background:#fffbeb;color:#92400e;border:1px solid #fde68a}
+  .danger{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+  .status{font-weight:600}
+  .footer-note{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
+  /* KPI dashboard */
+.kpis{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:12px; margin:8px 0 16px;
+}
+.kpi{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:12px; box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+.kpi-label{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em}
+.kpi-value{font-size:28px; font-weight:800; line-height:1.1; margin-top:2px}
+.kpi.new{border-left:4px solid var(--accent)}
+.kpi.wip{border-left:4px solid var(--warn)}
+.kpi.res{border-left:4px solid var(--ok)}
+@media (max-width:700px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .kpi:nth-child(3){grid-column:1/-1}
+}
+
+</style>
+</head>
+<header class="site-header">
+  <img class="logo" src="data:image/png;base64,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" alt="PW Gulf Logo" />
+  <h1>PW Gulf Online CBSE Helpdesk — Term-1 Doubt & Support</h1>
+  <div class="header-spacer"></div>
+</header>
+
+<div class="wrap">
+
+  <!-- KPI BAR -->
+  <div class="kpi-bar">
+    <div class="kpis">
+      <div class="kpi new">
+        <div class="kpi-label">Total New</div>
+        <div id="kpiNew" class="kpi-value">0</div>
+      </div>
+      <div class="kpi wip">
+        <div class="kpi-label">Total WIP</div>
+        <div id="kpiWip" class="kpi-value">0</div>
+      </div>
+      <div class="kpi res">
+        <div class="kpi-label">Total Resolved</div>
+        <div id="kpiRes" class="kpi-value">0</div>
+      </div>
+    </div>
+    <div class="kpi-actions">
+      <button id="kpiRefresh" class="secondary" type="button">Refresh KPIs</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- LEFT: FORM -->
+    <div class="panel">
+      <h2>Submit Your Issue</h2>
+      <form id="issueForm" class="stack" enctype="multipart/form-data">
+        <div class="row">
+          <div>
+            <label for="studentName">Student Name</label>
+            <input id="studentName" name="studentName" type="text" placeholder="e.g., Aditya Singh" required />
+          </div>
+          <div>
+            <label for="batchName">Batch Name</label>
+            <select id="batchName" name="batchName" required>
+              <option value="" disabled selected>Select Batch</option>
+              <option>Impact</option>
+              <option>Succeed</option>
+              <option>Exceed</option>
+              <option>Achiever</option>
+              <option>Triumph</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row-3">
+          <div>
+            <label for="grade">Grade</label>
+            <select id="grade" name="grade" required>
+              <option value="" disabled selected>Choose Grade</option>
+              <option>Class 8</option><option>Class 9</option><option>Class 10</option>
+              <option>Class 11</option><option>Class 12</option>
+            </select>
+          </div>
+          <div>
+            <label for="section">Section</label>
+            <select id="section" name="section" required>
+              <option value="" disabled selected>Choose Section</option>
+              <option>A</option><option>B</option><option>C</option><option>D</option><option>E</option>
+            </select>
+          </div>
+          <div>
+            <label>Registered Portal Number</label>
+            <div class="portal-row">
+              <select id="cc" name="countryCode" required>
+                <option value="+971">🇦🇪 +971 (UAE)</option>
+                <option value="+966">🇸🇦 +966 (Saudi)</option>
+                <option value="+965">🇰🇼 +965 (Kuwait)</option>
+                <option value="+974">🇶🇦 +974 (Qatar)</option>
+                <option value="+968">🇴🇲 +968 (Oman)</option>
+                <option value="+973">🇧🇭 +973 (Bahrain)</option>
+                <option value="+91">🇮🇳 +91 (India)</option>
+              </select>
+              <input id="portalNumber" name="portalNumber" type="number" inputmode="numeric" placeholder="e.g., 501234567" required />
+            </div>
+            <div class="help">Country code + numeric portal number</div>
+          </div>
+        </div>
+
+        <div>
+          <label for="doubtType">Type of Doubt</label>
+          <select id="doubtType" name="doubtType" required>
+            <option value="" disabled selected>Select Doubt Type</option>
+            <option>Tech</option><option>Academic</option><option>Fee Related</option>
+            <option>Support Related</option><option>Portal Related</option><option>Teacher Related</option>
+            <option>Content Related</option><option>Exam Related</option><option>Syllabus Related</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="explain">Explain in Words</label>
+          <textarea id="explain" name="explain" placeholder="Describe your issue clearly..." required></textarea>
+        </div>
+
+        <div>
+          <label for="image">Upload Image (optional, .jpg/.png)</label>
+          <input id="image" name="image" type="file" accept="image/*" />
+        </div>
+
+        <div class="row">
+          <button type="submit">SUBMIT</button>
+          <button type="button" id="resetBtn" class="secondary">Reset</button>
+        </div>
+
+        <!-- Submitting/simple status message -->
+        <div id="issueFormStatus" class="help" style="margin-top:6px; min-height:18px;"></div>
+
+        <!-- After-submit timeline -->
+        <div id="afterSubmit" class="timeline" style="display:none;"></div>
+
+        <div class="footer-note">After Submission can search Status after some time or Connect on Whatsapp Our Support Number with Issue Code on : <em>+971 56 403 8046</em>.</div>
+      </form>
+    </div>
+
+    <!-- RIGHT: SEARCH STATUS + RATING -->
+    <div class="panel">
+      <h2>Issue Status (Public View)</h2>
+
+      <div class="right">
+        <div class="row" style="grid-template-columns:1fr auto;">
+          <input id="searchCode" type="text" placeholder="Paste Issue Code (e.g., ISS-2025...)" />
+          <button id="searchBtn" type="button">Search Status</button>
+        </div>
+        <div id="searchResult" class="stack" style="margin-top:12px"></div>
+      </div>
+
+      <div class="stack" style="margin-top:16px">
+        <h2>Submit Rating (After Resolved)</h2>
+        <form id="ratingForm" class="stack">
+          <div class="row">
+            <div>
+              <label for="issueIdRate">Issue Code</label>
+              <input id="issueIdRate" name="issueIdRate" type="text" placeholder="e.g., ISS-20250808-123" required />
+            </div>
+            <div>
+              <label for="rating">Rating</label>
+              <select id="rating" name="rating" required>
+                <option value="" disabled selected>Rate</option>
+                <option>1 - Poor</option><option>2 - Fair</option><option>3 - Good</option>
+                <option>4 - Very Good</option><option>5 - Excellent</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="ratingNote">Optional Note</label>
+            <textarea id="ratingNote" name="ratingNote" placeholder="Any feedback..."></textarea>
+          </div>
+          <div>
+            <button type="submit">Submit Rating</button>
+          </div>
+          <div id="ratingMsg" class="help"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===================== CONFIG ===================== */
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmRksgNIik8cGDEFcpogwFw5LP7avQYCfrsBVfmZt5GjQDBWG_3ZxRMeLrWq1GaQ2Y/exec";
+const SHEET_CSV_URL   = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR5QUIu5Rgt60enJRY67cq-DgqaPGIG16GW8i3USMmp4CE9B7PsQ2L8mtzXO6-CqNXOncW7Cq0oJETw/pub?gid=0&single=true&output=csv";
+/* ================================================== */
+
+/* ---------- Utils ---------- */
+function toProperCase(str){
+  return (str||"").toLowerCase().replace(/(^|[\\s\\-_/\\.])([a-z])/g, (_,p1,p2)=> p1 + p2.toUpperCase());
+}
+function genIssueCode(){
+  const d=new Date(), pad=n=>String(n).padStart(2,'0');
+  return `ISS-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${d.getHours()}${pad(d.getMinutes())}${pad(d.getSeconds())}-${Math.floor(Math.random()*900+100)}`;
+}
+function readFileAsBase64(file){
+  return new Promise((resolve,reject)=>{
+    const fr=new FileReader();
+    fr.onload=()=>resolve(fr.result);
+    fr.onerror=reject;
+    fr.readAsDataURL(file);
+  });
+}
+function escapeHtml(s){ return (s||"").replace(/[&<>"]/g, c=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c])); }
+function parseCSV(str){
+  const lines = str.trim().split(/\r?\n/);
+  return lines.map(l=>{
+    const out=[]; let cur=''; let q=false;
+    for(let i=0;i<l.length;i++){
+      const ch=l[i];
+      if(ch==='\"'){ q=!q; continue; }
+      if(ch===',' && !q){ out.push(cur); cur=''; continue; }
+      cur+=ch;
+    }
+    out.push(cur);
+    return out.map(s=>s.trim());
+  });
+}
+
+/* ---------- Make smart Details block ---------- */
+function renderDetailsCell(raw){
+  const val = (raw ?? '').trim();
+  if (!val) return ''; // nothing to show
+
+  // If no URL at all -> plain text with line breaks
+  const hasUrl = /https?:\/\/\S+/i.test(val);
+
+  if (!hasUrl) {
+    // numeric or plain text – just show
+    return `
+      <div class="detail-label">Details</div>
+      <div class="detail-block">${escapeHtml(val).replace(/\r?\n/g,'<br>')}</div>
+    `;
+  }
+
+  // Split by whitespace to find URLs and keep text
+  let html = escapeHtml(val);
+
+  // Replace URLs with styled anchors
+  html = html.replace(/https?:\/\/\S+/gi, (m0)=>{
+    // trim trailing punctuation from match
+    const safe = m0.replace(/[)>];?.,]*$/, '');
+    const trail = m0.slice(safe.length);
+
+    let label = 'Open Link';
+    if (/drive\.google\.com/i.test(safe)) label = 'Download';
+    if (/meet\.google\.com/i.test(safe))  label = 'Join Meet';
+    if (/zoom\.us/i.test(safe))           label = 'Join Meeting';
+
+    // For long non-drive links inside paragraph, use inline style
+    const isDrive = /drive\.google\.com/i.test(safe);
+    if (isDrive) {
+      return `<a href="${safe}" target="_blank" rel="noopener">${label}</a>${escapeHtml(trail)}`;
+    } else {
+      // show inline underlined link text (keeps surrounding text readable)
+      return `<a class="inline-link" href="${safe}" target="_blank" rel="noopener">${label}</a>${escapeHtml(trail)}`;
+    }
+  });
+
+  return `
+    <div class="detail-label">Details</div>
+    <div class="detail-block">${html.replace(/\r?\n/g,'<br>')}</div>
+  `;
+}
+
+/* ---------- KPIs from CSV ---------- */
+async function loadKpis(){
+  try{
+    const res = await fetch(SHEET_CSV_URL + '&_=' + Date.now(), { cache:'no-store' });
+    if(!res.ok) throw new Error('Sheet not reachable');
+    const csv = await res.text();
+    const rows = parseCSV(csv);
+
+    const header = rows[0] || [];
+    const statusIdx = header.findIndex(h => /status/i.test(h));
+    if(statusIdx === -1){ setKpi('-', '-', '-'); return; }
+
+    let totalNew = 0, totalWip = 0, totalResolved = 0;
+    rows.slice(1).forEach(r => {
+      const s = (r[statusIdx] || '').trim().toLowerCase();
+      if(!s) return;
+      if (s.includes('resolv') || s === 'closed') totalResolved++;
+      else if (s.includes('progress') || s.includes('wip') || s.includes('check')) totalWip++;
+      else if (s.includes('new') || s.includes('submitted')) totalNew++;
+      else totalNew++;
+    });
+
+    setKpi(totalNew, totalWip, totalResolved);
+  }catch(err){
+    console.error(err);
+    setKpi('-', '-', '-');
+  }
+}
+function setKpi(n, w, r){
+  document.getElementById('kpiNew').textContent = n;
+  document.getElementById('kpiWip').textContent = w;
+  document.getElementById('kpiRes').textContent = r;
+}
+
+/* ---------- Proper Case on blur ---------- */
+const nameEl = document.getElementById('studentName');
+nameEl.addEventListener('blur',()=> nameEl.value = toProperCase(nameEl.value));
+
+/* ---------- Submit Issue ---------- */
+const issueForm = document.getElementById('issueForm');
+const afterSubmit = document.getElementById('afterSubmit');
+const resetBtn = document.getElementById('resetBtn');
+
+issueForm.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const statusEl = document.getElementById('issueFormStatus');
+  statusEl.textContent = "Submitting, please wait…";
+  try{
+    const issueCode = genIssueCode();
+    const form = new FormData(issueForm);
+
+    form.set('studentName', toProperCase(form.get('studentName')));
+    const phone = (form.get('countryCode')||'') + (form.get('portalNumber')||'');
+    form.set('fullPortal', phone);
+    form.set('issueCode', issueCode);
+    form.set('action', 'create');
+    form.set('sheetName', 'Response');
+
+    const imgInput = document.getElementById('image');
+    if(imgInput.files && imgInput.files[0]){
+      const file = imgInput.files[0];
+      if(!file.type.startsWith('image/')) throw new Error('Only image files allowed');
+      const b64 = await readFileAsBase64(file);
+      form.set('imageData', b64);
+      form.set('imageName', file.name);
+    }
+
+    const res = await fetch(APPS_SCRIPT_URL, { method:'POST', body: form });
+    if(!res.ok) throw new Error('Network error');
+    const txt = await res.text();
+    console.log('Server says:', txt);
+
+    const type = form.get('doubtType');
+    afterSubmit.innerHTML = buildTimeline(type, issueCode);
+    afterSubmit.style.display = 'block';
+
+    statusEl.textContent = "✅ Submitted successfully!";
+    searchStatusByCode(issueCode);
+    loadKpis();
+    afterSubmit.scrollIntoView({behavior:'smooth', block:'start'});
+  }catch(err){
+    console.error(err);
+    afterSubmit.innerHTML = `<span class="pill danger">Error:</span> ${escapeHtml(err.message)}`;
+    afterSubmit.style.display = 'block';
+    document.getElementById('issueFormStatus').textContent = "❌ Error submitting. Please try again.";
+  }
+});
+
+resetBtn.addEventListener('click', ()=>{
+  issueForm.reset();
+  afterSubmit.style.display='none';
+  document.getElementById('issueFormStatus').textContent = "";
+});
+
+/* ---------- Dummy timeline logic (edit later) ---------- */
+function buildTimeline(type, code){
+  const rules = {
+    "Tech": {sla:"30 min", steps:["Ticket created","Tech triage","Fix in progress","Resolved"]},
+    "Academic": {sla:"4 hrs", steps:["Academic mentor assigned","Doubt review","Solution shared","Closed"]},
+    "Fee Related": {sla:"24 hrs", steps:["Finance review","Verification","Resolution update","Closed"]},
+    "Support Related": {sla:"2 hrs", steps:["Support queue","Agent picked","Guided steps shared","Resolved"]},
+    "Portal Related": {sla:"3 hrs", steps:["Portal team check","Bug/Config","Patch applied","Closed"]},
+    "Teacher Related": {sla:"12 hrs", steps:["Escalate to HOD","Teacher response","Plan of action","Closed"]},
+    "Content Related": {sla:"8 hrs", steps:["QC check","Corrected material","Re-uploaded","Closed"]},
+    "Exam Related": {sla:"6 hrs", steps:["Exam team review","Admit/instructions fix","Notice shared","Closed"]},
+    "Syllabus Related": {sla:"12 hrs", steps:["Schedule check","Update plan","Notify student","Closed"]}
+  };
+  const r = rules[type] || {sla:"6 hrs", steps:["Queued","In Progress","Under Review","Closed"]};
+  return `
+    <div><span class="pill ok">Submitted</span> <strong>${code}</strong></div>
+    <div class="help">Type: <strong>${escapeHtml(type)}</strong> • SLA Target: <strong>${r.sla}</strong></div>
+    <ol style="margin:8px 0 0 18px;">
+      ${r.steps.map(s=>`<li>${s}</li>`).join("")}
+    </ol>
+  `;
+}
+
+/* ---------- Search Status by IssueCode (from CSV) + DETAILS (Status-next) ---------- */
+async function searchStatusByCode(issueCode){
+  const box = document.getElementById('searchResult');
+  box.innerHTML = 'Searching...';
+  try{
+    const res = await fetch(SHEET_CSV_URL + '&_=' + Date.now(), {cache:'no-store'});
+    if(!res.ok) throw new Error('Sheet not reachable');
+    const csv = await res.text();
+    const rows = parseCSV(csv);
+
+    const header = rows[0] || [];
+    const codeIdx   = header.findIndex(h => /issue.?code/i.test(h));
+    const statusIdx = header.findIndex(h => /status/i.test(h));
+
+    if(codeIdx === -1 || statusIdx === -1) throw new Error('CSV missing IssueCode/Status columns');
+
+    // Find an explicit "details-like" column, else use immediate next column after Status
+    let detailsIdx = header.findIndex(h => String(h).trim().toLowerCase() === 'details');
+if (detailsIdx === -1) detailsIdx = statusIdx + 1; // fallback
+
+
+    const body = rows.slice(1);
+    const hit = body.find(r => (r[codeIdx]||'').trim() === issueCode.trim());
+
+    if(!hit){
+      box.innerHTML = `<div class="pill danger">Not found</div> Check the code and try again.`;
+      return;
+    }
+
+    const status = (hit[statusIdx]||'');
+    const s = status.toLowerCase();
+    const cls = s.includes('resolv') ? 'ok'
+             : (s.includes('progress') || s.includes('wip') || s.includes('check')) ? 'warn'
+             : 'danger';
+
+    const detailsVal = hit[detailsIdx] ?? '';
+    const detailsHTML = renderDetailsCell(detailsVal);
+
+    box.innerHTML = `
+      <div><strong>${escapeHtml(issueCode)}</strong></div>
+      <div class="status"><span class="pill ${cls}">${escapeHtml(status)}</span></div>
+      ${detailsHTML}
+    `;
+  }catch(err){
+    box.innerHTML = `<div class="pill danger">Error</div> ${escapeHtml(err.message)}`;
+  }
+}
+
+document.getElementById('searchBtn').addEventListener('click', ()=>{
+  const code = document.getElementById('searchCode').value;
+  if(code.trim()) searchStatusByCode(code);
+});
+
+/* ---------- Rating Submit ---------- */
+const ratingForm = document.getElementById('ratingForm');
+const ratingMsg  = document.getElementById('ratingMsg');
+
+ratingForm.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  ratingMsg.textContent = "Submitting...";
+  try{
+    const fd = new FormData(ratingForm);
+    fd.set('action','feedback');
+    fd.set('sheetName','Feedback'); // Feedback subsheet
+    const res = await fetch(APPS_SCRIPT_URL, {method:'POST', body: fd});
+    const text = await res.text().catch(()=> '');
+    if (!res.ok || !/OK:\s*feedback/i.test(text)) {
+      throw new Error(text || `HTTP ${res.status} ${res.statusText}`);
+    }
+    ratingMsg.textContent = "Thanks! Feedback recorded.";
+    ratingForm.reset();
+  }catch(err){
+    console.error(err);
+    ratingMsg.textContent = "Error: " + err.message;
+  }
+});
+
+/* ---------- KPI Refresh button ---------- */
+document.getElementById('kpiRefresh').addEventListener('click', async ()=>{
+  try{ await loadKpis(); }catch(e){ console.error(e); }
+});
+
+/* ---------- Init ---------- */
+loadKpis(); // initial KPI load
+</script>
+<!-- ====== PW Gulf Chatbot (drop-in) ====== -->
+<style>
+  .pwchat-fab{
+    position:fixed; right:18px; bottom:18px; z-index:9999;
+    width:56px; height:56px; border-radius:50%;
+    background:#2563eb; color:#fff; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px rgba(37,99,235,.35); cursor:pointer; font-weight:800; font-size:20px;
+  }
+  .pwchat-win{
+    position:fixed; right:18px; bottom:86px; z-index:9999; width:320px; max-height:70vh;
+    background:#fff; border:1px solid #e5e7eb; border-radius:14px; box-shadow:0 18px 36px rgba(0,0,0,.18);
+    display:none; overflow:hidden; font-family:system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  .pwchat-head{ background:linear-gradient(90deg,#1e40af,#2563eb,#1e40af); color:#fff; padding:10px 12px; font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:space-between }
+  .pwchat-body{ padding:10px; height:320px; overflow:auto; background:#f8fafc }
+  .pwchat-input{ display:flex; gap:6px; padding:8px; border-top:1px solid #e5e7eb; background:#fff }
+  .pwchat-input input{ flex:1; padding:8px 10px; border:1px solid #e5e7eb; border-radius:8px }
+  .pwchat-input button{ border:0; background:#2563eb; color:#fff; padding:8px 12px; border-radius:8px; font-weight:700; cursor:pointer }
+  .pwchat-msg{ margin:6px 0; display:flex; gap:8px }
+  .pwchat-msg.user{ justify-content:flex-end }
+  .pwchat-bubble{ max-width:76%; padding:8px 10px; border-radius:12px; font-size:13px; line-height:1.35 }
+  .pwchat-msg.bot .pwchat-bubble{ background:#ffffff; border:1px solid #e5e7eb }
+  .pwchat-msg.user .pwchat-bubble{ background:#2563eb; color:#fff }
+  .pwchat-opts{ margin-top:6px; display:flex; flex-wrap:wrap; gap:6px }
+  .pwchat-opts button{ background:#eef2ff; color:#1e3a8a; border:1px solid #c7d2fe; border-radius:999px; padding:6px 10px; font-size:12px; cursor:pointer }
+</style>
+
+<div class="pwchat-fab" id="pwChatFab" title="Chat">💬</div>
+<div class="pwchat-win" id="pwChatWin" aria-live="polite">
+  <div class="pwchat-head">
+    <span>PW Gulf Helpdesk</span>
+    <button type="button" id="pwChatClose" style="all:unset;cursor:pointer;font-weight:800;">✕</button>
+  </div>
+  <div class="pwchat-body" id="pwChatBody"></div>
+  <div class="pwchat-input">
+    <input id="pwChatInput" type="text" placeholder="Type here..." />
+    <button id="pwChatSend" type="button">Send</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  // ====== CONFIG: put your published KB CSV link here ======
+  const KB_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR5QUIu5Rgt60enJRY67cq-DgqaPGIG16GW8i3USMmp4CE9B7PsQ2L8mtzXO6-CqNXOncW7Cq0oJETw/pub?gid=1395295306&single=true&output=csv";
+  // We will reuse APPS_SCRIPT_URL and parseCSV from your main page (already defined globally)
+
+  // State
+  const chat = {
+    kb: [],                 // [{intent, category, phrases, answer_html, options, option_targets}]
+    map: new Map(),         // intent -> node
+    session: Date.now().toString(36) + "-" + Math.random().toString(36).slice(2,7),
+  };
+
+  // UI refs
+  const fab = document.getElementById('pwChatFab');
+  const win = document.getElementById('pwChatWin');
+  const body = document.getElementById('pwChatBody');
+  const input = document.getElementById('pwChatInput');
+  const sendBtn = document.getElementById('pwChatSend');
+  const closeBtn = document.getElementById('pwChatClose');
+
+  // Open/close
+  fab.onclick = () => { win.style.display = 'block'; input.focus(); if (!chat.kbLoaded) boot(); };
+  closeBtn.onclick = () => { win.style.display = 'none'; };
+
+  function scrollBottom(){ body.scrollTop = body.scrollHeight; }
+  function htmlSafe(s){ return (s||"").replace(/[&<>"]/g, c=>({ "&":"&amp;","<":"&lt;",">":"&gt;" }[c])); }
+
+  function addBot(html, options){
+    const wrap = document.createElement('div'); wrap.className = 'pwchat-msg bot';
+    const bubble = document.createElement('div'); bubble.className = 'pwchat-bubble'; bubble.innerHTML = html;
+    wrap.appendChild(bubble);
+    if (options && options.length){
+      const ops = document.createElement('div'); ops.className = 'pwchat-opts';
+      options.forEach(({label,target})=>{
+        const b = document.createElement('button'); b.textContent = label;
+        b.onclick = ()=> goIntent(target);
+        ops.appendChild(b);
+      });
+      wrap.appendChild(ops);
+    }
+    body.appendChild(wrap); scrollBottom();
+  }
+  function addUser(text){
+    const wrap = document.createElement('div'); wrap.className = 'pwchat-msg user';
+    const bubble = document.createElement('div'); bubble.className = 'pwchat-bubble'; bubble.textContent = text;
+    wrap.appendChild(bubble);
+    body.appendChild(wrap); scrollBottom();
+  }
+
+  // Load KB CSV
+  async function loadKB(){
+    const res = await fetch(KB_CSV_URL + (KB_CSV_URL.includes('?')?'&':'?') + '_=' + Date.now(), {cache:'no-store'});
+    const csv = await res.text();
+    const rows = (typeof parseCSV === 'function') ? parseCSV(csv) : fallbackParseCSV(csv);
+    const header = rows[0] || [];
+    const idx = (name) => header.findIndex(h => (h||'').toLowerCase().trim() === name);
+    const i_int = idx('intent'), i_cat = idx('category'), i_phr = idx('phrases'),
+          i_ans = idx('answer_html'), i_opt = idx('options'), i_tar = idx('option_targets');
+
+    chat.kb = rows.slice(1).map(r => ({
+      intent: (r[i_int]||'').trim(),
+      category: (r[i_cat]||'').trim(),
+      phrases: (r[i_phr]||'').trim(),
+      answer_html: (r[i_ans]||'').trim(),
+      options: (r[i_opt]||'').trim(),
+      option_targets: (r[i_tar]||'').trim()
+    })).filter(x => x.intent);
+
+    chat.map.clear();
+    chat.kb.forEach(x => chat.map.set(x.intent.toLowerCase(), x));
+    chat.kbLoaded = true;
+  }
+  function fallbackParseCSV(str){
+    const lines = str.trim().split(/\r?\n/);
+    return lines.map(l=>{
+      const out=[]; let cur=''; let q=false;
+      for(let i=0;i<l.length;i++){
+        const ch=l[i];
+        if(ch==='\"'){ q=!q; continue; }
+        if(ch===',' && !q){ out.push(cur); cur=''; continue; }
+        cur += ch;
+      }
+      out.push(cur);
+      return out.map(s=>s.trim());
+    });
+  }
+
+  // Router
+  function goIntent(key){
+    if (!key) return;
+    const k = String(key).trim().toLowerCase();
+    const node = chat.map.get(k);
+    if (!node){ addBot("Sorry, I didn't get that."); return; }
+    const opts = buildOptions(node);
+    addBot(node.answer_html || "…", opts);
+
+    // Special: open_form => open issue form panel focus
+    if (k === 'open_form'){
+      // Just scroll page to your main form
+      const form = document.getElementById('issueForm');
+      if (form) form.scrollIntoView({behavior:'smooth'});
+    }
+
+    // Rating intents -> log to feedback sheet
+    if (/^rate_[1-5]$/.test(k)) {
+      const rating = Number(k.split('_')[1]);
+      submitChatRating(rating).catch(console.warn);
+    }
+  }
+  function buildOptions(node){
+    const labels = (node.options || '').split(',').map(s=>s.trim()).filter(Boolean);
+    const targets= (node.option_targets || '').split(',').map(s=>s.trim()).filter(Boolean);
+    const out=[]; for(let i=0;i<labels.length;i++){ out.push({label: labels[i], target: targets[i] || ''}); }
+    return out;
+  }
+
+  // NL match
+  function detectIntent(text){
+    const t = (text||'').toLowerCase().trim();
+    if (!t) return null;
+
+    // fast path: thanks/resolved -> rate_thanks
+    if (/\b(thanks?|thank you|resolved|done|fine now)\b/i.test(text)) return 'rate_thanks';
+
+    for (const node of chat.kb){
+      const pats = (node.phrases||'').toLowerCase().split('|').map(s=>s.trim()).filter(Boolean);
+      if (pats.some(p => p && t.includes(p))) return node.intent;
+    }
+    return 'welcome';
+  }
+
+  // Rating POST to your Apps Script (Feedback)
+  async function submitChatRating(rating){
+    try{
+      const issueId = genChatIssueId();
+      const fd = new FormData();
+      fd.set('action','feedback');
+      fd.set('sheetName','Feedback');
+      fd.set('issueIdRate', issueId);
+      fd.set('rating', String(rating));
+      fd.set('ratingNote', 'Chat rating • session='+chat.session);
+      const res = await fetch(APPS_SCRIPT_URL, { method:'POST', body: fd });
+      const txt = await res.text();
+      console.log('Rating response:', txt);
+    }catch(err){ console.warn('Rating log failed', err); }
+  }
+  function genChatIssueId(){
+    const d=new Date(), pad=n=>String(n).padStart(2,'0');
+    return `CHAT-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}-${Math.floor(Math.random()*900+100)}`;
+  }
+
+  // Send handler
+  async function onSend(){
+    const q = input.value.trim();
+    if (!q) return;
+    addUser(q);
+    input.value = '';
+    const intent = detectIntent(q) || 'welcome';
+    goIntent(intent);
+  }
+  sendBtn.onclick = onSend;
+  input.addEventListener('keydown', e=>{ if (e.key==='Enter') onSend(); });
+
+  // Boot
+  async function boot(){
+    try{
+      addBot("Loading…");
+      await loadKB();
+      // open welcome
+      const welcome = chat.map.get('welcome');
+      if (welcome) addBot(welcome.answer_html, buildOptions(welcome));
+      else addBot("Welcome to <b>PW Gulf</b> 👋");
+    }catch(err){
+      console.error(err);
+      addBot("KB load failed. Please try again later.");
+    }
+  }
+})();
+</script>
+<!-- ====== /PW Gulf Chatbot ====== -->
+
+  
+</body>
+</html>
