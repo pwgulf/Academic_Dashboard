@@ -194,6 +194,31 @@
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+// draw value labels above each point
+const pointLabelPlugin = {
+  id: 'pointLabelPlugin',
+  afterDatasetsDraw(chart) {
+    const {ctx} = chart;
+    chart.data.datasets.forEach((dataset, i) => {
+      const meta = chart.getDatasetMeta(i);
+      meta.data.forEach((pt, idx) => {
+        const val = dataset.data[idx];
+        if (val == null || isNaN(val)) return;
+        ctx.save();
+        ctx.font = '12px system-ui, -apple-system, Segoe UI, Roboto, Arial';
+        ctx.fillStyle = '#111';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText(`${Math.round(val)}%`, pt.x, pt.y - 6);
+        ctx.restore();
+      });
+    });
+  }
+};
+Chart.register(pointLabelPlugin);
+</script>
+
 
 </head>
 <body>
@@ -981,23 +1006,62 @@ const findKeyLike = (headers, patterns) =>
   headers.find(h => patterns.some(rx => rx.test(h))) || "";
 
 // ---- Trend builders with fixed X/Y -----------------------------------
+
 function addLineChart(root, title, labels, data, sub=''){
-  if(!labels.length || !data.length) return;
+  const clean = (data || []).map(v => {
+    const n = Number(v);
+    if (!isFinite(n)) return null;
+    return Math.max(0, Math.min(100, Math.round(n * 100) / 100));
+  });
+
   const card = document.createElement('div');
   card.className = 'report-card';
   card.innerHTML = `<div class="report-title">${title}</div>${sub?`<div class="report-sub">${sub}</div>`:''}<div class="report-chart"><canvas></canvas></div>`;
   root.appendChild(card);
+
   const ctx = card.querySelector('canvas').getContext('2d');
   new Chart(ctx,{
     type:'line',
-    data:{labels,datasets:[{label:title,data:data.map(v=>fmtPct(v)),fill:false,tension:.25}]},
+    data:{
+      labels,
+      datasets:[{
+        label: title,
+        data: clean,
+        fill: false,
+        tension: 0.25,
+        pointRadius: 3,
+        pointHoverRadius: 4
+      }]
+    },
     options:{
-      responsive:true,maintainAspectRatio:false,
-      scales:{ y:{ ticks:{ callback:(v)=>`${v}%` } } },
-      plugins:{ legend:{display:false} }
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display:false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => `${ctx.parsed.y}%`
+          }
+        }
+      },
+      scales: {
+        y: {
+          min: 0,
+          max: 100,
+          ticks: {
+            stepSize: 10,
+            callback: (v) => `${v}%`
+          }
+        },
+        x: {
+          ticks: { autoSkip: true, maxTicksLimit: 12 }
+        }
+      }
     }
   });
 }
+
+
 
 // Attendance: Week vs Attendance %
 function buildAttendanceTrend(root){
