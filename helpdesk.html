@@ -565,15 +565,9 @@ resetBtn.addEventListener('click', ()=>{
 /* ---------- Dummy timeline logic (edit later) ---------- */
 function buildTimeline(type, code){
   const rules = {
-    "Tech": {sla:"30 min", steps:["Ticket created","Tech triage","Fix in progress","Resolved"]},
-    "Academic": {sla:"4 hrs", steps:["Academic mentor assigned","Doubt review","Solution shared","Closed"]},
-    "Fee Related": {sla:"24 hrs", steps:["Finance review","Verification","Resolution update","Closed"]},
-    "Support Related": {sla:"2 hrs", steps:["Support queue","Agent picked","Guided steps shared","Resolved"]},
-    "Portal Related": {sla:"3 hrs", steps:["Portal team check","Bug/Config","Patch applied","Closed"]},
-    "Teacher Related": {sla:"12 hrs", steps:["Escalate to HOD","Teacher response","Plan of action","Closed"]},
-    "Content Related": {sla:"8 hrs", steps:["QC check","Corrected material","Re-uploaded","Closed"]},
-    "Exam Related": {sla:"6 hrs", steps:["Exam team review","Admit/instructions fix","Notice shared","Closed"]},
-    "Syllabus Related": {sla:"12 hrs", steps:["Schedule check","Update plan","Notify student","Closed"]}
+   
+    "Portal Related": {sla:"3 hrs", steps:["Portal team check","Bug/Config","Patch applied","Closed"]}
+  
   };
   const r = rules[type] || {sla:"6 hrs", steps:["Queued","In Progress","Under Review","Closed"]};
   return `
