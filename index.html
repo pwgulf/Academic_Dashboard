@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>PW Gulf | Student Dashboard</title>
 
 <!-- DataTables + Papa Parse -->
@@ -11,442 +11,350 @@
 <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.8/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-<style>
-  :root{
-    --bg:#0b1020;           /* page background */
-    --bg-2:#0e1534;         /* secondary background */
-    --card:#121934;         /* card surface */
-    --card-2:#0f1630;       /* inner card surface */
-    --ink:#e6e9f2;          /* primary text */
-    --muted:#98a2b3;        /* secondary text */
-    --accent:#6ea8ff;       /* brand accent (electric blue) */
-    --accent2:#3c6fff;      /* deeper accent */
-    --ok:#22c55e;           /* success */
-    --warn:#f59e0b;         /* warning */
-    --danger:#ef4444;       /* error */
-    --line:rgba(255,255,255,.08); /* borders */
-    --shadow:0 12px 28px rgba(0,0,0,.45), 0 2px 8px rgba(0,0,0,.4);
-    --radius:14px;
-    --radius-sm:10px;
-    --radius-lg:18px;
-    --focus:0 0 0 2px rgba(110,168,255,.35), 0 0 0 6px rgba(110,168,255,.08);
-  }
-
-  *{ box-sizing:border-box }
-  html,body{ width:100% }
-  body{
-    margin:0;
-    color:var(--ink);
-    background:linear-gradient(180deg, #090e1b 0%, var(--bg) 100%);
-    font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    overflow-x:hidden;
-  }
-
-  /* ===== Header (sleek dark) ===== */
-  .site-header{
-    position:sticky; top:0; z-index:1000;
-    display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:12px;
-    padding:14px 18px;
-    color:#fff;
-    background:
-      radial-gradient(1200px 300px at 10% -40%, rgba(110,168,255,.20), transparent 60%),
-      radial-gradient(900px 300px at 90% -50%, rgba(60,111,255,.20), transparent 60%),
-      linear-gradient(180deg, rgba(20,28,58,.95), rgba(11,16,32,.90));
-    border-bottom:1px solid var(--line);
-    backdrop-filter: blur(8px);
-  }
-  .site-header .logo{
-    height:40px; width:auto; border-radius:8px;
-    box-shadow:0 0 0 2px rgba(255,255,255,.12);
-  }
-  .site-header h1{
-    margin:0; text-align:center; font-size:18px; letter-spacing:.3px; font-weight:800;
-    color:#eaf1ff; text-shadow:0 1px 0 rgba(0,0,0,.35);
-  }
-  .header-spacer{ width:40px }
-  @media(max-width:640px){
-    .site-header{ grid-template-columns:1fr; text-align:center }
-    .header-spacer{ display:none }
-    .site-header h1{ font-size:16px }
-    .site-header .logo{ justify-self:center }
-  }
-
-  /* ===== Global cards / panels ===== */
-  .wrap{ max-width:1250px; margin:0 auto; padding:16px }
-  .panel{
-    margin-top:12px; background:var(--card); border:1px solid var(--line);
-    border-radius:var(--radius); padding:14px; box-shadow:var(--shadow);
-  }
-
-  /* ===== Tabs ===== */
-  .tabs{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center }
-  .tab-btn{
-    background:var(--card-2); border:1px solid var(--line); color:var(--ink);
-    padding:10px 14px; border-radius:var(--radius-sm); cursor:pointer; font-weight:700;
-    transition: transform .15s ease, box-shadow .2s ease, background .25s ease, color .25s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,.25) inset;
-  }
-  .tab-btn:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.35) }
-  .tab-btn.active{
-    background:linear-gradient(180deg, #16204c, #0e1534);
-    color:#eaf1ff; border-color:transparent; outline:2px solid var(--accent);
-    text-shadow:0 1px 0 rgba(0,0,0,.35);
-  }
-
-  /* ===== KPI cards ===== */
-  .kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:10px 0 16px }
-  .kpi{
-    background:var(--card-2); border:1px solid var(--line); border-radius:var(--radius); padding:14px;
-    box-shadow:var(--shadow);
-    transition: transform .18s ease, box-shadow .25s ease;
-  }
-  .kpi:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(0,0,0,.5) }
-  .kpi-label{ font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em }
-  .kpi-value{ font-size:26px; font-weight:800; line-height:1.1; margin-top:4px }
-  .kpi.accent{ border-left:4px solid var(--accent) }
-  .kpi.ok{ border-left:4px solid var(--ok) }
-  .kpi.warn{ border-left:4px solid var(--warn) }
-  .kpi.danger{ border-left:4px solid var(--danger) }
-  @media(max-width:1000px){ .kpis{ grid-template-columns:repeat(2,1fr) } }
-  @media(max-width:560px){ .kpis{ grid-template-columns:1fr } }
-
-  /* ===== Controls ===== */
-  .controls{
-    display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:10px; justify-content:space-between
-  }
-  .controls-left{ display:flex; gap:8px; flex-wrap:wrap; align-items:center }
-  .controls select, .controls input{
-    padding:9px 12px; border:1px solid var(--line); border-radius:10px;
-    background:#0e1534; color:var(--ink); box-shadow:inset 0 2px 8px rgba(0,0,0,.25);
-    outline:none; transition: box-shadow .2s ease, border-color .2s ease;
-  }
-  .controls select:focus, .controls input:focus{ box-shadow:var(--focus); border-color:rgba(110,168,255,.45) }
-  .controls button{
-    border:0; border-radius:12px; padding:9px 14px; background:linear-gradient(180deg, #1b2b6d, #0f1a4b);
-    color:#eaf1ff; font-weight:800; cursor:pointer; letter-spacing:.2px;
-    box-shadow:0 10px 22px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
-    transition: transform .12s ease, filter .2s ease;
-  }
-  .controls button:hover{ transform:translateY(-1px); filter:brightness(1.08) }
-  .controls .secondary{
-    background:#10204a; color:#dbe7ff; border:1px solid var(--line);
-  }
-  .help{ font-size:12px; color:var(--muted) }
-
-  /* ===== Generic card wrapper (tables, charts) ===== */
-  .card{
-    background:var(--card-2);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:10px;
-    box-shadow:var(--shadow);
-    overflow-x:auto;
-  }
-
-  /* Scrollbars (dark) */
-  .card::-webkit-scrollbar{ height:8px }
-  .card::-webkit-scrollbar-thumb{ background:#2a335a; border-radius:4px }
-  .card::-webkit-scrollbar-thumb:hover{ background:#35407a }
-  .card::-webkit-scrollbar-track{ background:#0d1330 }
-
-  /* ===== Multi-select dropdowns ===== */
-  .multi{ position:relative; display:inline-block }
-  .multi > button{
-    border:1px solid var(--line); background:#0f1630; color:var(--ink);
-    border-radius:10px; padding:8px 12px; cursor:pointer; font-weight:700;
-    display:flex; align-items:center; gap:6px; transition: box-shadow .2s, background .2s;
-    box-shadow:inset 0 2px 8px rgba(0,0,0,.25);
-  }
-  .multi > button:hover{ background:#121b3f }
-  .multi.open > button{ outline:2px solid var(--accent); box-shadow:var(--focus) }
-  .multi .panel{
-    position:absolute; z-index:50; top:110%; left:0; min-width:240px;
-    background:var(--card); border:1px solid var(--line); border-radius:12px;
-    box-shadow:0 16px 36px rgba(0,0,0,.5); padding:10px; display:none; max-height:300px; overflow:auto;
-  }
-  .multi.open .panel{ display:block; animation: fadeIn .12s ease }
-  .multi .search{
-    width:100%; padding:8px 10px; border:1px solid var(--line); border-radius:8px;
-    background:#0e1534; color:var(--ink); margin-bottom:8px;
-  }
-  .multi .opt{
-    display:flex; align-items:center; gap:8px; padding:6px 6px; border-radius:8px; cursor:pointer; color:#e4e8ff;
-  }
-  .multi .opt:hover{ background:#131c42 }
-  .multi .badge{ display:inline-flex; gap:6px; align-items:center; margin-left:auto; font-size:12px; color:#var(--muted) }
-
-  @keyframes fadeIn{ from{opacity:0; transform:translateY(-2px)} to{opacity:1; transform:translateY(0)} }
-
-  /* ===== DataTables (dark skin) ===== */
-  .dataTables_wrapper{ min-width:900px; color:var(--ink) }
-  table.dataTable{
-    border-collapse:collapse !important;
-    width:max-content !important;
-    min-width:900px;
-    background:transparent !important;
-  }
-  table.dataTable thead th{
-    background:#121b3f; color:#dbe7ff;
-    border:1px solid var(--line);
-  }
-  table.dataTable th, table.dataTable td{
-    border:1px solid var(--line);
-    padding:10px 12px; font-size:14px; text-align:center; vertical-align:middle; white-space:nowrap;
-    background:transparent;
-    color:var(--ink);
-  }
-  table.dataTable tbody tr:hover{ background:#0f173a }
-  .dataTables_wrapper .dataTables_filter input{
-    background:#0e1534; color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:6px 8px;
-    box-shadow:inset 0 2px 8px rgba(0,0,0,.25);
-  }
-  .dataTables_wrapper .dataTables_paginate .paginate_button{
-    color:#cfe2ff !important; border:1px solid var(--line) !important; background:#10193f !important;
-    border-radius:8px !important; margin:0 2px !important;
-  }
-  .dataTables_wrapper .dataTables_paginate .paginate_button.current{
-    background:linear-gradient(180deg,#1a275c,#10193f) !important; color:#fff !important; border-color:transparent !important;
-    outline:2px solid rgba(110,168,255,.25);
-  }
-
-  /* ===== Helpdesk (dark) ===== */
-  .helpdesk-btn{
-    margin-left:10px; padding:10px 14px; border:0; border-radius:12px;
-    background:linear-gradient(180deg, #1b2b6d, #0f1a4b);
-    color:#eaf1ff; font-weight:800; cursor:pointer; letter-spacing:.2px;
-    box-shadow:0 10px 22px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.06);
-    transition: transform .12s ease, filter .2s ease;
-  }
-  .helpdesk-btn:hover{ transform:translateY(-1px); filter:brightness(1.08) }
-
-  #helpdeskPanel{ position:fixed; inset:0; z-index:9998; display:none }
-  #helpdeskBackdrop{ position:absolute; inset:0; background:rgba(0,0,0,.55); backdrop-filter: blur(4px) }
-  #helpdeskCard{
-    position:absolute; right:0; top:0; height:100%; width:min(920px,96vw);
-    background:var(--card); border-left:1px solid var(--line); box-shadow:-18px 0 40px rgba(0,0,0,.55);
-    display:flex; flex-direction:column; animation:slideIn .24s ease forwards;
-  }
-  #helpdeskHead{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:12px 16px;
-    background:linear-gradient(90deg, #1e2b63, #21307a, #1a2558);
-    color:#fff; font-weight:800; border-bottom:1px solid var(--line);
-  }
-  #helpdeskClose{ all:unset; cursor:pointer; font-weight:900; font-size:18px; color:#fff }
-  #helpdeskClose:hover{ color:#ffb4b4 }
-  #helpdeskFrame{ flex:1; width:100%; border:0; background:var(--card-2) }
-
-  @keyframes slideIn{
-    from{ transform:translateX(100%); opacity:.8 }
-    to{ transform:translateX(0); opacity:1 }
-  }
-
-  /* ===== Report slide-over (BLUE & WHITE variant — structure unchanged) ===== */
-  #reportPanel{ position:fixed; inset:0; z-index:9999; display:none; }
-  #reportBackdrop{
-    position:absolute; inset:0;
-    background:rgba(0,0,0,.40); backdrop-filter: blur(3px);
-  }
-  #reportCard{
-    position:absolute; right:0; top:0; height:100%; width:min(980px,96vw);
-    background:#ffffff;                               /* white surface */
-    border-left:1px solid #d0d7e3;
-    box-shadow:-18px 0 40px rgba(0,0,0,.25);
-    display:flex; flex-direction:column;
-  }
-  #reportHead{
-    display:flex; align-items:center; gap:10px; justify-content:space-between;
-    padding:12px 16px; color:#fff; font-weight:800;
-    background:linear-gradient(90deg,#004aad,#1976ff,#004aad); /* stylish blue block */
-    border-bottom:1px solid rgba(255,255,255,.15);
-  }
-  #reportClose{ all:unset; cursor:pointer; font-weight:900; font-size:18px; color:#fff }
-  #reportClose:hover{ color:#ffe2e2 }
-
-  .report-actions button{
-    margin-left:8px; border:1px solid #1976ff; border-radius:10px;
-    padding:8px 12px; background:#ffffff; color:#1976ff; font-weight:700; cursor:pointer;
-    transition:all .15s ease;
-  }
-  .report-actions button:hover{ background:#1976ff; color:#fff }
-  .report-actions button.secondary{ background:#eef4ff; color:#0f2b7a; border-color:#bcd2ff }
-
-  #reportBody{
-    flex:1; overflow:auto; padding:14px;
-    background:#f5f8ff;               /* light blue canvas */
-    color:#1a1a1a;
-  }
-  .report-card{
-    background:#ffffff;
-    border:1px solid #dce5f5;
-    border-radius:12px; padding:12px; margin-bottom:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,.05);
-  }
-  .report-title{ font-weight:800; font-size:18px; color:#004aad }
-  .report-sub{ color:#64748b; font-size:13px; margin-top:2px }
-  .report-empty{
-    color:#6077a3; padding:18px; border:1px dashed #c9d7f2;
-    border-radius:10px; background:#f8fbff;
-  }
-
-  /* tables (blue header, zebra rows) */
-  .report-table{ width:100%; border-collapse:collapse }
-  .report-table thead th{
-    background:#1976ff; color:#ffffff;
-    border:1px solid #d0d7e3;
-    padding:8px 10px; font-size:13px; text-align:center; white-space:nowrap;
-  }
-  .report-table td{
-    border:1px solid #d0d7e3;
-    padding:8px 10px; font-size:13px; text-align:center; white-space:nowrap;
-    color:#1a1a1a; background:#ffffff;
-  }
-  .report-table tbody tr:nth-child(even){ background:#f0f5ff }
-  .report-table tbody tr:hover{ background:#e6f0ff }
-
-  /* chart holder */
-  .report-chart{ height:260px }
-  .report-chart canvas{ background:transparent }
-
-  /* light scrollbar for report body */
-  #reportBody::-webkit-scrollbar{ width:10px }
-  #reportBody::-webkit-scrollbar-thumb{ background:#c4d4f7; border-radius:8px }
-  #reportBody::-webkit-scrollbar-thumb:hover{ background:#9bbcf4 }
-
-  /* ===== Utility focus/active states ===== */
-  button:focus-visible, .tab-btn:focus-visible, .helpdesk-btn:focus-visible,
-  .controls select:focus-visible, .controls input:focus-visible,
-  .multi > button:focus-visible{
-    outline:none; box-shadow:var(--focus);
-  }
-
-  /* === Gate (Load your data) — login-style modal === */
-  #gate{
-    position:fixed; inset:0; z-index:1100;
-    display:flex; align-items:center; justify-content:center;
-    background:rgba(15,23,42,.55);
-    backdrop-filter:blur(6px);
-    animation:gate-fade .18s ease;
-  }
-  .gate-card{
-    width:min(720px,94vw);
-    background:#ffffff; color:#0f172a;
-    border:1px solid #e5e7eb; border-radius:16px;
-    box-shadow:0 24px 64px rgba(0,0,0,.25);
-    padding:0; animation:gate-pop .22s ease;
-  }
-  .gate-card h2{
-    margin:0; padding:16px 18px; font-size:18px; font-weight:800; color:#0f172a;
-    border-bottom:1px solid #e5e7eb;
-  }
-  .gate-card p{ margin:10px 18px 14px 18px; color:#6b7280; font-size:13px }
-  .gate-grid{ display:grid; grid-template-columns:1fr 260px; gap:12px; padding:0 18px 6px 18px }
-  @media(max-width:640px){ .gate-grid{ grid-template-columns:1fr } }
-  .gate-row input, .gate-row select{
-    width:100%; padding:10px 12px; border:1px solid #e5e7eb; border-radius:10px;
-    background:#fff; color:#0f172a; outline:none; transition:border-color .2s, box-shadow .2s;
-    box-shadow:inset 0 2px 6px rgba(0,0,0,.04);
-  }
-  .gate-row input::placeholder{ color:#9aa3af }
-  .gate-row input:focus, .gate-row select:focus{ border-color:#93c5fd; box-shadow:0 0 0 3px rgba(37,99,235,.15) }
-  .suggest{ margin:6px 18px 0 18px; border:1px solid #e5e7eb; border-radius:10px; max-height:180px; overflow:auto; background:#fff; box-shadow:0 10px 24px rgba(0,0,0,.08) }
-  .suggest .item{ padding:8px 10px; cursor:pointer }
-  .suggest .item:hover{ background:#f3f4f6 }
-  .gate-err{ display:none; color:#b91c1c; font-size:12px; margin:6px 18px 0 18px }
-  .gate-actions{
-    display:flex; justify-content:flex-end; gap:10px;
-    padding:12px 18px; margin-top:12px; border-top:1px solid #e5e7eb; background:#f8fafc;
-    border-bottom-left-radius:16px; border-bottom-right-radius:16px;
-  }
-  .gate-actions button{
-    border:0; border-radius:12px; padding:10px 14px; font-weight:700; cursor:pointer;
-    background:linear-gradient(180deg, #1b2b6d, #0f1a4b); color:#eaf1ff;
-    box-shadow:0 10px 22px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.06);
-    transition:transform .12s, filter .2s;
-  }
-  .gate-actions button:hover{ transform:translateY(-1px); filter:brightness(1.06) }
-
-  /* Animations */
-  @keyframes gate-pop{from{transform:translateY(6px) scale(.98);opacity:0}to{transform:none;opacity:1}}
-  @keyframes gate-fade{from{opacity:0}to{opacity:1}}
-</style>
-
-<!-- Reports: html2canvas + jsPDF + Chart.js -->
+<!-- Reports + Charts -->
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+<style>
+:root{
+  --bg:#070a13; --bg-2:#0a0f1f;         /* page blacks */
+  --card:#0d1328; --card-2:#0b1124;      /* panel blacks */
+  --ink:#f2f6ff; --ink-dim:#d4defa;      /* white text */
+  --muted:#9fb0cf;                       /* soft labels */
+  --line:rgba(255,255,255,.10);          /* borders */
+
+  --blue:#1e6cff; --blue-2:#0d3fb1;      /* brand blue */
+  --blue-3:#4aa3ff;                      /* lighter blue */
+  --ok:#10e36d; --warn:#fbbf24; --danger:#ef4444;
+
+  --radius:14px; --radius-sm:10px; --radius-lg:18px;
+  --shadow-lg:0 24px 60px rgba(0,0,0,.55), 0 6px 20px rgba(0,0,0,.45);
+  --shadow:0 14px 32px rgba(0,0,0,.45), 0 2px 10px rgba(0,0,0,.35);
+  --inset:inset 0 2px 8px rgba(0,0,0,.28);
+  --focus:0 0 0 2px rgba(30,108,255,.35), 0 0 0 6px rgba(30,108,255,.12);
+
+  --container-w:min(1380px,96vw);
+}
+
+/* full-page */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;color:var(--ink);
+  background:
+    radial-gradient(1200px 350px at 10% -20%,rgba(30,108,255,.10),transparent 60%),
+    linear-gradient(180deg,var(--bg-2),var(--bg) 70%);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+/* header */
+.site-header{
+  position:sticky;top:0;z-index:1000;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;
+  padding:14px 18px;background:linear-gradient(180deg,#0a1022,rgba(10,16,34,.9));
+  border-bottom:1px solid var(--line);backdrop-filter:blur(8px);color:#fff
+}
+.site-header .logo{height:40px;border-radius:8px;box-shadow:0 0 0 2px rgba(255,255,255,.10)}
+.site-header h1{margin:0;text-align:center;font-size:18px;font-weight:800;color:#eaf1ff}
+.header-spacer{width:40px}
+@media(max-width:640px){.site-header{grid-template-columns:1fr}.header-spacer{display:none}}
+
+/* container */
+.wrap{width:var(--container-w);margin:0 auto;padding:16px 0 24px;min-height:calc(100vh - 68px);display:flex;flex-direction:column;gap:12px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow-lg)}
+
+/* tabs */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.tab-btn{
+  background:linear-gradient(180deg,#0f1c42,#0b1430);border:1px solid var(--line);color:var(--ink);
+  padding:10px 14px;border-radius:var(--radius-sm);cursor:pointer;font-weight:800;letter-spacing:.2px;
+  box-shadow:var(--inset),0 10px 20px rgba(0,0,0,.28);transition:.12s
+}
+.tab-btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+.tab-btn.active{background:linear-gradient(180deg,#11307a,#0e1c50);outline:2px solid rgba(30,108,255,.35);border-color:transparent;color:#fff}
+
+/* controls / filters */
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px;justify-content:space-between}
+.controls-left{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.controls select,.controls input{
+  padding:10px 12px;border:1px solid rgba(255,255,255,.12);border-radius:12px;
+  background:linear-gradient(180deg,#0e1733,#0b132b);color:var(--ink);
+  box-shadow:var(--inset);outline:none;transition:.2s
+}
+.controls select:focus,.controls input:focus{box-shadow:var(--focus);border-color:rgba(30,108,255,.45)}
+.controls button{
+  border:0;border-radius:12px;padding:10px 14px;
+  background:linear-gradient(180deg,#143b90,#0e214f);color:#fff;font-weight:800;cursor:pointer;letter-spacing:.2px;
+  box-shadow:0 12px 24px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);transition:.12s
+}
+.controls button:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.controls .secondary{background:#101b3c;color:#dbe7ff;border:1px solid var(--line)}
+.help{font-size:12px;color:var(--muted)}
+
+/* layout with leaderboard card */
+.row2{display:grid;grid-template-columns:340px 1fr;gap:12px;align-items:start}
+@media(max-width:1100px){.row2{grid-template-columns:1fr}}
+.card{background:var(--card-2);border:1px solid var(--line);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);overflow:auto}
+.card .card-title{font-weight:900;margin:2px 0 10px;letter-spacing:.2px}
+
+/* KPI — animated fill + shimmer */
+.kpis{display:grid;gap:12px;margin:10px 0 16px;grid-template-columns:repeat(4,1fr)}
+@media(max-width:1200px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.kpis{grid-template-columns:1fr}}
+
+.kpi{
+  position:relative;min-height:118px;
+  background:linear-gradient(180deg,#0e1a3b 0%, #0b132a 100%);
+  border:1px solid var(--line);border-radius:var(--radius);padding:16px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between
+}
+/* subtle glow strip at top */
+.kpi:before{
+  content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(74,163,255,.5),transparent)
+}
+.kpi-label{font-size:12px;color:#b6c6e9;text-transform:uppercase;letter-spacing:.08em}
+.kpi-value{font-size:30px;font-weight:900;line-height:1.1;margin-top:4px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.kpi .bar{
+  --pct:0%;
+  margin-top:10px;height:12px;border-radius:9px;background:#0a1024;overflow:hidden;border:1px solid rgba(255,255,255,.10);position:relative
+}
+.kpi .bar>span{
+  display:block;height:100%;width:var(--pct);
+  background:linear-gradient(90deg,var(--blue-2),var(--blue),var(--blue-3));
+  box-shadow:0 0 18px rgba(30,108,255,.35);
+  transition:width .5s ease;
+}
+/* moving shimmer over the fill */
+.kpi .bar::after{
+  content:"";position:absolute;top:0;left:-40%;
+  width:40%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+  animation:shine 2.2s infinite ease;
+}
+@keyframes shine{0%{left:-40%}100%{left:120%}}
+.kpi .bar-txt{margin-top:6px;font-size:12px;color:#cfe0ff}
+
+/* Leaderboard / tables — blue header, black body */
+#attTopWrap .card,#objTopWrap .card,#subTopWrap .card{
+  background:linear-gradient(180deg,#0f1836 0%, #0b132b 100%);border:1px solid var(--line)
+}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th,.tbl td{
+  border:1px solid var(--line);padding:10px 12px;font-size:14px;text-align:center;white-space:nowrap;background:transparent;color:var(--ink)
+}
+.tbl thead th{background:#11225a;color:#e6f0ff;font-weight:800}
+.tbl tbody tr:hover{background:#0f1736}
+.you-row{font-weight:900;color:#fff;background:#0e234f}
+
+/* DataTables (match tables) */
+.dataTables_wrapper{min-width:100%;color:var(--ink)}
+table.dataTable{border-collapse:collapse!important;width:100%!important;background:transparent!important}
+table.dataTable thead th{background:#11225a;color:#e6f0ff;border:1px solid var(--line)}
+table.dataTable th,table.dataTable td{border:1px solid var(--line);padding:10px 12px;font-size:14px;text-align:center;vertical-align:middle;white-space:nowrap;background:transparent;color:var(--ink)}
+table.dataTable tbody tr:hover{background:#0f1736}
+.dataTables_wrapper .dataTables_filter input{background:#0e1534;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 8px;box-shadow:var(--inset)}
+.dataTables_wrapper .dataTables_paginate .paginate_button{color:#cfe2ff!important;border:1px solid var(--line)!important;background:#10193f!important;border-radius:8px!important;margin:0 2px!important}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current{background:linear-gradient(180deg,#1a275c,#10193f)!important;color:#fff!important;border-color:transparent!important;outline:2px solid rgba(30,108,255,.25)}
+
+/* buttons unified */
+.min-btn,.helpdesk-btn,.report-actions button{
+  border:0;border-radius:12px;padding:9px 14px;font-weight:800;cursor:pointer;
+  background:linear-gradient(180deg,#143b90,#0e214f);color:#fff;
+  box-shadow:0 12px 24px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
+  transition:.12s
+}
+.min-btn:hover,.helpdesk-btn:hover,.report-actions button:hover{transform:translateY(-1px);filter:brightness(1.08)}
+
+/* helpdesk drawer */
+#helpdeskPanel{position:fixed;inset:0;z-index:9998;display:none}
+#helpdeskBackdrop{position:absolute;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px)}
+#helpdeskCard{position:absolute;right:0;top:0;height:100%;width:min(920px,96vw);background:var(--card);border-left:1px solid var(--line);box-shadow:-18px 0 40px rgba(0,0,0,.55);display:flex;flex-direction:column;animation:slideIn .24s ease forwards}
+#helpdeskHead{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:linear-gradient(90deg,#173a8b,#1e6cff,#173a8b);color:#fff;font-weight:800;border-bottom:1px solid var(--line)}
+#helpdeskClose{all:unset;cursor:pointer;font-weight:900;font-size:18px;color:#fff}
+#helpdeskClose:hover{color:#ffb4b4}
+#helpdeskFrame{flex:1;width:100%;border:0;background:var(--card-2)}
+@keyframes slideIn{from{transform:translateX(100%);opacity:.8}to{transform:translateX(0);opacity:1}}
+
+/* report modal – dark mode to sit on black */
+#reportPanel{position:fixed;inset:0;z-index:9999;display:none}
+#reportBackdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px)}
+#reportCard{position:absolute;inset:0;display:flex;flex-direction:column;background:#0a0f1f}
+#reportHead{display:flex;align-items:center;gap:10px;justify-content:space-between;padding:12px 16px;background:linear-gradient(90deg,#173a8b,#1e6cff,#173a8b);color:#fff;font-weight:800}
+#reportClose{all:unset;cursor:pointer;font-weight:900;font-size:18px;color:#fff}
+#reportClose:hover{color:#ffe2e2}
+#reportBody{flex:1;overflow:auto;padding:14px;color:#eaf1ff}
+.report-card{background:#0d152e;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px;box-shadow:var(--shadow)}
+.report-title{font-weight:800;font-size:18px;color:#cfe2ff;display:flex;align-items:center;justify-content:space-between}
+.report-sub{color:#9fb0cf;font-size:13px;margin-top:2px}
+.report-empty{color:#cfe2ff;padding:18px;border:1px dashed rgba(255,255,255,.22);border-radius:10px;background:#0e1534}
+.report-chart{height:260px}
+.report-table{width:100%;border-collapse:collapse}
+.report-table thead th{background:#0f1433;color:#fff;border:1px solid var(--line);padding:8px 10px;font-size:13px;text-align:center;white-space:nowrap}
+.report-table td{border:1px solid var(--line);padding:8px 10px;font-size:13px;text-align:center;white-space:nowrap;color:#eaf1ff;background:#0d152e}
+.report-table tbody tr:nth-child(even){background:#0f1736}
+
+/* gate (login) stays light for readability */
+#gate{position:fixed;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.55);backdrop-filter:blur(6px)}
+.gate-card{width:min(720px,94vw);background:#fff;color:#0f172a;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,.25);padding:0}
+.gate-card h2{margin:0;padding:16px 18px;font-size:18px;font-weight:800;color:#0f172a;border-bottom:1px solid #e5e7eb}
+.gate-card p{margin:10px 18px 14px 18px;color:#6b7280;font-size:13px}
+.gate-grid{display:grid;grid-template-columns:1fr 260px;gap:12px;padding:0 18px 6px 18px}
+@media(max-width:640px){.gate-grid{grid-template-columns:1fr}}
+.gate-row input,.gate-row select{width:100%;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;color:#0f172a;outline:none;transition:.2s;box-shadow:inset 0 2px 6px rgba(0,0,0,.04)}
+.gate-row input::placeholder{color:#9aa3af}
+.gate-row input:focus,.gate-row select:focus{border-color:#93c5fd;box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.suggest{margin:6px 18px 0 18px;border:1px solid #e5e7eb;border-radius:10px;max-height:180px;overflow:auto;background:#fff;box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.suggest .item{padding:8px 10px;cursor:pointer}.suggest .item:hover{background:#f3f4f6}
+.gate-err{display:none;color:#b91c1c;font-size:12px;margin:6px 18px 0 18px}
+.gate-actions{display:flex;justify-content:flex-end;gap:10px;padding:12px 18px;margin-top:12px;border-top:1px solid #e5e7eb;background:#f8fafc;border-bottom-left-radius:16px;border-bottom-right-radius:16px}
+.gate-actions button{border:0;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;background:linear-gradient(180deg,#143b90,#0e214f);color:#eaf1ff;box-shadow:0 10px 22px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.06);transition:.12s}
+.gate-actions button:hover{transform:translateY(-1px);filter:brightness(1.06)}
+</style>
+
+
+
 <script>
-// draw value labels above each point
+/* ===== Chart.js: Blue line, black text, WHITE chart bg ===== */
+const BLUE = '#1976ff', GRID = '#d9dee7', AXIS = '#000', LABEL = '#000';
+
+/* 1) Value labels on points (unchanged) */
 const pointLabelPlugin = {
   id: 'pointLabelPlugin',
   afterDatasetsDraw(chart) {
-    const {ctx} = chart;
-    chart.data.datasets.forEach((dataset, i) => {
-      const meta = chart.getDatasetMeta(i);
+    const { ctx } = chart;
+    chart.data.datasets.forEach((ds, di) => {
+      const meta = chart.getDatasetMeta(di);
       meta.data.forEach((pt, idx) => {
-        const val = dataset.data[idx];
-        if (val == null || isNaN(val)) return;
+        const v = ds.data[idx];
+        if (v == null || isNaN(v)) return;
         ctx.save();
-        ctx.font = '12px system-ui, -apple-system, Segoe UI, Roboto, Arial';
-        ctx.fillStyle = '#111';
+        ctx.font = '12px system-ui,-apple-system,Segoe UI,Roboto,Arial';
+        ctx.fillStyle = LABEL;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
-        ctx.fillText(`${Math.round(val)}%`, pt.x, pt.y - 6);
+        ctx.fillText(`${Math.round(v)}%`, pt.x, pt.y - 6);
         ctx.restore();
       });
     });
   }
 };
-Chart.register(pointLabelPlugin);
+
+/* 2) White chart background (only chart area) */
+/* 2) White chart background (ENTIRE canvas) */
+const fullWhiteBgPlugin = {
+  id: 'fullWhiteBg',
+  beforeDraw(chart) {
+    const { ctx, canvas } = chart;
+    ctx.save();
+    // paint behind everything (title/axes/padding included)
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+  }
+};
+
+/* 3) Thick mid-line at y = 100% (center guide) */
+const midline100Plugin = {
+  id: 'midline100Plugin',
+  afterDraw(chart) {
+    const y = chart.scales.y;
+    const ca = chart.chartArea;
+    if (!y || !ca) return;
+    const yPixel = y.getPixelForValue(100);
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.strokeStyle = '#1976ff';   // blue line
+    ctx.lineWidth = 2.5;
+    ctx.setLineDash([6, 4]);       // dashed; remove if you want solid
+    ctx.beginPath();
+    ctx.moveTo(ca.left, yPixel);
+    ctx.lineTo(ca.right, yPixel);
+    ctx.stroke();
+    ctx.restore();
+  }
+};
+
+Chart.register(pointLabelPlugin, fullWhiteBgPlugin, midline100Plugin);
+
+
+/* Base options with headroom + no clipping */
+const BASE_LINE_OPTS = {
+  responsive: true,
+  maintainAspectRatio: false,
+  layout: { padding: { top: 24 } },   // space so labels/line never cut
+  plugins: {
+    legend: { display: false },
+    tooltip: { callbacks: { label: (c) => `${c.parsed.y}%` } }
+  },
+ scales: {
+  y: {
+    min: -20,       // below 0 for headroom
+    max: 120,       // above 100 for headroom
+    grid: { color: '#d9dee7' },
+    ticks: {
+      color: '#000',
+      stepSize: 20,
+      callback: (v) => `${v}%`
+    }
+  },
+  x: {
+    grid: { color: '#d9dee7' },
+    ticks: { color: '#000', autoSkip: true, maxTicksLimit: 12 }
+  }
+}
+,
+  elements: {
+    line: { borderColor: BLUE, borderWidth: 2 },
+    point: { radius: 3, hoverRadius: 4, backgroundColor: BLUE, borderColor: BLUE }
+  },
+  datasets: {
+    line: { clip: false }            // ensure the line won't be clipped
+  }
+};
+
+/* Example usage:
+new Chart(ctx, {
+  type: 'line',
+  data: { labels, datasets: [{ data: values, fill: false, borderColor: BLUE, tension: 0.35 }] },
+  options: BASE_LINE_OPTS
+});
+*/
 </script>
 
 
 </head>
 <body>
-
 <header class="site-header">
-  <img class="logo" src="data:image/png;base64,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" alt="PW Gulf Logo" />
+  <img class="logo" alt="PW Gulf Logo" src="data:image/png;base64,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">
   <h1>PW Gulf — Student Performance Dashboard</h1>
   <div class="header-spacer"></div>
 </header>
 
-<!-- Gate: Student Name + Grade -->
+<!-- Gate -->
 <div id="gate" class="gate-backdrop" aria-modal="true" role="dialog">
   <div class="gate-card">
     <h2>Load your data</h2>
     <p>Enter <b>Student Name</b> and <b>Grade</b>.</p>
-
     <div class="gate-grid">
-      <div class="gate-row">
-        <input id="gateName" type="text" placeholder="Student Name" autocomplete="off" />
-      </div>
-      <div class="gate-row">
-        <select id="gateGrade">
-          <option value="">Select Grade</option>
-        </select>
-      </div>
+      <div class="gate-row"><input id="gateName" type="text" placeholder="Student Name" autocomplete="off"/></div>
+      <div class="gate-row"><select id="gateGrade"><option value="">Select Grade</option></select></div>
     </div>
-
     <div id="nameSuggest" class="suggest" style="display:none"></div>
     <div id="gateErr" class="gate-err">Validation message</div>
-
-    <div class="gate-actions">
-      <button id="gateBtn" type="button">Load Data</button>
-    </div>
+    <div class="gate-actions"><button id="gateBtn" type="button">Load Data</button></div>
   </div>
 </div>
 
 <div class="wrap">
-
-  <!-- Tabs -->
   <div class="tabs">
     <button class="tab-btn active" data-tab="attendance">Attendance</button>
     <button class="tab-btn" data-tab="objective">Objective Tests</button>
     <button class="tab-btn" data-tab="subjective">Subjective Tests</button>
     <button class="helpdesk-btn" id="helpdeskOpen" type="button">Helpdesk</button>
     <button id="openReport" class="secondary" type="button">Report Preview</button>
-
-    
   </div>
 
   <!-- ATTENDANCE -->
@@ -459,19 +367,23 @@ Chart.register(pointLabelPlugin);
       </div>
       <div class="controls-left">
         <button id="refreshAttendance" class="secondary" type="button">Refresh</button>
-        <span class="help">KPIs use Total Present & Total Classes columns.</span>
+        <span class="help">KPIs use Total Present & Total Classes.</span>
       </div>
     </div>
 
     <div class="kpis">
-      <div class="kpi accent"><div class="kpi-label">Total Students (Unique)</div><div id="attTotalStudents" class="kpi-value">0</div></div>
-      <div class="kpi ok"><div class="kpi-label">Present </div><div id="attPresentPct" class="kpi-value">0</div></div>
-      <div class="kpi warn"><div class="kpi-label">Absent </div><div id="attAbsentPct" class="kpi-value">0</div></div>
-      <div class="kpi accent"><div class="kpi-label">Attendance %</div><div id="attAttendancePct" class="kpi-value">0%</div></div>
+      <div class="kpi"><div class="kpi-label">Total Students</div><div id="attTotalStudents" class="kpi-value">0</div></div>
+      <div class="kpi"><div class="kpi-label">Present</div><div id="attPresentPct" class="kpi-value">0</div><div class="bar"><span id="attPresentBar"></span></div><div id="attPresentTxt" class="bar-txt">0</div></div>
+      <div class="kpi"><div class="kpi-label">Absent</div><div id="attAbsentPct" class="kpi-value">0</div><div class="bar"><span id="attAbsentBar"></span></div><div id="attAbsentTxt" class="bar-txt">0</div></div>
+      <div class="kpi"><div class="kpi-label">Attendance %</div><div id="attAttendancePct" class="kpi-value">0%</div><div class="bar"><span id="attPctBar"></span></div><div id="attPctTxt" class="bar-txt">0%</div></div>
     </div>
 
-    <div class="card">
-      <table id="attendanceTable" class="display"></table>
+    <div class="row2">
+      <div class="card" id="attTopCol">
+        <div class="card-title">Grade Leaderboard <button class="min-btn" data-min="#attTopWrap">–</button></div>
+        <div id="attTopWrap"></div>
+      </div>
+      <div class="card"><table id="attendanceTable" class="display"></table></div>
     </div>
   </section>
 
@@ -482,23 +394,25 @@ Chart.register(pointLabelPlugin);
         <div id="objFilterGrade" class="multi"></div>
         <div id="objFilterSection" class="multi"></div>
         <div id="objFilterStream" class="multi"></div>
-        <select id="objNameFilter">
-          <option value="__ALL__">All Objective Names</option>
-        </select>
+        <select id="objNameFilter"><option value="__ALL__">All Objective Names</option></select>
       </div>
       <button id="refreshObjective" class="secondary" type="button">Refresh</button>
       <span class="help">Filter by Objective Name to update KPIs.</span>
     </div>
 
     <div class="kpis">
-      <div class="kpi accent"><div class="kpi-label">Total Students (Unique)</div><div id="objTotal" class="kpi-value">0</div></div>
-      <div class="kpi ok"><div class="kpi-label">Average Score</div><div id="objAvg" class="kpi-value">0%</div></div>
-      <div class="kpi accent"><div class="kpi-label">Max %</div><div id="objMax" class="kpi-value">0%</div></div>
-      <div class="kpi warn"><div class="kpi-label">Min %</div><div id="objMin" class="kpi-value">0%</div></div>
+      <div class="kpi"><div class="kpi-label">Total Students</div><div id="objTotal" class="kpi-value">0</div></div>
+      <div class="kpi"><div class="kpi-label">Average %</div><div id="objAvg" class="kpi-value">0%</div><div class="bar"><span id="objAvgBar"></span></div><div id="objAvgTxt" class="bar-txt">0%</div></div>
+      <div class="kpi"><div class="kpi-label">Max %</div><div id="objMax" class="kpi-value">0%</div></div>
+      <div class="kpi"><div class="kpi-label">Min %</div><div id="objMin" class="kpi-value">0%</div></div>
     </div>
 
-    <div class="card">
-      <table id="objectiveTable" class="display"></table>
+    <div class="row2">
+      <div class="card" id="objTopCol">
+        <div class="card-title">Grade Leaderboard <button class="min-btn" data-min="#objTopWrap">–</button></div>
+        <div id="objTopWrap"></div>
+      </div>
+      <div class="card"><table id="objectiveTable" class="display"></table></div>
     </div>
   </section>
 
@@ -509,1022 +423,39 @@ Chart.register(pointLabelPlugin);
         <div id="subFilterGrade" class="multi"></div>
         <div id="subFilterSection" class="multi"></div>
         <div id="subFilterStream" class="multi"></div>
-        <select id="subWeekFilter">
-          <option value="__ALL__">All Weeks</option>
-        </select>
+        <select id="subWeekFilter"><option value="__ALL__">All Weeks</option></select>
       </div>
       <button id="refreshSubjective" class="secondary" type="button">Refresh</button>
-      <span class="help">Week filter uses existing Week or ISO week (from date).</span>
+      <span class="help">Week filter uses existing Week or ISO week.</span>
     </div>
 
     <div class="kpis">
-      <div class="kpi accent"><div class="kpi-label">Total Students (Unique)</div><div id="subTotal" class="kpi-value">0</div></div>
-      <div class="kpi ok"><div class="kpi-label">Average Marks</div><div id="subAvg" class="kpi-value">0%</div></div>
-      <div class="kpi accent"><div class="kpi-label">Max %</div><div id="subMax" class="kpi-value">0%</div></div>
-      <div class="kpi warn"><div class="kpi-label">Min %</div><div id="subMin" class="kpi-value">0%</div></div>
+      <div class="kpi"><div class="kpi-label">Total Students</div><div id="subTotal" class="kpi-value">0</div></div>
+      <div class="kpi"><div class="kpi-label">Average %</div><div id="subAvg" class="kpi-value">0%</div><div class="bar"><span id="subAvgBar"></span></div><div id="subAvgTxt" class="bar-txt">0%</div></div>
+      <div class="kpi"><div class="kpi-label">Max %</div><div id="subMax" class="kpi-value">0%</div></div>
+      <div class="kpi"><div class="kpi-label">Min %</div><div id="subMin" class="kpi-value">0%</div></div>
     </div>
 
-    <div class="card">
-      <table id="subjectiveTable" class="display"></table>
+    <div class="row2">
+      <div class="card" id="subTopCol">
+        <div class="card-title">Grade Leaderboard <button class="min-btn" data-min="#subTopWrap">–</button></div>
+        <div id="subTopWrap"></div>
+      </div>
+      <div class="card"><table id="subjectiveTable" class="display"></table></div>
     </div>
   </section>
-
 </div>
 
-<script>
-/* ====== CSV LINKS ====== */
-const CSV_ATTENDANCE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=0&single=true&output=csv";
-const CSV_OBJECTIVE_URL  = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1944265869&single=true&output=csv";
-const CSV_SUBJECTIVE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1445613757&single=true&output=csv";
-
-/* Column hints */
-const ATTENDANCE_NAME_KEYS = ["Student Names","Student Name","Name","Student","Candidate Name","StudentName"];
-const NAME_KEYS            = ["Student Names","Student Name","Name","Student","Candidate Name","StudentName"];
-const TOTAL_PRESENT_KEYS   = ["Total Present","TotalPresent","Present Count","Present"];
-const TOTAL_CLASSES_KEYS   = ["Total Classes","TotalClasses","Classes","Total Class"];
-const GRADE_KEYS           = ["Grade","Class","Std"];
-const SECTION_KEYS         = ["Section","Sec"];
-const STREAM_KEYS          = ["Stream","Course","Program"];
-
-/* Helpers */
-const pct = (n)=> (isFinite(n) ? (Math.round(n*10000)/100).toFixed(2)+"%" : "0%");
-const toNum = (v)=> {
-  if (v==null) return 0;
-  if (typeof v==="number") return v;
-  const s = String(v).trim().replace(/,/g,"");
-  if (/%$/.test(s)) return parseFloat(s.replace("%",""));
-  const f = parseFloat(s);
-  return isNaN(f) ? 0 : f;
-};
-const parseDate = (s)=>{
-  if (!s) return null;
-  const d = Date.parse(s);
-  if (!isNaN(d)) return new Date(d);
-  const m = String(s).match(/^(\d{1,2})[-\s]([A-Za-z]{3,})[-,\s]+(\d{4})$/);
-  if (m){
-    const map = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
-    const dd=+m[1], mon=map[m[2].toLowerCase().slice(0,3)], yy=+m[3];
-    if (mon>=0) return new Date(yy,mon,dd);
-  }
-  return null;
-};
-const isoWeek = (date)=>{
-  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-  const dayNum = (d.getUTCDay()+6)%7;
-  d.setUTCDate(d.getUTCDate()-dayNum+3);
-  const firstThursday = new Date(Date.UTC(d.getUTCFullYear(),0,4));
-  return 1 + Math.round((d-firstThursday)/(7*24*3600*1000));
-};
-const findKey = (header, candidates) => {
-  for (const n of candidates){
-    const k = header.find(h => (h||"").trim().toLowerCase() === n.toLowerCase());
-    if (k) return k;
-  }
-  for (const n of candidates){
-    const k = header.find(h => (h||"").toLowerCase().includes(n.toLowerCase()));
-    if (k) return k;
-  }
-  return null;
-};
-const uniqueByKey = (rows, key)=> {
-  if (!key) return 0;
-  const set = new Set();
-  rows.forEach(r => { const v=(r[key]||"").toString().trim(); if (v) set.add(v); });
-  return set.size;
-};
-// Normalize grade – "12", "12th", "Grade 12", "Class-12" sabko "12" bana dega
-function normGrade(v){
-  const s = String(v ?? "").trim();
-  const m = s.match(/\d+/);
-  return m ? m[0] : s.toLowerCase();
-}
-const NORM = s => String(s||"").trim().toLowerCase();
-
-/* ===== Multi-select (checkbox) widget ===== */
-function buildMultiSelect({mountId,label,options=[],selected=new Set(),onChange}){
-  const el = document.getElementById(mountId);
-  if (!el) return;
-  options = [...new Set(options.filter(Boolean).map(o=>String(o)))].sort();
-  el.classList.add('multi');
-  el.innerHTML = `
-    <button type="button"><span class="lbl">${label}</span> <span class="badge" id="${mountId}-badge"></span></button>
-    <div class="panel">
-      <input class="search" type="text" placeholder="Search ${label}..." />
-      <label class="opt"><input type="checkbox" data-role="all" ${selected.size===0? 'checked': ''}/> All</label>
-      <div class="opts"></div>
-    </div>`;
-  const btn = el.querySelector('button');
-  const panel = el.querySelector('.panel');
-  const search = el.querySelector('.search');
-  const optsDiv = el.querySelector('.opts');
-  function renderOpts(){
-    const q = search.value.toLowerCase();
-    const html = options
-      .filter(o=>o.toLowerCase().includes(q))
-      .map(o=>`<label class="opt"><input type="checkbox" value="${o.replace(/"/g,'&quot;')}" ${selected.size===0? '' : (selected.has(o)?'checked':'')}/> ${o}</label>`)
-      .join("");
-    optsDiv.innerHTML = html || '<div class="opt" style="color:var(--muted)">No options</div>';
-  }
-  function updateBadge(){
-    const badge = document.getElementById(`${mountId}-badge`);
-    badge.textContent = selected.size===0? 'All' : `${selected.size} selected`;
-    btn.title = `${label}: ${badge.textContent}`;
-  }
-  renderOpts(); updateBadge();
-  btn.onclick = ()=>{ el.classList.toggle('open'); };
-  document.addEventListener('click', (e)=>{ if (!el.contains(e.target)) el.classList.remove('open'); });
-  search.oninput = renderOpts;
-  panel.addEventListener('change', (e)=>{
-    const t = e.target;
-    if (t.matches('input[type="checkbox"][data-role="all"]')){
-      selected.clear();
-      panel.querySelectorAll('input[type="checkbox"][value]').forEach(c=> c.checked=false);
-    } else if (t.matches('input[type="checkbox"][value]')){
-      const v = t.value;
-      if (t.checked){ selected.add(v); }
-      else { selected.delete(v); }
-      panel.querySelector('input[data-role="all"]').checked = selected.size===0;
-    }
-    updateBadge();
-    onChange && onChange(new Set(selected));
-  });
-  return {getSelected:()=>new Set(selected), setOptions:(arr)=>{ options=[...new Set(arr.map(String))].sort(); renderOpts(); }};
-}
-
-/* generic filter by selected sets */
-function applyDimFilters(rows, keys, sel){
-  return rows.filter(r=>{
-    const g = keys.grade? String(r[keys.grade]||"") : "";
-    const s = keys.section? String(r[keys.section]||"") : "";
-    const t = keys.stream? String(r[keys.stream]||"") : "";
-    const gOk = sel.grade.size===0 || sel.grade.has(g);
-    const sOk = sel.section.size===0 || sel.section.has(s);
-    const tOk = sel.stream.size===0 || sel.stream.has(t);
-    return gOk && sOk && tOk;
-  });
-}
-
-/* DataTables refs */
-let attTable=null, objTable=null, subTable=null;
-
-// selected sets per tab
-const attSel = {grade:new Set(), section:new Set(), stream:new Set()};
-const objSel = {grade:new Set(), section:new Set(), stream:new Set()};
-const subSel = {grade:new Set(), section:new Set(), stream:new Set()};
-
-// widget refs
-let attWidgets={}, objWidgets={}, subWidgets={};
-
-/* ---------------- Gate / Admin ---------------- */
-const ADMIN_NAME  = "ADITYA";
-const ADMIN_GRADE = "12";
-const gate = { ready:false, admin:false, name:null, grade:null };
-const catalog = { names:[], grades:[] };
-
-/* nearby suggestions */
-function buildNameSuggestions(query, list, limit=10){
-  const q = NORM(query);
-  if (!q) return [];
-  const uniq = [...new Set(list.map(v=>String(v)))];
-  const starts = uniq.filter(n => NORM(n).startsWith(q));
-  const rest   = uniq.filter(n => !NORM(n).startsWith(q) && NORM(n).includes(q));
-  const approx = uniq.filter(n => {
-    const a=NORM(n), b=q; let d=0, i=0, j=0;
-    while(i<a.length && j<b.length){ if(a[i++]!==b[j++]) d++; if(d>2) return false; }
-    d += Math.abs((a.length-i)-(b.length-j));
-    return d<=2;
-  });
-  const out = [...starts, ...rest, ...approx].filter((v,i,self)=>self.indexOf(v)===i);
-  return out.slice(0,limit);
-}
-
-/* preload catalogs from ALL three sheets now (so Objective-only student bhi mil jaaye) */
-async function preloadCatalogs(){
-  const [attTxt, objTxt, subTxt] = await Promise.all([
-    fetch(CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?")?"&":"?") + "_pre=" + Date.now(), {cache:"no-store"}).then(r=>r.text()),
-    fetch(CSV_OBJECTIVE_URL  + (CSV_OBJECTIVE_URL.includes("?") ?"&":"?")  + "_pre=" + Date.now(), {cache:"no-store"}).then(r=>r.text()),
-    fetch(CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes("?")?"&":"?") + "_pre=" + Date.now(), {cache:"no-store"}).then(r=>r.text())
-  ]);
-
-  function extract(txt){
-    const p = Papa.parse(txt, {header:true, skipEmptyLines:true});
-    const h = p.meta.fields || [];
-    const rows = p.data || [];
-    const nameKey  = findKey(h, NAME_KEYS);
-    const gradeKey = findKey(h, GRADE_KEYS);
-    const names  = rows.map(r=>r?.[nameKey]).filter(Boolean);
-    const grades = rows.map(r=>r?.[gradeKey]).filter(Boolean).map(String);
-    return {names, grades};
-  }
-
-  const e1 = extract(attTxt), e2 = extract(objTxt), e3 = extract(subTxt);
-  const allNames  = [...e1.names, ...e2.names, ...e3.names];
-  const allGrades = [...e1.grades, ...e2.grades, ...e3.grades];
-
-  catalog.names  = [...new Set(allNames)];
-  catalog.grades = [...new Set(allGrades.map(normGrade))].filter(Boolean).sort((a,b)=>Number(a)-Number(b));
-
-  // Gate grade dropdown fill (show original style: just number strings)
-  const gSel = document.getElementById('gateGrade');
-  gSel.innerHTML = '<option value="">Select Grade</option>' + catalog.grades.map(g=>`<option value="${g}">${g}</option>`).join("");
-}
-
-/* gate filter apply (safe if columns missing + normalized grade) */
-function filterByGate(rows, header){
-  if (gate.admin) return rows;
-  const nameKey  = findKey(header, NAME_KEYS);
-  const gradeKey = findKey(header, GRADE_KEYS);
-  return rows.filter(r=>{
-    const okName  = !gate.name  || (!nameKey  ? true : NORM(r?.[nameKey]) === NORM(gate.name));
-    const okGrade = !gate.grade || (!gradeKey ? true : normGrade(r?.[gradeKey]) === normGrade(gate.grade));
-    return okName && okGrade;
-  });
-}
-
-/* -------------- ATTENDANCE -------------- */
-async function loadAttendance(){
-  const url = CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?") ? "&" : "?") + "_=" + Date.now();
-  const res = await fetch(url, {cache:"no-store"});
-  const text = await res.text();
-  const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
-  const header = parsed.meta.fields || [];
-  const rawAll = parsed.data || [];
-  const raw = filterByGate(rawAll, header);
-
-  const nameKey   = findKey(header, ATTENDANCE_NAME_KEYS);
-  const presentKey= findKey(header, TOTAL_PRESENT_KEYS);
-  const classesKey= findKey(header, TOTAL_CLASSES_KEYS);
-  const gradeKey  = findKey(header, GRADE_KEYS);
-  const sectionKey= findKey(header, SECTION_KEYS);
-  const streamKey = findKey(header, STREAM_KEYS);
-
-  const gradeOpts = [...new Set(raw.map(r=>r[gradeKey]).filter(Boolean))];
-  const sectOpts  = [...new Set(raw.map(r=>r[sectionKey]).filter(Boolean))];
-  const strmOpts  = [...new Set(raw.map(r=>r[streamKey]).filter(Boolean))];
-
-  attWidgets.grade   = buildMultiSelect({mountId:'attFilterGrade', label:'Grade', options:gradeOpts, selected:attSel.grade, onChange:()=>renderAtt()});
-  attWidgets.section = buildMultiSelect({mountId:'attFilterSection', label:'Section', options:sectOpts, selected:attSel.section, onChange:()=>renderAtt()});
-  attWidgets.stream  = buildMultiSelect({mountId:'attFilterStream', label:'Stream', options:strmOpts, selected:attSel.stream, onChange:()=>renderAtt()});
-
-  function renderAtt(){
-    const filtered = applyDimFilters(raw, {grade:gradeKey, section:sectionKey, stream:streamKey}, attSel);
-
-    const totalStudents = uniqueByKey(filtered, nameKey);
-    const sumPresent = presentKey ? filtered.reduce((a,r)=> a + toNum(r[presentKey]), 0) : 0;
-    const sumClasses = classesKey ? filtered.reduce((a,r)=> a + toNum(r[classesKey]), 0) : 0;
-    const sumAbsent = Math.max(0, sumClasses - sumPresent);
-    const attendancePct = (sumClasses>0) ? (sumPresent/sumClasses) : 0;
-
-    document.getElementById('attTotalStudents').textContent = totalStudents.toLocaleString();
-    document.getElementById('attPresentPct').textContent    = Math.round(sumPresent).toLocaleString();
-    document.getElementById('attAbsentPct').textContent     = Math.round(sumAbsent).toLocaleString();
-    document.getElementById('attAttendancePct').textContent = pct(attendancePct);
-
-    const columns = header.map(h => ({title:h, data:h}));
-    if (attTable){ attTable.clear().destroy(); }
-    attTable = $('#attendanceTable').DataTable({
-      data: filtered,
-      columns,
-      pageLength: 10,
-      order: [],
-      autoWidth: false
-    });
-  }
-  renderAtt();
-}
-
-/* -------------- OBJECTIVE -------------- */
-let objectiveRaw = [];
-let objectiveHeader = [];
-async function loadObjective(){
-  const url = CSV_OBJECTIVE_URL + (CSV_OBJECTIVE_URL.includes("?") ? "&" : "?") + "_=" + Date.now();
-  const res = await fetch(url, {cache:"no-store"});
-  const csv = await res.text();
-  const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
-  const header = parsed.meta.fields || [];
-  objectiveHeader = header.slice(); // store
-  objectiveRaw = filterByGate(parsed.data || [], header);
-
-  const gradeKey  = findKey(header, GRADE_KEYS);
-  const sectionKey= findKey(header, SECTION_KEYS);
-  const streamKey = findKey(header, STREAM_KEYS);
-
-  const objectiveNameKey = header.find(h=>/objective\s*name/i.test(h)) || "Objective Name";
-  const nameSet = new Set();
-  objectiveRaw.forEach(r => { if (r[objectiveNameKey]) nameSet.add(r[objectiveNameKey]); });
-  const sel = document.getElementById('objNameFilter');
-  const current = sel.value;
-  sel.innerHTML = `<option value="__ALL__">All Objective Names</option>` +
-                  [...nameSet].map(n=>`<option value="${String(n).replace(/"/g,'&quot;')}">${n}</option>`).join("");
-  if ([...nameSet].includes(current)) sel.value = current; else sel.value="__ALL__";
-
-  const gradeOpts = [...new Set(objectiveRaw.map(r=>r[gradeKey]).filter(Boolean))];
-  const sectOpts  = [...new Set(objectiveRaw.map(r=>r[sectionKey]).filter(Boolean))];
-  const strmOpts  = [...new Set(objectiveRaw.map(r=>r[streamKey]).filter(Boolean))];
-  objWidgets.grade   = buildMultiSelect({mountId:'objFilterGrade', label:'Grade', options:gradeOpts, selected:objSel.grade, onChange:renderObjectiveTableAndKpis});
-  objWidgets.section = buildMultiSelect({mountId:'objFilterSection', label:'Section', options:sectOpts, selected:objSel.section, onChange:renderObjectiveTableAndKpis});
-  objWidgets.stream  = buildMultiSelect({mountId:'objFilterStream', label:'Stream', options:strmOpts, selected:objSel.stream, onChange:renderObjectiveTableAndKpis});
-
-  renderObjectiveTableAndKpis();
-}
-function renderObjectiveTableAndKpis(){
-  const headers = (objectiveHeader && objectiveHeader.length)
-    ? objectiveHeader
-    : (objectiveRaw.length ? Object.keys(objectiveRaw[0]) : []);
-
-  if (!headers.length){
-    if (objTable){ objTable.clear().draw(); }
-    else {
-      objTable = $('#objectiveTable').DataTable({
-        data: [],
-        columns: [],
-        pageLength: 10,
-        order: [],
-        autoWidth: false
-      });
-    }
-    return;
-  }
-
-  const nameKey   = headers.find(h=>/student\s*name?s?/i.test(h)) 
-                 || headers.find(h=>/candidate\s*name/i.test(h))
-                 || "Student Name";
-  const objNameK  = headers.find(h=>/objective\s*name/i.test(h)) || "Objective Name";
-  const marksKey  = headers.find(h=>/marks?\s*achieved/i.test(h)) || "Marks Achieved";
-  const totalKey  = headers.find(h=>/total\s*marks?/i.test(h))   || "Total Marks";
-  const tpKey     = headers.find(h=>/(test\s*)?percentage/i.test(h)) || "Percentage";
-
-  const gradeKey  = headers.find(h=> GRADE_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
-  const sectionKey= headers.find(h=> SECTION_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
-  const streamKey = headers.find(h=> STREAM_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
-
-  const filterName = document.getElementById('objNameFilter').value;
-  let rows = objectiveRaw.slice();
-  if (filterName !== "__ALL__"){
-    rows = rows.filter(r => String(r[objNameK]||"") === filterName);
-  }
-
-  rows = applyDimFilters(rows, {grade:gradeKey, section:sectionKey, stream:streamKey}, objSel);
-
-  const uniqStudents = uniqueByKey(rows, nameKey);
-  let sumAch=0, sumTot=0, maxPct=-Infinity, minPct=Infinity;
-  rows.forEach(r=>{
-    sumAch += toNum(r[marksKey]);
-    sumTot += toNum(r[totalKey]);
-    const tp = toNum(r[tpKey]);
-    if (isFinite(tp)){ if (tp>maxPct) maxPct=tp; if (tp<minPct) minPct=tp; }
-  });
-
-  document.getElementById('objTotal').textContent = uniqStudents || 0;
-  document.getElementById('objAvg').textContent   = sumTot>0 ? (Math.round((sumAch/sumTot)*10000)/100).toFixed(2)+"%" : "0%";
-  document.getElementById('objMax').textContent   = isFinite(maxPct) ? (Math.round(maxPct*100)/100).toFixed(2)+"%" : "0%";
-  document.getElementById('objMin').textContent   = isFinite(minPct) ? (Math.round(minPct*100)/100).toFixed(2)+"%" : "0%";
-
-  const columns = headers.map(h => ({title:h, data:h}));
-  if (objTable){ objTable.clear().destroy(); }
-  objTable = $('#objectiveTable').DataTable({
-    data: rows,
-    columns,
-    pageLength: 10,
-    order: [],
-    autoWidth: false
-  });
-}
-
-/* -------------- SUBJECTIVE -------------- */
-let subjectiveRaw = [];
-async function loadSubjective(){
-  const url = CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes("?") ? "&" : "?") + "_=" + Date.now();
-  const res = await fetch(url, {cache:"no-store"});
-  const csv = await res.text();
-  const parsed = Papa.parse(csv, {header:true, skipEmptyLines:true});
-  const header = parsed.meta.fields || [];
-  subjectiveRaw = filterByGate(parsed.data || [], header);
-
-  // Decide Week column
-  const hasWeek = header.some(h=>/^week$/i.test(h));
-  if (!hasWeek){
-    const dateKey = header.find(h=>/test\s*result\s*date/i.test(h)) || header.find(h=>/date/i.test(h));
-    if (dateKey){
-      subjectiveRaw.forEach(r=>{
-        const d = parseDate(r[dateKey]);
-        r.Week = d ? isoWeek(d) : "";
-      });
-    } else {
-      subjectiveRaw.forEach(r=> r.Week = "");
-    }
-  }
-
-  const weekKey = hasWeek ? header.find(h=>/^week$/i.test(h)) : "Week";
-  const weeks = Array.from(new Set(subjectiveRaw.map(r=>r[weekKey]).filter(Boolean))).sort((a,b)=>a-b);
-  const sel = document.getElementById('subWeekFilter');
-  const current = sel.value;
-  sel.innerHTML = `<option value="__ALL__">All Weeks</option>` +
-                  weeks.map(w=>`<option value="${w}">Week ${w}</option>`).join("");
-  if (weeks.includes(+current) || weeks.includes(current)) sel.value = current; else sel.value="__ALL__";
-
-  const gradeKey  = findKey(header, GRADE_KEYS);
-  const sectionKey= findKey(header, SECTION_KEYS);
-  const streamKey = findKey(header, STREAM_KEYS);
-  const gradeOpts = [...new Set(subjectiveRaw.map(r=>r[gradeKey]).filter(Boolean))];
-  const sectOpts  = [...new Set(subjectiveRaw.map(r=>r[sectionKey]).filter(Boolean))];
-  const strmOpts  = [...new Set(subjectiveRaw.map(r=>r[streamKey]).filter(Boolean))];
-  subWidgets.grade   = buildMultiSelect({mountId:'subFilterGrade', label:'Grade', options:gradeOpts, selected:subSel.grade, onChange:renderSubjectiveTableAndKpis});
-  subWidgets.section = buildMultiSelect({mountId:'subFilterSection', label:'Section', options:sectOpts, selected:subSel.section, onChange:renderSubjectiveTableAndKpis});
-  subWidgets.stream  = buildMultiSelect({mountId:'subFilterStream', label:'Stream', options:strmOpts, selected:subSel.stream, onChange:renderSubjectiveTableAndKpis});
-
-  renderSubjectiveTableAndKpis();
-}
-function renderSubjectiveTableAndKpis(){
-  if (!subjectiveRaw.length){ 
-    if (subTable){ subTable.clear().draw(); } 
-    return; 
-  }
-  const headers = Object.keys(subjectiveRaw[0]);
-
-  const nameKey   = headers.find(h=>/student\s*names?/i.test(h)) || "Student Names";
-  const marksKey  = headers.find(h=>/marks?\s*achieved/i.test(h)) || "Marks Achieved";
-  const totalKey  = headers.find(h=>/total\s*marks?/i.test(h)) || "Total Marks";
-  const percentKey= headers.find(h=>/^percentage$/i.test(h)) || headers.find(h=>/test\s*percentage/i.test(h)) || "Percentage";
-  const weekKey   = headers.find(h=>/^week$/i.test(h)) || "Week";
-
-  const gradeKey  = headers.find(h=> GRADE_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
-  const sectionKey= headers.find(h=> SECTION_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
-  const streamKey = headers.find(h=> STREAM_KEYS.some(k=>h.toLowerCase().includes(k.toLowerCase()))) || null;
-
-  const week = document.getElementById('subWeekFilter').value;
-  let rows = subjectiveRaw.slice();
-  if (week !== "__ALL__"){
-    rows = rows.filter(r => String(r[weekKey]) === String(week));
-  }
-
-  rows = applyDimFilters(rows, {grade:gradeKey, section:sectionKey, stream:streamKey}, subSel);
-
-  const uniqStudents = uniqueByKey(rows, nameKey);
-  let sumAch=0, sumTot=0, maxPct=-Infinity, minPct=Infinity;
-  rows.forEach(r=>{
-    sumAch += toNum(r[marksKey]);
-    sumTot += toNum(r[totalKey]);
-    const tp = toNum(r[percentKey]);
-    if (isFinite(tp)){ if (tp>maxPct) maxPct=tp; if (tp<minPct) minPct=tp; }
-  });
-
-  document.getElementById('subTotal').textContent = uniqStudents || 0;
-  document.getElementById('subAvg').textContent   = sumTot>0 ? (Math.round((sumAch/sumTot)*10000)/100).toFixed(2)+"%" : "0%";
-  document.getElementById('subMax').textContent   = isFinite(maxPct) ? (Math.round(maxPct*100)/100).toFixed(2)+"%" : "0%";
-  document.getElementById('subMin').textContent   = isFinite(minPct) ? (Math.round(minPct*100)/100).toFixed(2)+"%" : "0%";
-
-  const columns = headers.map(h => ({title:h, data:h}));
-  if (subTable){ subTable.clear().destroy(); }
-  subTable = $('#subjectiveTable').DataTable({
-    data: rows,
-    columns,
-    pageLength: 10,
-    order: [],
-    autoWidth: false
-  });
-}
-
-/* ---------- Tabs ---------- */
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const tab = btn.dataset.tab;
-    document.querySelectorAll('section.panel').forEach(s=> s.style.display='none');
-    document.getElementById(tab).style.display='block';
-    if (tab==="attendance" && !attTable) loadAttendance();
-    if (tab==="objective" && !objTable) loadObjective();
-    if (tab==="subjective" && !subTable) loadSubjective();
-  });
-});
-
-/* ---------- Buttons / Filters ---------- */
-document.getElementById('refreshAttendance').addEventListener('click', loadAttendance);
-document.getElementById('refreshObjective').addEventListener('click', loadObjective);
-document.getElementById('refreshSubjective').addEventListener('click', loadSubjective);
-document.getElementById('objNameFilter').addEventListener('change', renderObjectiveTableAndKpis);
-document.getElementById('subWeekFilter').addEventListener('change', renderSubjectiveTableAndKpis);
-
-/* ---------- Gate Boot ---------- */
-async function bootAfterGate(){
-  await loadAttendance(); // first tab default
-}
-
-/* Gate init + validation across 3 sheets (with normalized grade) */
-(async function initGate(){
-  try { await preloadCatalogs(); } catch(e){ console.warn("Catalog preload failed", e); }
-  const nameInput = document.getElementById('gateName');
-  const gradeSel  = document.getElementById('gateGrade');
-  const suggBox   = document.getElementById('nameSuggest');
-  const errEl     = document.getElementById('gateErr');
-
-  function showSuggestions(){
-    const q = nameInput.value;
-    const list = buildNameSuggestions(q, catalog.names, 10);
-    if (!q || list.length===0){ suggBox.style.display='none'; suggBox.innerHTML=''; return; }
-    suggBox.innerHTML = list.map(n=>`<div class="item" data-name="${n.replace(/"/g,'&quot;')}">${n}</div>`).join("");
-    suggBox.style.display = 'block';
-  }
-  nameInput.addEventListener('input', showSuggestions);
-  suggBox.addEventListener('click', (e)=>{
-    const it = e.target.closest('.item'); if (!it) return;
-    nameInput.value = it.dataset.name; suggBox.style.display='none';
-  });
-  document.addEventListener('click',(e)=>{ if(!suggBox.contains(e.target) && e.target!==nameInput) suggBox.style.display='none'; });
-
-  document.getElementById('gateBtn').addEventListener('click', async ()=>{
-    const name  = nameInput.value.trim();
-    const grade = gradeSel.value.trim();
-    errEl.style.display='none';
-
-    if (!name || !grade){
-      errEl.textContent = "Please enter Student Name and select Grade.";
-      errEl.style.display='block';
-      return;
-    }
-
-    // Admin rule
-    if (NORM(name)===NORM(ADMIN_NAME) && NORM(normGrade(grade))===NORM(ADMIN_GRADE)){
-      gate.admin = true; gate.name=null; gate.grade=null; gate.ready=true;
-      document.getElementById('gate').style.display = 'none';
-      bootAfterGate();
-      return;
-    }
-
-    // Validate exact name+grade in ANY sheet (grade normalized; if grade column missing in a sheet, ignore it)
-    try{
-      const [attTxt, objTxt, subTxt] = await Promise.all([
-        fetch(CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes("?")?"&":"?") + "_vt=" + Date.now(), {cache:"no-store"}).then(r=>r.text()),
-        fetch(CSV_OBJECTIVE_URL  + (CSV_OBJECTIVE_URL.includes("?") ?"&":"?")  + "_vt=" + Date.now(), {cache:"no-store"}).then(r=>r.text()),
-        fetch(CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes("?")?"&":"?") + "_vt=" + Date.now(), {cache:"no-store"}).then(r=>r.text())
-      ]);
-
-      function hasExact(txt){
-        const p = Papa.parse(txt, {header:true, skipEmptyLines:true});
-        const h = p.meta.fields || [];
-        const rows = p.data || [];
-        const nameKey  = findKey(h, NAME_KEYS);
-        const gradeKey = findKey(h, GRADE_KEYS);
-        const nameOk = (r)=> !nameKey  ? false : NORM(r?.[nameKey])===NORM(name);
-        const gradeOk= (r)=> !gradeKey ? true  : normGrade(r?.[gradeKey])===normGrade(grade);
-        return rows.some(r => nameOk(r) && gradeOk(r));
-      }
-
-      const ok = hasExact(attTxt) || hasExact(objTxt) || hasExact(subTxt);
-      if (!ok){
-        function namesFrom(txt){
-          const p = Papa.parse(txt, {header:true, skipEmptyLines:true});
-          const h = p.meta.fields || [];
-          const rows = p.data || [];
-          const nk = findKey(h, NAME_KEYS);
-          return rows.map(r=>r?.[nk]).filter(Boolean);
-        }
-        const allNames = [...new Set([...namesFrom(attTxt), ...namesFrom(objTxt), ...namesFrom(subTxt)])];
-        const near = buildNameSuggestions(name, allNames, 10);
-        errEl.innerHTML = `No exact match for <b>${name}</b> (Grade <b>${grade}</b>).<br/>Try: ${near.slice(0,5).join(", ") || "no close matches"}.`;
-        errEl.style.display='block';
-        showSuggestions();
-        return;
-      }
-
-      gate.admin = false; gate.name = name; gate.grade = grade; gate.ready = true;
-      document.getElementById('gate').style.display = 'none';
-      bootAfterGate();
-    }catch(e){
-      // best-effort fallback if network hiccup
-      gate.admin = false; gate.name = name; gate.grade = grade; gate.ready = true;
-      document.getElementById('gate').style.display = 'none';
-      bootAfterGate();
-    }
-  });
-})();
-</script>
-  <!-- Helpdesk Slide-over Panel -->
+<!-- Helpdesk -->
 <div id="helpdeskPanel" aria-hidden="true">
   <div id="helpdeskBackdrop"></div>
   <div id="helpdeskCard" role="dialog" aria-modal="true" aria-label="PW Gulf Helpdesk">
-    <div id="helpdeskHead">
-      <span>PW Gulf Helpdesk</span>
-      <button id="helpdeskClose" aria-label="Close">✕</button>
-    </div>
-    <!-- helpdesk.html same folder me hai -->
+    <div id="helpdeskHead"><span>PW Gulf Helpdesk</span><button id="helpdeskClose" aria-label="Close">✕</button></div>
     <iframe id="helpdeskFrame" src="helpdesk.html"></iframe>
   </div>
 </div>
 
-<script>
-(function(){
-  const openBtn  = document.getElementById('helpdeskOpen');
-  const panel    = document.getElementById('helpdeskPanel');
-  const closeBtn = document.getElementById('helpdeskClose');
-  const backdrop = document.getElementById('helpdeskBackdrop');
-  const frame    = document.getElementById('helpdeskFrame');
-
-  // Optional: name/grade pass karna ho to query bana do
-  function prefillQS(){
-    try{
-      const name  = (window.gate && gate.name)  ? gate.name  : (document.getElementById('gateName')?.value || "");
-      const grade = (window.gate && gate.grade) ? gate.grade : (document.getElementById('gateGrade')?.value || "");
-      const p = new URLSearchParams();
-      if (name)  p.set('prefill_name',  name);
-      if (grade) p.set('prefill_grade', grade);
-      return p.toString();
-    }catch(e){ return ""; }
-  }
-
-  function openPanel(){
-    const base = 'helpdesk.html';
-    const q = prefillQS();
-    frame.src = q ? `${base}?${q}` : base;
-    panel.style.display = 'block';
-    panel.setAttribute('aria-hidden','false');
-  }
-  function closePanel(){
-    panel.style.display = 'none';
-    panel.setAttribute('aria-hidden','true');
-  }
-
-  openBtn && openBtn.addEventListener('click', openPanel);
-  closeBtn && closeBtn.addEventListener('click', closePanel);
-  backdrop && backdrop.addEventListener('click', closePanel);
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePanel(); });
-})();
-</script>
-<script>
-// ====== tiny utils we use here
-// ====== tiny utils we use here
-const _isDT = id => $.fn.dataTable.isDataTable('#'+id);
-const N = v => parseFloat(String(v).replace('%',''));
-const fmtPct = v => isFinite(v) ? (Math.round(v*100)/100) : 0;
-
-// build a simple HTML table card
-function buildTable(headers, rows, title){
-  let html = `<div class="report-card"><div class="report-title">${title}</div>`;
-  if (!headers.length || !rows.length){
-    html += `<div class="report-empty">No data.</div></div>`;
-    return html;
-  }
-  html += `<div style="overflow:auto;margin-top:8px"><table class="report-table"><thead><tr>${
-    headers.map(h=>`<th>${h}</th>`).join('')
-  }</tr></thead><tbody>${
-    rows.map(r=>`<tr>${headers.map(h=>`<td>${(r[h]??'')}</td>`).join('')}</tr>`).join('')
-  }</tbody></table></div></div>`;
-  return html;
-}
-
-// Grab filtered data + headers from a DataTable
-function dtGrab(id){
-  if(!_isDT(id)) return {headers:[], rows:[]};
-  const dt = $('#'+id).DataTable();
-  const headers = dt.columns().header().toArray().map(th=>th.textContent.trim());
-  const rows = dt.rows({search:'applied'}).data().toArray();
-  return {headers, rows};
-}
-
-// header helper
-const findKeyLike = (headers, patterns) =>
-  headers.find(h => patterns.some(rx => rx.test(h))) || "";
-
-// ---- Trend builders with fixed X/Y -----------------------------------
-
-function addLineChart(root, title, labels, data, sub=''){
-  const clean = (data || []).map(v => {
-    const n = Number(v);
-    if (!isFinite(n)) return null;
-    return Math.max(0, Math.min(100, Math.round(n * 100) / 100));
-  });
-
-  const card = document.createElement('div');
-  card.className = 'report-card';
-  card.innerHTML = `<div class="report-title">${title}</div>${sub?`<div class="report-sub">${sub}</div>`:''}<div class="report-chart"><canvas></canvas></div>`;
-  root.appendChild(card);
-
-  const ctx = card.querySelector('canvas').getContext('2d');
-  new Chart(ctx,{
-    type:'line',
-    data:{
-      labels,
-      datasets:[{
-        label: title,
-        data: clean,
-        fill: false,
-        tension: 0.25,
-        pointRadius: 3,
-        pointHoverRadius: 4
-      }]
-    },
-    options:{
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display:false },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => `${ctx.parsed.y}%`
-          }
-        }
-      },
-      scales: {
-        y: {
-          min: 0,
-          max: 100,
-          ticks: {
-            stepSize: 10,
-            callback: (v) => `${v}%`
-          }
-        },
-        x: {
-          ticks: { autoSkip: true, maxTicksLimit: 12 }
-        }
-      }
-    }
-  });
-}
-
-
-
-// Attendance: Week vs Attendance %
-function buildAttendanceTrend(root){
-  const att = dtGrab('attendanceTable');
-  if(!att.headers.length || !att.rows.length) return;
-
-  const weekKey   = findKeyLike(att.headers, [/^week$/i,/week\s*number/i]);
-  const dateKey   = findKeyLike(att.headers, [/date/i]);
-  const presentK  = findKeyLike(att.headers, [/^total\s*present$/i,/present\s*count/i,/present$/i]);
-  const classesK  = findKeyLike(att.headers, [/^total\s*classes?$/i,/classes?$/i]);
-
-  // Need week + present + classes
-  if(!presentK || !classesK || (!weekKey && !dateKey)) return;
-
-  const wkMap = new Map(); // week -> {p,c}
-  const getWeek = (r)=>{
-    if(weekKey) return String(r[weekKey]).trim();
-    const d = Date.parse(r[dateKey]);
-    if(!isNaN(d)){
-      const date = new Date(d);
-      // ISO week
-      const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-      const dayNum = (tmp.getUTCDay()+6)%7;
-      tmp.setUTCDate(tmp.getUTCDate()-dayNum+3);
-      const firstThu = new Date(Date.UTC(tmp.getUTCFullYear(),0,4));
-      return String(1 + Math.round((tmp-firstThu)/(7*24*3600*1000)));
-    }
-    return '';
-  };
-
-  att.rows.forEach(r=>{
-    const wk = getWeek(r);
-    if(!wk) return;
-    const p = Number(N(r[presentK])) || 0;
-    const c = Number(N(r[classesK])) || 0;
-    if(!wkMap.has(wk)) wkMap.set(wk,{p:0,c:0});
-    const o = wkMap.get(wk);
-    o.p += p; o.c += c;
-  });
-
-  const weeks = [...wkMap.keys()].sort((a,b)=>Number(a)-Number(b));
-  const pct   = weeks.map(w => {
-    const o = wkMap.get(w);
-    return o.c>0 ? (o.p/o.c*100) : 0;
-  });
-
-  addLineChart(root,'Attendance Trend', weeks.map(w=>`W${w}`), pct, 'Attendance % vs Week');
-}
-
-// Objective: WeekNumber vs TestPercentage
-function buildObjectiveTrend(root){
-  const obj = dtGrab('objectiveTable');
-  if(!obj.headers.length || !obj.rows.length) return;
-
-  const weekKey  = findKeyLike(obj.headers, [/^week$/i,/week\s*number/i]);
-  const dateKey  = findKeyLike(obj.headers, [/date/i]);
-  const percKey  = findKeyLike(obj.headers, [/(^|\s)test\s*percentage/i,/^percentage$/i,/percent/i]);
-
-  if(!percKey || (!weekKey && !dateKey)) return;
-
-  const wkMap = new Map(); // week -> {sum,count}
-  const toWeek = (r)=>{
-    if(weekKey) return String(r[weekKey]).trim();
-    const d = Date.parse(r[dateKey]);
-    if(!isNaN(d)){
-      const dt = new Date(d);
-      const t = new Date(Date.UTC(dt.getFullYear(), dt.getMonth(), dt.getDate()));
-      const dn = (t.getUTCDay()+6)%7; t.setUTCDate(t.getUTCDate()-dn+3);
-      const firstThu = new Date(Date.UTC(t.getUTCFullYear(),0,4));
-      return String(1 + Math.round((t-firstThu)/(7*24*3600*1000)));
-    }
-    return '';
-  };
-
-  obj.rows.forEach(r=>{
-    const wk = toWeek(r); if(!wk) return;
-    const p  = Number(N(r[percKey])) || 0;
-    if(!wkMap.has(wk)) wkMap.set(wk,{sum:0,cnt:0});
-    const o = wkMap.get(wk); o.sum+=p; o.cnt++;
-  });
-
-  const weeks = [...wkMap.keys()].sort((a,b)=>Number(a)-Number(b));
-  const avg   = weeks.map(w => {
-    const o = wkMap.get(w); return o.cnt? (o.sum/o.cnt) : 0;
-  });
-
-  addLineChart(root,'Objective Trend', weeks.map(w=>`W${w}`), avg, 'Test % vs Week');
-}
-
-// Subjective: DateRange vs Percentage
-function buildSubjectiveTrend(root){
-  const sub = dtGrab('subjectiveTable');
-  if(!sub.headers.length || !sub.rows.length) return;
-
-  const dateRangeKey = findKeyLike(sub.headers, [/date\s*range/i,/result\s*date/i,/date/i]);
-  const percKey      = findKeyLike(sub.headers, [/^percentage$/i,/test\s*percentage/i,/percent/i]);
-  if(!percKey || !dateRangeKey) return;
-
-  // Group by dateRangeKey and average %
-  const map = new Map(); // label -> {sum,cnt}
-  sub.rows.forEach(r=>{
-    const label = String(r[dateRangeKey] ?? '').trim();
-    if(!label) return;
-    const p = Number(N(r[percKey])) || 0;
-    if(!map.has(label)) map.set(label,{sum:0,cnt:0});
-    const o = map.get(label); o.sum+=p; o.cnt++;
-  });
-
-  const labels = [...map.keys()];
-  const avg    = labels.map(k => {
-    const o = map.get(k); return o.cnt? (o.sum/o.cnt) : 0;
-  });
-
-  addLineChart(root,'Subjective Trend', labels, avg, 'Percentage vs Date Range');
-}
-
-// Build the report DOM each time panel opens
-function buildReportDOM(){
-  const root = document.getElementById('reportContent');
-  root.innerHTML = '';
-
-  // Header (name/grade)
-  const whoName  = (gate && gate.admin) ? 'ADMIN VIEW' : (gate?.name || '—');
-  const whoGrade = (gate && gate.admin) ? 'ALL'        : (gate?.grade || '—');
-  root.insertAdjacentHTML('beforeend',
-    `<div class="report-card">
-       <div class="report-title">${whoName}</div>
-       <div class="report-sub">Grade: <b>${whoGrade}</b></div>
-     </div>`
-  );
-
-  // Tables (whatever is currently visible in DataTables)
-  const att = dtGrab('attendanceTable');
-  const obj = dtGrab('objectiveTable');
-  const sub = dtGrab('subjectiveTable');
-
-  root.insertAdjacentHTML('beforeend', buildTable(att.headers, att.rows, 'Attendance (Current View)'));
-  root.insertAdjacentHTML('beforeend', buildTable(obj.headers, obj.rows, 'Objective (Current View)'));
-  root.insertAdjacentHTML('beforeend', buildTable(sub.headers, sub.rows, 'Subjective (Current View)'));
-
-  // Fixed-axis charts
-  buildAttendanceTrend(root);
-  buildObjectiveTrend(root);
-  buildSubjectiveTrend(root);
-
-  if(!att.rows.length && !obj.rows.length && !sub.rows.length){
-    root.insertAdjacentHTML('beforeend', `<div class="report-empty">No data in current filters.</div>`);
-  }
-}
-
-// ---- Open/Close panel (unchanged) ----
-async function openReportPanel(){
-  const jobs = [];
-  if (!_isDT('attendanceTable')) jobs.push(loadAttendance());
-  if (!_isDT('objectiveTable'))  jobs.push(loadObjective());
-  if (!_isDT('subjectiveTable')) jobs.push(loadSubjective());
-  if (jobs.length) await Promise.allSettled(jobs);
-
-  buildReportDOM();
-  const p = document.getElementById('reportPanel');
-  p.style.display = 'block';
-  p.setAttribute('aria-hidden','false');
-}
-function closeReportPanel(){
-  const p = document.getElementById('reportPanel');
-  p.style.display = 'none';
-  p.setAttribute('aria-hidden','true');
-}
-
-// ---- Downloads: JPG as-is, PDF with pagination ----
-
-// ---- FULL REPORT CAPTURE HELPERS ----
-async function captureFullReportCanvas(){
-  const body  = document.getElementById('reportBody');
-  const card  = document.getElementById('reportCard');
-
-  const prev = {
-    bodyStyle: body.getAttribute('style') || '',
-    cardStyle: card.getAttribute('style') || '',
-    bodyOverflow: document.body.style.overflow || ''
-  };
-
-  body.style.overflow  = 'visible';
-  body.style.maxHeight = 'none';
-  body.style.height    = body.scrollHeight + 'px';
-  card.style.height    = 'auto';
-  document.body.style.overflow = 'auto';
-
-  await new Promise(r => requestAnimationFrame(()=>requestAnimationFrame(r)));
-
-  const canvas = await html2canvas(body, {
-    scale: 2,
-    backgroundColor: '#ffffff',
-    windowWidth:  body.scrollWidth,
-    windowHeight: body.scrollHeight,
-    logging: false
-  });
-
-  if (prev.bodyStyle) body.setAttribute('style', prev.bodyStyle); else body.removeAttribute('style');
-  if (prev.cardStyle) card.setAttribute('style', prev.cardStyle); else card.removeAttribute('style');
-  document.body.style.overflow = prev.bodyOverflow;
-
-  return canvas;
-}
-
-// ---- DOWNLOADS: JPG full-page, PDF multi-page ----
-async function downloadJPG(){
-  const canvas = await captureFullReportCanvas();
-  const a = document.createElement('a');
-  const who = (gate && gate.admin) ? 'ADMIN' : (gate?.name || 'report');
-  a.download = `${who}-report.jpg`;
-  a.href = canvas.toDataURL('image/jpeg', 0.92);
-  a.click();
-}
-
-async function downloadPDF(){
-  const canvas = await captureFullReportCanvas();
-
-  const imgW = canvas.width, imgH = canvas.height;
-  const pdf = new jspdf.jsPDF({ orientation: imgW >= imgH ? 'l' : 'p', unit:'px', format:'a4' });
-  const pageW = pdf.internal.pageSize.getWidth();
-  const pageH = pdf.internal.pageSize.getHeight();
-  const margin = 20, boxW = pageW - margin*2, boxH = pageH - margin*2;
-
-  // how many source pixels correspond to one page box height
-  const renderH = boxW / (imgW / imgH);
-  const pageBoxToSrc = imgH / renderH;
-  const srcSliceH = Math.max(1, Math.floor(boxH * pageBoxToSrc));
-
-  let ySrc = 0, first = true, page = 1;
-  while (ySrc < imgH) {
-    const hThis = Math.min(srcSliceH, imgH - ySrc);
-    const slice = document.createElement('canvas');
-    slice.width = imgW; slice.height = hThis;
-    slice.getContext('2d').drawImage(canvas, 0, ySrc, imgW, hThis, 0, 0, imgW, hThis);
-
-    const img = slice.toDataURL('image/jpeg', 0.92);
-
-    if (!first) pdf.addPage();
-    first = false;
-
-    const drawW = boxW;
-    const drawH = drawW / (imgW / hThis);
-    const x = (pageW - drawW)/2;
-    const y = margin;
-
-    pdf.addImage(img, 'JPEG', x, y, drawW, Math.min(drawH, boxH));
-
-    // footer / header
-    const who = (gate && gate.admin)?'ADMIN VIEW':(gate?.name||'');
-    pdf.setFontSize(10);
-    pdf.text(`${who} — PW Gulf Report`, margin, 12);
-    pdf.text(`Page ${page++}`, pageW - margin - 40, pageH - 8);
-
-    ySrc += hThis;
-  }
-
-  const who = (gate && gate.admin) ? 'ADMIN' : (gate?.name || 'report');
-  pdf.save(`${who}-report.pdf`);
-}
-
-
-
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // open/close
-  const openBtn  = document.getElementById('openReport');
-  const closeBtn = document.getElementById('reportClose');
-  const backdrop = document.getElementById('reportBackdrop');
-  const jpgBtn   = document.getElementById('reportJpg');
-  const pdfBtn   = document.getElementById('reportPdf');
-
-  if (openBtn)  openBtn.addEventListener('click', openReportPanel);
-  if (closeBtn) closeBtn.addEventListener('click', closeReportPanel);
-  if (backdrop) backdrop.addEventListener('click', closeReportPanel);
-  if (jpgBtn)   jpgBtn.addEventListener('click', downloadJPG);
-  if (pdfBtn)   pdfBtn.addEventListener('click', downloadPDF);
-});
-</script>
-
-
+<!-- Report (full page) -->
 <div id="reportPanel" aria-hidden="true">
   <div id="reportBackdrop"></div>
   <div id="reportCard" role="dialog" aria-modal="true" aria-label="Report Preview">
@@ -1536,13 +467,747 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
       <button id="reportClose" aria-label="Close">✕</button>
     </div>
-    <div id="reportBody">
-      <div id="reportContent">
-        <div class="report-empty">No data in current filters<br><small>Please open a tab, load data, and try again.</small></div>
-      </div>
-    </div>
+    <div id="reportBody"><div id="reportContent"><div class="report-empty">No data yet</div></div></div>
   </div>
 </div>
 
+<script>
+/* ===== CSV LINKS (same sheet, 3 tabs) ===== */
+const CSV_ATTENDANCE_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=0&single=true&output=csv";
+const CSV_OBJECTIVE_URL ="https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1944265869&single=true&output=csv";
+const CSV_SUBJECTIVE_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vRAlfVnrnY4xye72jsXLtGwuBRKl51Xo24re0TScU-AD7aWpgFEgJtOQOrO9lzgFzpTuubnXNBvKwAZ/pub?gid=1445613757&single=true&output=csv";
+
+/* ===== Column name candidates ===== */
+const NAME_KEYS   = ["StudentName","Student Names","Student Name","Name","Student","Candidate Name"];
+const GRADE_KEYS  = ["Grade","Class","Std"];
+const SECTION_KEYS= ["Section","Sec"];
+const STREAM_KEYS = ["Stream","Course","Program"];
+
+const ATT_PRESENT_KEYS = ["TotalPresent","Total Present","Present Count","Present"];
+const ATT_CLASSES_KEYS = ["TotalClasses","Total Classes","Classes","Total Class"];
+
+const OBJ_NAME_KEYS = [/^objective\s*name$/i, /^objective\s*test/i, /obj\s*name/i];
+const MARKS_ACH_KEYS = [/^marks?\s*achieved$/i, /^marks$/i];
+const TOTAL_MARKS_KEYS= [/^total\s*marks?$/i];
+const PERCENT_KEYS = [/^percentage$/i,/test\s*percentage/i,/percent/i];
+
+/* ===== Small helpers ===== */
+const pct = n => isFinite(n)? (Math.round(n*100)/100).toFixed(2)+"%" : "0%";
+const toNum = v => {
+  if(v==null) return 0;
+  if(typeof v==="number") return v;
+  const s=String(v).trim().replace(/,/g,"");
+  if(s.endsWith("%")) return parseFloat(s.slice(0,-1));
+  const f=parseFloat(s); return isNaN(f)?0:f;
+};
+const NORM = s => String(s||"").trim().toLowerCase();
+function normGrade(v){const s=String(v??"").trim(); const m=s.match(/\d+/); return m?m[0]:s.toLowerCase();}
+
+/* universal finder */
+function findKey(header, candidates){
+  for(const cand of candidates){
+    const k = header.find(h => (h||"").trim().toLowerCase() === String(cand).toLowerCase());
+    if(k) return k;
+  }
+  for(const cand of candidates){
+    if(cand instanceof RegExp){
+      const k = header.find(h => cand.test(h||""));
+      if(k) return k;
+    }
+  }
+  for(const cand of candidates){
+    const s=String(cand).toLowerCase();
+    const k = header.find(h => (h||"").toLowerCase().includes(s));
+    if(k) return k;
+  }
+  return null;
+}
+
+/* date → ISO week */
+function parseDate(s){if(!s) return null; const d=Date.parse(s); return isNaN(d)?null:new Date(d);}
+function isoWeek(date){
+  const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));
+  const day=(d.getUTCDay()+6)%7; d.setUTCDate(d.getUTCDate()-day+3);
+  const firstThu=new Date(Date.UTC(d.getUTCFullYear(),0,4));
+  return 1 + Math.round((d-firstThu)/(7*24*3600*1000));
+}
+
+/* quick uniq count by student name */
+const uniqueByName = (rows,nameKey) => {
+  const s=new Set(); rows.forEach(r=>{const n=(r?.[nameKey]||"").toString().trim(); if(n) s.add(n);});
+  return s.size;
+};
+
+/* ===== Multi-select widget ===== */
+function buildMultiSelect({mountId,label,options=[],selected=new Set(),onChange}){
+  const el=document.getElementById(mountId); if(!el) return;
+  const clean = [...new Set(options.filter(Boolean).map(String))].sort();
+  el.classList.add('multi');
+  el.innerHTML = `
+    <button type="button"><span>${label}</span> <span class="badge" id="${mountId}-badge"></span></button>
+    <div class="panel">
+      <input class="search" type="text" placeholder="Search ${label}..."/>
+      <label class="opt"><input type="checkbox" data-role="all" ${selected.size===0?'checked':''}/> All</label>
+      <div class="opts"></div>
+    </div>`;
+  const btn=el.querySelector('button'), panel=el.querySelector('.panel'), search=el.querySelector('.search'), opts=el.querySelector('.opts');
+  function paint(){
+    const q=(search.value||"").toLowerCase();
+    opts.innerHTML = clean.filter(v=>v.toLowerCase().includes(q)).map(v=>(
+      `<label class="opt"><input type="checkbox" value="${v.replace(/"/g,'&quot;')}" ${selected.size===0?'':(selected.has(v)?'checked':'')}/> ${v}</label>`
+    )).join('') || `<div class="opt" style="color:#94a3b8">No options</div>`;
+  }
+  function badge(){
+    const b=document.getElementById(`${mountId}-badge`);
+    b.textContent = selected.size===0 ? 'All' : `${selected.size} selected`;
+  }
+  paint(); badge();
+  btn.onclick=()=>el.classList.toggle('open');
+  document.addEventListener('click',(e)=>{ if(!el.contains(e.target)) el.classList.remove('open'); });
+  search.oninput=paint;
+  panel.addEventListener('change',(e)=>{
+    const t=e.target;
+    if(t.matches('[data-role="all"]')) { selected.clear(); panel.querySelectorAll('input[type="checkbox"][value]').forEach(c=>c.checked=false); }
+    if(t.matches('input[type="checkbox"][value]')){ const v=t.value; t.checked?selected.add(v):selected.delete(v); panel.querySelector('[data-role="all"]').checked = selected.size===0; }
+    badge(); onChange && onChange(new Set(selected));
+  });
+  return {getSelected:()=>new Set(selected), setOptions:(arr)=>{options=arr;}, refresh:paint};
+}
+
+/* ===== Collapsible tiny buttons ===== */
+function wireMinButtons(){
+  document.querySelectorAll('.min-btn').forEach(b=>{
+    const sel=b.getAttribute('data-min');
+    if(!sel) return;
+    b.addEventListener('click',()=>{
+      const tgt=document.querySelector(sel); if(!tgt) return;
+      const hide=tgt.style.display==='none';
+      tgt.style.display = hide?'':'none';
+      b.textContent = hide ? '–' : '+';
+    });
+  });
+}
+
+/* ===== Gate/Admin ===== */
+const ADMIN_NAME="ADITYA", ADMIN_GRADE="12";
+const gate={ready:false,admin:false,name:null,grade:null};
+const catalog={names:[],grades:[]};
+
+function buildNameSuggestions(query,list,limit=10){
+  const q=NORM(query); if(!q) return [];
+  const uniq=[...new Set(list.map(String))];
+  const starts=uniq.filter(n=>NORM(n).startsWith(q));
+  const rest=uniq.filter(n=>!NORM(n).startsWith(q)&&NORM(n).includes(q));
+  return [...starts,...rest].slice(0,limit);
+}
+async function preloadCatalogs(){
+  const [t1,t2,t3]=await Promise.all([
+    fetch(CSV_ATTENDANCE_URL+'&_p='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
+    fetch(CSV_OBJECTIVE_URL +'&_p='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
+    fetch(CSV_SUBJECTIVE_URL+'&_p='+Date.now(),{cache:'no-store'}).then(r=>r.text())
+  ]);
+  function extract(txt){
+    const p=Papa.parse(txt,{header:true,skipEmptyLines:true});
+    const h=p.meta.fields||[]; const rows=p.data||[];
+    const nk=findKey(h,NAME_KEYS); const gk=findKey(h,GRADE_KEYS);
+    return {names:rows.map(r=>r?.[nk]).filter(Boolean), grades:rows.map(r=>r?.[gk]).filter(Boolean).map(String)};
+  }
+  const e1=extract(t1),e2=extract(t2),e3=extract(t3);
+  catalog.names=[...new Set([...e1.names,...e2.names,...e3.names])];
+  catalog.grades=[...new Set([...e1.grades,...e2.grades,...e3.grades].map(normGrade))].filter(Boolean).sort((a,b)=>+a-+b);
+  const gSel=document.getElementById('gateGrade');
+  gSel.innerHTML='<option value="">Select Grade</option>'+catalog.grades.map(g=>`<option value="${g}">${g}</option>`).join('');
+}
+
+/* ===== DataTables refs & filter selections ===== */
+let attTable=null,objTable=null,subTable=null;
+const attSel={grade:new Set(),section:new Set(),stream:new Set()};
+const objSel={grade:new Set(),section:new Set(),stream:new Set()};
+const subSel={grade:new Set(),section:new Set(),stream:new Set()};
+let attWidgets={},objWidgets={},subWidgets={};
+
+/* ===== Top-10 (student view forces self at #10 if needed, with rank) ===== */
+function renderTop10Block({containerId,title,rows,nameKey,sectionKey,percentGetter,gradeKey}){
+  const el=document.getElementById(containerId); if(!el) return;
+  el.innerHTML='';
+
+  const myName = gate?.admin ? null : (gate?.name||"");
+  const myGrade= gate?.admin ? null : (gate?.grade||"");
+
+  // Scope: student = only their grade, admin = all
+  const sliceRows = (!gate.admin && gradeKey)
+    ? rows.filter(r=>normGrade(r[gradeKey])===normGrade(myGrade))
+    : rows.slice();
+
+  const sectionValues = sectionKey
+    ? [...new Set(sliceRows.map(r=>String(r[sectionKey]||"").trim()).filter(Boolean))].sort()
+    : [null];
+
+  // build overall list
+  const overallMap=new Map();
+  sliceRows.forEach(r=>{
+    const nm=(r[nameKey]||"").toString().trim(); if(!nm) return;
+    const p=percentGetter(r); if(!isFinite(p)) return;
+    const o=overallMap.get(nm)||{sum:0,cnt:0}; o.sum+=p; o.cnt++; overallMap.set(nm,o);
+  });
+  const fullOverall=[...overallMap.entries()].map(([name,o])=>({name,pct:o.sum/o.cnt}))
+                    .sort((a,b)=>b.pct-a.pct);
+
+  // compute my index & entry from overall
+  const youIdx = (myName? fullOverall.findIndex(x=>NORM(x.name)===NORM(myName)) : -1);
+  const youEntry = youIdx>=0 ? fullOverall[youIdx] : null;
+
+  // helper to paint one block
+  const one = (titleLabel, listAll, ensureSelf=false) => {
+    const TOPN = 9;
+    let top = listAll.slice(0, TOPN);
+
+    // if requested, ensure self appears as the 10th row
+    if(ensureSelf && youEntry){
+      const already=top.find(x=>NORM(x.name)===NORM(myName));
+      if(!already){
+        if(top.length>=TOPN) top[TOPN-1]=youEntry; else top.push(youEntry);
+      }
+    }
+
+    // rank + percentile from grade-wide list
+    const myRank = youIdx>=0 ? (youIdx+1) : null;
+    const rankStrip = (myRank)
+      ? `<div style="margin:4px 0 10px;font-weight:700;background:#0f1a4b;border:1px solid var(--line);padding:8px 10px;border-radius:10px;display:inline-block">
+           My Rank: <b>${myRank}/${listAll.length}</b>
+         </div>`
+      : (gate.admin?``:`<div style="margin:6px 0 10px;color:#94a3b8">Student not found in current filter.</div>`);
+
+    // rows html with (You) tag
+    const rowsHtml = top.map((r,i)=>{
+      const isYou = myName && NORM(r.name)===NORM(myName);
+      return `<tr>
+        <td>${i+1}</td>
+        <td class="${isYou?'you-row':''}">${isYou?`${r.name} (You)`:r.name}</td>
+        <td>${(r.pct!=null? r.pct.toFixed(1):0)}%</td>
+      </tr>`;
+    }).join('');
+
+    el.insertAdjacentHTML('beforeend', `
+      <div class="card" style="margin-bottom:10px">
+        <div class="card-title">${titleLabel} <button class="min-btn" data-min="#x_${containerId}_${titleLabel.replace(/\W+/g,'_')}">–</button></div>
+        ${rankStrip}
+        <div id="x_${containerId}_${titleLabel.replace(/\W+/g,'_')}">
+          <table class="report-table" style="width:100%">
+            <thead><tr><th>#</th><th>Name</th><th>%</th></tr></thead>
+            <tbody>${rowsHtml}</tbody>
+          </table>
+        </div>
+      </div>
+    `);
+  };
+
+  // overall block (student: grade-wide + ensure self; admin: overall)
+  one(!gate.admin ? `Grade Leaderboard (Top 8 + You)` : `${title} — Overall`, fullOverall, !gate.admin);
+
+  // per section breakdown (no force-self here to keep pure section top-10)
+  if(gate.admin && sectionValues[0]!==null){
+    sectionValues.forEach(sec=>{
+      const map=new Map();
+      sliceRows.filter(r=>String(r[sectionKey]||"")===String(sec)).forEach(r=>{
+        const nm=(r[nameKey]||"").toString().trim(); if(!nm) return;
+        const p=percentGetter(r); if(!isFinite(p)) return;
+        const o=map.get(nm)||{sum:0,cnt:0}; o.sum+=p; o.cnt++; map.set(nm,o);
+      });
+      if(map.size){
+        const list=[...map.entries()].map(([name,o])=>({name,pct:o.sum/o.cnt})).sort((a,b)=>b.pct-a.pct);
+        one(`Top 10 — Section ${sec}`, list, false);
+      }
+    });
+  }
+
+  wireMinButtons();
+}
+
+/* =======================
+   ATTENDANCE (loader)
+   ======================= */
+async function loadAttendance(){
+  const url = CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes('?')?'&':'?') + '_=' + Date.now();
+  const text = await fetch(url,{cache:'no-store'}).then(r=>r.text());
+  const parsed = Papa.parse(text,{header:true,skipEmptyLines:true});
+  const header = parsed.meta.fields||[];
+  const all    = parsed.data||[];
+
+  const nameKey   = findKey(header,NAME_KEYS);
+  const gradeKey  = findKey(header,GRADE_KEYS);
+  const sectionKey= findKey(header,SECTION_KEYS);
+  const streamKey = findKey(header,STREAM_KEYS);
+  const presentKey= findKey(header,ATT_PRESENT_KEYS);
+  const classesKey= findKey(header,ATT_CLASSES_KEYS);
+
+  const rows = (gate.admin?all:all.filter(r=>{
+    const nOk = nameKey ? NORM(r[nameKey])===NORM(gate.name) : true;
+    const gOk = gradeKey? normGrade(r[gradeKey])===normGrade(gate.grade) : true;
+    return nOk && gOk;
+  }));
+
+  attWidgets.grade   = buildMultiSelect({mountId:'attFilterGrade',label:'Grade',options:[...new Set(rows.map(r=>r[gradeKey]).filter(Boolean))],selected:attSel.grade,onChange:render});
+  attWidgets.section = buildMultiSelect({mountId:'attFilterSection',label:'Section',options:[...new Set(rows.map(r=>r[sectionKey]).filter(Boolean))],selected:attSel.section,onChange:render});
+  attWidgets.stream  = buildMultiSelect({mountId:'attFilterStream',label:'Stream',options:[...new Set(rows.map(r=>r[streamKey]).filter(Boolean))],selected:attSel.stream,onChange:render});
+
+  function render(){
+    const filtered = rows.filter(r=>{
+      const gOk = attSel.grade.size===0   || attSel.grade.has(String(r[gradeKey]||""));
+      const sOk = attSel.section.size===0 || attSel.section.has(String(r[sectionKey]||""));
+      const tOk = attSel.stream.size===0  || attSel.stream.has(String(r[streamKey]||""));
+      return gOk && sOk && tOk;
+    });
+
+    const totalStudents = uniqueByName(filtered,nameKey);
+    const sumP = presentKey? filtered.reduce((a,r)=>a+toNum(r[presentKey]),0):0;
+    const sumC = classesKey? filtered.reduce((a,r)=>a+toNum(r[classesKey]),0):0;
+    const sumA = Math.max(0,sumC-sumP);
+    const attPercent = sumC>0 ? (sumP/sumC*100) : 0;
+
+    document.getElementById('attTotalStudents').textContent = totalStudents.toLocaleString();
+    document.getElementById('attPresentPct').textContent    = Math.round(sumP).toLocaleString();
+    document.getElementById('attAbsentPct').textContent     = Math.round(sumA).toLocaleString();
+    document.getElementById('attAttendancePct').textContent = pct(attPercent);
+    document.getElementById('attPresentBar').style.width    = (sumC? (sumP/sumC*100):0)+'%';
+    document.getElementById('attAbsentBar').style.width     = (sumC? (sumA/sumC*100):0)+'%';
+    document.getElementById('attPctBar').style.width        = attPercent+'%';
+    document.getElementById('attPresentTxt').textContent    = sumC? Math.round(sumP/sumC*100)+'%':'';
+    document.getElementById('attAbsentTxt').textContent     = sumC? Math.round(sumA/sumC*100)+'%':'';
+    document.getElementById('attPctTxt').textContent        = Math.round(attPercent)+'%';
+
+    const cols=header.map(h=>({title:h,data:h}));
+    if(attTable){attTable.clear().destroy();}
+    attTable=$('#attendanceTable').DataTable({data:filtered,columns:cols,pageLength:10,order:[],autoWidth:false});
+
+    renderTop10Block({
+      containerId:'attTopWrap', title:'Attendance',
+      rows:(gate.admin ? filtered : all), nameKey, sectionKey, gradeKey,
+      percentGetter:(r)=>{const p=toNum(r[presentKey]), c=Math.max(1,toNum(r[classesKey])); return (p/c*100);}
+    });
+  }
+
+  render(); wireMinButtons();
+}
+
+/* =======================
+   OBJECTIVE (loader)
+   ======================= */
+let objectiveHeader=[], objectiveRows=[];
+async function loadObjective(){
+  const url = CSV_OBJECTIVE_URL + (CSV_OBJECTIVE_URL.includes('?')?'&':'?') + '_=' + Date.now();
+  const text= await fetch(url,{cache:'no-store'}).then(r=>r.text());
+  const parsed= Papa.parse(text,{header:true,skipEmptyLines:true});
+  const header= parsed.meta.fields||[]; objectiveHeader=header;
+  const all   = parsed.data||[];
+
+  const nameKey   = findKey(header,NAME_KEYS);
+  const gradeKey  = findKey(header,GRADE_KEYS);
+  const sectionKey= findKey(header,SECTION_KEYS);
+  const streamKey = findKey(header,STREAM_KEYS);
+
+  const objNameKey = findKey(header,OBJ_NAME_KEYS) || "Objective Name";
+  const marksKey   = findKey(header,MARKS_ACH_KEYS) || "MarksAchieved";
+  const totalKey   = findKey(header,TOTAL_MARKS_KEYS) || "TotalMarks";
+  const percKey    = findKey(header,PERCENT_KEYS) || "TestPercentage";
+
+  const rows = (gate.admin?all:all.filter(r=>{
+    const nOk = nameKey ? NORM(r[nameKey])===NORM(gate.name) : true;
+    const gOk = gradeKey? normGrade(r[gradeKey])===normGrade(gate.grade) : true;
+    return nOk && gOk;
+  }));
+  objectiveRows=rows;
+
+  const nameOpts=[...new Set(rows.map(r=>r[objNameKey]).filter(Boolean))];
+  const sel=document.getElementById('objNameFilter'); const cur=sel.value;
+  sel.innerHTML=`<option value="__ALL__">All Objective Names</option>`+nameOpts.map(n=>`<option value="${String(n).replace(/"/g,'&quot;')}">${n}</option>`).join('');
+  sel.value = nameOpts.includes(cur)?cur:'__ALL__';
+
+  objWidgets.grade   = buildMultiSelect({mountId:'objFilterGrade',label:'Grade',options:[...new Set(rows.map(r=>r[gradeKey]).filter(Boolean))],selected:objSel.grade,onChange:render});
+  objWidgets.section = buildMultiSelect({mountId:'objFilterSection',label:'Section',options:[...new Set(rows.map(r=>r[sectionKey]).filter(Boolean))],selected:objSel.section,onChange:render});
+  objWidgets.stream  = buildMultiSelect({mountId:'objFilterStream',label:'Stream',options:[...new Set(rows.map(r=>r[streamKey]).filter(Boolean))],selected:objSel.stream,onChange:render});
+
+  function render(){
+    const pick = document.getElementById('objNameFilter').value;
+    let r=objectiveRows.slice();
+    if(pick!=="__ALL__") r=r.filter(x=>String(x[objNameKey])===pick);
+    r=r.filter(x=>{
+      const gOk=objSel.grade.size===0   || objSel.grade.has(String(x[gradeKey]||""));
+      const sOk=objSel.section.size===0 || objSel.section.has(String(x[sectionKey]||""));
+      const tOk=objSel.stream.size===0  || objSel.stream.has(String(x[streamKey]||""));
+      return gOk && sOk && tOk;
+    });
+
+    const uniq = uniqueByName(r,nameKey);
+    let sumA=0,sumT=0,maxP=-Infinity,minP=Infinity;
+    r.forEach(x=>{sumA+=toNum(x[marksKey]); sumT+=toNum(x[totalKey]); const p=toNum(x[percKey]); if(isFinite(p)){maxP=Math.max(maxP,p); minP=Math.min(minP,p);}});
+    const avg = sumT>0 ? (sumA/sumT*100) : 0;
+
+    document.getElementById('objTotal').textContent=uniq||0;
+    document.getElementById('objAvg').textContent  =avg.toFixed(2)+'%';
+    document.getElementById('objMax').textContent  =isFinite(maxP)?maxP.toFixed(2)+'%':'0%';
+    document.getElementById('objMin').textContent  =isFinite(minP)?minP.toFixed(2)+'%':'0%';
+    document.getElementById('objAvgBar').style.width=avg+'%';
+    document.getElementById('objAvgTxt').textContent=Math.round(avg)+'%';
+
+    const cols=header.map(h=>({title:h,data:h}));
+    if(objTable){objTable.clear().destroy();}
+    objTable=$('#objectiveTable').DataTable({data:r,columns:cols,pageLength:10,order:[],autoWidth:false});
+
+    renderTop10Block({
+      containerId:'objTopWrap', title:'Objective',
+      rows:(gate.admin ? r : all), nameKey, sectionKey, gradeKey,
+      percentGetter:(row)=> toNum(row[percKey])
+    });
+  }
+
+  render(); wireMinButtons();
+}
+
+/* =======================
+   SUBJECTIVE (loader)
+   ======================= */
+let subjectiveRows=[];
+async function loadSubjective(){
+  const url = CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes('?')?'&':'?') + '_=' + Date.now();
+  const text= await fetch(url,{cache:'no-store'}).then(r=>r.text());
+  const parsed= Papa.parse(text,{header:true,skipEmptyLines:true});
+  let header= parsed.meta.fields||[]; const all= parsed.data||[];
+
+  const nameKey   = findKey(header,NAME_KEYS);
+  const gradeKey  = findKey(header,GRADE_KEYS);
+  const sectionKey= findKey(header,SECTION_KEYS);
+  const streamKey = findKey(header,STREAM_KEYS);
+
+  const marksKey  = findKey(header,[/^marks?\s*achieved$/i]) || "MarksAchieved";
+  const totalKey  = findKey(header,[/^total\s*marks?$/i])   || "TotalMarks";
+  const percKey   = findKey(header,[/^percentage$/i]) || "Percentage";
+
+  const dateKey   = findKey(header,[/date\s*range/i,/result\s*date/i,/^date$/i]);
+  let weekKey     = findKey(header,[/^week$/i]);
+  if(!weekKey){
+    all.forEach(r=>{ const d=parseDate(r[dateKey]); r.Week = d? isoWeek(d) : (r.Week||""); });
+    weekKey='Week'; if(!header.includes('Week')) header=[...header,'Week'];
+  }
+
+  const rows = (gate.admin?all:all.filter(r=>{
+    const nOk = nameKey ? NORM(r[nameKey])===NORM(gate.name) : true;
+    const gOk = gradeKey? normGrade(r[gradeKey])===normGrade(gate.grade) : true;
+    return nOk && gOk;
+  }));
+  subjectiveRows=rows;
+
+  const weekVals=[...new Set(rows.map(r=>r[weekKey]).filter(v=>v!==""&&v!=null))].sort((a,b)=>Number(a)-Number(b));
+  const wkSel=document.getElementById('subWeekFilter'); const keep=wkSel.value;
+  wkSel.innerHTML=`<option value="__ALL__">All Weeks</option>`+weekVals.map(w=>`<option value="${w}">Week ${w}</option>`).join('');
+  wkSel.value = (weekVals.includes(+keep)||weekVals.includes(keep))?keep:'__ALL__';
+
+  subWidgets.grade   = buildMultiSelect({mountId:'subFilterGrade',label:'Grade',options:[...new Set(rows.map(r=>r[gradeKey]).filter(Boolean))],selected:subSel.grade,onChange:render});
+  subWidgets.section = buildMultiSelect({mountId:'subFilterSection',label:'Section',options:[...new Set(rows.map(r=>r[sectionKey]).filter(Boolean))],selected:subSel.section,onChange:render});
+  subWidgets.stream  = buildMultiSelect({mountId:'subFilterStream',label:'Stream',options:[...new Set(rows.map(r=>r[streamKey]).filter(Boolean))],selected:subSel.stream,onChange:render});
+
+  function render(){
+    const pick = document.getElementById('subWeekFilter').value;
+    let r=subjectiveRows.slice();
+    if(pick!=="__ALL__") r=r.filter(x=>String(x[weekKey])===String(pick));
+    r=r.filter(x=>{
+      const gOk=subSel.grade.size===0   || subSel.grade.has(String(x[gradeKey]||""));
+      const sOk=subSel.section.size===0 || subSel.section.has(String(x[sectionKey]||""));
+      const tOk=subSel.stream.size===0  || subSel.stream.has(String(x[streamKey]||""));
+      return gOk && sOk && tOk;
+    });
+
+    const uniq=uniqueByName(r,nameKey);
+    let sumA=0,sumT=0,maxP=-Infinity,minP=Infinity;
+    r.forEach(x=>{sumA+=toNum(x[marksKey]); sumT+=toNum(x[totalKey]); const p=toNum(x[percKey]); if(isFinite(p)){maxP=Math.max(maxP,p); minP=Math.min(minP,p);}});
+    const avg = sumT>0 ? (sumA/sumT*100) : 0;
+
+    document.getElementById('subTotal').textContent=uniq||0;
+    document.getElementById('subAvg').textContent  =avg.toFixed(2)+'%';
+    document.getElementById('subMax').textContent  =isFinite(maxP)?maxP.toFixed(2)+'%':'0%';
+    document.getElementById('subMin').textContent  =isFinite(minP)?minP.toFixed(2)+'%':'0%';
+    document.getElementById('subAvgBar').style.width=avg+'%';
+    document.getElementById('subAvgTxt').textContent=Math.round(avg)+'%';
+
+    const cols=header.map(h=>({title:h,data:h}));
+    if(subTable){subTable.clear().destroy();}
+    subTable=$('#subjectiveTable').DataTable({data:r,columns:cols,pageLength:10,order:[],autoWidth:false});
+
+    renderTop10Block({
+      containerId:'subTopWrap', title:'Subjective',
+      rows:(gate.admin ? r : all), nameKey, sectionKey, gradeKey,
+      percentGetter:(row)=> toNum(row[percKey])
+    });
+  }
+
+  render(); wireMinButtons();
+}
+
+/* ====== Trends for Report ====== */
+function addLineChart(root,title,labels,data,sub=''){
+  const card=document.createElement('div'); card.className='report-card';
+  card.innerHTML=`<div class="report-title">${title}<button class="minimize">–</button></div>${sub?`<div class="report-sub">${sub}</div>`:''}<div class="report-chart"><canvas></canvas></div>`;
+  root.appendChild(card);
+  card.querySelector('.minimize').addEventListener('click',()=>{const b=card.querySelector('.report-chart'); b.style.display=b.style.display==='none'?'':'none';});
+  const ctx=card.querySelector('canvas').getContext('2d');
+  new Chart(ctx,{type:'line',data:{labels,datasets:[{label:title,data,tension:.25}]},options:BASE_LINE_OPTS});
+}
+function dtGrab(id){ if(!$.fn.dataTable.isDataTable('#'+id)) return {headers:[],rows:[]}; const dt=$('#'+id).DataTable(); return {headers: dt.columns().header().toArray().map(th=>th.textContent.trim()), rows: dt.rows({search:'applied'}).data().toArray()};}
+const findKeyLike=(headers,patterns)=> headers.find(h=>patterns.some(rx=>rx.test(h)))||"";
+
+function buildAttendanceTrend(root){
+  const att=dtGrab('attendanceTable'); if(!att.headers.length||!att.rows.length) return;
+  const weekK=findKeyLike(att.headers,[/^week$/i,/week\s*number/i]); const dateK=findKeyLike(att.headers,[/date/i]);
+  const pK=findKeyLike(att.headers,[/^total\s*present$/i,/present\s*count/i,/present$/i]);
+  const cK=findKeyLike(att.headers,[/^total\s*classes?$/i,/classes?$/i]); if(!pK||!cK||(!weekK&&!dateK)) return;
+  const wkMap=new Map(); const toWeek=(r)=>{ if(weekK) return String(r[weekK]).trim(); const d=Date.parse(r[dateK]); if(!isNaN(d)){const dt=new Date(d); return isoWeek(dt);} return '';};
+  att.rows.forEach(r=>{const w=toWeek(r); if(!w) return; const p=toNum(r[pK]); const c=toNum(r[cK]); const o=wkMap.get(w)||{p:0,c:0}; o.p+=p;o.c+=c; wkMap.set(w,o);});
+  const weeks=[...wkMap.keys()].sort((a,b)=>a-b); const data=weeks.map(w=>{const o=wkMap.get(w); return o.c>0?o.p/o.c*100:0;});
+  addLineChart(root,'Attendance Trend',weeks.map(w=>'W'+w),data,'Attendance % vs Week');
+}
+function buildObjectiveTrend(root){
+  const obj=dtGrab('objectiveTable'); if(!obj.headers.length||!obj.rows.length) return;
+  const weekK=findKeyLike(obj.headers,[/^week$/i,/week\s*number/i]); const dateK=findKeyLike(obj.headers,[/date/i]);
+  const percK=findKeyLike(obj.headers,[/(^|\s)test\s*percentage/i,/^percentage$/i,/percent/i]); if(!percK||(!weekK&&!dateK)) return;
+  const wkMap=new Map(); const toWeek=(r)=>{ if(weekK) return String(r[weekK]).trim(); const d=Date.parse(r[dateK]); if(!isNaN(d)){const dt=new Date(d); return isoWeek(dt);} return '';};
+  obj.rows.forEach(r=>{const w=toWeek(r); if(!w) return; const p=toNum(r[percK]); const o=wkMap.get(w)||{sum:0,cnt:0}; o.sum+=p;o.cnt++; wkMap.set(w,o);});
+  const weeks=[...wkMap.keys()].sort((a,b)=>a-b); const avg=weeks.map(w=>{const o=wkMap.get(w); return o.cnt?o.sum/o.cnt:0;});
+  addLineChart(root,'Objective Trend',weeks.map(w=>'W'+w),avg,'Test % vs Week');
+}
+function buildSubjectiveTrend(root){
+  const sub=dtGrab('subjectiveTable'); if(!sub.headers.length||!sub.rows.length) return;
+  const drK=findKeyLike(sub.headers,[/date\s*range/i,/result\s*date/i,/date/i]);
+  const percK=findKeyLike(sub.headers,[/^percentage$/i,/test\s*percentage/i,/percent/i]); if(!percK||!drK) return;
+  const map=new Map();
+  sub.rows.forEach(r=>{const k=String(r[drK]||'').trim(); if(!k) return; const p=toNum(r[percK]); const o=map.get(k)||{sum:0,cnt:0}; o.sum+=p;o.cnt++; map.set(k,o);});
+  const labels=[...map.keys()]; const avg=labels.map(k=>{const o=map.get(k); return o.cnt?o.sum/o.cnt:0;});
+  addLineChart(root,'Subjective Trend',labels,avg,'Percentage vs Date Range');
+}
+function buildTable(headers,rows,title){
+  const card=document.createElement('div'); card.className='report-card';
+  card.innerHTML=`<div class="report-title">${title}<button class="minimize">–</button></div>`;
+  const body=document.createElement('div'); card.appendChild(body);
+  if(!headers.length||!rows.length){ body.innerHTML=`<div class="report-empty">No data.</div>`; }
+  else{
+    body.innerHTML=`<div style="overflow:auto;margin-top:8px"><table class="report-table"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${headers.map(h=>`<td>${r[h]??''}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }
+  card.querySelector('.minimize').addEventListener('click',()=>{body.style.display=body.style.display==='none'?'':'none';});
+  return card;
+}
+function buildReportDOM(){
+  const root=document.getElementById('reportContent'); root.innerHTML='';
+  const whoName=(gate && gate.admin)?'ADMIN VIEW':(gate?.name||'—');
+  const whoGrade=(gate && gate.admin)?'ALL':(gate?.grade||'—');
+  const hdr=document.createElement('div'); hdr.className='report-card';
+  hdr.innerHTML=`<div class="report-title">${whoName}<button class="minimize">–</button></div><div class="report-sub">Grade: <b>${whoGrade}</b></div>`;
+  hdr.querySelector('.minimize').addEventListener('click',()=>{const s=hdr.querySelector('.report-sub'); s.style.display=s.style.display==='none'?'':'none';});
+  root.appendChild(hdr);
+
+  const att=dtGrab('attendanceTable'); const obj=dtGrab('objectiveTable'); const sub=dtGrab('subjectiveTable');
+  root.appendChild(buildTable(att.headers,att.rows,'Attendance (Current View)'));
+  root.appendChild(buildTable(obj.headers,obj.rows,'Objective (Current View)'));
+  root.appendChild(buildTable(sub.headers,sub.rows,'Subjective (Current View)'));
+
+  buildAttendanceTrend(root); buildObjectiveTrend(root); buildSubjectiveTrend(root);
+
+  if(!att.rows.length && !obj.rows.length && !sub.rows.length){
+    root.appendChild(Object.assign(document.createElement('div'),{className:'report-empty',innerHTML:'No data in current filters'}));
+  }
+}
+
+/* ===== Report open/close + downloads ===== */
+async function captureFullReportCanvas(){
+  const body=document.getElementById('reportBody');
+  await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  const canvas=await html2canvas(body,{scale:2,backgroundColor:'#ffffff',logging:false});
+  return canvas;
+}
+async function downloadJPG(){const c=await captureFullReportCanvas(); const a=document.createElement('a'); const who=(gate&&gate.admin)?'ADMIN':(gate?.name||'report'); a.download=`${who}-report.jpg`; a.href=c.toDataURL('image/jpeg',0.92); a.click();}
+async function downloadPDF(){
+  const c=await captureFullReportCanvas(); const imgW=c.width,imgH=c.height;
+  const pdf=new jspdf.jsPDF({orientation: imgW>=imgH?'l':'p',unit:'px',format:'a4'});
+  const pageW=pdf.internal.pageSize.getWidth(), pageH=pdf.internal.pageSize.getHeight(), m=20, boxW=pageW-m*2, boxH=pageH-m*2;
+  const drawH=boxW/(imgW/imgH); const srcSliceH=Math.max(1,Math.floor((boxH/drawH)*imgH));
+  let y=0,page=1,first=true;
+  while(y<imgH){
+    const hThis=Math.min(srcSliceH,imgH-y);
+    const slice=document.createElement('canvas'); slice.width=imgW; slice.height=hThis;
+    slice.getContext('2d').drawImage(c,0,y,imgW,hThis,0,0,imgW,hThis);
+    const img=slice.toDataURL('image/jpeg',0.92);
+    if(!first) pdf.addPage(); first=false;
+    const drawW=boxW, drawHH=drawW/(imgW/hThis), x=(pageW-drawW)/2;
+    pdf.addImage(img,'JPEG',x,m,drawW,Math.min(drawHH,boxH));
+    pdf.setFontSize(10); const who=(gate&&gate.admin)?'ADMIN VIEW':(gate?.name||'');
+    pdf.text(`${who} — PW Gulf Report`, m, 12); pdf.text(`Page ${page++}`, pageW-m-40, pageH-8);
+    y+=hThis;
+  }
+  const who=(gate&&gate.admin)?'ADMIN':(gate?.name||'report');
+  pdf.save(`${who}-report.pdf`);
+}
+async function openReportPanel(){
+  const jobs=[]; if(!$.fn.dataTable.isDataTable('#attendanceTable')) jobs.push(loadAttendance());
+  if(!$.fn.dataTable.isDataTable('#objectiveTable')) jobs.push(loadObjective());
+  if(!$.fn.dataTable.isDataTable('#subjectiveTable')) jobs.push(loadSubjective());
+  if(jobs.length) await Promise.allSettled(jobs);
+  buildReportDOM();
+  const p=document.getElementById('reportPanel'); p.style.display='block'; p.setAttribute('aria-hidden','false');
+}
+function closeReportPanel(){const p=document.getElementById('reportPanel'); p.style.display='none'; p.setAttribute('aria-hidden','true');}
+
+/* ===== Tabs & Buttons ===== */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const tab=btn.dataset.tab;
+    document.querySelectorAll('section.panel').forEach(s=>s.style.display='none');
+    document.getElementById(tab).style.display='block';
+    if(tab==='attendance' && !attTable) loadAttendance();
+    if(tab==='objective'  && !objTable) loadObjective();
+    if(tab==='subjective' && !subTable) loadSubjective();
+  });
+});
+document.getElementById('refreshAttendance').addEventListener('click',loadAttendance);
+document.getElementById('refreshObjective').addEventListener('click',loadObjective);
+document.getElementById('refreshSubjective').addEventListener('click',loadSubjective);
+document.getElementById('objNameFilter').addEventListener('change',()=>{ if(objTable) loadObjective(); });
+document.getElementById('subWeekFilter').addEventListener('change',()=>{ if(subTable) loadSubjective(); });
+
+/* Report buttons */
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('openReport')?.addEventListener('click',openReportPanel);
+  document.getElementById('reportClose')?.addEventListener('click',closeReportPanel);
+  document.getElementById('reportBackdrop')?.addEventListener('click',closeReportPanel);
+  document.getElementById('reportJpg')?.addEventListener('click',downloadJPG);
+  document.getElementById('reportPdf')?.addEventListener('click',downloadPDF);
+  wireMinButtons();
+});
+
+/* Helpdesk */
+(function(){
+  const openBtn=document.getElementById('helpdeskOpen');
+  const panel=document.getElementById('helpdeskPanel');
+  const closeBtn=document.getElementById('helpdeskClose');
+  const backdrop=document.getElementById('helpdeskBackdrop');
+  const frame=document.getElementById('helpdeskFrame');
+
+  function prefillQS(){
+    try{
+      const name  = (gate&&gate.name)? gate.name : (document.getElementById('gateName')?.value||"");
+      const grade = (gate&&gate.grade)? gate.grade: (document.getElementById('gateGrade')?.value||"");
+      const p = new URLSearchParams();
+      if(name)  p.set('prefill_name',name);
+      if(grade) p.set('prefill_grade',grade);
+      return p.toString();
+    }catch(e){ return ""; }
+  }
+  function openPanel(){
+    const base='helpdesk.html';
+    const q=prefillQS();
+    frame.src = q? `${base}?${q}` : base;
+    panel.style.display='block';
+    panel.setAttribute('aria-hidden','false');
+  }
+  function closePanel(){
+    panel.style.display='none';
+    panel.setAttribute('aria-hidden','true');
+  }
+
+  openBtn && openBtn.addEventListener('click',openPanel);
+  closeBtn && closeBtn.addEventListener('click',closePanel);
+  backdrop && backdrop.addEventListener('click',closePanel);
+  document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closePanel(); });
+})();
+
+/* ===== Gate boot & validation ===== */
+async function bootAfterGate(){
+  await loadAttendance();
+}
+
+(async function initGate(){
+  try{ await preloadCatalogs(); }catch(e){ console.warn('catalog preload failed',e); }
+
+  const nameInput = document.getElementById('gateName');
+  const gradeSel  = document.getElementById('gateGrade');
+  const suggBox   = document.getElementById('nameSuggest');
+  const errEl     = document.getElementById('gateErr');
+
+  function showSuggestions(){
+    const q=nameInput.value;
+    const list=buildNameSuggestions(q,catalog.names,10);
+    if(!q || list.length===0){ suggBox.style.display='none'; suggBox.innerHTML=''; return; }
+    suggBox.innerHTML = list.map(n=>`<div class="item" data-name="${n.replace(/"/g,'&quot;')}">${n}</div>`).join('');
+    suggBox.style.display='block';
+  }
+
+  nameInput?.addEventListener('input',showSuggestions);
+  suggBox?.addEventListener('click',(e)=>{
+    const it=e.target.closest('.item'); if(!it) return;
+    nameInput.value = it.dataset.name;
+    suggBox.style.display='none';
+  });
+  document.addEventListener('click',(e)=>{
+    if(!suggBox.contains(e.target) && e.target!==nameInput) suggBox.style.display='none';
+  });
+
+  document.getElementById('gateBtn')?.addEventListener('click', async ()=>{
+    const name = (nameInput?.value||'').trim();
+    const grade= (gradeSel?.value||'').trim();
+    errEl.style.display='none';
+
+    if(!name || !grade){
+      errEl.textContent='Please enter Student Name and select Grade.';
+      errEl.style.display='block';
+      return;
+    }
+
+    if(NORM(name)===NORM(ADMIN_NAME) && NORM(normGrade(grade))===NORM(ADMIN_GRADE)){
+      gate.admin=true; gate.name=null; gate.grade=null; gate.ready=true;
+      document.getElementById('gate').style.display='none';
+      bootAfterGate();
+      return;
+    }
+
+    try{
+      const [a,o,s] = await Promise.all([
+        fetch(CSV_ATTENDANCE_URL+(CSV_ATTENDANCE_URL.includes('?')?'&':'?')+'_v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
+        fetch(CSV_OBJECTIVE_URL +(CSV_OBJECTIVE_URL.includes('?') ?'&':'?') +'_v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
+        fetch(CSV_SUBJECTIVE_URL+(CSV_SUBJECTIVE_URL.includes('?')?'&':'?')+'_v='+Date.now(),{cache:'no-store'}).then(r=>r.text())
+      ]);
+
+      function hasExact(txt){
+        const p=Papa.parse(txt,{header:true,skipEmptyLines:true});
+        const h=p.meta.fields||[]; const rows=p.data||[];
+        const nk=findKey(h,NAME_KEYS); const gk=findKey(h,GRADE_KEYS);
+        const okName=(r)=> nk? NORM(r?.[nk])===NORM(name):false;
+        const okGr  =(r)=> !gk? true : normGrade(r?.[gk])===normGrade(grade);
+        return rows.some(r=> okName(r)&&okGr(r));
+      }
+
+      if(!(hasExact(a)||hasExact(o)||hasExact(s))){
+        function namesFrom(txt){
+          const p=Papa.parse(txt,{header:true,skipEmptyLines:true});
+          const h=p.meta.fields||[]; const rows=p.data||[]; const nk=findKey(h,NAME_KEYS);
+          return rows.map(r=>r?.[nk]).filter(Boolean);
+        }
+        const all = [...new Set([...namesFrom(a),...namesFrom(o),...namesFrom(s)])];
+        const near = buildNameSuggestions(name, all, 10);
+        errEl.innerHTML = `No exact match for <b>${name}</b> (Grade <b>${grade}</b>).<br/>Try: ${near.slice(0,5).join(', ')||'no close matches'}.`;
+        errEl.style.display='block';
+        showSuggestions();
+        return;
+      }
+
+      gate.admin=false; gate.name=name; gate.grade=grade; gate.ready=true;
+      document.getElementById('gate').style.display='none';
+      bootAfterGate();
+    }catch(e){
+      gate.admin=false; gate.name=name; gate.grade=grade; gate.ready=true;
+      document.getElementById('gate').style.display='none';
+      bootAfterGate();
+    }
+  });
+})();
+</script>
 </body>
 </html>
