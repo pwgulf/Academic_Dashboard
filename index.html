@@ -17,6 +17,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
 <style>
+
 :root{
   --bg:#070a13; --bg-2:#0a0f1f;         /* page blacks */
   --card:#0d1328; --card-2:#0b1124;      /* panel blacks */
@@ -211,6 +212,167 @@ table.dataTable tbody tr:hover{background:#0f1736}
 .gate-actions{display:flex;justify-content:flex-end;gap:10px;padding:12px 18px;margin-top:12px;border-top:1px solid #e5e7eb;background:#f8fafc;border-bottom-left-radius:16px;border-bottom-right-radius:16px}
 .gate-actions button{border:0;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;background:linear-gradient(180deg,#143b90,#0e214f);color:#eaf1ff;box-shadow:0 10px 22px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.06);transition:.12s}
 .gate-actions button:hover{transform:translateY(-1px);filter:brightness(1.06)}
+
+
+
+/* ========= PATCH: White page, Purple KPI, keep tables/report as-is ========= */
+
+/* 1) Page background white (don’t change table/report styles) */
+body, .wrap {
+  background:#ffffff !important;
+  color:#111 !important;                 /* readable on white */
+}
+
+/* 2) KPI cards — solid purple with white text */
+.kpi{
+  background: linear-gradient(180deg,#7b5cff 0%, #5a3bff 100%) !important;
+  border: 1px solid rgba(123,92,255,.45) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 16px 36px rgba(90,59,255,.25), 0 6px 16px rgba(90,59,255,.18) !important;
+  color: #fff !important;
+}
+.kpi:before{                                   /* top glow line */
+  content:""; position:absolute; inset:0 0 auto 0; height:1px;
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent) !important;
+}
+.kpi-label, .kpi-value, .kpi .bar-txt{
+  color:#ffffff !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.25);
+}
+.kpi-value{ font-weight:900 !important }
+
+/* Fill bar looks like white paint filling */
+.kpi .bar{
+  --pct:0%;
+  margin-top:10px; height:12px; border-radius:9px;
+  background: rgba(255,255,255,.18) !important;
+  border: 1px solid rgba(255,255,255,.35) !important;
+  overflow:hidden; position:relative;
+}
+.kpi .bar>span{
+  display:block; height:100%; width:var(--pct);
+  background: linear-gradient(90deg,#ffffff,#eef0ff) !important;
+  box-shadow: 0 0 16px rgba(255,255,255,.35);
+  transition: width .5s ease;
+}
+.kpi .bar::after{                              /* subtle moving shine */
+  content:""; position:absolute; top:0; left:-40%; width:40%; height:100%;
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  animation: shine 2.2s infinite ease;
+}
+@keyframes shine{0%{left:-40%}100%{left:120%}}
+
+/* Optional: emphasize a primary KPI with an inset ring */
+.kpi.is-primary{
+  box-shadow: 0 0 0 3px rgba(255,255,255,.35) inset,
+              0 22px 48px rgba(90,59,255,.28) !important;
+}
+
+/* 3) Keep tables and report dark – no overrides here.
+   (Your .tbl*, table.dataTable*, #report* rules above remain untouched) */
+
+/* 4) Header, tabs, cards etc. stay as you already styled them. */
+/* ========= GLOBAL PURPLE THEME (except report) ========= */
+
+/* Page background white hi rahe */
+body, .wrap {
+  background:#ffffff !important;
+  color:#111 !important;
+}
+
+/* Purple style sab cards, header, tabs, controls, kpis par (report untouched) */
+header, .tabs, .controls, .card, .kpi {
+  background: linear-gradient(180deg,#7b5cff 0%, #5a3bff 100%) !important;
+  color:#fff !important;
+  border-radius: var(--radius,8px) !important;
+  border:1px solid rgba(123,92,255,.45) !important;
+  box-shadow: 0 8px 24px rgba(90,59,255,.25), 0 3px 10px rgba(90,59,255,.18) !important;
+}
+
+/* Text white in those areas */
+header *, .tabs *, .controls *, .card *, .kpi * {
+  color:#fff !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.25);
+}
+
+/* KPI value bolder */
+.kpi-value{font-weight:900 !important}
+
+/* KPI bar white fill */
+.kpi .bar{
+  margin-top:10px; height:12px; border-radius:9px;
+  background: rgba(255,255,255,.18) !important;
+  border:1px solid rgba(255,255,255,.35) !important;
+  overflow:hidden; position:relative;
+}
+.kpi .bar>span{
+  display:block; height:100%; width:var(--pct);
+  background: linear-gradient(90deg,#ffffff,#eef0ff) !important;
+  box-shadow: 0 0 16px rgba(255,255,255,.35);
+  transition: width .5s ease;
+}
+.kpi .bar::after{
+  content:""; position:absolute; top:0; left:-40%; width:40%; height:100%;
+  background: linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  animation: shine 2.2s infinite ease;
+}
+@keyframes shine{0%{left:-40%}100%{left:120%}}
+
+/* Active tab highlight */
+.tab-btn.active{
+  background:#5a3bff !important;
+  border-bottom:3px solid #fff !important;
+  font-weight:700;
+}
+
+/* ===== IMPORTANT: REPORT untouched ===== */
+#report, #report * {
+  all: unset;
+}
+/* ==== Report Preview Button Purple Theme ==== */
+button, .btn, #reportPreview {
+  background: linear-gradient(180deg,#7b5cff 0%, #5a3bff 100%) !important;
+  color:#fff !important;
+  border:1px solid rgba(255,255,255,.35) !important;
+  border-radius:8px !important;
+  padding:6px 14px !important;
+  font-weight:600 !important;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(90,59,255,.3);
+  transition: all .2s ease-in-out;
+}
+
+button:hover, .btn:hover, #reportPreview:hover {
+  background: linear-gradient(180deg,#6a4dff 0%, #4a2cff 100%) !important;
+  box-shadow:0 6px 16px rgba(90,59,255,.45);
+  transform:translateY(-2px);
+}
+.support-footer {
+  background: linear-gradient(90deg, #ff9800, #ff5722); /* Orange shades */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin: 10px auto 20px;
+  border-radius: 10px;
+  width: 80%;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.support-footer p {
+  margin: 5px 0;
+}
+
+.support-footer a {
+  color: #fff176; /* soft yellow highlight */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.support-footer a:hover {
+  text-decoration: underline;
+}
 </style>
 
 
@@ -326,12 +488,24 @@ new Chart(ctx, {
 
 
 </head>
+
+
 <body>
 <header class="site-header">
   <img class="logo" alt="PW Gulf Logo" src="data:image/png;base64,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">
-  <h1>PW Gulf — Student Performance Dashboard</h1>
-  <div class="header-spacer"></div>
+ <h1>PW Gulf — Student Performance Dashboard</h1>
+<div class="header-spacer"></div>
 </header>
+
+<!-- 🌐 Support Footer (just below header) -->
+<div class="support-footer">
+  <p>📧 For Email: 
+    <a href="mailto:Support@pwgulf.com">Support@pwgulf.com</a>
+  </p>
+  <p>📞 For WhatsApp & Call: 
+    <a href="https://wa.me/971564038046" target="_blank">+971 56 403 8046</a>
+  </p>
+</div>
 
 <!-- Gate -->
 <div id="gate" class="gate-backdrop" aria-modal="true" role="dialog">
