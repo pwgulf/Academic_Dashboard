@@ -17,7 +17,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
 <style>
-
 :root{
   --bg:#070a13; --bg-2:#0a0f1f;         /* page blacks */
   --card:#0d1328; --card-2:#0b1124;      /* panel blacks */
@@ -99,7 +98,7 @@ body{
 .card{background:var(--card-2);border:1px solid var(--line);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);overflow:auto}
 .card .card-title{font-weight:900;margin:2px 0 10px;letter-spacing:.2px}
 
-/* KPI — animated fill + shimmer */
+/* KPI */
 .kpis{display:grid;gap:12px;margin:10px 0 16px;grid-template-columns:repeat(4,1fr)}
 @media(max-width:1200px){.kpis{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}}
@@ -111,7 +110,6 @@ body{
   border:1px solid var(--line);border-radius:var(--radius);padding:16px;
   box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between
 }
-/* subtle glow strip at top */
 .kpi:before{
   content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(74,163,255,.5),transparent)
 }
@@ -127,7 +125,6 @@ body{
   box-shadow:0 0 18px rgba(30,108,255,.35);
   transition:width .5s ease;
 }
-/* moving shimmer over the fill */
 .kpi .bar::after{
   content:"";position:absolute;top:0;left:-40%;
   width:40%;height:100%;
@@ -137,7 +134,7 @@ body{
 @keyframes shine{0%{left:-40%}100%{left:120%}}
 .kpi .bar-txt{margin-top:6px;font-size:12px;color:#cfe0ff}
 
-/* Leaderboard / tables — blue header, black body */
+/* Leaderboard / tables */
 #attTopWrap .card,#objTopWrap .card,#subTopWrap .card{
   background:linear-gradient(180deg,#0f1836 0%, #0b132b 100%);border:1px solid var(--line)
 }
@@ -149,7 +146,7 @@ body{
 .tbl tbody tr:hover{background:#0f1736}
 .you-row{font-weight:900;color:#fff;background:#0e234f}
 
-/* DataTables (match tables) */
+/* DataTables */
 .dataTables_wrapper{min-width:100%;color:var(--ink)}
 table.dataTable{border-collapse:collapse!important;width:100%!important;background:transparent!important}
 table.dataTable thead th{background:#11225a;color:#e6f0ff;border:1px solid var(--line)}
@@ -159,7 +156,7 @@ table.dataTable tbody tr:hover{background:#0f1736}
 .dataTables_wrapper .dataTables_paginate .paginate_button{color:#cfe2ff!important;border:1px solid var(--line)!important;background:#10193f!important;border-radius:8px!important;margin:0 2px!important}
 .dataTables_wrapper .dataTables_paginate .paginate_button.current{background:linear-gradient(180deg,#1a275c,#10193f)!important;color:#fff!important;border-color:transparent!important;outline:2px solid rgba(30,108,255,.25)}
 
-/* buttons unified */
+/* buttons */
 .min-btn,.helpdesk-btn,.report-actions button{
   border:0;border-radius:12px;padding:9px 14px;font-weight:800;cursor:pointer;
   background:linear-gradient(180deg,#143b90,#0e214f);color:#fff;
@@ -178,7 +175,7 @@ table.dataTable tbody tr:hover{background:#0f1736}
 #helpdeskFrame{flex:1;width:100%;border:0;background:var(--card-2)}
 @keyframes slideIn{from{transform:translateX(100%);opacity:.8}to{transform:translateX(0);opacity:1}}
 
-/* report modal – dark mode to sit on black */
+/* report modal */
 #reportPanel{position:fixed;inset:0;z-index:9999;display:none}
 #reportBackdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px)}
 #reportCard{position:absolute;inset:0;display:flex;flex-direction:column;background:#0a0f1f}
@@ -196,7 +193,7 @@ table.dataTable tbody tr:hover{background:#0f1736}
 .report-table td{border:1px solid var(--line);padding:8px 10px;font-size:13px;text-align:center;white-space:nowrap;color:#eaf1ff;background:#0d152e}
 .report-table tbody tr:nth-child(even){background:#0f1736}
 
-/* gate (login) stays light for readability */
+/* gate (login) */
 #gate{position:fixed;inset:0;z-index:1100;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.55);backdrop-filter:blur(6px)}
 .gate-card{width:min(720px,94vw);background:#fff;color:#0f172a;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,.25);padding:0}
 .gate-card h2{margin:0;padding:16px 18px;font-size:18px;font-weight:800;color:#0f172a;border-bottom:1px solid #e5e7eb}
@@ -213,17 +210,8 @@ table.dataTable tbody tr:hover{background:#0f1736}
 .gate-actions button{border:0;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;background:linear-gradient(180deg,#143b90,#0e214f);color:#eaf1ff;box-shadow:0 10px 22px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,.06);transition:.12s}
 .gate-actions button:hover{transform:translateY(-1px);filter:brightness(1.06)}
 
-
-
-/* ========= PATCH: White page, Purple KPI, keep tables/report as-is ========= */
-
-/* 1) Page background white (don’t change table/report styles) */
-body, .wrap {
-  background:#ffffff !important;
-  color:#111 !important;                 /* readable on white */
-}
-
-/* 2) KPI cards — solid purple with white text */
+/* White page / purple theme overrides (your previous theme) */
+body, .wrap { background:#ffffff !important; color:#111 !important; }
 .kpi{
   background: linear-gradient(180deg,#7b5cff 0%, #5a3bff 100%) !important;
   border: 1px solid rgba(123,92,255,.45) !important;
@@ -231,56 +219,13 @@ body, .wrap {
   box-shadow: 0 16px 36px rgba(90,59,255,.25), 0 6px 16px rgba(90,59,255,.18) !important;
   color: #fff !important;
 }
-.kpi:before{                                   /* top glow line */
-  content:""; position:absolute; inset:0 0 auto 0; height:1px;
-  background: linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent) !important;
-}
-.kpi-label, .kpi-value, .kpi .bar-txt{
-  color:#ffffff !important;
-  text-shadow:0 1px 2px rgba(0,0,0,.25);
-}
-.kpi-value{ font-weight:900 !important }
-
-/* Fill bar looks like white paint filling */
-.kpi .bar{
-  --pct:0%;
-  margin-top:10px; height:12px; border-radius:9px;
-  background: rgba(255,255,255,.18) !important;
-  border: 1px solid rgba(255,255,255,.35) !important;
-  overflow:hidden; position:relative;
-}
-.kpi .bar>span{
-  display:block; height:100%; width:var(--pct);
-  background: linear-gradient(90deg,#ffffff,#eef0ff) !important;
-  box-shadow: 0 0 16px rgba(255,255,255,.35);
-  transition: width .5s ease;
-}
-.kpi .bar::after{                              /* subtle moving shine */
-  content:""; position:absolute; top:0; left:-40%; width:40%; height:100%;
-  background: linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-  animation: shine 2.2s infinite ease;
-}
+.kpi:before{content:""; position:absolute; inset:0 0 auto 0; height:1px; background: linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent) !important;}
+.kpi-label, .kpi-value, .kpi .bar-txt{ color:#ffffff !important; text-shadow:0 1px 2px rgba(0,0,0,.25); }
+.kpi .bar{ --pct:0%; margin-top:10px; height:12px; border-radius:9px; background: rgba(255,255,255,.18) !important; border: 1px solid rgba(255,255,255,.35) !important; overflow:hidden; position:relative; }
+.kpi .bar>span{ display:block; height:100%; width:var(--pct); background: linear-gradient(90deg,#ffffff,#eef0ff) !important; box-shadow: 0 0 16px rgba(255,255,255,.35); transition: width .5s ease; }
+.kpi .bar::after{ content:""; position:absolute; top:0; left:-40%; width:40%; height:100%; background: linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent); animation: shine 2.2s infinite ease; }
 @keyframes shine{0%{left:-40%}100%{left:120%}}
 
-/* Optional: emphasize a primary KPI with an inset ring */
-.kpi.is-primary{
-  box-shadow: 0 0 0 3px rgba(255,255,255,.35) inset,
-              0 22px 48px rgba(90,59,255,.28) !important;
-}
-
-/* 3) Keep tables and report dark – no overrides here.
-   (Your .tbl*, table.dataTable*, #report* rules above remain untouched) */
-
-/* 4) Header, tabs, cards etc. stay as you already styled them. */
-/* ========= GLOBAL PURPLE THEME (except report) ========= */
-
-/* Page background white hi rahe */
-body, .wrap {
-  background:#ffffff !important;
-  color:#111 !important;
-}
-
-/* Purple style sab cards, header, tabs, controls, kpis par (report untouched) */
 header, .tabs, .controls, .card, .kpi {
   background: linear-gradient(180deg,#7b5cff 0%, #5a3bff 100%) !important;
   color:#fff !important;
@@ -288,237 +233,77 @@ header, .tabs, .controls, .card, .kpi {
   border:1px solid rgba(123,92,255,.45) !important;
   box-shadow: 0 8px 24px rgba(90,59,255,.25), 0 3px 10px rgba(90,59,255,.18) !important;
 }
+header *, .tabs *, .controls *, .card *, .kpi * { color:#fff !important; text-shadow:0 1px 2px rgba(0,0,0,.25); }
+.tab-btn.active{ background:#5a3bff !important; border-bottom:3px solid #fff !important; font-weight:700; }
 
-/* Text white in those areas */
-header *, .tabs *, .controls *, .card *, .kpi * {
-  color:#fff !important;
-  text-shadow:0 1px 2px rgba(0,0,0,.25);
-}
-
-/* KPI value bolder */
-.kpi-value{font-weight:900 !important}
-
-/* KPI bar white fill */
-.kpi .bar{
-  margin-top:10px; height:12px; border-radius:9px;
-  background: rgba(255,255,255,.18) !important;
-  border:1px solid rgba(255,255,255,.35) !important;
-  overflow:hidden; position:relative;
-}
-.kpi .bar>span{
-  display:block; height:100%; width:var(--pct);
-  background: linear-gradient(90deg,#ffffff,#eef0ff) !important;
-  box-shadow: 0 0 16px rgba(255,255,255,.35);
-  transition: width .5s ease;
-}
-.kpi .bar::after{
-  content:""; position:absolute; top:0; left:-40%; width:40%; height:100%;
-  background: linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
-  animation: shine 2.2s infinite ease;
-}
-@keyframes shine{0%{left:-40%}100%{left:120%}}
-
-/* Active tab highlight */
-.tab-btn.active{
-  background:#5a3bff !important;
-  border-bottom:3px solid #fff !important;
-  font-weight:700;
-}
-
-/* ===== IMPORTANT: REPORT untouched ===== */
-#report, #report * {
-  all: unset;
-}
-/* ==== Report Preview Button Purple Theme ==== */
-button, .btn, #reportPreview {
-  background: linear-gradient(180deg,#7b5cff 0%, #5a3bff 100%) !important;
-  color:#fff !important;
-  border:1px solid rgba(255,255,255,.35) !important;
-  border-radius:8px !important;
-  padding:6px 14px !important;
-  font-weight:600 !important;
-  cursor:pointer;
-  box-shadow:0 4px 12px rgba(90,59,255,.3);
-  transition: all .2s ease-in-out;
-}
-
-button:hover, .btn:hover, #reportPreview:hover {
-  background: linear-gradient(180deg,#6a4dff 0%, #4a2cff 100%) !important;
-  box-shadow:0 6px 16px rgba(90,59,255,.45);
-  transform:translateY(-2px);
-}
 .support-footer {
-  background: linear-gradient(90deg, #ff9800, #ff5722); /* Orange shades */
-  color: white;
-  text-align: center;
-  padding: 10px;
-  margin: 10px auto 20px;
-  border-radius: 10px;
-  width: 80%;
-  font-size: 14px;
-  font-weight: 500;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  background: linear-gradient(90deg, #ff9800, #ff5722);
+  color: white; text-align: center; padding: 10px; margin: 10px auto 20px;
+  border-radius: 10px; width: 80%; font-size: 14px; font-weight: 500; box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
-
-.support-footer p {
-  margin: 5px 0;
-}
-
-.support-footer a {
-  color: #fff176; /* soft yellow highlight */
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.support-footer a:hover {
-  text-decoration: underline;
-}
+.support-footer a { color: #fff176; text-decoration: none; font-weight: bold; }
+.support-footer a:hover { text-decoration: underline; }
 </style>
-
-
-
-<script>
-/* ===== Chart.js: Blue line, black text, WHITE chart bg ===== */
-const BLUE = '#1976ff', GRID = '#d9dee7', AXIS = '#000', LABEL = '#000';
-
-/* 1) Value labels on points (unchanged) */
-const pointLabelPlugin = {
-  id: 'pointLabelPlugin',
-  afterDatasetsDraw(chart) {
-    const { ctx } = chart;
-    chart.data.datasets.forEach((ds, di) => {
-      const meta = chart.getDatasetMeta(di);
-      meta.data.forEach((pt, idx) => {
-        const v = ds.data[idx];
-        if (v == null || isNaN(v)) return;
-        ctx.save();
-        ctx.font = '12px system-ui,-apple-system,Segoe UI,Roboto,Arial';
-        ctx.fillStyle = LABEL;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'bottom';
-        ctx.fillText(`${Math.round(v)}%`, pt.x, pt.y - 6);
-        ctx.restore();
-      });
-    });
-  }
-};
-
-/* 2) White chart background (only chart area) */
-/* 2) White chart background (ENTIRE canvas) */
-const fullWhiteBgPlugin = {
-  id: 'fullWhiteBg',
-  beforeDraw(chart) {
-    const { ctx, canvas } = chart;
-    ctx.save();
-    // paint behind everything (title/axes/padding included)
-    ctx.globalCompositeOperation = 'destination-over';
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.restore();
-  }
-};
-
-/* 3) Thick mid-line at y = 100% (center guide) */
-const midline100Plugin = {
-  id: 'midline100Plugin',
-  afterDraw(chart) {
-    const y = chart.scales.y;
-    const ca = chart.chartArea;
-    if (!y || !ca) return;
-    const yPixel = y.getPixelForValue(100);
-    const ctx = chart.ctx;
-    ctx.save();
-    ctx.strokeStyle = '#1976ff';   // blue line
-    ctx.lineWidth = 2.5;
-    ctx.setLineDash([6, 4]);       // dashed; remove if you want solid
-    ctx.beginPath();
-    ctx.moveTo(ca.left, yPixel);
-    ctx.lineTo(ca.right, yPixel);
-    ctx.stroke();
-    ctx.restore();
-  }
-};
-
-Chart.register(pointLabelPlugin, fullWhiteBgPlugin, midline100Plugin);
-
-
-/* Base options with headroom + no clipping */
-const BASE_LINE_OPTS = {
-  responsive: true,
-  maintainAspectRatio: false,
-  layout: { padding: { top: 24 } },   // space so labels/line never cut
-  plugins: {
-    legend: { display: false },
-    tooltip: { callbacks: { label: (c) => `${c.parsed.y}%` } }
-  },
- scales: {
-  y: {
-    min: -20,       // below 0 for headroom
-    max: 120,       // above 100 for headroom
-    grid: { color: '#d9dee7' },
-    ticks: {
-      color: '#000',
-      stepSize: 20,
-      callback: (v) => `${v}%`
-    }
-  },
-  x: {
-    grid: { color: '#d9dee7' },
-    ticks: { color: '#000', autoSkip: true, maxTicksLimit: 12 }
-  }
-}
-,
-  elements: {
-    line: { borderColor: BLUE, borderWidth: 2 },
-    point: { radius: 3, hoverRadius: 4, backgroundColor: BLUE, borderColor: BLUE }
-  },
-  datasets: {
-    line: { clip: false }            // ensure the line won't be clipped
-  }
-};
-
-/* Example usage:
-new Chart(ctx, {
-  type: 'line',
-  data: { labels, datasets: [{ data: values, fill: false, borderColor: BLUE, tension: 0.35 }] },
-  options: BASE_LINE_OPTS
-});
-*/
-</script>
-
-
 </head>
-
-
 <body>
+
 <header class="site-header">
   <img class="logo" alt="PW Gulf Logo" src="data:image/png;base64,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">
- <h1>PW Gulf — Student Performance Dashboard</h1>
-<div class="header-spacer"></div>
+  <h1>PW Gulf — Student Performance Dashboard</h1>
+  <div class="header-spacer"></div>
 </header>
 
 <!-- 🌐 Support Footer (just below header) -->
 <div class="support-footer">
-  <p>📧 For Email: 
+  <p>📧 For Email:
     <a href="mailto:Support@pwgulf.com">Support@pwgulf.com</a>
   </p>
-  <p>📞 For WhatsApp & Call: 
+  <p>📞 For WhatsApp & Call:
     <a href="https://wa.me/971564038046" target="_blank">+971 56 403 8046</a>
   </p>
 </div>
 
-<!-- Gate -->
+<!-- Gate: Student/Admin tabs -->
 <div id="gate" class="gate-backdrop" aria-modal="true" role="dialog">
   <div class="gate-card">
-    <h2>Load your data</h2>
-    <p>Enter <b>Student Name</b> and <b>Grade</b>.</p>
-    <div class="gate-grid">
-      <div class="gate-row"><input id="gateName" type="text" placeholder="Student Name" autocomplete="off"/></div>
-      <div class="gate-row"><select id="gateGrade"><option value="">Select Grade</option></select></div>
+    <h2>Choose View</h2>
+    <p>Select <b>Student</b> for name+grade, or <b>Admin</b> for full data.</p>
+
+    <!-- Tabs -->
+    <div class="gate-tabs" style="display:flex;gap:8px;padding:0 18px 8px 18px">
+      <button type="button" id="tStudent" class="tbtn active" style="border:1px solid #e5e7eb;border-radius:10px;padding:8px 12px;background:#eef2ff;font-weight:700;cursor:pointer">Student</button>
+      <button type="button" id="tAdmin"   class="tbtn"         style="border:1px solid #e5e7eb;border-radius:10px;padding:8px 12px;background:#fff;cursor:pointer">Admin</button>
     </div>
-    <div id="nameSuggest" class="suggest" style="display:none"></div>
-    <div id="gateErr" class="gate-err">Validation message</div>
-    <div class="gate-actions"><button id="gateBtn" type="button">Load Data</button></div>
+
+    <!-- Student form -->
+    <div id="studentForm">
+      <div class="gate-grid">
+        <div class="gate-row">
+          <input id="gateName" type="text" placeholder="Student Name" autocomplete="off" list="namesList"/>
+          <datalist id="namesList"></datalist>
+        </div>
+        <div class="gate-row">
+          <select id="gateGrade"><option value="">Select Grade</option></select>
+        </div>
+      </div>
+      <div id="nameSuggest" class="suggest" style="display:none"></div>
+      <div id="gateErr" class="gate-err">Validation message</div>
+      <div class="gate-actions">
+        <button id="gateBtn" type="button">Load Data</button>
+      </div>
+    </div>
+
+    <!-- Admin form -->
+    <div id="adminForm" style="display:none">
+      <div class="gate-grid">
+        <div class="gate-row"><input id="admUser" type="text" placeholder="Admin ID (e.g., admin)" autocomplete="username"/></div>
+        <div class="gate-row"><input id="admPass" type="password" placeholder="Password" autocomplete="current-password"/></div>
+      </div>
+      <div id="admErr" class="gate-err">Invalid admin credentials</div>
+      <div class="gate-actions">
+        <button id="adminBtn" type="button">Login as Admin</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -644,14 +429,123 @@ new Chart(ctx, {
     <div id="reportBody"><div id="reportContent"><div class="report-empty">No data yet</div></div></div>
   </div>
 </div>
-
 <script>
-/* ===== CSV LINKS (same sheet, 3 tabs) ===== */
+/* ================================
+   CHART.JS PLUGINS + BASE OPTIONS
+   ================================ */
+const BLUE = '#1976ff', GRID = '#d9dee7', AXIS = '#000', LABEL = '#000';
+
+const pointLabelPlugin = {
+  id: 'pointLabelPlugin',
+  afterDatasetsDraw(chart) {
+    const { ctx } = chart;
+    chart.data.datasets.forEach((ds, di) => {
+      const meta = chart.getDatasetMeta(di);
+      meta.data.forEach((pt, idx) => {
+        const v = ds.data[idx];
+        if (v == null || isNaN(v)) return;
+        ctx.save();
+        ctx.font = '12px system-ui,-apple-system,Segoe UI,Roboto,Arial';
+        ctx.fillStyle = LABEL;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText(`${Math.round(v)}%`, pt.x, pt.y - 6);
+        ctx.restore();
+      });
+    });
+  }
+};
+
+const fullWhiteBgPlugin = {
+  id: 'fullWhiteBg',
+  beforeDraw(chart) {
+    const { ctx, canvas } = chart;
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+  }
+};
+
+const midline100Plugin = {
+  id: 'midline100Plugin',
+  afterDraw(chart) {
+    const y = chart.scales.y;
+    const ca = chart.chartArea;
+    if (!y || !ca) return;
+    const yPixel = y.getPixelForValue(100);
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.strokeStyle = '#1976ff';
+    ctx.lineWidth = 2.5;
+    ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    ctx.moveTo(ca.left, yPixel);
+    ctx.lineTo(ca.right, yPixel);
+    ctx.stroke();
+    ctx.restore();
+  }
+};
+
+Chart.register(pointLabelPlugin, fullWhiteBgPlugin, midline100Plugin);
+
+const BASE_LINE_OPTS = {
+  responsive: true,
+  maintainAspectRatio: false,
+  layout: { padding: { top: 24 } },
+  plugins: {
+    legend: { display: false },
+    tooltip: { callbacks: { label: (c) => `${c.parsed.y}%` } }
+  },
+  scales: {
+    y: {
+      min: -20, max: 120,
+      grid: { color: GRID },
+      ticks: { color: AXIS, stepSize: 20, callback: v => `${v}%` }
+    },
+    x: { grid: { color: GRID }, ticks: { color: AXIS, autoSkip: true, maxTicksLimit: 12 } }
+  },
+  elements: {
+    line: { borderColor: BLUE, borderWidth: 2 },
+    point:{ radius: 3, hoverRadius: 4, backgroundColor: BLUE, borderColor: BLUE }
+  },
+  datasets: { line: { clip: false } }
+};
+
+/* ===================
+   CSV URLS (REMOTE)
+   =================== */
 const CSV_ATTENDANCE_URL="https://raw.githubusercontent.com/pwgulf/Academic_Dashboard/refs/heads/main/data/Attendance.csv";
 const CSV_OBJECTIVE_URL ="https://raw.githubusercontent.com/pwgulf/Academic_Dashboard/refs/heads/main/data/Objective.csv";
-const CSV_SUBJECTIVE_URL="https://raw.githubusercontent.com/pwgulf/Academic_Dashboard/refs/heads/main/data/Attendance.csv";
+const CSV_SUBJECTIVE_URL="https://raw.githubusercontent.com/pwgulf/Academic_Dashboard/refs/heads/main/data/Subjective.csv";
 
-/* ===== Column name candidates ===== */
+/* ================
+   CACHE HELPERS
+   ================ */
+const LS = { ATT:'PWG_ATT', OBJ:'PWG_OBJ', SUB:'PWG_SUB' };
+
+async function fetchText(url){
+  const bust = (url.includes('?')?'&':'?') + '_=' + Date.now();
+  const r = await fetch(url + bust, {cache:'no-store'});
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  return await r.text();
+}
+async function getCSV(url, lsKey){
+  try{
+    const txt = await fetchText(url);
+    if(txt?.trim()) localStorage.setItem(lsKey, txt);   // keep last-good
+    return txt;
+  }catch(e){
+    const cached = localStorage.getItem(lsKey);
+    if(cached) return cached;                           // fallback
+    throw e;
+  }
+}
+
+/* =======================
+   COLUMN KEY CANDIDATES
+   ======================= */
 const NAME_KEYS   = ["StudentName","Student Names","Student Name","Name","Student","Candidate Name"];
 const GRADE_KEYS  = ["Grade","Class","Std"];
 const SECTION_KEYS= ["Section","Sec"];
@@ -660,12 +554,14 @@ const STREAM_KEYS = ["Stream","Course","Program"];
 const ATT_PRESENT_KEYS = ["TotalPresent","Total Present","Present Count","Present"];
 const ATT_CLASSES_KEYS = ["TotalClasses","Total Classes","Classes","Total Class"];
 
-const OBJ_NAME_KEYS = [/^objective\s*name$/i, /^objective\s*test/i, /obj\s*name/i];
-const MARKS_ACH_KEYS = [/^marks?\s*achieved$/i, /^marks$/i];
-const TOTAL_MARKS_KEYS= [/^total\s*marks?$/i];
-const PERCENT_KEYS = [/^percentage$/i,/test\s*percentage/i,/percent/i];
+const OBJ_NAME_KEYS    = [/^objective\s*name$/i, /^objective\s*test/i, /obj\s*name/i];
+const MARKS_ACH_KEYS   = [/^marks?\s*achieved$/i, /^marks$/i];
+const TOTAL_MARKS_KEYS = [/^total\s*marks?$/i];
+const PERCENT_KEYS     = [/^percentage$/i,/test\s*percentage/i,/percent/i];
 
-/* ===== Small helpers ===== */
+/* ==============
+   SMALL HELPERS
+   ============== */
 const pct = n => isFinite(n)? (Math.round(n*100)/100).toFixed(2)+"%" : "0%";
 const toNum = v => {
   if(v==null) return 0;
@@ -677,18 +573,20 @@ const toNum = v => {
 const NORM = s => String(s||"").trim().toLowerCase();
 function normGrade(v){const s=String(v??"").trim(); const m=s.match(/\d+/); return m?m[0]:s.toLowerCase();}
 
-/* universal finder */
 function findKey(header, candidates){
+  // exact match (string)
   for(const cand of candidates){
     const k = header.find(h => (h||"").trim().toLowerCase() === String(cand).toLowerCase());
     if(k) return k;
   }
+  // regex
   for(const cand of candidates){
     if(cand instanceof RegExp){
       const k = header.find(h => cand.test(h||""));
       if(k) return k;
     }
   }
+  // includes (string)
   for(const cand of candidates){
     const s=String(cand).toLowerCase();
     const k = header.find(h => (h||"").toLowerCase().includes(s));
@@ -697,22 +595,21 @@ function findKey(header, candidates){
   return null;
 }
 
-/* date → ISO week */
-function parseDate(s){if(!s) return null; const d=Date.parse(s); return isNaN(d)?null:new Date(d);}
+function parseDate(s){ if(!s) return null; const d=Date.parse(s); return isNaN(d)?null:new Date(d); }
 function isoWeek(date){
   const d=new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate()));
   const day=(d.getUTCDay()+6)%7; d.setUTCDate(d.getUTCDate()-day+3);
   const firstThu=new Date(Date.UTC(d.getUTCFullYear(),0,4));
   return 1 + Math.round((d-firstThu)/(7*24*3600*1000));
 }
-
-/* quick uniq count by student name */
 const uniqueByName = (rows,nameKey) => {
   const s=new Set(); rows.forEach(r=>{const n=(r?.[nameKey]||"").toString().trim(); if(n) s.add(n);});
   return s.size;
 };
 
-/* ===== Multi-select widget ===== */
+/* ==========================
+   MULTI-SELECT WIDGET (UI)
+   ========================== */
 function buildMultiSelect({mountId,label,options=[],selected=new Set(),onChange}){
   const el=document.getElementById(mountId); if(!el) return;
   const clean = [...new Set(options.filter(Boolean).map(String))].sort();
@@ -727,9 +624,7 @@ function buildMultiSelect({mountId,label,options=[],selected=new Set(),onChange}
   const btn=el.querySelector('button'), panel=el.querySelector('.panel'), search=el.querySelector('.search'), opts=el.querySelector('.opts');
   function paint(){
     const q=(search.value||"").toLowerCase();
-    opts.innerHTML = clean.filter(v=>v.toLowerCase().includes(q)).map(v=>(
-      `<label class="opt"><input type="checkbox" value="${v.replace(/"/g,'&quot;')}" ${selected.size===0?'':(selected.has(v)?'checked':'')}/> ${v}</label>`
-    )).join('') || `<div class="opt" style="color:#94a3b8">No options</div>`;
+    opts.innerHTML = clean.filter(v=>v.toLowerCase().includes(q)).map(v=>(`<label class="opt"><input type="checkbox" value="${v.replace(/"/g,'&quot;')}" ${selected.size===0?'':(selected.has(v)?'checked':'')}/> ${v}</label>`)).join('') || `<div class="opt" style="color:#94a3b8">No options</div>`;
   }
   function badge(){
     const b=document.getElementById(`${mountId}-badge`);
@@ -748,7 +643,9 @@ function buildMultiSelect({mountId,label,options=[],selected=new Set(),onChange}
   return {getSelected:()=>new Set(selected), setOptions:(arr)=>{options=arr;}, refresh:paint};
 }
 
-/* ===== Collapsible tiny buttons ===== */
+/* ===========================
+   TINY COLLAPSE BUTTON WIRING
+   =========================== */
 function wireMinButtons(){
   document.querySelectorAll('.min-btn').forEach(b=>{
     const sel=b.getAttribute('data-min');
@@ -762,10 +659,10 @@ function wireMinButtons(){
   });
 }
 
-/* ===== Gate/Admin ===== */
-const ADMIN_NAME="ADITYA", ADMIN_GRADE="12";
-const gate={ready:false,admin:false,name:null,grade:null};
-const catalog={names:[],grades:[]};
+/* ==================================
+   CATALOG (names/grades) + SUGGESTIONS
+   ================================== */
+const catalog={names:[],grades:[],gradeToNames:new Map()};
 
 function buildNameSuggestions(query,list,limit=10){
   const q=NORM(query); if(!q) return [];
@@ -774,69 +671,150 @@ function buildNameSuggestions(query,list,limit=10){
   const rest=uniq.filter(n=>!NORM(n).startsWith(q)&&NORM(n).includes(q));
   return [...starts,...rest].slice(0,limit);
 }
+
 async function preloadCatalogs(){
   const [t1,t2,t3]=await Promise.all([
-    fetch(CSV_ATTENDANCE_URL+'&_p='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
-    fetch(CSV_OBJECTIVE_URL +'&_p='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
-    fetch(CSV_SUBJECTIVE_URL+'&_p='+Date.now(),{cache:'no-store'}).then(r=>r.text())
+    getCSV(CSV_ATTENDANCE_URL, LS.ATT),
+    getCSV(CSV_OBJECTIVE_URL,  LS.OBJ),
+    getCSV(CSV_SUBJECTIVE_URL, LS.SUB),
   ]);
-  function extract(txt){
-    const p=Papa.parse(txt,{header:true,skipEmptyLines:true});
-    const h=p.meta.fields||[]; const rows=p.data||[];
-    const nk=findKey(h,NAME_KEYS); const gk=findKey(h,GRADE_KEYS);
-    return {names:rows.map(r=>r?.[nk]).filter(Boolean), grades:rows.map(r=>r?.[gk]).filter(Boolean).map(String)};
+
+  const parse=(txt)=>{ const p=Papa.parse(txt,{header:true,skipEmptyLines:true}); return {h:(p.meta.fields||[]), rows:(p.data||[])}; };
+  const A=parse(t1), B=parse(t2), C=parse(t3);
+
+  const nkA=findKey(A.h,NAME_KEYS), gkA=findKey(A.h,GRADE_KEYS);
+  const nkB=findKey(B.h,NAME_KEYS), gkB=findKey(B.h,GRADE_KEYS);
+  const nkC=findKey(C.h,NAME_KEYS), gkC=findKey(C.h,GRADE_KEYS);
+
+  const allNames=[], allGrades=[]; const g2n=new Map();
+  function ingest(rows,nk,gk){
+    rows.forEach(r=>{
+      const nm=(r?.[nk]||"").toString().trim();
+      const g =(r?.[gk]||"").toString().trim();
+      if(nm) allNames.push(nm);
+      if(g)  allGrades.push(g);
+      if(nm && g){
+        const G=(g.match(/\d+/)?.[0]||g).toString();
+        const set=g2n.get(G)||new Set(); set.add(nm); g2n.set(G,set);
+      }
+    });
   }
-  const e1=extract(t1),e2=extract(t2),e3=extract(t3);
-  catalog.names=[...new Set([...e1.names,...e2.names,...e3.names])];
-  catalog.grades=[...new Set([...e1.grades,...e2.grades,...e3.grades].map(normGrade))].filter(Boolean).sort((a,b)=>+a-+b);
+  ingest(A.rows,nkA,gkA); ingest(B.rows,nkB,gkB); ingest(C.rows,nkC,gkC);
+
+  catalog.names=[...new Set(allNames)];
+  catalog.grades=[...new Set(allGrades.map(g=>(g.match(/\d+/)?.[0]||g)))].filter(Boolean).sort((x,y)=>+x-+y);
+  catalog.gradeToNames=g2n;
+
+  // Fill Grade select
   const gSel=document.getElementById('gateGrade');
-  gSel.innerHTML='<option value="">Select Grade</option>'+catalog.grades.map(g=>`<option value="${g}">${g}</option>`).join('');
+  if(gSel){
+    gSel.innerHTML='<option value="">Select Grade</option>' + catalog.grades.map(g=>`<option value="${g}">${g}</option>`).join('');
+  }
+  // Populate datalist with all names initially
+  const dl=document.getElementById('namesList');
+  if(dl){
+    dl.innerHTML = catalog.names.sort().map(n=>`<option value="${n.replace(/"/g,'&quot;')}"></option>`).join('');
+  }
 }
 
-/* ===== DataTables refs & filter selections ===== */
-let attTable=null,objTable=null,subTable=null;
+/* Gate name suggestion wiring (called later in Part 5) */
+function wireNameSuggestions(){
+  const nameInput=document.getElementById('gateName');
+  const gradeSel =document.getElementById('gateGrade');
+  const suggBox  =document.getElementById('nameSuggest');
+
+  function refreshNameDatalist(){
+    const dl=document.getElementById('namesList'); if(!dl) return;
+    const sel=(gradeSel?.value||'').trim();
+    let pool=catalog.names;
+    if(sel && catalog.gradeToNames instanceof Map){
+      const set=catalog.gradeToNames.get(sel); if(set) pool=[...set];
+    }
+    dl.innerHTML=pool.sort().map(n=>`<option value="${n.replace(/"/g,'&quot;')}"></option>`).join('');
+  }
+  function showSuggestions(){
+    const q=(nameInput?.value||'').trim();
+    const sel=(gradeSel?.value||'').trim();
+    let pool=catalog.names;
+    if(sel && catalog.gradeToNames instanceof Map){
+      const set=catalog.gradeToNames.get(sel); if(set) pool=[...set];
+    }
+    const list=buildNameSuggestions(q,pool,10);
+    if(!q || list.length===0){ suggBox.style.display='none'; suggBox.innerHTML=''; return; }
+    suggBox.innerHTML=list.map(n=>`<div class="item" data-name="${n.replace(/"/g,'&quot;')}">${n}</div>`).join('');
+    suggBox.style.display='block';
+  }
+
+  gradeSel?.addEventListener('change',()=>{ refreshNameDatalist(); showSuggestions(); });
+  nameInput?.addEventListener('input',showSuggestions);
+  nameInput?.addEventListener('focus',showSuggestions);
+  nameInput?.addEventListener('blur',()=>setTimeout(()=>{ if(suggBox) suggBox.style.display='none'; },150));
+  suggBox?.addEventListener('click',(e)=>{
+    const it=e.target.closest('.item'); if(!it) return;
+    nameInput.value=it.getAttribute('data-name')||'';
+    suggBox.style.display='none';
+    // auto-set grade if the selected name belongs to exactly one grade
+    if(catalog.gradeToNames instanceof Map){
+      let only=null,count=0;
+      for(const [g,set] of catalog.gradeToNames.entries()){
+        if(set.has(nameInput.value)){ only=g; count++; }
+      }
+      if(count===1 && !gradeSel.value) gradeSel.value=only;
+    }
+  });
+
+  refreshNameDatalist();
+}
+</script>
+<script>
+/* =========================
+   GLOBAL STATE FOR TABLES
+   ========================= */
+let attTable=null, objTable=null, subTable=null;
 const attSel={grade:new Set(),section:new Set(),stream:new Set()};
 const objSel={grade:new Set(),section:new Set(),stream:new Set()};
 const subSel={grade:new Set(),section:new Set(),stream:new Set()};
-let attWidgets={},objWidgets={},subWidgets={};
+let attWidgets={}, objWidgets={}, subWidgets={};
 
-/* ===== Top-10 (student view forces self at #10 if needed, with rank) ===== */
+/* =========================
+   LEADERBOARD (Top + Rank)
+   ========================= */
 function renderTop10Block({containerId,title,rows,nameKey,sectionKey,percentGetter,gradeKey}){
   const el=document.getElementById(containerId); if(!el) return;
   el.innerHTML='';
 
-  const myName = gate?.admin ? null : (gate?.name||"");
-  const myGrade= gate?.admin ? null : (gate?.grade||"");
+  const myName  = (window.gate && !gate.admin) ? (gate.name||"") : null;
+  const myGrade = (window.gate && !gate.admin) ? (gate.grade||"") : null;
 
-  // Scope: student = only their grade, admin = all
-  const sliceRows = (!gate.admin && gradeKey)
+  // Scope for student: only their grade; admin: all rows
+  const scopeRows = (!gate?.admin && gradeKey)
     ? rows.filter(r=>normGrade(r[gradeKey])===normGrade(myGrade))
     : rows.slice();
 
-  const sectionValues = sectionKey
-    ? [...new Set(sliceRows.map(r=>String(r[sectionKey]||"").trim()).filter(Boolean))].sort()
+  const sectionVals = sectionKey
+    ? [...new Set(scopeRows.map(r=>String(r[sectionKey]||"").trim()).filter(Boolean))].sort()
     : [null];
 
-  // build overall list
-  const overallMap=new Map();
-  sliceRows.forEach(r=>{
-    const nm=(r[nameKey]||"").toString().trim(); if(!nm) return;
-    const p=percentGetter(r); if(!isFinite(p)) return;
-    const o=overallMap.get(nm)||{sum:0,cnt:0}; o.sum+=p; o.cnt++; overallMap.set(nm,o);
-  });
-  const fullOverall=[...overallMap.entries()].map(([name,o])=>({name,pct:o.sum/o.cnt}))
-                    .sort((a,b)=>b.pct-a.pct);
+  // Build overall list (avg of multiple entries per student)
+  const overall = (()=> {
+    const m=new Map();
+    scopeRows.forEach(r=>{
+      const nm=(r?.[nameKey]||"").toString().trim(); if(!nm) return;
+      const p=percentGetter(r); if(!isFinite(p)) return;
+      const o=m.get(nm)||{sum:0,cnt:0}; o.sum+=p;o.cnt++; m.set(nm,o);
+    });
+    return [...m.entries()].map(([name,o])=>({name,pct:o.cnt?o.sum/o.cnt:0}))
+                           .sort((a,b)=>b.pct-a.pct);
+  })();
 
-  // compute my index & entry from overall
-  const youIdx = (myName? fullOverall.findIndex(x=>NORM(x.name)===NORM(myName)) : -1);
-  const youEntry = youIdx>=0 ? fullOverall[youIdx] : null;
+  // My rank if student
+  const youIdx = (myName? overall.findIndex(x=>NORM(x.name)===NORM(myName)) : -1);
+  const youEntry = youIdx>=0 ? overall[youIdx] : null;
 
-  // helper to paint one block
-  const one = (titleLabel, listAll, ensureSelf=false) => {
-    const TOPN = 9;
+  function paintOne(label, listAll, ensureSelf=false){
+    const TOPN = 9; // Top8 + You
     let top = listAll.slice(0, TOPN);
 
-    // if requested, ensure self appears as the 10th row
     if(ensureSelf && youEntry){
       const already=top.find(x=>NORM(x.name)===NORM(myName));
       if(!already){
@@ -844,15 +822,12 @@ function renderTop10Block({containerId,title,rows,nameKey,sectionKey,percentGett
       }
     }
 
-    // rank + percentile from grade-wide list
     const myRank = youIdx>=0 ? (youIdx+1) : null;
-    const rankStrip = (myRank)
-      ? `<div style="margin:4px 0 10px;font-weight:700;background:#0f1a4b;border:1px solid var(--line);padding:8px 10px;border-radius:10px;display:inline-block">
-           My Rank: <b>${myRank}/${listAll.length}</b>
-         </div>`
-      : (gate.admin?``:`<div style="margin:6px 0 10px;color:#94a3b8">Student not found in current filter.</div>`);
+    const rankStrip = (!gate.admin
+      ? (myRank ? `<div style="margin:4px 0 10px;font-weight:700;background:#0f1a4b;border:1px solid var(--line);padding:8px 10px;border-radius:10px;display:inline-block">My Rank: <b>${myRank}/${overall.length}</b></div>`
+                : `<div style="margin:6px 0 10px;color:#cfe0ff">Student not found in current filter.</div>`)
+      : ``);
 
-    // rows html with (You) tag
     const rowsHtml = top.map((r,i)=>{
       const isYou = myName && NORM(r.name)===NORM(myName);
       return `<tr>
@@ -864,9 +839,9 @@ function renderTop10Block({containerId,title,rows,nameKey,sectionKey,percentGett
 
     el.insertAdjacentHTML('beforeend', `
       <div class="card" style="margin-bottom:10px">
-        <div class="card-title">${titleLabel} <button class="min-btn" data-min="#x_${containerId}_${titleLabel.replace(/\W+/g,'_')}">–</button></div>
+        <div class="card-title">${label} <button class="min-btn" data-min="#x_${containerId}_${label.replace(/\W+/g,'_')}">–</button></div>
         ${rankStrip}
-        <div id="x_${containerId}_${titleLabel.replace(/\W+/g,'_')}">
+        <div id="x_${containerId}_${label.replace(/\W+/g,'_')}">
           <table class="report-table" style="width:100%">
             <thead><tr><th>#</th><th>Name</th><th>%</th></tr></thead>
             <tbody>${rowsHtml}</tbody>
@@ -874,23 +849,23 @@ function renderTop10Block({containerId,title,rows,nameKey,sectionKey,percentGett
         </div>
       </div>
     `);
-  };
+  }
 
-  // overall block (student: grade-wide + ensure self; admin: overall)
-  one(!gate.admin ? `Grade Leaderboard (Top 8 + You)` : `${title} — Overall`, fullOverall, !gate.admin);
+  // Overall block
+  paintOne(!gate.admin ? `Grade Leaderboard (Top 8 + You)` : `${title} — Overall`, overall, !gate.admin);
 
-  // per section breakdown (no force-self here to keep pure section top-10)
-  if(gate.admin && sectionValues[0]!==null){
-    sectionValues.forEach(sec=>{
-      const map=new Map();
-      sliceRows.filter(r=>String(r[sectionKey]||"")===String(sec)).forEach(r=>{
-        const nm=(r[nameKey]||"").toString().trim(); if(!nm) return;
+  // Admin-only: per-section boards
+  if(gate.admin && sectionVals[0]!==null){
+    sectionVals.forEach(sec=>{
+      const m=new Map();
+      scopeRows.filter(r=>String(r[sectionKey]||"")===String(sec)).forEach(r=>{
+        const nm=(r?.[nameKey]||"").toString().trim(); if(!nm) return;
         const p=percentGetter(r); if(!isFinite(p)) return;
-        const o=map.get(nm)||{sum:0,cnt:0}; o.sum+=p; o.cnt++; map.set(nm,o);
+        const o=m.get(nm)||{sum:0,cnt:0}; o.sum+=p;o.cnt++; m.set(nm,o);
       });
-      if(map.size){
-        const list=[...map.entries()].map(([name,o])=>({name,pct:o.sum/o.cnt})).sort((a,b)=>b.pct-a.pct);
-        one(`Top 10 — Section ${sec}`, list, false);
+      if(m.size){
+        const list=[...m.entries()].map(([name,o])=>({name,pct:o.sum/o.cnt})).sort((a,b)=>b.pct-a.pct);
+        paintOne(`Top 10 — Section ${sec}`, list.slice(0,10), false);
       }
     });
   }
@@ -902,28 +877,28 @@ function renderTop10Block({containerId,title,rows,nameKey,sectionKey,percentGett
    ATTENDANCE (loader)
    ======================= */
 async function loadAttendance(){
-  const url = CSV_ATTENDANCE_URL + (CSV_ATTENDANCE_URL.includes('?')?'&':'?') + '_=' + Date.now();
-  const text = await fetch(url,{cache:'no-store'}).then(r=>r.text());
+  const text = await getCSV(CSV_ATTENDANCE_URL, LS.ATT);
   const parsed = Papa.parse(text,{header:true,skipEmptyLines:true});
   const header = parsed.meta.fields||[];
   const all    = parsed.data||[];
 
-  const nameKey   = findKey(header,NAME_KEYS);
-  const gradeKey  = findKey(header,GRADE_KEYS);
-  const sectionKey= findKey(header,SECTION_KEYS);
-  const streamKey = findKey(header,STREAM_KEYS);
-  const presentKey= findKey(header,ATT_PRESENT_KEYS);
-  const classesKey= findKey(header,ATT_CLASSES_KEYS);
+  const nameKey    = findKey(header,NAME_KEYS);
+  const gradeKey   = findKey(header,GRADE_KEYS);
+  const sectionKey = findKey(header,SECTION_KEYS);
+  const streamKey  = findKey(header,STREAM_KEYS);
+  const presentKey = findKey(header,ATT_PRESENT_KEYS);
+  const classesKey = findKey(header,ATT_CLASSES_KEYS);
 
-  const rows = (gate.admin?all:all.filter(r=>{
+  const rows = (gate?.admin ? all : all.filter(r=>{
     const nOk = nameKey ? NORM(r[nameKey])===NORM(gate.name) : true;
     const gOk = gradeKey? normGrade(r[gradeKey])===normGrade(gate.grade) : true;
     return nOk && gOk;
   }));
 
-  attWidgets.grade   = buildMultiSelect({mountId:'attFilterGrade',label:'Grade',options:[...new Set(rows.map(r=>r[gradeKey]).filter(Boolean))],selected:attSel.grade,onChange:render});
-  attWidgets.section = buildMultiSelect({mountId:'attFilterSection',label:'Section',options:[...new Set(rows.map(r=>r[sectionKey]).filter(Boolean))],selected:attSel.section,onChange:render});
-  attWidgets.stream  = buildMultiSelect({mountId:'attFilterStream',label:'Stream',options:[...new Set(rows.map(r=>r[streamKey]).filter(Boolean))],selected:attSel.stream,onChange:render});
+  // Filters (options from current rows)
+  attWidgets.grade   = buildMultiSelect({mountId:'attFilterGrade',label:'Grade',  options:[...new Set(rows.map(r=>r[gradeKey]).filter(Boolean))], selected:attSel.grade,   onChange:render});
+  attWidgets.section = buildMultiSelect({mountId:'attFilterSection',label:'Section',options:[...new Set(rows.map(r=>r[sectionKey]).filter(Boolean))], selected:attSel.section, onChange:render});
+  attWidgets.stream  = buildMultiSelect({mountId:'attFilterStream',label:'Stream',  options:[...new Set(rows.map(r=>r[streamKey]).filter(Boolean))], selected:attSel.stream,  onChange:render});
 
   function render(){
     const filtered = rows.filter(r=>{
@@ -956,8 +931,8 @@ async function loadAttendance(){
 
     renderTop10Block({
       containerId:'attTopWrap', title:'Attendance',
-      rows:(gate.admin ? filtered : all), nameKey, sectionKey, gradeKey,
-      percentGetter:(r)=>{const p=toNum(r[presentKey]), c=Math.max(1,toNum(r[classesKey])); return (p/c*100);}
+      rows:(gate?.admin ? filtered : all), nameKey, sectionKey, gradeKey,
+      percentGetter:(r)=>{const p=toNum(r[presentKey]); const c=Math.max(1,toNum(r[classesKey])); return (p/c*100);}
     });
   }
 
@@ -969,37 +944,37 @@ async function loadAttendance(){
    ======================= */
 let objectiveHeader=[], objectiveRows=[];
 async function loadObjective(){
-  const url = CSV_OBJECTIVE_URL + (CSV_OBJECTIVE_URL.includes('?')?'&':'?') + '_=' + Date.now();
-  const text= await fetch(url,{cache:'no-store'}).then(r=>r.text());
+  const text= await getCSV(CSV_OBJECTIVE_URL, LS.OBJ);
   const parsed= Papa.parse(text,{header:true,skipEmptyLines:true});
   const header= parsed.meta.fields||[]; objectiveHeader=header;
   const all   = parsed.data||[];
 
-  const nameKey   = findKey(header,NAME_KEYS);
-  const gradeKey  = findKey(header,GRADE_KEYS);
-  const sectionKey= findKey(header,SECTION_KEYS);
-  const streamKey = findKey(header,STREAM_KEYS);
+  const nameKey    = findKey(header,NAME_KEYS);
+  const gradeKey   = findKey(header,GRADE_KEYS);
+  const sectionKey = findKey(header,SECTION_KEYS);
+  const streamKey  = findKey(header,STREAM_KEYS);
 
-  const objNameKey = findKey(header,OBJ_NAME_KEYS) || "Objective Name";
-  const marksKey   = findKey(header,MARKS_ACH_KEYS) || "MarksAchieved";
+  const objNameKey = findKey(header,OBJ_NAME_KEYS)    || "Objective Name";
+  const marksKey   = findKey(header,MARKS_ACH_KEYS)   || "MarksAchieved";
   const totalKey   = findKey(header,TOTAL_MARKS_KEYS) || "TotalMarks";
-  const percKey    = findKey(header,PERCENT_KEYS) || "TestPercentage";
+  const percKey    = findKey(header,PERCENT_KEYS)     || "TestPercentage";
 
-  const rows = (gate.admin?all:all.filter(r=>{
+  const rows = (gate?.admin?all:all.filter(r=>{
     const nOk = nameKey ? NORM(r[nameKey])===NORM(gate.name) : true;
     const gOk = gradeKey? normGrade(r[gradeKey])===normGrade(gate.grade) : true;
     return nOk && gOk;
   }));
   objectiveRows=rows;
 
+  // Objective name dropdown
   const nameOpts=[...new Set(rows.map(r=>r[objNameKey]).filter(Boolean))];
-  const sel=document.getElementById('objNameFilter'); const cur=sel.value;
-  sel.innerHTML=`<option value="__ALL__">All Objective Names</option>`+nameOpts.map(n=>`<option value="${String(n).replace(/"/g,'&quot;')}">${n}</option>`).join('');
-  sel.value = nameOpts.includes(cur)?cur:'__ALL__';
+  const sel=document.getElementById('objNameFilter'); const keep=sel.value;
+  sel.innerHTML=`<option value="__ALL__">All Objective Names</option>` + nameOpts.map(n=>`<option value="${String(n).replace(/"/g,'&quot;')}">${n}</option>`).join('');
+  sel.value = nameOpts.includes(keep)?keep:'__ALL__';
 
-  objWidgets.grade   = buildMultiSelect({mountId:'objFilterGrade',label:'Grade',options:[...new Set(rows.map(r=>r[gradeKey]).filter(Boolean))],selected:objSel.grade,onChange:render});
-  objWidgets.section = buildMultiSelect({mountId:'objFilterSection',label:'Section',options:[...new Set(rows.map(r=>r[sectionKey]).filter(Boolean))],selected:objSel.section,onChange:render});
-  objWidgets.stream  = buildMultiSelect({mountId:'objFilterStream',label:'Stream',options:[...new Set(rows.map(r=>r[streamKey]).filter(Boolean))],selected:objSel.stream,onChange:render});
+  objWidgets.grade   = buildMultiSelect({mountId:'objFilterGrade',label:'Grade',  options:[...new Set(rows.map(r=>r[gradeKey]).filter(Boolean))], selected:objSel.grade,   onChange:render});
+  objWidgets.section = buildMultiSelect({mountId:'objFilterSection',label:'Section',options:[...new Set(rows.map(r=>r[sectionKey]).filter(Boolean))], selected:objSel.section, onChange:render});
+  objWidgets.stream  = buildMultiSelect({mountId:'objFilterStream',label:'Stream',  options:[...new Set(rows.map(r=>r[streamKey]).filter(Boolean))], selected:objSel.stream,  onChange:render});
 
   function render(){
     const pick = document.getElementById('objNameFilter').value;
@@ -1030,7 +1005,7 @@ async function loadObjective(){
 
     renderTop10Block({
       containerId:'objTopWrap', title:'Objective',
-      rows:(gate.admin ? r : all), nameKey, sectionKey, gradeKey,
+      rows:(gate?.admin ? r : all), nameKey, sectionKey, gradeKey,
       percentGetter:(row)=> toNum(row[percKey])
     });
   }
@@ -1043,28 +1018,31 @@ async function loadObjective(){
    ======================= */
 let subjectiveRows=[];
 async function loadSubjective(){
-  const url = CSV_SUBJECTIVE_URL + (CSV_SUBJECTIVE_URL.includes('?')?'&':'?') + '_=' + Date.now();
-  const text= await fetch(url,{cache:'no-store'}).then(r=>r.text());
+  const text= await getCSV(CSV_SUBJECTIVE_URL, LS.SUB);
   const parsed= Papa.parse(text,{header:true,skipEmptyLines:true});
   let header= parsed.meta.fields||[]; const all= parsed.data||[];
 
-  const nameKey   = findKey(header,NAME_KEYS);
-  const gradeKey  = findKey(header,GRADE_KEYS);
-  const sectionKey= findKey(header,SECTION_KEYS);
-  const streamKey = findKey(header,STREAM_KEYS);
+  const nameKey    = findKey(header,NAME_KEYS);
+  const gradeKey   = findKey(header,GRADE_KEYS);
+  const sectionKey = findKey(header,SECTION_KEYS);
+  const streamKey  = findKey(header,STREAM_KEYS);
 
   const marksKey  = findKey(header,[/^marks?\s*achieved$/i]) || "MarksAchieved";
   const totalKey  = findKey(header,[/^total\s*marks?$/i])   || "TotalMarks";
-  const percKey   = findKey(header,[/^percentage$/i]) || "Percentage";
+  const percKey   = findKey(header,[/^percentage$/i,/test\s*percentage/i,/percent/i]) || "Percentage";
 
   const dateKey   = findKey(header,[/date\s*range/i,/result\s*date/i,/^date$/i]);
   let weekKey     = findKey(header,[/^week$/i]);
+
+  // derive Week if not present
   if(!weekKey){
-    all.forEach(r=>{ const d=parseDate(r[dateKey]); r.Week = d? isoWeek(d) : (r.Week||""); });
+    all.forEach(r=>{
+      const d=parseDate(r?.[dateKey]); r.Week = d? isoWeek(d) : (r.Week||"");
+    });
     weekKey='Week'; if(!header.includes('Week')) header=[...header,'Week'];
   }
 
-  const rows = (gate.admin?all:all.filter(r=>{
+  const rows = (gate?.admin?all:all.filter(r=>{
     const nOk = nameKey ? NORM(r[nameKey])===NORM(gate.name) : true;
     const gOk = gradeKey? normGrade(r[gradeKey])===normGrade(gate.grade) : true;
     return nOk && gOk;
@@ -1076,9 +1054,9 @@ async function loadSubjective(){
   wkSel.innerHTML=`<option value="__ALL__">All Weeks</option>`+weekVals.map(w=>`<option value="${w}">Week ${w}</option>`).join('');
   wkSel.value = (weekVals.includes(+keep)||weekVals.includes(keep))?keep:'__ALL__';
 
-  subWidgets.grade   = buildMultiSelect({mountId:'subFilterGrade',label:'Grade',options:[...new Set(rows.map(r=>r[gradeKey]).filter(Boolean))],selected:subSel.grade,onChange:render});
-  subWidgets.section = buildMultiSelect({mountId:'subFilterSection',label:'Section',options:[...new Set(rows.map(r=>r[sectionKey]).filter(Boolean))],selected:subSel.section,onChange:render});
-  subWidgets.stream  = buildMultiSelect({mountId:'subFilterStream',label:'Stream',options:[...new Set(rows.map(r=>r[streamKey]).filter(Boolean))],selected:subSel.stream,onChange:render});
+  subWidgets.grade   = buildMultiSelect({mountId:'subFilterGrade',label:'Grade',  options:[...new Set(rows.map(r=>r[gradeKey]).filter(Boolean))], selected:subSel.grade,   onChange:render});
+  subWidgets.section = buildMultiSelect({mountId:'subFilterSection',label:'Section',options:[...new Set(rows.map(r=>r[sectionKey]).filter(Boolean))], selected:subSel.section, onChange:render});
+  subWidgets.stream  = buildMultiSelect({mountId:'subFilterStream',label:'Stream',  options:[...new Set(rows.map(r=>r[streamKey]).filter(Boolean))], selected:subSel.stream,  onChange:render});
 
   function render(){
     const pick = document.getElementById('subWeekFilter').value;
@@ -1109,7 +1087,7 @@ async function loadSubjective(){
 
     renderTop10Block({
       containerId:'subTopWrap', title:'Subjective',
-      rows:(gate.admin ? r : all), nameKey, sectionKey, gradeKey,
+      rows:(gate?.admin ? r : all), nameKey, sectionKey, gradeKey,
       percentGetter:(row)=> toNum(row[percKey])
     });
   }
@@ -1117,7 +1095,9 @@ async function loadSubjective(){
   render(); wireMinButtons();
 }
 
-/* ====== Trends for Report ====== */
+/* =========================
+   REPORT BUILDERS (Preview)
+   ========================= */
 function addLineChart(root,title,labels,data,sub=''){
   const card=document.createElement('div'); card.className='report-card';
   card.innerHTML=`<div class="report-title">${title}<button class="minimize">–</button></div>${sub?`<div class="report-sub">${sub}</div>`:''}<div class="report-chart"><canvas></canvas></div>`;
@@ -1126,7 +1106,14 @@ function addLineChart(root,title,labels,data,sub=''){
   const ctx=card.querySelector('canvas').getContext('2d');
   new Chart(ctx,{type:'line',data:{labels,datasets:[{label:title,data,tension:.25}]},options:BASE_LINE_OPTS});
 }
-function dtGrab(id){ if(!$.fn.dataTable.isDataTable('#'+id)) return {headers:[],rows:[]}; const dt=$('#'+id).DataTable(); return {headers: dt.columns().header().toArray().map(th=>th.textContent.trim()), rows: dt.rows({search:'applied'}).data().toArray()};}
+function dtGrab(id){
+  if(!$.fn.dataTable.isDataTable('#'+id)) return {headers:[],rows:[]};
+  const dt=$('#'+id).DataTable();
+  return {
+    headers: dt.columns().header().toArray().map(th=>th.textContent.trim()),
+    rows: dt.rows({search:'applied'}).data().toArray()
+  };
+}
 const findKeyLike=(headers,patterns)=> headers.find(h=>patterns.some(rx=>rx.test(h)))||"";
 
 function buildAttendanceTrend(root){
@@ -1189,14 +1176,18 @@ function buildReportDOM(){
   }
 }
 
-/* ===== Report open/close + downloads ===== */
+/* ========= Report capture & downloads (called in Part 5 events) ========= */
 async function captureFullReportCanvas(){
   const body=document.getElementById('reportBody');
   await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
   const canvas=await html2canvas(body,{scale:2,backgroundColor:'#ffffff',logging:false});
   return canvas;
 }
-async function downloadJPG(){const c=await captureFullReportCanvas(); const a=document.createElement('a'); const who=(gate&&gate.admin)?'ADMIN':(gate?.name||'report'); a.download=`${who}-report.jpg`; a.href=c.toDataURL('image/jpeg',0.92); a.click();}
+async function downloadJPG(){
+  const c=await captureFullReportCanvas();
+  const a=document.createElement('a'); const who=(gate&&gate.admin)?'ADMIN':(gate?.name||'report');
+  a.download=`${who}-report.jpg`; a.href=c.toDataURL('image/jpeg',0.92); a.click();
+}
 async function downloadPDF(){
   const c=await captureFullReportCanvas(); const imgW=c.width,imgH=c.height;
   const pdf=new jspdf.jsPDF({orientation: imgW>=imgH?'l':'p',unit:'px',format:'a4'});
@@ -1220,50 +1211,168 @@ async function downloadPDF(){
 }
 async function openReportPanel(){
   const jobs=[]; if(!$.fn.dataTable.isDataTable('#attendanceTable')) jobs.push(loadAttendance());
-  if(!$.fn.dataTable.isDataTable('#objectiveTable')) jobs.push(loadObjective());
+  if(!$.fn.dataTable.isDataTable('#objectiveTable'))  jobs.push(loadObjective());
   if(!$.fn.dataTable.isDataTable('#subjectiveTable')) jobs.push(loadSubjective());
   if(jobs.length) await Promise.allSettled(jobs);
   buildReportDOM();
   const p=document.getElementById('reportPanel'); p.style.display='block'; p.setAttribute('aria-hidden','false');
 }
 function closeReportPanel(){const p=document.getElementById('reportPanel'); p.style.display='none'; p.setAttribute('aria-hidden','true');}
+</script>
+<script>
+/* =======================
+   LOGIN / GATE STATE
+   ======================= */
+// Change these to your desired admin credentials.
+// Note: Client-side only (GitHub Pages) → not secure; good enough for this use-case.
+const ADMIN_CREDENTIALS = { user: "admin", pass: "7045" };
 
-/* ===== Tabs & Buttons ===== */
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const tab=btn.dataset.tab;
-    document.querySelectorAll('section.panel').forEach(s=>s.style.display='none');
-    document.getElementById(tab).style.display='block';
-    if(tab==='attendance' && !attTable) loadAttendance();
-    if(tab==='objective'  && !objTable) loadObjective();
-    if(tab==='subjective' && !subTable) loadSubjective();
+window.gate = { ready:false, admin:false, name:null, grade:null };
+
+/* =======================
+   INIT + EVENT WIRING
+   ======================= */
+function show(el, on=true){ if(!el) return; el.style.display = on ? "" : "none"; }
+
+function initGateControls(){
+  const tabStu = document.getElementById('tStudent');
+  const tabAdm = document.getElementById('tAdmin');
+  const stuForm= document.getElementById('studentForm');
+  const admForm= document.getElementById('adminForm');
+  const gWrap  = document.getElementById('gate');
+
+  // toggle Student/Admin tabs inside gate
+  function setMode(mode){
+    if(mode==='student'){
+      tabStu.classList.add('active'); tabAdm.classList.remove('active');
+      show(stuForm,true); show(admForm,false);
+    }else{
+      tabAdm.classList.add('active'); tabStu.classList.remove('active');
+      show(stuForm,false); show(admForm,true);
+    }
+  }
+  tabStu?.addEventListener('click',()=>setMode('student'));
+  tabAdm?.addEventListener('click',()=>setMode('admin'));
+
+  // Student form actions
+  const gateBtn   = document.getElementById('gateBtn');
+  const nameInput = document.getElementById('gateName');
+  const gradeSel  = document.getElementById('gateGrade');
+  const gateErr   = document.getElementById('gateErr');
+
+  function validateStudent(){
+    const nm=(nameInput?.value||'').trim();
+    const gr=(gradeSel?.value||'').trim();
+    if(!nm || !gr){
+      gateErr.textContent='Please enter Student Name and select Grade.'; show(gateErr,true); return false;
+    }
+    // quick check against preloaded catalogs
+    if(catalog.gradeToNames instanceof Map){
+      const set=catalog.gradeToNames.get(gr);
+      if(!set || !set.has(nm)){
+        const pool=set ? [...set] : catalog.names;
+        const near=buildNameSuggestions(nm,pool,8);
+        gateErr.innerHTML=`No exact match for <b>${nm}</b> in Grade <b>${gr}</b>.<br/>Try: ${near.join(', ')||'no close matches'}.`;
+        show(gateErr,true);
+        return false;
+      }
+    }
+    show(gateErr,false);
+    return {name:nm,grade:gr};
+  }
+
+  gateBtn?.addEventListener('click', async ()=>{
+    const ok=validateStudent(); if(!ok) return;
+    gate.admin=false; gate.name=ok.name; gate.grade=ok.grade; gate.ready=true;
+    show(gWrap,false);
+    // Boot first tab
+    await loadAttendance();
   });
-});
-document.getElementById('refreshAttendance').addEventListener('click',loadAttendance);
-document.getElementById('refreshObjective').addEventListener('click',loadObjective);
-document.getElementById('refreshSubjective').addEventListener('click',loadSubjective);
-document.getElementById('objNameFilter').addEventListener('change',()=>{ if(objTable) loadObjective(); });
-document.getElementById('subWeekFilter').addEventListener('change',()=>{ if(subTable) loadSubjective(); });
 
-/* Report buttons */
-document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('openReport')?.addEventListener('click',openReportPanel);
-  document.getElementById('reportClose')?.addEventListener('click',closeReportPanel);
+  // Enter to submit (Student)
+  [nameInput,gradeSel].forEach(el=>{
+    el?.addEventListener('keydown',(e)=>{ if(e.key==='Enter'){ e.preventDefault(); gateBtn?.click(); } });
+  });
+
+  // Admin form actions
+  const admBtn  = document.getElementById('adminBtn');
+  const admUser = document.getElementById('admUser');
+  const admPass = document.getElementById('admPass');
+  const admErr  = document.getElementById('admErr');
+
+  function validateAdmin(){
+    const u=(admUser?.value||'').trim();
+    const p=(admPass?.value||'').trim();
+    if(!u || !p){ admErr.textContent='Enter Admin ID and Password.'; show(admErr,true); return false; }
+    if(u===ADMIN_CREDENTIALS.user && p===ADMIN_CREDENTIALS.pass){
+      show(admErr,false); return {user:u};
+    }
+    admErr.textContent='Invalid admin credentials'; show(admErr,true); return false;
+  }
+
+  admBtn?.addEventListener('click', async ()=>{
+    const ok=validateAdmin(); if(!ok) return;
+    gate.admin=true; gate.name=null; gate.grade=null; gate.ready=true;
+    show(gWrap,false);
+    await loadAttendance();
+  });
+
+  // Enter to submit (Admin)
+  [admUser,admPass].forEach(el=>{
+    el?.addEventListener('keydown',(e)=>{ if(e.key==='Enter'){ e.preventDefault(); admBtn?.click(); } });
+  });
+
+  // Name suggestions wiring (uses preloaded catalogs)
+  wireNameSuggestions();
+}
+
+/* =======================
+   TABS / REFRESH / REPORT
+   ======================= */
+function wireTabsAndButtons(){
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click',async ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab=btn.dataset.tab;
+      document.querySelectorAll('section.panel').forEach(s=>s.style.display='none');
+      document.getElementById(tab).style.display='block';
+      if(tab==='attendance' && !attTable) await loadAttendance();
+      if(tab==='objective'  && !objTable) await loadObjective();
+      if(tab==='subjective' && !subTable) await loadSubjective();
+    });
+  });
+
+  // Refresh buttons
+  document.getElementById('refreshAttendance')?.addEventListener('click',loadAttendance);
+  document.getElementById('refreshObjective') ?.addEventListener('click',loadObjective);
+  document.getElementById('refreshSubjective')?.addEventListener('click',loadSubjective);
+
+  // Filters that affect loaders
+  document.getElementById('objNameFilter')?.addEventListener('change',()=>{ if(objTable) loadObjective(); });
+  document.getElementById('subWeekFilter')?.addEventListener('change',()=>{ if(subTable) loadSubjective(); });
+
+  // Report controls
+  document.getElementById('openReport')  ?.addEventListener('click',openReportPanel);
+  document.getElementById('reportClose') ?.addEventListener('click',closeReportPanel);
   document.getElementById('reportBackdrop')?.addEventListener('click',closeReportPanel);
-  document.getElementById('reportJpg')?.addEventListener('click',downloadJPG);
-  document.getElementById('reportPdf')?.addEventListener('click',downloadPDF);
-  wireMinButtons();
-});
+  document.getElementById('reportJpg')   ?.addEventListener('click',downloadJPG);
+  document.getElementById('reportPdf')   ?.addEventListener('click',downloadPDF);
 
-/* Helpdesk */
-(function(){
+  // Collapsible buttons inside cards
+  wireMinButtons();
+}
+
+/* =======================
+   HELPDESK PANEL
+   ======================= */
+function wireHelpdesk(){
   const openBtn=document.getElementById('helpdeskOpen');
-  const panel=document.getElementById('helpdeskPanel');
+  const panel  =document.getElementById('helpdeskPanel');
   const closeBtn=document.getElementById('helpdeskClose');
   const backdrop=document.getElementById('helpdeskBackdrop');
-  const frame=document.getElementById('helpdeskFrame');
+  const frame  =document.getElementById('helpdeskFrame');
 
   function prefillQS(){
     try{
@@ -1279,11 +1388,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     const base='helpdesk.html';
     const q=prefillQS();
     frame.src = q? `${base}?${q}` : base;
-    panel.style.display='block';
+    show(panel,true);
     panel.setAttribute('aria-hidden','false');
   }
   function closePanel(){
-    panel.style.display='none';
+    show(panel,false);
     panel.setAttribute('aria-hidden','true');
   }
 
@@ -1291,97 +1400,22 @@ document.addEventListener('DOMContentLoaded',()=>{
   closeBtn && closeBtn.addEventListener('click',closePanel);
   backdrop && backdrop.addEventListener('click',closePanel);
   document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closePanel(); });
-})();
-
-/* ===== Gate boot & validation ===== */
-async function bootAfterGate(){
-  await loadAttendance();
 }
 
-(async function initGate(){
-  try{ await preloadCatalogs(); }catch(e){ console.warn('catalog preload failed',e); }
-
-  const nameInput = document.getElementById('gateName');
-  const gradeSel  = document.getElementById('gateGrade');
-  const suggBox   = document.getElementById('nameSuggest');
-  const errEl     = document.getElementById('gateErr');
-
-  function showSuggestions(){
-    const q=nameInput.value;
-    const list=buildNameSuggestions(q,catalog.names,10);
-    if(!q || list.length===0){ suggBox.style.display='none'; suggBox.innerHTML=''; return; }
-    suggBox.innerHTML = list.map(n=>`<div class="item" data-name="${n.replace(/"/g,'&quot;')}">${n}</div>`).join('');
-    suggBox.style.display='block';
+/* =======================
+   BOOT FLOW
+   ======================= */
+document.addEventListener('DOMContentLoaded', async ()=>{
+  try{
+    await preloadCatalogs();   // builds catalog from the 3 CSVs (with cache + offline fallback)
+  }catch(e){
+    console.warn('Catalog preload failed', e);
   }
-
-  nameInput?.addEventListener('input',showSuggestions);
-  suggBox?.addEventListener('click',(e)=>{
-    const it=e.target.closest('.item'); if(!it) return;
-    nameInput.value = it.dataset.name;
-    suggBox.style.display='none';
-  });
-  document.addEventListener('click',(e)=>{
-    if(!suggBox.contains(e.target) && e.target!==nameInput) suggBox.style.display='none';
-  });
-
-  document.getElementById('gateBtn')?.addEventListener('click', async ()=>{
-    const name = (nameInput?.value||'').trim();
-    const grade= (gradeSel?.value||'').trim();
-    errEl.style.display='none';
-
-    if(!name || !grade){
-      errEl.textContent='Please enter Student Name and select Grade.';
-      errEl.style.display='block';
-      return;
-    }
-
-    if(NORM(name)===NORM(ADMIN_NAME) && NORM(normGrade(grade))===NORM(ADMIN_GRADE)){
-      gate.admin=true; gate.name=null; gate.grade=null; gate.ready=true;
-      document.getElementById('gate').style.display='none';
-      bootAfterGate();
-      return;
-    }
-
-    try{
-      const [a,o,s] = await Promise.all([
-        fetch(CSV_ATTENDANCE_URL+(CSV_ATTENDANCE_URL.includes('?')?'&':'?')+'_v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
-        fetch(CSV_OBJECTIVE_URL +(CSV_OBJECTIVE_URL.includes('?') ?'&':'?') +'_v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
-        fetch(CSV_SUBJECTIVE_URL+(CSV_SUBJECTIVE_URL.includes('?')?'&':'?')+'_v='+Date.now(),{cache:'no-store'}).then(r=>r.text())
-      ]);
-
-      function hasExact(txt){
-        const p=Papa.parse(txt,{header:true,skipEmptyLines:true});
-        const h=p.meta.fields||[]; const rows=p.data||[];
-        const nk=findKey(h,NAME_KEYS); const gk=findKey(h,GRADE_KEYS);
-        const okName=(r)=> nk? NORM(r?.[nk])===NORM(name):false;
-        const okGr  =(r)=> !gk? true : normGrade(r?.[gk])===normGrade(grade);
-        return rows.some(r=> okName(r)&&okGr(r));
-      }
-
-      if(!(hasExact(a)||hasExact(o)||hasExact(s))){
-        function namesFrom(txt){
-          const p=Papa.parse(txt,{header:true,skipEmptyLines:true});
-          const h=p.meta.fields||[]; const rows=p.data||[]; const nk=findKey(h,NAME_KEYS);
-          return rows.map(r=>r?.[nk]).filter(Boolean);
-        }
-        const all = [...new Set([...namesFrom(a),...namesFrom(o),...namesFrom(s)])];
-        const near = buildNameSuggestions(name, all, 10);
-        errEl.innerHTML = `No exact match for <b>${name}</b> (Grade <b>${grade}</b>).<br/>Try: ${near.slice(0,5).join(', ')||'no close matches'}.`;
-        errEl.style.display='block';
-        showSuggestions();
-        return;
-      }
-
-      gate.admin=false; gate.name=name; gate.grade=grade; gate.ready=true;
-      document.getElementById('gate').style.display='none';
-      bootAfterGate();
-    }catch(e){
-      gate.admin=false; gate.name=name; gate.grade=grade; gate.ready=true;
-      document.getElementById('gate').style.display='none';
-      bootAfterGate();
-    }
-  });
-})();
+  initGateControls();          // gate events + name suggestions
+  wireTabsAndButtons();        // tabs / refresh / report
+  wireHelpdesk();              // helpdesk drawer
+  // Gate is shown by default; user picks Student/Admin and loads.
+});
 </script>
 </body>
 </html>
