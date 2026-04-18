@@ -1,39 +1,70 @@
 WeekNumber,ObjectiveName,StudentName,Grade,Section,Stream,Batch,Physics,Chemistry,Maths,Zoology,Botany,SST,Biology,English,MarksAchieved,SUBJECTS,TotalMarks,TestPercentage
+Week1,Objective Test - 01,Nishant Aditya (QATAR),8,A,PCMB,Impact,36,40,36,-,-,-,40,-,152,4,160,95.00%
+Week1,Objective Test - 01,Prutha Parikshit Mulye (BAHRAIN),8,A,PCMB,Impact,40,36,40,-,-,-,40,-,156,4,160,97.50%
+Week1,Objective Test - 01,Spruha Amol Mahajan (KSA),8,A,PCMB,Impact,24,24,20,-,-,-,32,-,100,4,160,62.50%
+Week1,Objective Test - 01,Ibrahim Touhid Qazmi (KSA),8,A,PCMB,Impact,36,40,36,-,-,-,36,-,148,4,160,92.50%
+Week1,Objective Test - 01,Sambhav Sandip Sen (BAHRAIN),8,A,PCMB,Impact,36,32,40,-,-,-,40,-,148,4,160,92.50%
+Week1,Objective Test - 01,Aditya Abhilash Raj (KUWAIT),8,A,PCMB,Impact,36,32,36,-,-,-,40,-,144,4,160,90.00%
 Week1,Objective Test - 01,Muhammad Shehab Khan (QATAR),8,A,PCMB,Impact,24,28,16,-,-,-,28,-,96,4,160,60.00%
 Week1,Objective Test - 01,Lakshet Singh (UAE),8,A,PCMB,Impact,36,28,16,-,-,-,40,-,120,4,160,75.00%
+Week1,Objective Test - 01,Aliza Rasool (KSA),8,A,PCMB,Impact,40,40,36,-,-,-,36,-,152,4,160,95.00%
 Week1,Objective Test - 01,Arna Roy (KSA),8,A,PCMB,Impact,32,40,40,-,-,-,40,-,152,4,160,95.00%
 Week1,Objective Test - 01,Mohammad Mahabid Khan (KSA),8,A,PCMB,Impact,40,36,32,-,-,-,32,-,140,4,160,87.50%
 Week1,Objective Test - 01,Rajdeep Nandi (QATAR),8,A,PCMB,Impact,36,36,40,-,-,-,40,-,152,4,160,95.00%
 Week1,Objective Test - 01,Atharvasingh Deepsingh Nargundkar (BAHRAIN),8,A,PCMB,Impact,28,40,20,-,-,-,40,-,128,4,160,80.00%
-Week1,Objective Test - 01,Aaditya Surendra Jogi (BAHRAIN),8,A,PCMB,Impact,36,32,36,-,-,-,40,-,144,4,160,90.00%
+Week1,Objective Test - 01,Anmol Sharma (BAHRAIN),8,A,PCMB,Impact,40,40,40,-,-,-,40,-,160,4,160,100.00%
+Week1,Objective Test - 01,Saanvi Sushilkumar Shinde (QATAR),8,A,PCMB,Impact,36,32,16,-,-,-,40,-,124,4,160,77.50%
 Week1,Objective Test - 01,Kalyani Thoppil (QATAR),8,A,PCMB,Impact,36,32,28,-,-,-,36,-,132,4,160,82.50%
 Week1,Objective Test - 01,Hifza Hasan (KSA),8,A,PCMB,Impact,40,36,40,-,-,-,40,-,156,4,160,97.50%
+Week1,Objective Test - 01,Nitika Nitil Shrivastava (BAHRAIN),8,A,PCMB,Impact,40,32,32,-,-,-,40,-,144,4,160,90.00%
 Week1,Objective Test - 01,Rupantar Ganguly (BAHRAIN),8,A,PCMB,Impact,36,40,40,-,-,-,36,-,152,4,160,95.00%
+Week1,Objective Test - 01,Aashi Kumar (QATAR),8,A,PCMB,Impact,40,32,24,-,-,-,40,-,136,4,160,85.00%
 Week1,Objective Test - 01,Kangana Nitin Shenoy (UAE),8,A,PCMB,Impact,36,32,32,-,-,-,40,-,140,4,160,87.50%
+Week1,Objective Test - 01,Kushal Prasad (BAHRAIN),8,A,PCMB,Impact,40,40,28,-,-,-,40,-,148,4,160,92.50%
+Week1,Objective Test - 01,Snehli Kumari Shaw (OMAN),8,A,PCMB,Impact,40,32,32,-,-,-,40,-,144,4,160,90.00%
+Week1,Objective Test - 01,Dhijesh Krishnaprasad (KSA),8,A,PCMB,Impact,28,28,28,-,-,-,36,-,120,4,160,75.00%
 Week1,Objective Test - 01,Mohamed Afiq (UAE),8,A,PCMB,Impact,40,36,36,-,-,-,40,-,152,4,160,95.00%
 Week1,Objective Test - 01,Vedasri Guttula (KSA),8,A,PCMB,Impact,36,36,36,-,-,-,40,-,148,4,160,92.50%
 Week1,Objective Test - 01,Aayat Iram Khan (KSA),8,A,PCMB,Impact,32,32,28,-,-,-,40,-,132,4,160,82.50%
 Week1,Objective Test - 01,Abhivadya Roy Chauhan (UAE),8,A,PCMB,Impact,32,40,36,-,-,-,40,-,148,4,160,92.50%
+Week1,Objective Test - 01,Aman Dev (BAHRAIN),8,A,PCMB,Impact,40,36,36,-,-,-,40,-,152,4,160,95.00%
+Week1,Objective Test - 01,Dave Saish Dsa (UAE),8,A,PCMB,Impact,40,36,36,-,-,-,40,-,152,4,160,95.00%
+Week1,Objective Test - 01,Devesh Daga (QATAR),8,A,PCMB,Impact,32,28,36,-,-,-,40,-,136,4,160,85.00%
+Week1,Objective Test - 01,Ananiya Murugaraj (UAE),8,A,PCMB,Impact,40,36,36,-,-,-,40,-,152,4,160,95.00%
 Week1,Objective Test - 01,Tanmai Bijesh (UAE),8,A,PCMB,Impact,36,28,32,-,-,-,32,-,128,4,160,80.00%
 Week1,Objective Test - 01,Advika Kiran Rawat (BAHRAIN),8,A,PCMB,Impact,40,28,24,-,-,-,36,-,128,4,160,80.00%
+Week1,Objective Test - 01,Zoey Fernandes (KUWAIT),8,A,PCMB,Impact,32,20,28,-,-,-,36,-,116,4,160,72.50%
+Week1,Objective Test - 01,Devarsh Narayan Chanchu (KSA),8,A,PCMB,Impact,40,36,28,-,-,-,36,-,140,4,160,87.50%
 Week1,Objective Test - 01,Aaira Mudasser Mulla (QATAR),8,A,PCMB,Impact,40,24,24,-,-,-,40,-,128,4,160,80.00%
+Week1,Objective Test - 01,Ridham Manish Sant (UAE),8,A,PCMB,Impact,40,36,24,-,-,-,32,-,132,4,160,82.50%
+Week1,Objective Test - 01,Ajay Rajkrishna.G (QATAR),8,A,PCMB,Impact,32,36,36,-,-,-,32,-,136,4,160,85.00%
+Week1,Objective Test - 01,Shauryaveersinh Ankit Chawda (KSA),8,A,PCMB,Impact,36,28,28,-,-,-,40,-,132,4,160,82.50%
 Week1,Objective Test - 01,Huda Bahamani (KUWAIT),8,A,PCMB,Impact,20,28,24,-,-,-,36,-,108,4,160,67.50%
 Week1,Objective Test - 01,Taanush Dhiraj Sharma (UAE),8,A,PCMB,Impact,32,40,36,-,-,-,40,-,148,4,160,92.50%
+Week1,Objective Test - 01,Khanjan Panchal (UAE),8,A,PCMB,Impact,24,16,20,-,-,-,32,-,92,4,160,57.50%
+Week1,Objective Test - 01,Ann Treesa Thejus (KUWAIT),8,B,PCMB,Impact,36,32,28,-,-,-,40,-,136,4,160,85.00%
+Week1,Objective Test - 01,Aaditya Surendra Jogi (BAHRAIN),8,B,PCMB,Impact,36,32,36,-,-,-,40,-,144,4,160,90.00%
+Week1,Objective Test - 01,Mohammed Ibrahim Ahmed (UAE),8,B,PCMB,Impact,32,36,28,-,-,-,32,-,128,4,160,80.00%
+Week1,Objective Test - 01,Midhah Begum Kader (UAE),8,B,PCMB,Impact,24,32,32,-,-,-,40,-,128,4,160,80.00%
+Week1,Objective Test - 01,Maahi Singh (UAE),8,B,PCMB,Impact,40,32,36,-,-,-,36,-,144,4,160,90.00%
+Week1,Objective Test - 01,Farhaan Faisal (QATAR),8,B,PCMB,Impact,28,24,28,-,-,-,40,-,120,4,160,75.00%
+Week1,Objective Test - 01,Maryam Syed (UAE),8,B,PCMB,Impact,40,36,40,-,-,-,40,-,156,4,160,97.50%
 Week1,Objective Test - 01,Daksh Kumar (UAE),9,A,PCMB,Succeed,8,20,8,-,-,-,20,-,56,4,160,35.00%
 Week1,Objective Test - 01,Sree Akshara (OMAN),9,A,PCMB,Succeed,24,32,16,-,-,-,36,-,108,4,160,67.50%
 Week1,Objective Test - 01,Hima Vimal (KSA),9,A,PCMB,Succeed,40,40,32,-,-,-,40,-,152,4,160,95.00%
 Week1,Objective Test - 01,Sanvika Rahul Powar (KSA),9,A,PCMB,Succeed,40,32,32,-,-,-,32,-,136,4,160,85.00%
-Week1,Objective Test - 01,Efrah Parveen Ibrahim (QATAR),9,A,PCMB,Succeed,40,36,24,-,-,-,36,-,136,4,160,85.00%
+Week1,Objective Test - 01,Shreyas Nalnagula (KSA),9,A,PCMB,Succeed,40,32,28,-,-,-,40,-,140,4,160,87.50%
 Week1,Objective Test - 01,Ananya Verma (QATAR),9,A,PCMB,Succeed,32,32,36,-,-,-,40,-,140,4,160,87.50%
+Week1,Objective Test - 01,Efrah Parveen Ibrahim (QATAR),9,A,PCMB,Succeed,40,36,24,-,-,-,36,-,136,4,160,85.00%
 Week1,Objective Test - 01,Ayaan Badhei (QATAR),9,A,PCMB,Succeed,32,40,36,-,-,-,40,-,148,4,160,92.50%
 Week1,Objective Test - 01,Yuvraj Sudarshan Bilava (UAE),9,A,PCMB,Succeed,24,28,32,-,-,-,40,-,124,4,160,77.50%
-Week1,Objective Test - 01,Afeefa Khatoon (KSA),9,A,PCMB,Succeed,40,40,40,-,-,-,40,-,160,4,160,100.00%
 Week1,Objective Test - 01,Rossel Joshua Gundimi (KSA),9,A,PCMB,Succeed,24,16,24,-,-,-,28,-,92,4,160,57.50%
+Week1,Objective Test - 01,Afeefa Khatoon (KSA),9,A,PCMB,Succeed,40,40,40,-,-,-,40,-,160,4,160,100.00%
 Week1,Objective Test - 01,Evan Shaju (QATAR),9,A,PCMB,Succeed,36,32,32,-,-,-,40,-,140,4,160,87.50%
 Week1,Objective Test - 01,Saad Ali Kola (KSA),9,A,PCMB,Succeed,40,40,40,-,-,-,40,-,160,4,160,100.00%
 Week1,Objective Test - 01,Hafsa Taskeen (KSA),9,A,PCMB,Succeed,0,0,4,-,-,-,0,-,4,4,160,2.50%
 Week1,Objective Test - 01,Aryan Dutta (KUWAIT),9,A,PCMB,Succeed,40,36,36,-,-,-,40,-,152,4,160,95.00%
-Week1,Objective Test - 01,Samrah Ali (UAE),9,A,PCMB,Succeed,8,24,32,-,-,-,32,-,96,4,160,60.00%
+Week1,Objective Test - 01,Kavi Ahilan Loganathan (UAE),9,A,PCMB,Succeed,28,40,36,-,-,-,40,-,144,4,160,90.00%
 Week1,Objective Test - 01,Aatish Shiju (BAHRAIN),9,A,PCMB,Succeed,24,28,32,-,-,-,28,-,112,4,160,70.00%
 Week1,Objective Test - 01,Sanya Mehta (QATAR),9,A,PCMB,Succeed,16,36,24,-,-,-,32,-,108,4,160,67.50%
 Week1,Objective Test - 01,Lakshmi Kritika Thanneeru (BAHRAIN),9,A,PCMB,Succeed,36,36,40,-,-,-,40,-,152,4,160,95.00%
@@ -43,15 +74,46 @@ Week1,Objective Test - 01,Mohammad Sadan Siddiqui (KSA),9,A,PCMB,Succeed,28,28,3
 Week1,Objective Test - 01,Anvitha.S.L (OMAN),9,A,PCMB,Succeed,20,36,36,-,-,-,24,-,116,4,160,72.50%
 Week1,Objective Test - 01,Ayaan Samir Kazi (UAE),9,A,PCMB,Succeed,20,20,36,-,-,-,36,-,112,4,160,70.00%
 Week1,Objective Test - 01,Agastya Chetan Joshi (MALAYSIA),9,A,PCMB,Succeed,40,32,36,-,-,-,40,-,148,4,160,92.50%
-Week1,Objective Test - 01,Siddhi Jayvant Lawand (KSA),9,B,PCMB,Succeed,32,40,32,-,-,-,40,-,144,4,160,90.00%
+Week1,Objective Test - 01,Mohammed Mehran (UAE),9,A,PCMB,Succeed,20,24,32,-,-,-,20,-,96,4,160,60.00%
+Week1,Objective Test - 01,Srinivas Mullagiri (UAE),9,A,PCMB,Succeed,12,28,12,-,-,-,28,-,80,4,160,50.00%
+Week1,Objective Test - 02,Daksh Kumar (UAE),9,A,PCMB,Succeed,40,40,36,-,-,40,40,36,232,6,240,96.67%
+Week1,Objective Test - 02,Sree Akshara (OMAN),9,A,PCMB,Succeed,8,28,20,-,-,28,36,28,148,6,240,61.67%
+Week2,Objective Test - 02,Hima Vimal (KSA),9,A,PCMB,Succeed,36,40,40,-,-,40,40,32,228,6,240,95.00%
+Week2,Objective Test - 02,Nirmal Arun Sonawane (BAHRAIN),9,A,PCMB,Succeed,28,36,28,-,-,16,32,16,156,6,240,65.00%
+Week2,Objective Test - 02,Sanvika Rahul Powar (KSA),9,A,PCMB,Succeed,24,28,28,-,-,24,36,32,172,6,240,71.67%
+Week2,Objective Test - 02,Shreyas Nalnagula (KSA),9,A,PCMB,Succeed,24,24,40,-,-,36,36,24,184,6,240,76.67%
+Week2,Objective Test - 02,Efrah Parveen Ibrahim (QATAR),9,A,PCMB,Succeed,28,36,36,-,-,36,40,32,208,6,240,86.67%
+Week2,Objective Test - 02,Ayaan Badhei (QATAR),9,A,PCMB,Succeed,40,32,28,-,-,36,40,32,208,6,240,86.67%
+Week2,Objective Test - 02,Yuvraj Sudarshan Bilava (UAE),9,A,PCMB,Succeed,28,32,32,-,-,12,40,28,172,6,240,71.67%
+Week2,Objective Test - 02,Rossel Joshua Gundimi (KSA),9,A,PCMB,Succeed,0,0,16,-,-,0,0,0,16,6,240,6.67%
+Week2,Objective Test - 02,Afeefa Khatoon (KSA),9,A,PCMB,Succeed,40,40,36,-,-,40,40,36,232,6,240,96.67%
+Week2,Objective Test - 02,Ammar Mohammad Mohiuddin (BAHRAIN),9,A,PCMB,Succeed,36,36,28,-,-,32,36,36,204,6,240,85.00%
+Week2,Objective Test - 02,Evan Shaju (QATAR),9,A,PCMB,Succeed,20,36,36,-,-,32,40,28,192,6,240,80.00%
+Week2,Objective Test - 02,Saad Ali Kola (KSA),9,A,PCMB,Succeed,40,40,40,-,-,36,40,36,232,6,240,96.67%
+Week2,Objective Test - 02,Hafsa Taskeen (KSA),9,A,PCMB,Succeed,28,36,40,-,-,28,36,8,176,6,240,73.33%
+Week2,Objective Test - 02,Aryan Dutta (KUWAIT),9,A,PCMB,Succeed,36,40,36,-,-,40,40,36,228,6,240,95.00%
+Week2,Objective Test - 02,Kavi Ahilan Loganathan (UAE),9,A,PCMB,Succeed,40,40,32,-,-,40,40,32,224,6,240,93.33%
+Week2,Objective Test - 02,Aatish Shiju (BAHRAIN),9,A,PCMB,Succeed,24,12,32,-,-,32,32,24,156,6,240,65.00%
+Week2,Objective Test - 02,Sanya Mehta (QATAR),9,A,PCMB,Succeed,28,16,28,-,-,16,36,20,144,6,240,60.00%
+Week2,Objective Test - 02,Lakshmi Kritika Thanneeru (BAHRAIN),9,A,PCMB,Succeed,32,36,36,-,-,36,40,32,212,6,240,88.33%
+Week2,Objective Test - 02,Divyesh Shivram Majji (UAE),9,A,PCMB,Succeed,28,28,36,-,-,20,40,28,180,6,240,75.00%
+Week2,Objective Test - 02,Saima Imam (KSA),9,A,PCMB,Succeed,28,40,32,-,-,36,40,36,212,6,240,88.33%
+Week2,Objective Test - 02,Mohammad Sadan Siddiqui (KSA),9,A,PCMB,Succeed,24,32,32,-,-,16,40,32,176,6,240,73.33%
+Week2,Objective Test - 02,Anvitha.S.L (OMAN),9,A,PCMB,Succeed,8,32,32,-,-,12,24,12,120,6,240,50.00%
+Week2,Objective Test - 02,Ayaan Samir Kazi (UAE),9,A,PCMB,Succeed,32,40,32,-,-,36,36,28,204,6,240,85.00%
+Week2,Objective Test - 02,Agastya Chetan Joshi (MALAYSIA),9,A,PCMB,Succeed,32,40,40,-,-,36,40,32,220,6,240,91.67%
+Week1,Objective Test - 02,Mohammed Mehran (UAE),9,A,PCMB,Succeed,20,28,24,-,-,0,36,0,108,6,240,45.00%
+Week1,Objective Test - 02,Srinivas Mullagiri (UAE),9,A,PCMB,Succeed,20,28,28,-,-,0,28,0,104,6,240,43.33%
+Week1,Objective Test - 02,Fatima Nabil Hussain (QATAR),9,A,PCMB,Succeed,8,24,16,-,-,4,8,12,72,6,240,30.00%
 Week1,Objective Test - 01,Calista Fernandes (KUWAIT),9,B,PCMB,Succeed,32,32,36,-,-,-,40,-,140,4,160,87.50%
 Week1,Objective Test - 01,Aisha Mehreen Abbas (KSA),9,B,PCMB,Succeed,40,40,40,-,-,-,36,-,156,4,160,97.50%
-Week1,Objective Test - 01,Aarav Prasad (QATAR),9,B,PCMB,Succeed,40,40,36,-,-,-,40,-,156,4,160,97.50%
 Week1,Objective Test - 01,Gunika Koul (KSA),9,B,PCMB,Succeed,36,36,20,-,-,-,36,-,128,4,160,80.00%
+Week1,Objective Test - 01,Aarav Prasad (QATAR),9,B,PCMB,Succeed,40,40,36,-,-,-,40,-,156,4,160,97.50%
 Week1,Objective Test - 01,Ananya Arun (UAE),9,B,PCMB,Succeed,20,32,32,-,-,-,40,-,124,4,160,77.50%
 Week1,Objective Test - 01,Maqil Uzayr (UAE),9,B,PCMB,Succeed,32,36,36,-,-,-,40,-,144,4,160,90.00%
 Week1,Objective Test - 01,Navyaa (KUWAIT),9,B,PCMB,Succeed,24,32,32,-,-,-,36,-,124,4,160,77.50%
 Week1,Objective Test - 01,Om Thakare (UAE),9,B,PCMB,Succeed,40,32,20,-,-,-,40,-,132,4,160,82.50%
+Week1,Objective Test - 01,Samrah Ali (UAE),9,B,PCMB,Succeed,8,24,32,-,-,-,32,-,96,4,160,60.00%
 Week1,Objective Test - 01,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,Succeed,40,36,40,-,-,-,40,-,156,4,160,97.50%
 Week1,Objective Test - 01,Snehal Sharma (BAHRAIN),9,B,PCMB,Succeed,40,32,36,-,-,-,40,-,148,4,160,92.50%
 Week1,Objective Test - 01,David Joban (BAHRAIN),9,B,PCMB,Succeed,16,16,28,-,-,-,24,-,84,4,160,52.50%
@@ -62,13 +124,38 @@ Week1,Objective Test - 01,Delisha Bhargava (UAE),9,B,PCMB,Succeed,32,24,32,-,-,-
 Week1,Objective Test - 01,Syeda Mahin Ali (KSA),9,B,PCMB,Succeed,28,12,36,-,-,-,40,-,116,4,160,72.50%
 Week1,Objective Test - 01,Srijan Pandey (OMAN),9,B,PCMB,Succeed,36,32,40,-,-,-,40,-,148,4,160,92.50%
 Week1,Objective Test - 01,Arnav Sudheesh (UAE),9,B,PCMB,Succeed,32,20,36,-,-,-,40,-,128,4,160,80.00%
-Week1,Objective Test - 01,Priyanshi Panchakarla (OMAN),9,B,PCMB,Succeed,32,28,32,-,-,-,36,-,128,4,160,80.00%
+Week1,Objective Test - 01,Siddhi Jayvant Lawand (KSA),9,B,PCMB,Succeed,32,40,32,-,-,-,40,-,144,4,160,90.00%
+Week1,Objective Test - 01,Priyanshi Panchakarla (OMAN),9,B,PCMB,Succeed,56,64,64,-,-,-,76,-,130,4,160,81.25%
 Week1,Objective Test - 01,Gayathri Prasanna Goda (KSA),9,B,PCMB,Succeed,40,32,32,-,-,-,40,-,144,4,160,90.00%
-Week1,Objective Test - 01,Rajveer Soni (UAE),9,B,PCMB,Succeed,16,32,24,-,-,-,24,-,96,4,160,60.00%
 Week1,Objective Test - 01,Shaival Bipinkumar Patel (QATAR),9,B,PCMB,Succeed,32,32,36,-,-,-,40,-,140,4,160,87.50%
 Week1,Objective Test - 01,Sabreen Sharma (QATAR),9,B,PCMB,Succeed,36,32,36,-,-,-,40,-,144,4,160,90.00%
 Week1,Objective Test - 01,Muddamsetty Sathya Niharika (KUWAIT),9,B,PCMB,Succeed,32,28,24,-,-,-,28,-,112,4,160,70.00%
+Week1,Objective Test - 01,Rajveer Soni (UAE),9,B,PCMB,Succeed,16,32,24,-,-,-,24,-,96,4,160,60.00%
 Week1,Objective Test - 01,Sainath Sathyamoorthy Sunil Kumar Deepaa (KUWAIT),9,B,PCMB,Succeed,20,12,28,-,-,-,28,-,88,4,160,55.00%
+Week1,Objective Test - 01,Abel Mathew Rino (KSA),9,B,PCMB,Succeed,16,12,16,-,-,-,16,-,60,4,160,37.50%
+Week2,Objective Test - 02,Calista Fernandes (KUWAIT),9,B,PCMB,Succeed,28,28,20,-,-,24,32,28,160,6,240,66.67%
+Week2,Objective Test - 02,Aisha Mehreen Abbas (KSA),9,B,PCMB,Succeed,40,40,40,-,-,28,40,28,216,6,240,90.00%
+Week2,Objective Test - 02,Aarav Prasad (QATAR),9,B,PCMB,Succeed,40,40,40,-,-,36,36,28,220,6,240,91.67%
+Week2,Objective Test - 02,Ananya Arun (UAE),9,B,PCMB,Succeed,28,32,32,-,-,28,32,32,184,6,240,76.67%
+Week2,Objective Test - 02,Navyaa (KUWAIT),9,B,PCMB,Succeed,24,32,24,-,-,24,32,32,168,6,240,70.00%
+Week2,Objective Test - 02,Om Thakare (UAE),9,B,PCMB,Succeed,28,32,28,-,-,20,20,28,156,6,240,65.00%
+Week2,Objective Test - 02,Joshua Pascal Rozario (BAHRAIN),9,B,PCMB,Succeed,20,24,28,-,-,20,32,8,132,6,240,55.00%
+Week2,Objective Test - 02,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,Succeed,24,32,36,-,-,28,40,32,192,6,240,80.00%
+Week2,Objective Test - 02,Snehal Sharma (BAHRAIN),9,B,PCMB,Succeed,32,36,36,-,-,0,40,28,172,6,240,71.67%
+Week2,Objective Test - 02,Sameeha Mohamed Mujib (KUWAIT),9,B,PCMB,Succeed,36,40,40,-,-,36,40,36,228,6,240,95.00%
+Week2,Objective Test - 02,Riston Roussean (BAHRAIN),9,B,PCMB,Succeed,16,32,16,-,-,24,36,12,136,6,240,56.67%
+Week2,Objective Test - 02,Srijan Pandey (OMAN),9,B,PCMB,Succeed,32,0,32,-,-,36,40,36,176,6,240,73.33%
+Week2,Objective Test - 02,Arnav Sudheesh (UAE),9,B,PCMB,Succeed,32,40,36,-,-,0,32,0,140,6,240,58.33%
+Week2,Objective Test - 02,Siddhi Jayvant Lawand (KSA),9,B,PCMB,Succeed,40,32,32,-,-,40,40,32,216,6,240,90.00%
+Week2,Objective Test - 02,Priyanshi Panchakarla (OMAN),9,B,PCMB,Succeed,20,16,24,-,-,28,32,28,148,6,240,61.67%
+Week2,Objective Test - 02,Gayathri Prasanna Goda (KSA),9,B,PCMB,Succeed,24,36,32,-,-,40,40,32,204,6,240,85.00%
+Week2,Objective Test - 02,Shaival Bipinkumar Patel (QATAR),9,B,PCMB,Succeed,24,36,24,-,-,40,40,36,200,6,240,83.33%
+Week2,Objective Test - 02,Muddamsetty Sathya Niharika (KUWAIT),9,B,PCMB,Succeed,28,36,28,-,-,24,32,28,176,6,240,73.33%
+Week2,Objective Test - 02,Sainath Sathyamoorthy Sunil Kumar Deepaa (KUWAIT),9,B,PCMB,Succeed,20,24,36,-,-,24,28,32,164,6,240,68.33%
+Week2,Objective Test - 02,Leksha Sree Rakurthi (BAHRAIN),9,B,PCMB,Succeed,20,40,40,-,-,36,40,36,212,6,240,88.33%
+Week2,Objective Test - 02,Siya Vasantha Kumar (UAE),9,B,PCMB,Succeed,40,40,36,-,-,40,40,40,236,6,240,98.33%
+Week2,Objective Test - 02,Mohammed Muaaz Faisal (KSA),9,B,PCMB,Succeed,12,24,32,-,-,0,28,0,96,6,240,40.00%
+Week2,Objective Test - 02,Abel Mathew Rino (KSA),9,B,PCMB,Succeed,12,12,24,-,-,20,8,16,92,6,240,38.33%
 Week1,Objective Test - 01,Ammar Hussain (BAHRAIN),9,C,PCMB,Succeed,8,20,8,-,-,-,20,-,56,4,160,35.00%
 Week1,Objective Test - 01,Sheikh Aariz Ahmed (QATAR),9,C,PCMB,Succeed,20,20,28,-,-,-,16,-,84,4,160,52.50%
 Week1,Objective Test - 01,Ajinkya Tushar Deshpande (OMAN),9,C,PCMB,Succeed,32,28,32,-,-,-,20,-,112,4,160,70.00%
@@ -76,9 +163,8 @@ Week1,Objective Test - 01,Nivetha (QATAR),9,C,PCMB,Succeed,40,40,36,-,-,-,40,-,1
 Week1,Objective Test - 01,Murshidah Ulfat (UAE),9,C,PCMB,Succeed,28,20,28,-,-,-,40,-,116,4,160,72.50%
 Week1,Objective Test - 01,Sreelaasya Avvaru (BAHRAIN),9,C,PCMB,Succeed,24,28,20,-,-,-,20,-,92,4,160,57.50%
 Week1,Objective Test - 01,Yusra Qudrat (BAHRAIN),9,C,PCMB,Succeed,20,24,24,-,-,-,20,-,88,4,160,55.00%
-Week1,Objective Test - 01,Chitransh Kumawat (BAHRAIN),9,C,PCMB,Succeed,40,36,40,-,-,-,40,-,156,4,160,97.50%
-Week1,Objective Test - 01,Namish (KUWAIT),9,C,PCMB,Succeed,24,20,12,-,-,-,16,-,72,4,160,45.00%
-Week1,Objective Test - 01,Haya Muhammad (OMAN),9,C,PCMB,Succeed,36,36,32,-,-,-,40,-,144,4,160,90.00%
+Week1,Objective Test - 01,Chitransh Kumawat (BAHRAIN),9,C,PCMB,Succeed,80,72,76,-,-,-,80,-,154,4,160,96.25%
+Week1,Objective Test - 01,Namish (KUWAIT),9,C,PCMB,Succeed,40,44,28,-,-,-,40,-,152,4,160,95.00%
 Week1,Objective Test - 01,Rohini Naga Srivalli Ch (UAE),9,C,PCMB,Succeed,40,36,36,-,-,-,32,-,144,4,160,90.00%
 Week1,Objective Test - 01,Pratheev Arunachalam (QATAR),9,C,PCMB,Succeed,32,36,32,-,-,-,32,-,132,4,160,82.50%
 Week1,Objective Test - 01,Jeswin Jomphil (QATAR),9,C,PCMB,Succeed,24,28,28,-,-,-,24,-,104,4,160,65.00%
@@ -96,19 +182,53 @@ Week1,Objective Test - 01,Heba Zainab Hussain (KSA),9,C,PCMB,Succeed,28,32,24,-,
 Week1,Objective Test - 01,Advaith Reddy (UAE),9,C,PCMB,Succeed,36,32,36,-,-,-,40,-,144,4,160,90.00%
 Week1,Objective Test - 01,Shubhra Prashant Buranpur (OMAN),9,C,PCMB,Succeed,36,32,32,-,-,-,36,-,136,4,160,85.00%
 Week1,Objective Test - 01,Arsh Siddiqui (UAE),9,C,PCMB,Succeed,20,32,24,-,-,-,28,-,104,4,160,65.00%
-Week1,Objective Test - 01,Sharon Joby Panicker (KUWAIT),9,C,PCMB,Succeed,32,24,28,-,-,-,32,-,116,4,160,72.50%
-Week1,Objective Test - 01,Stavya Kalamkar (OMAN),9,C,PCMB,Succeed,40,40,36,-,-,-,40,-,156,4,160,97.50%
 Week1,Objective Test - 01,Hanlin Jaina Mohan (QATAR),9,C,PCMB,Succeed,40,36,32,-,-,-,40,-,148,4,160,92.50%
 Week1,Objective Test - 01,Lavanya Kirit Joshi (UAE),9,C,PCMB,Succeed,8,28,12,-,-,-,32,-,80,4,160,50.00%
 Week1,Objective Test - 01,Vidit Girdhar (OMAN),9,C,PCMB,Succeed,28,40,40,-,-,-,36,-,144,4,160,90.00%
 Week1,Objective Test - 01,Pritika Bandhekar (OMAN),9,C,PCMB,Succeed,0,0,4,-,-,-,0,-,4,4,160,2.50%
 Week1,Objective Test - 01,Minathi Banala (UAE),9,C,PCMB,Succeed,32,36,40,-,-,-,40,-,148,4,160,92.50%
+Week1,Objective Test - 01,Sharon Joby Panicker (KUWAIT),9,C,PCMB,Succeed,32,24,28,-,-,-,32,-,116,4,160,72.50%
+Week1,Objective Test - 01,Stavya Kalamkar (OMAN),9,C,PCMB,Succeed,80,80,76,-,-,-,76,-,156,4,160,97.50%
+Week1,Objective Test - 01,Haya Muhammad (OMAN),9,C,PCMB,Succeed,36,36,32,-,-,-,40,-,144,4,160,90.00%
+Week1,Objective Test - 01,Saket Chopra (UAE),9,C,PCMB,Succeed,16,24,28,-,-,-,32,-,100,4,160,62.50%
+Week1,Objective Test - 01,Prapti Sagar Gharat (UAE),9,C,PCMB,Succeed,0,0,0,-,-,-,8,-,8,4,160,5.00%
+Week2,Objective Test - 02,Ammar Hussain (BAHRAIN),9,C,PCMB,Succeed,28,28,36,-,-,28,40,28,188,6,240,78.33%
+Week2,Objective Test - 02,Ajinkya Tushar Deshpande (OMAN),9,C,PCMB,Succeed,24,28,24,-,-,16,32,32,156,6,240,65.00%
+Week2,Objective Test - 02,Margi Pradipbhai Ramoliya (QATAR),9,C,PCMB,Succeed,20,8,32,-,-,12,12,20,104,6,240,43.33%
+Week2,Objective Test - 02,Nivetha (QATAR),9,C,PCMB,Succeed,32,32,32,-,-,40,40,36,212,6,240,88.33%
+Week2,Objective Test - 02,Yusra Qudrat (BAHRAIN),9,C,PCMB,Succeed,24,32,32,-,-,16,16,32,152,6,240,63.33%
+Week2,Objective Test - 02,Rohini Naga Srivalli Ch (UAE),9,C,PCMB,Succeed,28,40,36,-,-,36,36,32,208,6,240,86.67%
+Week2,Objective Test - 02,Pratheev Arunachalam (QATAR),9,C,PCMB,Succeed,20,36,28,-,-,24,40,32,180,6,240,75.00%
+Week2,Objective Test - 02,Jeswin Jomphil (QATAR),9,C,PCMB,Succeed,20,32,28,-,-,24,28,12,144,6,240,60.00%
+Week2,Objective Test - 02,Aleena Kausar Hubballi (BAHRAIN),9,C,PCMB,Succeed,32,36,28,-,-,32,32,32,192,6,240,80.00%
+Week2,Objective Test - 02,Kush Trupeshkumar Patel (OMAN),9,C,PCMB,Succeed,24,36,32,-,-,32,40,32,196,6,240,81.67%
+Week2,Objective Test - 02,Johan George Jinu (KUWAIT),9,C,PCMB,Succeed,36,36,24,-,-,40,36,32,204,6,240,85.00%
+Week2,Objective Test - 02,Devaj Pookkathuvalappil Rajesh Kumar Kunhangadan (UAE),9,C,PCMB,Succeed,20,28,28,-,-,36,40,36,188,6,240,78.33%
+Week2,Objective Test - 02,Mohammed Abdul Rahim (QATAR),9,C,PCMB,Succeed,32,24,36,-,-,32,40,24,188,6,240,78.33%
+Week2,Objective Test - 02,Shreya Sujit Nair (KUWAIT),9,C,PCMB,Succeed,24,40,36,-,-,24,40,32,196,6,240,81.67%
+Week2,Objective Test - 02,Shaurya Shrivastava (KSA),9,C,PCMB,Succeed,28,36,36,-,-,32,36,28,196,6,240,81.67%
+Week2,Objective Test - 02,Mohammad Ahyan Shariq (UAE),9,C,PCMB,Succeed,36,40,36,-,-,40,40,32,224,6,240,93.33%
+Week2,Objective Test - 02,Heba Zainab Hussain (KSA),9,C,PCMB,Succeed,36,36,28,-,-,28,36,36,200,6,240,83.33%
+Week2,Objective Test - 02,Advaith Reddy (UAE),9,C,PCMB,Succeed,40,32,32,-,-,36,40,32,212,6,240,88.33%
+Week2,Objective Test - 02,Shubhra Prashant Buranpur (OMAN),9,C,PCMB,Succeed,36,36,36,-,-,40,40,32,220,6,240,91.67%
+Week2,Objective Test - 02,Arsh Siddiqui (UAE),9,C,PCMB,Succeed,24,32,28,-,-,24,36,20,164,6,240,68.33%
+Week2,Objective Test - 02,Hanlin Jaina Mohan (QATAR),9,C,PCMB,Succeed,32,28,40,-,-,32,40,24,196,6,240,81.67%
+Week2,Objective Test - 02,Lavanya Kirit Joshi (UAE),9,C,PCMB,Succeed,8,40,24,-,-,12,36,16,136,6,240,56.67%
+Week2,Objective Test - 02,Vidit Girdhar (OMAN),9,C,PCMB,Succeed,40,36,32,-,-,40,40,32,220,6,240,91.67%
+Week2,Objective Test - 02,Minathi Banala (UAE),9,C,PCMB,Succeed,32,40,36,-,-,40,40,32,220,6,240,91.67%
+Week2,Objective Test - 02,Sharon Joby Panicker (KUWAIT),9,C,PCMB,Succeed,20,40,32,-,-,36,40,36,204,6,240,85.00%
+Week2,Objective Test - 02,Stavya Kalamkar (OMAN),9,C,PCMB,Succeed,40,40,36,-,-,40,40,36,232,6,240,96.67%
+Week2,Objective Test - 02,Haya Muhammad (OMAN),9,C,PCMB,Succeed,20,36,24,-,-,24,36,32,172,6,240,71.67%
+Week2,Objective Test - 02,Saket Chopra (UAE),9,C,PCMB,Succeed,32,20,36,-,-,36,32,0,156,6,240,65.00%
+Week2,Objective Test - 02,Pavit Prashant Singh (BAHRAIN),9,C,PCMB,Succeed,40,40,36,-,-,40,40,36,232,6,240,96.67%
+Week2,Objective Test - 02,Salwaa Hasan (KSA),9,C,PCMB,Succeed,20,24,24,-,-,28,40,28,164,6,240,68.33%
+Week2,Objective Test - 02,Prapti Sagar Gharat (UAE),9,C,PCMB,Succeed,0,0,0,-,-,0,0,12,12,6,240,5.00%
 Week1,Objective Test - 01,Noman Ruknuddin Parkar (KUWAIT),10,A,PCMB,Exceed,20,24,28,-,-,-,28,-,100,4,160,62.50%
 Week1,Objective Test - 01,Khalid Sheikh (UAE),10,A,PCMB,Exceed,40,36,40,-,-,-,40,-,156,4,160,97.50%
 Week1,Objective Test - 01,Farhat-Un-Nisa (UAE),10,A,PCMB,Exceed,24,36,32,-,-,-,36,-,128,4,160,80.00%
 Week1,Objective Test - 01,Nishita Yadav (UAE),10,A,PCMB,Exceed,36,28,28,-,-,-,32,-,124,4,160,77.50%
-Week1,Objective Test - 01,Merryn Philomine Thejus (KUWAIT),10,A,PCMB,Exceed,28,40,36,-,-,-,36,-,140,4,160,87.50%
 Week1,Objective Test - 01,Yunus Phiroz (KSA),10,A,PCMB,Exceed,32,28,36,-,-,-,36,-,132,4,160,82.50%
+Week1,Objective Test - 01,Merryn Philomine Thejus (KUWAIT),10,A,PCMB,Exceed,28,40,36,-,-,-,36,-,140,4,160,87.50%
 Week1,Objective Test - 01,Saanvi Sandipkumar Marsonia (KUWAIT),10,A,PCMB,Exceed,28,24,28,-,-,-,36,-,116,4,160,72.50%
 Week1,Objective Test - 01,Meera Ramasubramanian (KSA),10,A,PCMB,Exceed,20,20,28,-,-,-,32,-,100,4,160,62.50%
 Week1,Objective Test - 01,Faiqa Ashiq (UAE),10,A,PCMB,Exceed,32,0,0,-,-,-,0,-,32,4,160,20.00%
@@ -116,11 +236,12 @@ Week1,Objective Test - 01,Mohammed Izaan Hussain (KSA),10,A,PCMB,Exceed,24,36,36
 Week1,Objective Test - 01,Revant Krishna Praharsha Angara (QATAR),10,A,PCMB,Exceed,32,8,0,-,-,-,0,-,40,4,160,25.00%
 Week1,Objective Test - 01,Tuba Kazi (QATAR),10,A,PCMB,Exceed,32,32,36,-,-,-,36,-,136,4,160,85.00%
 Week1,Objective Test - 01,Azka Toufik Sanadi (QATAR),10,A,PCMB,Exceed,24,20,36,-,-,-,28,-,108,4,160,67.50%
+Week1,Objective Test - 01,Zaid Nadaf (KSA),10,A,PCMB,Exceed,40,36,40,-,-,-,28,-,144,4,160,90.00%
 Week1,Objective Test - 01,Fathima Zayana Fazal Rahman (QATAR),10,A,PCMB,Exceed,28,32,36,-,-,-,36,-,132,4,160,82.50%
 Week1,Objective Test - 01,Adhyayan Thakur (BAHRAIN),10,A,PCMB,Exceed,40,32,32,-,-,-,28,-,132,4,160,82.50%
 Week1,Objective Test - 01,Zoha Abdul Jaleel (BAHRAIN),10,A,PCMB,Exceed,40,32,32,-,-,-,36,-,140,4,160,87.50%
-Week1,Objective Test - 01,Moosa Shabbir Kazi (QATAR),10,A,PCMB,Exceed,28,32,32,-,-,-,36,-,128,4,160,80.00%
 Week1,Objective Test - 01,A. Sahana (KSA),10,A,PCMB,Exceed,36,36,40,-,-,-,40,-,152,4,160,95.00%
+Week1,Objective Test - 01,Moosa Shabbir Kazi (QATAR),10,A,PCMB,Exceed,28,32,32,-,-,-,36,-,128,4,160,80.00%
 Week1,Objective Test - 01,Maryam Raqeeba Imran (KSA),10,A,PCMB,Exceed,16,24,16,-,-,-,32,-,88,4,160,55.00%
 Week1,Objective Test - 01,Nabiha Fatima (KUWAIT),10,A,PCMB,Exceed,40,36,28,-,-,-,32,-,136,4,160,85.00%
 Week1,Objective Test - 01,Advik Dubey (BAHRAIN),10,A,PCMB,Exceed,36,36,40,-,-,-,36,-,148,4,160,92.50%
@@ -153,14 +274,15 @@ Week1,Objective Test - 01,Anwesha Verma (OMAN),10,B,PCMB,Exceed,40,32,36,-,-,-,3
 Week1,Objective Test - 01,Daniya Rahman (QATAR),10,B,PCMB,Exceed,40,36,28,-,-,-,32,-,136,4,160,85.00%
 Week1,Objective Test - 01,Aleeza Khan (UAE),10,B,PCMB,Exceed,40,40,40,-,-,-,40,-,160,4,160,100.00%
 Week1,Objective Test - 01,Trisha Bhargava (UAE),10,B,PCMB,Exceed,40,36,40,-,-,-,36,-,152,4,160,95.00%
+Week1,Objective Test - 01,Astha Shukla (UAE),10,B,PCMB,Exceed,40,36,36,-,-,-,36,-,148,4,160,92.50%
 Week1,Objective Test - 01,Husna Ansari (KSA),10,B,PCMB,Exceed,36,20,32,-,-,-,32,-,120,4,160,75.00%
 Week1,Objective Test - 01,Afsheen Siddiqui (QATAR),10,B,PCMB,Exceed,36,36,40,-,-,-,32,-,144,4,160,90.00%
-Week1,Objective Test - 01,Astha Shukla (UAE),10,B,PCMB,Exceed,40,36,36,-,-,-,36,-,148,4,160,92.50%
 Week1,Objective Test - 01,Nyla Zaeem Siddiqui (UAE),10,B,PCMB,Exceed,36,32,24,-,-,-,36,-,128,4,160,80.00%
-Week1,Objective Test - 01,Azzaam Ahmed Ibrahim (QATAR),10,B,PCMB,Exceed,32,28,32,-,-,-,32,-,124,4,160,77.50%
 Week1,Objective Test - 01,Ahmed Ebrahim Ahmedabadi (UAE),10,B,PCMB,Exceed,36,0,16,-,-,-,16,-,68,4,160,42.50%
+Week1,Objective Test - 01,Azzaam Ahmed Ibrahim (QATAR),10,B,PCMB,Exceed,32,28,32,-,-,-,32,-,124,4,160,77.50%
 Week1,Objective Test - 01,Parvathi Pramod (UAE),10,B,PCMB,Exceed,24,32,28,-,-,-,40,-,124,4,160,77.50%
 Week1,Objective Test - 01,Raj Sinha (UAE),10,B,PCMB,Exceed,40,36,32,-,-,-,28,-,136,4,160,85.00%
+Week1,Objective Test - 01,Alan Vallil Sasi (BAHRAIN),10,B,PCMB,Exceed,32,32,28,-,-,-,36,-,128,4,160,80.00%
 Week1,Objective Test - 01,Mohammed Furqan (QATAR),10,B,PCMB,Exceed,28,28,36,-,-,-,36,-,128,4,160,80.00%
 Week1,Objective Test - 01,Rosalind Bonny (BAHRAIN),10,B,PCMB,Exceed,36,36,40,-,-,-,40,-,152,4,160,95.00%
 Week1,Objective Test - 01,Saqib Nizami Khan (KUWAIT),10,B,PCMB,Exceed,28,28,28,-,-,-,28,-,112,4,160,70.00%
@@ -182,15 +304,16 @@ Week1,Objective Test - 01,Jayshivom Girish (KSA),10,C,PCMB,Exceed,36,32,32,-,-,-
 Week1,Objective Test - 01,Varnika Manohar (QATAR),10,C,PCMB,Exceed,36,0,0,-,-,-,0,-,36,4,160,22.50%
 Week1,Objective Test - 01,Fatimah Siddiqua (UAE),10,C,PCMB,Exceed,32,40,24,-,-,-,32,-,128,4,160,80.00%
 Week1,Objective Test - 01,Sara Eshal Shamsheer (KUWAIT),10,C,PCMB,Exceed,24,36,28,-,-,-,28,-,116,4,160,72.50%
-Week1,Objective Test - 01,Zaid Nadaf (KSA),10,C,PCMB,Exceed,40,36,40,-,-,-,28,-,144,4,160,90.00%
+Week1,Objective Test - 01,Mehreen Hibah Seeni Mohamed (BAHRAIN),10,C,PCMB,Exceed,32,24,20,-,-,-,36,-,112,4,160,70.00%
 Week1,Objective Test - 01,Zoya Ahmed (BAHRAIN),10,C,PCMB,Exceed,40,32,36,-,-,-,36,-,144,4,160,90.00%
+Week1,Objective Test - 01,Disha Amitkumar Prajapati (KSA),10,C,PCMB,Exceed,40,32,40,-,-,-,40,-,152,4,160,95.00%
 Week1,Objective Test - 01,Yashfeen Zehra (KSA),10,C,PCMB,Exceed,20,24,32,-,-,-,32,-,108,4,160,67.50%
-Week1,Objective Test - 01,Almas Fathima Sajeeb (UAE),10,C,PCMB,Exceed,12,24,16,-,-,-,40,-,92,4,160,57.50%
+Week1,Objective Test - 01,Almas Fathima Sajeeb (UAE),10,C,PCMB,Exceed,32,24,16,-,-,-,40,-,112,4,160,70.00%
 Week1,Objective Test - 01,Srijan Krishnaprasad (KSA),10,C,PCMB,Exceed,32,24,36,-,-,-,36,-,128,4,160,80.00%
-Week1,Objective Test - 01,Alan Vallil Sasi (BAHRAIN),10,C,PCMB,Exceed,32,32,28,-,-,-,36,-,128,4,160,80.00%
-Week1,Objective Test - 01,A Karunya (KSA),10,C,PCMB,Exceed,40,36,40,-,-,-,40,-,156,4,160,97.50%
+Week1,Objective Test - 01,A Karunya (KSA),10,C,PCMB,Exceed,80,76,80,-,-,-,80,-,158,4,160,98.75%
 Week1,Objective Test - 01,Mythren Viswanathan (KSA),10,C,PCMB,Exceed,28,32,36,-,-,-,32,-,128,4,160,80.00%
 Week1,Objective Test - 01,Keerthana James (UAE),10,C,PCMB,Exceed,36,28,40,-,-,-,32,-,136,4,160,85.00%
+Week1,Objective Test - 01,Malavika Sureshkumar (OMAN),10,C,PCMB,Exceed,24,32,40,-,-,-,32,-,128,4,160,80.00%
 Week1,Objective Test - 01,Burhanuddin Bohra (KUWAIT),10,C,PCMB,Exceed,20,12,20,-,-,-,24,-,76,4,160,47.50%
 Week1,Objective Test - 01,Muhammad Rayyan (QATAR),10,C,PCMB,Exceed,36,40,32,-,-,-,36,-,144,4,160,90.00%
 Week1,Objective Test - 01,Manushree Menothparambil Sumesh (KUWAIT),10,C,PCMB,Exceed,40,36,36,-,-,-,36,-,148,4,160,92.50%
@@ -204,43 +327,43 @@ Week1,Objective Test - 01,Shakunth Saravanan (OMAN),10,C,PCMB,Exceed,32,36,32,-,
 Week1,Objective Test - 01,Zainab Syed (KSA),10,C,PCMB,Exceed,20,28,20,-,-,-,24,-,92,4,160,57.50%
 Week1,Objective Test - 01,Nehan Nazeer (KSA),10,C,PCMB,Exceed,20,24,32,-,-,-,28,-,104,4,160,65.00%
 Week1,Objective Test - 01,Aarna Rajesh Sakharkar (OMAN),10,C,PCMB,Exceed,28,36,40,-,-,-,40,-,144,4,160,90.00%
-Week1,Objective Test - 01,Shihad Abdul Khader (KSA),10,C,PCMB,Exceed,20,28,36,-,-,-,32,-,116,4,160,72.50%
 Week1,Objective Test - 01,David Ed Jayasinghe (QATAR),10,C,PCMB,Exceed,32,36,32,-,-,-,32,-,132,4,160,82.50%
 Week1,Objective Test - 01,Solliniyan Saravanan (QATAR),10,C,PCMB,Exceed,24,36,28,-,-,-,36,-,124,4,160,77.50%
 Week1,Objective Test - 01,Durga Chandra (BAHRAIN),10,C,PCMB,Exceed,28,24,28,-,-,-,20,-,100,4,160,62.50%
 Week1,Objective Test - 01,Keerthana Zaddu (UAE),10,C,PCMB,Exceed,40,40,36,-,-,-,32,-,148,4,160,92.50%
 Week1,Objective Test - 01,Pritika Karmakar (KSA),10,C,PCMB,Exceed,40,36,36,-,-,-,32,-,144,4,160,90.00%
 Week1,Objective Test - 01,Anuhya Ambati (UAE),10,C,PCMB,Exceed,24,28,32,-,-,-,32,-,116,4,160,72.50%
+Week1,Objective Test - 01,Shihad Abdul Khader (KSA),10,C,PCMB,Exceed,20,28,36,-,-,-,32,-,116,4,160,72.50%
 Week1,Objective Test - 01,Sanat Hadavale (UAE),10,C,PCMB,Exceed,40,36,20,-,-,-,36,-,132,4,160,82.50%
 Week1,Objective Test - 01,Madhav Atakani (UAE),10,C,PCMB,Exceed,36,36,36,-,-,-,32,-,140,4,160,87.50%
 Week1,Objective Test - 01,Jovin Ralph (KUWAIT),10,C,PCMB,Exceed,8,20,36,-,-,-,28,-,92,4,160,57.50%
+Week1,Objective Test - 01,Sara Suha (UAE),10,C,PCMB,Exceed,24,36,36,-,-,-,40,-,136,4,160,85.00%
 Week1,Objective Test - 01,Joy Munachimso Nnadi (UAE),10,C,PCMB,Exceed,40,36,40,-,-,-,40,-,156,4,160,97.50%
 Week1,Objective Test - 01,Tirth Prajapati (QATAR),10,C,PCMB,Exceed,40,40,40,-,-,-,40,-,160,4,160,100.00%
 Week1,Objective Test - 01,Glenisha Alvina Coelho (KUWAIT),10,D,PCMB,Exceed,20,24,28,-,-,-,28,-,100,4,160,62.50%
-Week1,Objective Test - 01,Mohammed Rayyan Ahmed (QATAR),10,D,PCMB,Exceed,16,28,32,-,-,-,36,-,112,4,160,70.00%
 Week1,Objective Test - 01,Tanvi Tejaswini (QATAR),10,D,PCMB,Exceed,28,16,32,-,-,-,28,-,104,4,160,65.00%
-Week1,Objective Test - 01,Dakshitha M (QATAR),10,D,PCMB,Exceed,32,32,36,-,-,-,32,-,132,4,160,82.50%
+Week1,Objective Test - 01,Mohammed Rayyan Ahmed (QATAR),10,D,PCMB,Exceed,16,28,32,-,-,-,36,-,112,4,160,70.00%
 Week1,Objective Test - 01,Mohammed Luqmanuddin (KSA),10,D,PCMB,Exceed,32,32,36,-,-,-,40,-,140,4,160,87.50%
-Week1,Objective Test - 01,Harsh Pramod Shringare (BAHRAIN),10,D,PCMB,Exceed,24,28,40,-,-,-,32,-,124,4,160,77.50%
 Week1,Objective Test - 01,Harini Sree Pravathi Bala Vasireddy (QATAR),10,D,PCMB,Exceed,32,24,36,-,-,-,32,-,124,4,160,77.50%
+Week1,Objective Test - 01,Harsh Pramod Shringare (BAHRAIN),10,D,PCMB,Exceed,24,28,40,-,-,-,32,-,124,4,160,77.50%
 Week1,Objective Test - 01,Ihsan Asker Mohideen (QATAR),10,D,PCMB,Exceed,12,36,28,-,-,-,32,-,108,4,160,67.50%
-Week1,Objective Test - 01,Disha Amitkumar Prajapati (KSA),10,D,PCMB,Exceed,40,32,40,-,-,-,40,-,152,4,160,95.00%
 Week1,Objective Test - 01,Sharavani Kapil Patil (UAE),10,D,PCMB,Exceed,28,12,32,-,-,-,32,-,104,4,160,65.00%
-Week1,Objective Test - 01,Malavika Sureshkumar (OMAN),10,D,PCMB,Exceed,24,32,40,-,-,-,32,-,128,4,160,80.00%
 Week1,Objective Test - 01,Anugraha Raj (KSA),10,D,PCMB,Exceed,32,20,32,-,-,-,36,-,120,4,160,75.00%
 Week1,Objective Test - 01,Nainika Vinod (KSA),10,D,PCMB,Exceed,16,36,32,-,-,-,28,-,112,4,160,70.00%
 Week1,Objective Test - 01,Mohammed Sohayeb Azeen (KSA),10,D,PCMB,Exceed,36,36,32,-,-,-,32,-,136,4,160,85.00%
 Week1,Objective Test - 01,Aafreen Javeed Kasim (UAE),10,D,PCMB,Exceed,32,32,32,-,-,-,40,-,136,4,160,85.00%
 Week1,Objective Test - 01,Harshitha P.S (OMAN),10,D,PCMB,Exceed,40,32,40,-,-,-,24,-,136,4,160,85.00%
+Week1,Objective Test - 01,Dakshitha M (QATAR),10,D,PCMB,Exceed,32,32,36,-,-,-,32,-,132,4,160,82.50%
 Week1,Objective Test - 01,Parvitha Chenakonda Vishnuvardhan (OMAN),10,D,PCMB,Exceed,28,32,40,-,-,-,36,-,136,4,160,85.00%
 Week1,Objective Test - 01,Qaaid Saleem (UAE),10,D,PCMB,Exceed,24,16,24,-,-,-,32,-,96,4,160,60.00%
 Week1,Objective Test - 01,Mohammed Arham Ali (KSA),10,D,PCMB,Exceed,36,20,32,-,-,-,40,-,128,4,160,80.00%
+Week1,Objective Test - 01,Zayesha Ali (UAE),11,A,PCM,Achievers,20,32,20,-,-,-,-,-,72,3,120,60.00%
 Week1,Objective Test - 01,Reema Farhana (UAE),11,A,PCB,Achievers,28,28,-,24,20,-,-,-,100,4,160,62.50%
 Week1,Objective Test - 01,Mohammed Aariz (UAE),11,A,PCM,Achievers,36,40,40,-,-,-,-,-,116,3,120,96.67%
 Week1,Objective Test - 01,Rakhshanda Nigaar (UAE),11,A,PCB,Achievers,28,32,-,32,24,-,-,-,116,4,160,72.50%
 Week1,Objective Test - 01,Sahasra Suru (QATAR),11,A,PCM,Achievers,24,32,20,-,-,-,-,-,76,3,120,63.33%
 Week1,Objective Test - 01,Saad Rashid (UAE),11,A,PCM,Achievers,40,40,40,-,-,-,-,-,120,3,120,100.00%
-Week1,Objective Test - 01,Devansh Sharma (UAE),11,A,PCM,Achievers,0,36,16,-,-,-,-,-,52,3,120,43.33%
+Week1,Objective Test - 01,Devansh Sharma (UAE),11,A,PCM,Achievers,24,36,16,-,-,-,-,-,76,3,120,63.33%
 Week1,Objective Test - 01,Saptarshee Sarkar (UAE),11,A,PCMB,Achievers,28,40,20,36,28,-,-,-,152,5,200,76.00%
 Week1,Objective Test - 01,Nehalal (UAE),11,A,PCM,Achievers,28,32,32,-,-,-,-,-,92,3,120,76.67%
 Week1,Objective Test - 01,Amra Kausar (UAE),11,A,PCM,Achievers,32,40,32,-,-,-,-,-,104,3,120,86.67%
@@ -254,7 +377,7 @@ Week1,Objective Test - 01,Jeremiah Benhail Samuel (UAE),11,A,PCM,Achievers,32,20
 Week1,Objective Test - 01,Syeda Rida Fatima (UAE),11,A,PCB,Achievers,32,36,-,40,32,-,-,-,140,4,160,87.50%
 Week1,Objective Test - 01,Serah George (UAE),11,A,PCMB,Achievers,28,36,12,28,36,-,-,-,140,5,200,70.00%
 Week1,Objective Test - 01,Hasini Prasannakumar (UAE),11,A,PCB,Achievers,16,32,-,28,28,-,-,-,104,4,160,65.00%
-Week1,Objective Test - 01,Parth Kapadi (UAE),11,A,PCM,Achievers,24,0,0,-,-,-,-,-,24,3,120,20.00%
+Week1,Objective Test - 01,Parth Kapadi (UAE),11,A,PCM,Achievers,24,24,12,-,-,-,-,-,60,3,120,50.00%
 Week1,Objective Test - 01,Shalin Chirag Patel (UAE),11,A,PCM,Achievers,24,40,20,-,-,-,-,-,84,3,120,70.00%
 Week1,Objective Test - 01,Humaira Anjum (QATAR),11,B,PCMB,Achievers,20,32,8,32,4,-,-,-,96,3,120,80.00%
 Week1,Objective Test - 01,Aariz Hasan Nihal (KSA),11,B,PCM,Achievers,36,28,16,-,-,-,-,-,80,3,120,66.67%
@@ -269,7 +392,7 @@ Week1,Objective Test - 01,Anubhuti Ajay Tripathi (QATAR),11,B,PCB,Achievers,32,4
 Week1,Objective Test - 01,Varshini Yalamareddy (QATAR),11,B,PCM,Achievers,32,40,28,-,-,-,-,-,100,3,120,83.33%
 Week1,Objective Test - 01,Rakshit Sharma (QATAR),11,B,PCMB,Achievers,32,28,28,40,32,-,-,-,160,5,200,80.00%
 Week1,Objective Test - 01,Ridhi Gupta (BAHRAIN),11,B,PCB,Achievers,32,28,-,40,28,-,-,-,128,4,160,80.00%
-Week1,Objective Test - 01,Afaf Shamim Sidique (QATAR),11,B,PCB,Achievers,56,72,-,72,76,-,-,-,128,4,160,80.00%
+Week1,Objective Test - 01,Afaf Shamim Sidique (QATAR),11,B,PCB,Achievers,32,40,-,40,36,-,-,-,148,4,160,92.50%
 Week1,Objective Test - 01,Hayyan Binyamin Yahya (KSA),11,B,PCM,Achievers,28,36,16,-,-,-,-,-,80,3,120,66.67%
 Week1,Objective Test - 01,Sherah Judith J B (KUWAIT),11,B,PCMB,Achievers,28,32,8,40,40,-,-,-,148,5,200,74.00%
 Week1,Objective Test - 01,Aleeza Ahmad (KSA),11,B,PCB,Achievers,24,28,-,32,24,-,-,-,108,4,160,67.50%
@@ -282,7 +405,7 @@ Week1,Objective Test - 01,Stevens Aji (QATAR),11,B,PCM,Achievers,24,28,28,-,-,-,
 Week1,Objective Test - 01,Dheer Mosam Bhatt (KSA),11,B,PCM,Achievers,24,40,28,-,-,-,-,-,92,3,120,76.67%
 Week1,Objective Test - 01,Kabir Nagi (KUWAIT),11,B,PCB,Achievers,28,40,-,36,24,-,-,-,128,4,160,80.00%
 Week1,Objective Test - 01,Riddhima Falodia (OMAN),11,B,PCB,Achievers,36,40,-,40,40,-,-,-,156,4,160,97.50%
-Week1,Objective Test - 01,Joanna Meriam Viju (QATAR),11,B,PCB,Achievers,0,36,-,40,0,-,-,-,76,4,160,47.50%
+Week1,Objective Test - 01,Joanna Meriam Viju (QATAR),11,B,PCB,Achievers,32,36,-,40,36,-,-,-,144,4,160,90.00%
 Week1,Objective Test - 01,Eesha Venugopal Kotian (QATAR),11,B,PCM,Achievers,36,32,36,-,-,-,-,-,104,3,120,86.67%
 Week1,Objective Test - 01,Yukta Soni (OMAN),11,B,PCB,Achievers,28,32,-,36,28,-,-,-,124,4,160,77.50%
 Week1,Objective Test - 01,Stuti Tejas Tank (KSA),11,B,PCM,Achievers,24,28,0,-,-,-,-,-,52,3,120,43.33%
@@ -307,6 +430,7 @@ Week1,Objective Test - 01,Shourya Goyal (KSA),11,C,PCM,Achievers,28,40,36,-,-,-,
 Week1,Objective Test - 01,Shifa Tasneem (KUWAIT),11,C,PCB,Achievers,32,36,-,24,32,-,-,-,124,4,160,77.50%
 Week1,Objective Test - 01,Samriddhi Chakraborty (KUWAIT),11,C,PCM,Achievers,24,36,20,-,-,-,-,-,80,3,120,66.67%
 Week1,Objective Test - 01,Sneha Ashok (OMAN),11,C,PCMB,Achievers,36,40,32,0,0,-,-,-,108,5,200,54.00%
+Week1,Objective Test - 01,Affaan Abdul Sattar Surve (QATAR),11,C,PCM,Achievers,28,36,24,-,-,-,-,-,88,3,120,73.33%
 Week1,Objective Test - 01,Ahmad Sadaf Bhatkali (KUWAIT),11,C,PCM,Achievers,32,36,24,-,-,-,-,-,92,3,120,76.67%
 Week1,Objective Test - 01,Yash Vishalkumar Thakkar (KUWAIT),11,C,PCM,Achievers,28,36,16,-,-,-,-,-,80,3,120,66.67%
 Week1,Objective Test - 01,Aadhidev Sreejith (QATAR),11,C,PCM,Achievers,24,28,8,-,-,-,-,-,60,3,120,50.00%
@@ -388,6 +512,7 @@ Week1,Objective Test - 01,Moksha (QATAR),12,B,PCM,Triumph,28,40,24,-,-,-,-,-,92,
 Week1,Objective Test - 01,Preksha Hitendra Patel (KUWAIT),12,B,PCB,Triumph,24,36,-,28,40,-,-,-,128,4,160,80.00%
 Week1,Objective Test - 01,George Emmanuel (OMAN),12,B,PCB,Triumph,24,40,-,32,24,-,-,-,120,4,160,75.00%
 Week1,Objective Test - 01,Shree Nikilesh Andra (KSA),12,B,PCB,Triumph,20,32,-,20,28,-,-,-,100,4,160,62.50%
+Week1,Objective Test - 01,Vanshika Anilkumar Shinde (KSA),12,B,PCM,Triumph,8,0,0,-,-,-,-,-,8,3,120,6.67%
 Week1,Objective Test - 01,Nithya Hamsini (KSA),12,C,PCMB,Triumph,32,36,40,32,40,-,-,-,180,5,200,90.00%
 Week1,Objective Test - 01,Abdullah Ali (KSA),12,C,PCM,Triumph,40,40,24,0,0,-,-,-,104,5,200,52.00%
 Week1,Objective Test - 01,Hari Charan Veera Sai Mallik Noolu (KSA),12,C,PCM,Triumph,36,40,28,0,0,-,-,-,104,3,120,86.67%
@@ -421,6 +546,12 @@ Week1,Objective Test - 01,Parvathy Arun (OMAN),12,C,PCM,Triumph,32,28,24,-,-,-,-
 Week1,Objective Test - 01,Sameeha Shahul Hameed (KUWAIT),12,C,PCM,Triumph,28,32,32,-,-,-,-,-,92,3,120,76.67%
 Week1,Objective Test - 01,Ananya K Jinesh (QATAR),12,C,PCMB,Triumph,36,40,40,40,40,-,-,-,196,5,200,98.00%
 Week1,Objective Test - 01,Aaron Alexander (BAHRAIN),12,C,PCM,Triumph,20,16,24,-,-,-,-,-,60,3,120,50.00%
+Week1,Objective Test - 01,Keerthi Prasanna Goda (KSA),12,D,PCM,Triumph,28,36,20,-,-,-,-,-,84,3,120,70.00%
+Week1,Objective Test - 01,Abdul Hadi Matheen (KSA),12,D,PCM,Triumph,36,40,28,-,-,-,-,-,104,3,120,86.67%
+Week1,Objective Test - 01,Mohammad Uzair Ali (KSA),12,D,PCB,Triumph,28,28,-,32,32,-,-,-,120,4,160,75.00%
+Week1,Objective Test - 01,Niranjan Vishwanath Iyer (BAHRAIN),12,D,PCM,Triumph,20,28,20,-,-,-,-,-,68,3,120,56.67%
+Week1,Objective Test - 01,Mathu Nissha (OMAN),12,D,PCM,Triumph,36,40,40,-,-,-,-,-,116,3,120,96.67%
+Week1,Objective Test - 01,Husaina Murtuza Challawala (KUWAIT),12,D,PCB,Triumph,12,16,-,28,40,-,-,-,96,4,160,60.00%
 Week1,Objective Test - 01,Blessy Rani (KSA),12,D,PCMB,Triumph,40,40,32,36,36,-,-,-,184,5,200,92.00%
 Week1,Objective Test - 01,Kashyap Mayankkumar Patel (OMAN),12,D,PCM,Triumph,40,36,28,-,-,-,-,-,104,3,120,86.67%
 Week1,Objective Test - 01,Arya Sawant (QATAR),12,D,PCB,Triumph,36,40,-,40,40,-,-,-,156,4,160,97.50%
@@ -435,7 +566,6 @@ Week1,Objective Test - 01,Tanmaya Kumawat (OMAN),12,D,PCM,Triumph,40,40,36,-,-,-
 Week1,Objective Test - 01,Ahad Zayan (KSA),12,D,PCM,Triumph,28,36,32,-,-,-,-,-,96,3,120,80.00%
 Week1,Objective Test - 01,Aashish Madhan (OMAN),12,D,PCM,Triumph,28,20,12,-,-,-,-,-,60,3,120,50.00%
 Week1,Objective Test - 01,Sarthak Nilesh Kapse (BAHRAIN),12,D,PCM,Triumph,32,36,24,-,-,-,-,-,92,3,120,76.67%
-Week1,Objective Test - 01,Jumana Javeed Potrick (OMAN),12,D,PCM,Triumph,28,40,24,-,-,-,-,-,92,3,120,76.67%
 Week1,Objective Test - 01,Abu Laise Sayed (BAHRAIN),12,D,PCM,Triumph,28,24,28,-,-,-,-,-,80,3,120,66.67%
 Week1,Objective Test - 01,Abdallah Khan (QATAR),12,D,PCB,Triumph,36,24,-,32,32,-,-,-,124,4,160,77.50%
 Week1,Objective Test - 01,Riya Roussean (BAHRAIN),12,D,PCMB,Triumph,32,28,32,40,32,-,-,-,164,5,200,82.00%
