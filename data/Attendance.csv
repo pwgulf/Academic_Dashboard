@@ -1878,7 +1878,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 06 Apr - 12 Apr,Zainab Istiyak Ahmed Kapadia (UAE),11,A,PCMB,Achievers,1,4,25.00%
 06 Apr - 12 Apr,Naavarasu Arumugam (UAE),11,A,PCM,Achievers,0,1,0.00%
 16 Mar - 22 Mar,Shahama Shereen (QATAR),11,B,PCB,Achievers,0,4,0.00%
-16 Mar - 22 Mar,Humaira Anjum (QATAR),11,B,PCMB,Achievers,3,6,50.00%
+16 Mar - 22 Mar,Humaira Anjum (QATAR),11,B,PCM,Achievers,3,6,50.00%
 16 Mar - 22 Mar,Aariz Hasan Nihal (KSA),11,B,PCM,Achievers,3,3,100.00%
 16 Mar - 22 Mar,Aidan Kolhapuri (BAHRAIN),11,B,PCM,Achievers,2,3,66.67%
 16 Mar - 22 Mar,Moksha Gokavarapu (QATAR),11,B,PCB,Achievers,3,4,75.00%
@@ -1927,7 +1927,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 16 Mar - 22 Mar,Shreejoyee Bhadra (QATAR),11,B,PCB,Achievers,0,0,-
 16 Mar - 22 Mar,Joanna Oommen (QATAR),11,B,PCMB,Achievers,0,0,-
 23 Mar - 29 Mar,Shahama Shereen (QATAR),11,B,PCB,Achievers,0,8,0.00%
-23 Mar - 29 Mar,Humaira Anjum (QATAR),11,B,PCMB,Achievers,4,10,40.00%
+23 Mar - 29 Mar,Humaira Anjum (QATAR),11,B,PCMB,Achievers,4,6,66.67%
 23 Mar - 29 Mar,Aariz Hasan Nihal (KSA),11,B,PCM,Achievers,4,6,66.67%
 23 Mar - 29 Mar,Aidan Kolhapuri (BAHRAIN),11,B,PCM,Achievers,6,6,100.00%
 23 Mar - 29 Mar,Moksha Gokavarapu (QATAR),11,B,PCB,Achievers,8,8,100.00%
@@ -1976,7 +1976,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 23 Mar - 29 Mar,Shreejoyee Bhadra (QATAR),11,B,PCB,Achievers,0,1,0.00%
 23 Mar - 29 Mar,Joanna Oommen (QATAR),11,B,PCMB,Achievers,0,1,0.00%
 30 Mar - 05 Apr,Shahama Shereen (QATAR),11,B,PCB,Achievers,0,7,0.00%
-30 Mar - 05 Apr,Humaira Anjum (QATAR),11,B,PCMB,Achievers,5,9,55.56%
+30 Mar - 05 Apr,Humaira Anjum (QATAR),11,B,PCMB,Achievers,5,5,100.00%
 30 Mar - 05 Apr,Aariz Hasan Nihal (KSA),11,B,PCM,Achievers,5,5,100.00%
 30 Mar - 05 Apr,Aidan Kolhapuri (BAHRAIN),11,B,PCM,Achievers,5,5,100.00%
 30 Mar - 05 Apr,Moksha Gokavarapu (QATAR),11,B,PCB,Achievers,7,7,100.00%
@@ -2025,7 +2025,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 30 Mar - 05 Apr,Shreejoyee Bhadra (QATAR),11,B,PCB,Achievers,0,1,0.00%
 30 Mar - 05 Apr,Joanna Oommen (QATAR),11,B,PCMB,Achievers,0,1,0.00%
 06 Apr - 12 Apr,Shahama Shereen (QATAR),11,B,PCB,Achievers,0,8,0.00%
-06 Apr - 12 Apr,Humaira Anjum (QATAR),11,B,PCMB,Achievers,6,10,60.00%
+06 Apr - 12 Apr,Humaira Anjum (QATAR),11,B,PCMB,Achievers,6,6,100.00%
 06 Apr - 12 Apr,Aariz Hasan Nihal (KSA),11,B,PCM,Achievers,6,6,100.00%
 06 Apr - 12 Apr,Aidan Kolhapuri (BAHRAIN),11,B,PCM,Achievers,6,6,100.00%
 06 Apr - 12 Apr,Moksha Gokavarapu (QATAR),11,B,PCB,Achievers,8,8,100.00%
@@ -2818,7 +2818,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 09 Mar - 15 Mar,Riya Jeprison (OMAN),12,C,PCB,Triumph,0,8,0.00%
 09 Mar - 15 Mar,Adaa Syed (QATAR),12,C,PCMB,Triumph,10,10,100.00%
 09 Mar - 15 Mar,Ryan Christon Rodrigues (BAHRAIN),12,C,PCM,Triumph,6,6,100.00%
-09 Mar - 15 Mar,Vaclav D’Cruz (KUWAIT),12,C,PCM,Triumph,6,6,100.00%
+09 Mar - 15 Mar,Vaclav Dâ€™Cruz (KUWAIT),12,C,PCM,Triumph,6,6,100.00%
 09 Mar - 15 Mar,Muhammed Faizaan Syed Ahamed (BAHRAIN),12,C,PCM,Triumph,5,6,83.33%
 09 Mar - 15 Mar,Suryadev Umesan (OMAN),12,C,PCM,Triumph,6,6,100.00%
 09 Mar - 15 Mar,Zuha Hafeez (KSA),12,C,PCMB,Triumph,10,10,100.00%
@@ -2876,7 +2876,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 16 Mar - 22 Mar,Riya Jeprison (OMAN),12,C,PCB,Triumph,0,5,0.00%
 16 Mar - 22 Mar,Adaa Syed (QATAR),12,C,PCMB,Triumph,6,6,100.00%
 16 Mar - 22 Mar,Ryan Christon Rodrigues (BAHRAIN),12,C,PCM,Triumph,3,3,100.00%
-16 Mar - 22 Mar,Vaclav D’Cruz (KUWAIT),12,C,PCM,Triumph,3,3,100.00%
+16 Mar - 22 Mar,Vaclav Dâ€™Cruz (KUWAIT),12,C,PCM,Triumph,3,3,100.00%
 16 Mar - 22 Mar,Muhammed Faizaan Syed Ahamed (BAHRAIN),12,C,PCM,Triumph,3,3,100.00%
 16 Mar - 22 Mar,Suryadev Umesan (OMAN),12,C,PCM,Triumph,3,3,100.00%
 16 Mar - 22 Mar,Zuha Hafeez (KSA),12,C,PCMB,Triumph,6,6,100.00%
@@ -2934,7 +2934,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 23 Mar - 29 Mar,Riya Jeprison (OMAN),12,C,PCB,Triumph,0,8,0.00%
 23 Mar - 29 Mar,Adaa Syed (QATAR),12,C,PCMB,Triumph,10,10,100.00%
 23 Mar - 29 Mar,Ryan Christon Rodrigues (BAHRAIN),12,C,PCM,Triumph,6,6,100.00%
-23 Mar - 29 Mar,Vaclav D’Cruz (KUWAIT),12,C,PCM,Triumph,6,6,100.00%
+23 Mar - 29 Mar,Vaclav Dâ€™Cruz (KUWAIT),12,C,PCM,Triumph,6,6,100.00%
 23 Mar - 29 Mar,Muhammed Faizaan Syed Ahamed (BAHRAIN),12,C,PCM,Triumph,6,6,100.00%
 23 Mar - 29 Mar,Suryadev Umesan (OMAN),12,C,PCM,Triumph,6,6,100.00%
 23 Mar - 29 Mar,Zuha Hafeez (KSA),12,C,PCMB,Triumph,10,10,100.00%
@@ -2992,7 +2992,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 30 Mar - 05 Apr,Riya Jeprison (OMAN),12,C,PCB,Triumph,0,8,0.00%
 30 Mar - 05 Apr,Adaa Syed (QATAR),12,C,PCMB,Triumph,7,10,70.00%
 30 Mar - 05 Apr,Ryan Christon Rodrigues (BAHRAIN),12,C,PCM,Triumph,6,6,100.00%
-30 Mar - 05 Apr,Vaclav D’Cruz (KUWAIT),12,C,PCM,Triumph,4,6,66.67%
+30 Mar - 05 Apr,Vaclav Dâ€™Cruz (KUWAIT),12,C,PCM,Triumph,4,6,66.67%
 30 Mar - 05 Apr,Muhammed Faizaan Syed Ahamed (BAHRAIN),12,C,PCM,Triumph,6,6,100.00%
 30 Mar - 05 Apr,Suryadev Umesan (OMAN),12,C,PCM,Triumph,5,6,83.33%
 30 Mar - 05 Apr,Zuha Hafeez (KSA),12,C,PCMB,Triumph,10,10,100.00%
@@ -3050,7 +3050,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 06 Apr - 12 Apr,Riya Jeprison (OMAN),12,C,PCB,Triumph,0,8,0.00%
 06 Apr - 12 Apr,Adaa Syed (QATAR),12,C,PCMB,Triumph,8,10,80.00%
 06 Apr - 12 Apr,Ryan Christon Rodrigues (BAHRAIN),12,C,PCM,Triumph,6,6,100.00%
-06 Apr - 12 Apr,Vaclav D’Cruz (KUWAIT),12,C,PCM,Triumph,6,6,100.00%
+06 Apr - 12 Apr,Vaclav Dâ€™Cruz (KUWAIT),12,C,PCM,Triumph,6,6,100.00%
 06 Apr - 12 Apr,Muhammed Faizaan Syed Ahamed (BAHRAIN),12,C,PCM,Triumph,5,6,83.33%
 06 Apr - 12 Apr,Suryadev Umesan (OMAN),12,C,PCM,Triumph,5,6,83.33%
 06 Apr - 12 Apr,Zuha Hafeez (KSA),12,C,PCMB,Triumph,10,10,100.00%
