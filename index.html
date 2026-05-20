@@ -157,11 +157,81 @@ table.dataTable tbody tr:hover{background:#0f1736}
 .dataTables_wrapper .dataTables_paginate .paginate_button.current{background:linear-gradient(180deg,#1a275c,#10193f)!important;color:#fff!important;border-color:transparent!important;outline:2px solid rgba(30,108,255,.25)}
 
 /* buttons */
-.min-btn,.helpdesk-btn,.report-actions button{
-  border:0;border-radius:12px;padding:9px 14px;font-weight:800;cursor:pointer;
-  background:linear-gradient(180deg,#143b90,#0e214f);color:#fff;
-  box-shadow:0 12px 24px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);
-  transition:.12s
+.min-btn,
+.helpdesk-btn,
+.report-actions button,
+#openReport{
+  position:relative !important;
+  overflow:hidden;
+
+  border:none !important;
+  border-radius:14px !important;
+
+  padding:10px 18px !important;
+
+  font-weight:900 !important;
+  font-size:14px !important;
+  letter-spacing:.3px !important;
+
+  cursor:pointer !important;
+  color:#ffffff !important;
+
+  background:linear-gradient(
+    135deg,
+    #7b5cff 0%,
+    #5a3bff 45%,
+    #1976ff 100%
+  ) !important;
+
+  box-shadow:
+    0 12px 28px rgba(90,59,255,.35),
+    0 6px 16px rgba(25,118,255,.22),
+    inset 0 1px 0 rgba(255,255,255,.18) !important;
+
+  transition:all .18s ease !important;
+}
+
+.min-btn:hover,
+.helpdesk-btn:hover,
+.report-actions button:hover,
+#openReport:hover{
+  transform:translateY(-2px) scale(1.02);
+
+  filter:brightness(1.08);
+
+  box-shadow:
+    0 18px 42px rgba(90,59,255,.45),
+    0 10px 24px rgba(25,118,255,.35) !important;
+}
+
+.min-btn::before,
+.helpdesk-btn::before,
+.report-actions button::before,
+#openReport::before{
+  content:'';
+
+  position:absolute;
+  top:0;
+  left:-40%;
+
+  width:40%;
+  height:100%;
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.35),
+    transparent
+  );
+
+  transition:.5s;
+}
+
+.min-btn:hover::before,
+.helpdesk-btn:hover::before,
+.report-actions button:hover::before,
+#openReport:hover::before{
+  left:130%;
 }
 .min-btn:hover,.helpdesk-btn:hover,.report-actions button:hover{transform:translateY(-1px);filter:brightness(1.08)}
 
@@ -313,7 +383,9 @@ header *, .tabs *, .controls *, .card *, .kpi * { color:#fff !important; text-sh
     <button class="tab-btn" data-tab="objective">Objective Tests</button>
     <button class="tab-btn" data-tab="subjective">Subjective Tests</button>
      <!--<button class="helpdesk-btn" id="helpdeskOpen" type="button">Helpdesk</button>-->
-    <button id="openReport" class="secondary" type="button">Report Preview</button>
+    <button id="openReport" class="report-btn" type="button">
+  📊 Report Preview
+</button>
   </div>
 
   <!-- ATTENDANCE -->
