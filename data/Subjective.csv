@@ -114,13 +114,13 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 17-Apr-2026,Mohammed Ibrahim Ahmed (UAE),8,B,PCMB,566067453,Maths,40,38,95.00%,Week1
 17-Apr-2026,Mrunmayee Aniket Patil (UAE),8,B,PCMB,525962494,Maths,40,28,70.00%,Week1
 17-Apr-2026,Juveria Arshi Shaik (KSA),8,B,PCMB,562667821,Maths,40,10,25.00%,Week1
-17-Apr-2026,Zoey Fernandes (KUWAIT),8,A,PCMB,65698475,Maths,40,34,85.00%,Week1
+17-Apr-2026,Zoey Fernandes (KUWAIT),8,B,PCMB,65698475,Maths,40,34,85.00%,Week1
 17-Apr-2026,Farhaan Faisal (QATAR),8,B,PCMB,55177094,Maths,40,22,55.00%,Week1
 17-Apr-2026,Aman Dev (BAHRAIN),8,B,PCMB,34535887,Physics,14,11,78.57%,Week1
 17-Apr-2026,Mrunmayee Aniket Patil (UAE),8,B,PCMB,525962494,Physics,14,13,92.86%,Week1
 17-Apr-2026,Aaditya Surendra Jogi (BAHRAIN),8,B,PCMB,35055645,Physics,14,12,85.71%,Week1
 17-Apr-2026,Mohammed Ibrahim Ahmed (UAE),8,B,PCMB,566067453,Physics,14,8.5,60.71%,Week1
-17-Apr-2026,Zoey Fernandes (KUWAIT),8,A,PCMB,65698475,Physics,14,13,92.86%,Week1
+17-Apr-2026,Zoey Fernandes (KUWAIT),8,B,PCMB,65698475,Physics,14,13,92.86%,Week1
 17-Apr-2026,Srishti Rastogi (UAE),8,B,PCMB,565489662,Physics,14,11,78.57%,Week1
 17-Apr-2026,Abdul Waiz Sayyed (KUWAIT),8,B,PCMB,55947634,Physics,14,12,85.71%,Week1
 17-Apr-2026,Farhaan Faisal (QATAR),8,B,PCMB,55177094,Physics,14,14,100.00%,Week1
@@ -134,13 +134,13 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 17-Apr-2026,Aman Dev (BAHRAIN),8,B,PCMB,34535887,Chemistry,11,10.5,95.45%,Week1
 17-Apr-2026,Kiara Mahajan (QATAR),8,B,PCMB,71992694,Chemistry,11,10,90.91%,Week1
 17-Apr-2026,Srishti Rastogi (UAE),8,B,PCMB,565489662,Chemistry,11,9.5,86.36%,Week1
-17-Apr-2026,Zoey Fernandes (KUWAIT),8,A,PCMB,65698475,Chemistry,11,11,100.00%,Week1
+17-Apr-2026,Zoey Fernandes (KUWAIT),8,B,PCMB,65698475,Chemistry,11,11,100.00%,Week1
 17-Apr-2026,Juveria Arshi Shaik (KSA),8,B,PCMB,562667821,Chemistry,11,8.5,77.27%,Week1
 17-Apr-2026,Aaditya Surendra Jogi (BAHRAIN),8,B,PCMB,35055645,Biology,13,11.5,88.46%,Week1
 17-Apr-2026,Juveria Arshi Shaik (KSA),8,B,PCMB,562667821,Biology,13,7,53.85%,Week1
 17-Apr-2026,Aman Dev (BAHRAIN),8,B,PCMB,34535887,Biology,13,7.5,57.69%,Week1
 17-Apr-2026,Farhaan Faisal (QATAR),8,B,PCMB,55177094,Biology,13,6,46.15%,Week1
-17-Apr-2026,Zoey Fernandes (KUWAIT),8,A,PCMB,65698475,Biology,13,10.5,80.77%,Week1
+17-Apr-2026,Zoey Fernandes (KUWAIT),8,B,PCMB,65698475,Biology,13,10.5,80.77%,Week1
 17-Apr-2026,Mrunmayee Aniket Patil (UAE),8,B,PCMB,525962494,Biology,13,7,53.85%,Week1
 17-Apr-2026,Raizel Angel Desouza (QATAR),8,B,PCMB,55344906,Biology,13,9.5,73.08%,Week1
 17-Apr-2026,Kiara Mahajan (QATAR),8,B,PCMB,71992694,Biology,13,8,61.54%,Week1
@@ -150,7 +150,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 24-April-2026,Yuvraj Sudarshan Bilava (UAE),9,A,PCMB,506201236,Biology,10,8,80.00%,Week1
 24-April-2026,Hasiba Ovesbhai Madhiya (UAE),9,A,PCMB,544334373,Biology,10,9,90.00%,Week1
 24-April-2026,Aatish Shiju (BAHRAIN),9,A,PCMB,39071460,Biology,10,8,80.00%,Week1
-24-April-2026,Evan Shaju (QATAR),9,A,PCMB,77088991,Biology,10,8,80.00%,Week1
 24-April-2026,Syed Muhammad Uzair (QATAR),9,A,PCMB,33953020,Biology,10,8,80.00%,Week1
 24-April-2026,Agastya Chetan Joshi (MALAYSIA),9,A,PCMB,10110151,Biology,10,8,80.00%,Week1
 24-April-2026,Sanya Mehta (QATAR),9,A,PCMB,66530985,Biology,10,0,0.00%,Week1
@@ -201,7 +200,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 24-April-2026,Mohammad Sadan Siddiqui (KSA),9,A,PCMB,533904758,Physics,14,10,71.43%,Week1
 24-April-2026,Srinivas Mullagiri (UAE),9,A,PCMB,561600587,Physics,14,13,92.86%,Week1
 24-April-2026,Sanya Mehta (QATAR),9,A,PCMB,66530985,Physics,14,0,0.00%,Week1
-24-April-2026,Evan Shaju (QATAR),9,A,PCMB,77088991,Physics,14,14,100.00%,Week1
 24-April-2026,Lakshmi Kritika Thanneeru (BAHRAIN),9,A,PCMB,36712090,Maths,30,30,100.00%,Week1
 24-April-2026,Syed Muhammad Uzair (QATAR),9,A,PCMB,33953020,Maths,30,30,100.00%,Week1
 24-April-2026,Aatish Shiju (BAHRAIN),9,A,PCMB,39071460,Maths,30,26,86.67%,Week1
@@ -219,9 +217,7 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 24-April-2026,Ayaan Samir Kazi (UAE),9,A,PCMB,588879024,Maths,30,30,100.00%,Week1
 24-April-2026,Suhaan Mohammed (UAE),9,A,PCMB,528152775,Maths,30,28,93.33%,Week1
 24-April-2026,Srinivas Mullagiri (UAE),9,A,PCMB,561600587,Maths,30,30,100.00%,Week1
-24-April-2026,Evan Shaju (QATAR),9,A,PCMB,77088991,Maths,30,30,100.00%,Week1
 24-April-2026,Mohammad Sadan Siddiqui (KSA),9,A,PCMB,533904758,Maths,30,24,80.00%,Week1
-24-April-2026,Navyaa (KUWAIT),9,B,PCMB,69925675,Biology,10,8,80.00%,Week1
 24-April-2026,Priyanshi Panchakarla (OMAN),9,B,PCMB,93503149,Biology,10,8,80.00%,Week1
 24-April-2026,Gayathri Prasanna Goda (KSA),9,B,PCMB,536374753,Biology,10,9,90.00%,Week1
 24-April-2026,Shaival Bipinkumar Patel (QATAR),9,B,PCMB,70440531,Biology,10,8.5,85.00%,Week1
@@ -242,7 +238,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 24-April-2026,Sabreen Sharma (QATAR),9,B,PCMB,30118001,Biology,10,10,100.00%,Week1
 24-April-2026,Aisha Mehreen Abbas (KSA),9,B,PCMB,531364770,Biology,10,10,100.00%,Week1
 24-April-2026,Sameeha Mohamed Mujib (KUWAIT),9,B,PCMB,69041557,Biology,10,0,0.00%,Week1
-24-April-2026,Navyaa (KUWAIT),9,B,PCMB,69925675,Chemistry,11,8.5,77.27%,Week1
 24-April-2026,Syeda Zainab Fathima (KSA),9,B,PCMB,570152786,Chemistry,11,11,100.00%,Week1
 24-April-2026,Muddamsetty Sathya Niharika (KUWAIT),9,B,PCMB,51154549,Chemistry,11,11,100.00%,Week1
 24-April-2026,Priyanshi Panchakarla (OMAN),9,B,PCMB,93503149,Chemistry,11,10.5,95.45%,Week1
@@ -276,7 +271,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 24-April-2026,Snehal Sharma (BAHRAIN),9,B,PCMB,33719966,Physics,14,14,100.00%,Week1
 24-April-2026,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,30530804,Physics,14,14,100.00%,Week1
 24-April-2026,Priyanshi Panchakarla (OMAN),9,B,PCMB,93503149,Physics,14,12,85.71%,Week1
-24-April-2026,Navyaa (KUWAIT),9,B,PCMB,69925675,Physics,14,12,85.71%,Week1
 24-April-2026,Om Thakare (UAE),9,B,PCMB,547928715,Physics,14,14,100.00%,Week1
 24-April-2026,Sara Shakir Shaikh (UAE),9,B,PCMB,503122901,Physics,14,8,57.14%,Week1
 24-April-2026,Arnav Sudheesh (UAE),9,B,PCMB,503403042,Physics,14,14,100.00%,Week1
@@ -295,7 +289,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 24-April-2026,Gunika Koul (KSA),9,B,PCMB,33409723,Maths,30,25,83.33%,Week1
 24-April-2026,Sameeha Mohamed Mujib (KUWAIT),9,B,PCMB,69041557,Maths,30,29,96.67%,Week1
 24-April-2026,Snehal Sharma (BAHRAIN),9,B,PCMB,33719966,Maths,30,30,100.00%,Week1
-24-April-2026,Navyaa (KUWAIT),9,B,PCMB,69925675,Maths,30,15,50.00%,Week1
 24-April-2026,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,30530804,Maths,30,29,96.67%,Week1
 24-April-2026,Sabreen Sharma (QATAR),9,B,PCMB,30118001,Maths,30,24,80.00%,Week1
 24-April-2026,Abel Mathew Rino (KSA),9,B,PCMB,563892241,Maths,30,30,100.00%,Week1
@@ -386,7 +379,7 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 24-April-2026,Sheikh Aariz Ahmed (QATAR),9,C,PCMB,33604347,Physics,14,7,50.00%,Week1
 24-April-2026,Ajinkya Tushar Deshpande (OMAN),9,C,PCMB,96549378,Physics,14,12,85.71%,Week1
 24-April-2026,Pavit Prashant Singh (BAHRAIN),9,C,PCMB,38405104,Physics,14,10,71.43%,Week1
-24-April-2026,Mohammed Abdul Rahim (QATAR),9,C,PCMB,33883814,Physics,14,14,100.00%,Week1
+24-April-2026,Mohammed Abdul Rahim (QATAR),9,B,PCMB,33883814,Physics,14,14,100.00%,Week1
 24-April-2026,Sharon Joby Panicker (KUWAIT),9,C,PCMB,60023801,Maths,30,25,83.33%,Week1
 24-April-2026,Haya Muhammad (OMAN),9,C,PCMB,93686704,Maths,30,15,50.00%,Week1
 24-April-2026,Lavanya Kirit Joshi (UAE),9,C,PCMB,563871139,Maths,30,6,20.00%,Week1
@@ -416,7 +409,7 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 10-Apr-2026,Wasil Hammad (KSA),10,A,PCMB,567603909,Biology,13,13,100.00%,Week1
 10-Apr-2026,Fathima Zayana Fazal Rahman (QATAR),10,A,PCMB,33177408,Biology,13,12.5,96.15%,Week1
 10-Apr-2026,Ayushman Dhar (UAE),10,A,PCMB,501363349,Biology,13,11,84.62%,Week1
-10-Apr-2026,A. Sahana (KSA),10,A,PCMB,504225478,Biology,13,11,84.62%,Week1
+10-Apr-2026,A. Sahana (KSA),10,B,PCMB,504225478,Biology,13,11,84.62%,Week1
 10-Apr-2026,Meera Ramasubramanian (KSA),10,A,PCMB,552178571,Biology,13,11,84.62%,Week1
 10-Apr-2026,Drishti Karki (QATAR),10,A,PCMB,30377838,Biology,13,13,100.00%,Week1
 10-Apr-2026,Alstin Austin Dsouza (UAE),10,A,PCMB,566772596,Biology,13,9,69.23%,Week1
@@ -468,7 +461,7 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 10-Apr-2026,Alstin Austin Dsouza (UAE),10,A,PCMB,566772596,Chemistry,13,12.5,96.15%,Week1
 10-Apr-2026,Hathim Akbar Ali (KSA),10,A,PCMB,566647470,Chemistry,13,11.5,88.46%,Week1
 10-Apr-2026,Lekhit Borole (KSA),10,A,PCMB,553763420,Chemistry,13,6,46.15%,Week1
-10-Apr-2026,A. Sahana (KSA),10,A,PCMB,504225478,Chemistry,13,13,100.00%,Week1
+10-Apr-2026,A. Sahana (KSA),10,B,PCMB,504225478,Chemistry,13,13,100.00%,Week1
 10-Apr-2026,Faiqa Ashiq (UAE),10,A,PCMB,558953762,Chemistry,13,13,100.00%,Week1
 10-Apr-2026,Shreeanya S (OMAN),10,A,PCMB,96576185,Chemistry,13,4.5,34.62%,Week1
 10-Apr-2026,Drishti Karki (QATAR),10,A,PCMB,30377838,Chemistry,13,13,100.00%,Week1
@@ -504,7 +497,7 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 10-Apr-2026,Anandita Singh (OMAN),10,A,PCMB,78816969,Physics,14,13.5,96.43%,Week1
 10-Apr-2026,Joanna Shinjith (UAE),10,A,PCMB,508808301,Physics,14,14,100.00%,Week1
 10-Apr-2026,Ayushman Dhar (UAE),10,A,PCMB,501363349,Physics,14,14,100.00%,Week1
-10-Apr-2026,A. Sahana (KSA),10,A,PCMB,504225478,Physics,14,14,100.00%,Week1
+10-Apr-2026,A. Sahana (KSA),10,B,PCMB,504225478,Physics,14,14,100.00%,Week1
 10-Apr-2026,Faiqa Ashiq (UAE),10,A,PCMB,558953762,Physics,14,14,100.00%,Week1
 10-Apr-2026,Drishti Karki (QATAR),10,A,PCMB,30377838,Physics,14,14,100.00%,Week1
 10-Apr-2026,Moosa Shabbir Kazi (QATAR),10,A,PCMB,55467781,Physics,14,13.5,96.43%,Week1
@@ -559,7 +552,7 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 10-Apr-2026,Chitra Sharma (SINGAPORE),10,A,PCMB,10110149,Maths,40,40,100.00%,Week1
 10-Apr-2026,Abila Ramanathan (UAE),10,A,PCMB,554867548,Maths,40,40,100.00%,Week1
 10-Apr-2026,Hathim Akbar Ali (KSA),10,A,PCMB,566647470,Maths,40,39,97.50%,Week1
-10-Apr-2026,A. Sahana (KSA),10,A,PCMB,504225478,Maths,40,40,100.00%,Week1
+10-Apr-2026,A. Sahana (KSA),10,B,PCMB,504225478,Maths,40,40,100.00%,Week1
 10-Apr-2026,Tuba Kazi (QATAR),10,A,PCMB,55597340,Maths,40,33,82.50%,Week1
 10-Apr-2026,Farhat-Un-Nisa (UAE),10,A,PCMB,568278518,Maths,40,36,90.00%,Week1
 10-Apr-2026,Kaitlyn Mary Zachariah (OMAN),10,A,PCMB,92891435,Maths,40,40,100.00%,Week1
@@ -841,7 +834,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 10-Apr-2026,Sumaira Ilyas (KSA),10,D,PCMB,500160904,Biology,13,6,46.15%,Week1
 10-Apr-2026,Harsh Pramod Shringare (BAHRAIN),10,D,PCMB,33476843,Biology,13,11,84.62%,Week1
 10-Apr-2026,Mariam Fatima Rizvi (UAE),10,D,PCMB,557266075,Biology,13,13,100.00%,Week1
-10-Apr-2026,Abhinav Balaji (NIGERIA),10,D,PCMB,521171900,Biology,13,9,69.23%,Week1
 10-Apr-2026,Mohammed Arham Ali (KSA),10,D,PCMB,536148418,Biology,13,11,84.62%,Week1
 10-Apr-2026,Glenisha Alvina Coelho (KUWAIT),10,D,PCMB,69063153,Biology,13,10,76.92%,Week1
 10-Apr-2026,Ihsan Asker Mohideen (QATAR),10,D,PCMB,50423442,Biology,13,12,92.31%,Week1
@@ -850,7 +842,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 10-Apr-2026,Mariam Fatima Rizvi (UAE),10,D,PCMB,557266075,Maths,40,40,100.00%,Week1
 10-Apr-2026,Parvitha Chenakonda Vishnuvardhan (OMAN),10,D,PCMB,93875828,Maths,40,40,100.00%,Week1
 10-Apr-2026,Ihsan Asker Mohideen (QATAR),10,D,PCMB,50423442,Maths,40,31,77.50%,Week1
-10-Apr-2026,Abhinav Balaji (NIGERIA),10,D,PCMB,521171900,Maths,40,30,75.00%,Week1
 10-Apr-2026,Qaaid Saleem (UAE),10,D,PCMB,505798892,Maths,40,40,100.00%,Week1
 10-Apr-2026,Anugraha Raj (KSA),10,D,PCMB,533981217,Maths,40,40,100.00%,Week1
 10-Apr-2026,Tanvi Tejaswini (QATAR),10,D,PCMB,33990032,Maths,40,36,90.00%,Week1
@@ -865,7 +856,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 17-Apr-2026,Sahasra Suru (QATAR),11,A,PCM,529352569,Maths,40,39,97.50%,Week1
 17-Apr-2026,Devansh Sharma (UAE),11,A,PCM,506310970,Maths,40,35,87.50%,Week1
 17-Apr-2026,Parth Kapadi (UAE),11,A,PCM,567735685,Maths,40,36,90.00%,Week1
-17-Apr-2026,Shlok Umesh Gaikwad (UAE),11,A,PCM,508897507,Maths,40,37,92.50%,Week1
 17-Apr-2026,Amra Kausar (UAE),11,A,PCM,586122390,Maths,40,40,100.00%,Week1
 17-Apr-2026,Adishankar Dinesh (UAE),11,A,PCM,503725458,Maths,40,33,82.50%,Week1
 17-Apr-2026,Mohammed Aariz (UAE),11,A,PCM,509330710,Maths,40,39,97.50%,Week1
@@ -877,7 +867,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 17-Apr-2026,Devansh Sharma (UAE),11,A,PCM,506310970,Physics,40,13,32.50%,Week1
 17-Apr-2026,Pranay Parihar (UAE),11,A,PCM,501265067,Physics,40,26,65.00%,Week1
 17-Apr-2026,Mohammed Aariz (UAE),11,A,PCM,509330710,Physics,40,27,67.50%,Week1
-17-Apr-2026,Shlok Umesh Gaikwad (UAE),11,A,PCM,508897507,Physics,40,18,45.00%,Week1
 17-Apr-2026,Naavarasu Arumugam (UAE),11,A,PCM,502054837,Physics,40,0,0.00%,Week1
 17-Apr-2026,Aleena Mehreen (UAE),11,A,PCB,567973540,Physics,40,36,90.00%,Week1
 17-Apr-2026,Hasini Prasannakumar (UAE),11,A,PCB,563100655,Physics,40,24,60.00%,Week1
@@ -885,11 +874,9 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 17-Apr-2026,Syeda Rida Fatima (UAE),11,A,PCB,528789495,Physics,40,31,77.50%,Week1
 17-Apr-2026,Jerusha Francis (UAE),11,A,PCB,554709227,Physics,40,23,57.50%,Week1
 17-Apr-2026,Saptarshee Sarkar (UAE),11,A,PCMB,522751681,Maths,40,40,100.00%,Week1
-17-Apr-2026,Rudhra Reghu Vattathil (UAE),11,A,PCMB,556140001,Maths,40,38,95.00%,Week1
 17-Apr-2026,Serah George (UAE),11,A,PCMB,505410790,Maths,40,37,92.50%,Week1
 17-Apr-2026,Saptarshee Sarkar (UAE),11,A,PCMB,522751681,Physics,40,39,97.50%,Week1
 17-Apr-2026,Serah George (UAE),11,A,PCMB,505410790,Physics,40,15,37.50%,Week1
-17-Apr-2026,Rudhra Reghu Vattathil (UAE),11,A,PCMB,556140001,Physics,40,27.5,68.75%,Week1
 17-Apr-2026,Stuti Tejas Tank (KSA),11,B,PCM,538362467,Maths,40,37,92.50%,Week1
 17-Apr-2026,Aidan Kolhapuri (BAHRAIN),11,B,PCM,33684957,Maths,40,39,97.50%,Week1
 17-Apr-2026,Devdatta Dileep (QATAR),11,B,PCM,66325510,Maths,40,37,92.50%,Week1
@@ -1046,7 +1033,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 ,Syed Abdul Rabb (KUWAIT),12,B,PCM,99757604,Maths,40,40,100.00%,Week1
 ,Vishvajit Mangesh Chandorkar (OMAN),12,B,PCM,94006938,Maths,40,37,92.50%,Week1
 ,Moksha (QATAR),12,B,PCM,50205796,Maths,40,39,97.50%,Week1
-,Vaibhav Rajeev (KUWAIT),12,B,PCM,96074743,Maths,40,40,100.00%,Week1
 ,Michelle Prince (BAHRAIN),12,B,PCM,34548465,Maths,40,37,92.50%,Week1
 ,Hajeera Fatima (KSA),12,B,PCM,552150914,Maths,40,40,100.00%,Week1
 ,Michelle Prince (BAHRAIN),12,B,PCM,34548465,Physics,40,36,90.00%,Week1
@@ -1055,7 +1041,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 ,Jayden Jomphil (QATAR),12,B,PCM,70772413,Physics,40,16.5,41.25%,Week1
 ,Vishvajit Mangesh Chandorkar (OMAN),12,B,PCM,94006938,Physics,40,33,82.50%,Week1
 ,Samiksha Mishra (OMAN),12,B,PCM,92925096,Physics,40,28.5,71.25%,Week1
-,Vaibhav Rajeev (KUWAIT),12,B,PCM,96074743,Physics,40,32,80.00%,Week1
 ,Lohethashvaa Selvraj (KUWAIT),12,B,PCM,99308374,Physics,40,36,90.00%,Week1
 ,Jason Daniel Roy (OMAN),12,B,PCM,79726909,Physics,40,36.5,91.25%,Week1
 ,Moksha (QATAR),12,B,PCM,50205796,Physics,40,35,87.50%,Week1
