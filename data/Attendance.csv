@@ -10849,7 +10849,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 01 Jun - 07 Jun,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,2,8,25.00%
 01 Jun - 07 Jun,Kavya Thakkar (KSA),11,D,PCMB,Achievers,5,10,50.00%
 01 Jun - 07 Jun,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,8,8,100.00%
-01 Jun - 07 Jun,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,6,0.00%
+01 Jun - 07 Jun,Mohammad Saad (QATAR),11,D,PCB,Achievers,-,-,-
 01 Jun - 07 Jun,Angelo Joy (UAE),11,D,PCMB,Achievers,2,3,66.67%
 01 Jun - 07 Jun,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,-,-,-
 01 Jun - 07 Jun,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,-,-,-
@@ -10892,7 +10892,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 08 Jun - 14 Jun,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,6,8,75.00%
 08 Jun - 14 Jun,Kavya Thakkar (KSA),11,D,PCMB,Achievers,2,10,20.00%
 08 Jun - 14 Jun,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,8,8,100.00%
-08 Jun - 14 Jun,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,8,0.00%
+08 Jun - 14 Jun,Mohammad Saad (QATAR),11,D,PCB,Achievers,3,8,37.50%
 08 Jun - 14 Jun,Angelo Joy (UAE),11,D,PCMB,Achievers,10,10,100.00%
 08 Jun - 14 Jun,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,8,8,100.00%
 08 Jun - 14 Jun,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,2,3,66.67%
@@ -10935,7 +10935,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 15 Jun - 21 Jun,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,7,7,100.00%
 15 Jun - 21 Jun,Kavya Thakkar (KSA),11,D,PCMB,Achievers,0,8,0.00%
 15 Jun - 21 Jun,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,7,7,100.00%
-15 Jun - 21 Jun,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,7,0.00%
+15 Jun - 21 Jun,Mohammad Saad (QATAR),11,D,PCB,Achievers,4,7,57.14%
 15 Jun - 21 Jun,Angelo Joy (UAE),11,D,PCMB,Achievers,0,8,0.00%
 15 Jun - 21 Jun,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,8,8,100.00%
 15 Jun - 21 Jun,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,2,4,50.00%
@@ -10978,7 +10978,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 22 Jun - 28 Jun,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,6,8,75.00%
 22 Jun - 28 Jun,Kavya Thakkar (KSA),11,D,PCMB,Achievers,0,10,0.00%
 22 Jun - 28 Jun,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,8,8,100.00%
-22 Jun - 28 Jun,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,8,0.00%
+22 Jun - 28 Jun,Mohammad Saad (QATAR),11,D,PCB,Achievers,5,8,62.50%
 22 Jun - 28 Jun,Angelo Joy (UAE),11,D,PCMB,Achievers,6,10,60.00%
 22 Jun - 28 Jun,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,10,10,100.00%
 22 Jun - 28 Jun,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,4,7,57.14%
@@ -11021,11 +11021,11 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 29 June -  05 July,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,8,8,100.00%
 29 June -  05 July,Kavya Thakkar (KSA),11,D,PCMB,Achievers,0,10,0.00%
 29 June -  05 July,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,6,8,75.00%
-29 June -  05 July,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,8,0.00%
+29 June -  05 July,Mohammad Saad (QATAR),11,D,PCB,Achievers,8,8,100.00%
 29 June -  05 July,Angelo Joy (UAE),11,D,PCMB,Achievers,10,10,100.00%
 29 June -  05 July,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,10,10,100.00%
 29 June -  05 July,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,6,6,100.00%
-29 June -  05 July,Khushal Joshi (UAE),11,D,PCM,Achievers,0,6,0.00%
+29 June -  05 July,Khushal Joshi (UAE),11,D,PCM,Achievers,4,6,66.67%
 29 June -  05 July,Mohammed Koltharkar (KUWAIT),11,D,PCM,Achievers,-,-,-
 29 June -  05 July,Giya Grace Samuel (BAHRAIN),11,D,PCM,Achievers,-,-,-
 29 June -  05 July,Anvi Tyagi (KSA),11,D,PCM,Achievers,5,6,83.33%
@@ -11064,11 +11064,11 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 06 July -  12 July,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,4,5,80.00%
 06 July -  12 July,Kavya Thakkar (KSA),11,D,PCMB,Achievers,0,7,0.00%
 06 July -  12 July,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,5,5,100.00%
-06 July -  12 July,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,5,0.00%
+06 July -  12 July,Mohammad Saad (QATAR),11,D,PCB,Achievers,3,5,60.00%
 06 July -  12 July,Angelo Joy (UAE),11,D,PCMB,Achievers,7,7,100.00%
 06 July -  12 July,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,6,7,85.71%
 06 July -  12 July,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,5,5,100.00%
-06 July -  12 July,Khushal Joshi (UAE),11,D,PCM,Achievers,0,5,0.00%
+06 July -  12 July,Khushal Joshi (UAE),11,D,PCM,Achievers,4,5,80.00%
 06 July -  12 July,Mohammed Koltharkar (KUWAIT),11,D,PCM,Achievers,-,-,-
 06 July -  12 July,Giya Grace Samuel (BAHRAIN),11,D,PCM,Achievers,-,-,-
 06 July -  12 July,Anvi Tyagi (KSA),11,D,PCM,Achievers,5,5,100.00%
@@ -11107,11 +11107,11 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 13 July -  19 July,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,5,7,71.43%
 13 July -  19 July,Kavya Thakkar (KSA),11,D,PCMB,Achievers,0,9,0.00%
 13 July -  19 July,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,2,7,28.57%
-13 July -  19 July,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,7,0.00%
+13 July -  19 July,Mohammad Saad (QATAR),11,D,PCB,Achievers,5,7,71.43%
 13 July -  19 July,Angelo Joy (UAE),11,D,PCMB,Achievers,9,9,100.00%
 13 July -  19 July,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,7,9,77.78%
 13 July -  19 July,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,5,5,100.00%
-13 July -  19 July,Khushal Joshi (UAE),11,D,PCM,Achievers,0,5,0.00%
+13 July -  19 July,Khushal Joshi (UAE),11,D,PCM,Achievers,5,5,100.00%
 13 July -  19 July,Mohammed Koltharkar (KUWAIT),11,D,PCM,Achievers,4,5,80.00%
 13 July -  19 July,Giya Grace Samuel (BAHRAIN),11,D,PCM,Achievers,-,-,-
 13 July -  19 July,Anvi Tyagi (KSA),11,D,PCM,Achievers,5,5,100.00%
@@ -11150,7 +11150,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 27 July -  02 Aug,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,7,8,87.50%
 27 July -  02 Aug,Kavya Thakkar (KSA),11,D,PCMB,Achievers,2,10,20.00%
 27 July -  02 Aug,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,7,8,87.50%
-27 July -  02 Aug,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,8,0.00%
+27 July -  02 Aug,Mohammad Saad (QATAR),11,D,PCB,Achievers,2,8,25.00%
 27 July -  02 Aug,Angelo Joy (UAE),11,D,PCMB,Achievers,10,10,100.00%
 27 July -  02 Aug,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,10,10,100.00%
 27 July -  02 Aug,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,6,6,100.00%
@@ -15916,7 +15916,7 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 03 Aug - 09 Aug,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,4,8,50.00%
 03 Aug - 09 Aug,Kavya Thakkar (KSA),11,D,PCMB,Achievers,10,10,100.00%
 03 Aug - 09 Aug,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,8,8,100.00%
-03 Aug - 09 Aug,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,8,0.00%
+03 Aug - 09 Aug,Mohammad Saad (QATAR),11,D,PCB,Achievers,2,8,25.00%
 03 Aug - 09 Aug,Angelo Joy (UAE),11,D,PCMB,Achievers,10,10,100.00%
 03 Aug - 09 Aug,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,10,10,100.00%
 03 Aug - 09 Aug,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,6,6,100.00%
@@ -16739,11 +16739,11 @@ Week,StudentName,Grade,Section,Stream,Batch,TotalPresent,TotalClasses,"Attendanc
 10 Aug - 16 Aug,Lamar Imad Abdelglil (QATAR),11,D,PCB,Achievers,8,8,100.00%
 10 Aug - 16 Aug,Kavya Thakkar (KSA),11,D,PCMB,Achievers,10,10,100.00%
 10 Aug - 16 Aug,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,5,8,62.50%
-10 Aug - 16 Aug,Mohammad Saad (QATAR),11,D,PCB,Achievers,0,8,0.00%
+10 Aug - 16 Aug,Mohammad Saad (QATAR),11,D,PCB,Achievers,8,8,100.00%
 10 Aug - 16 Aug,Angelo Joy (UAE),11,D,PCMB,Achievers,10,10,100.00%
 10 Aug - 16 Aug,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,10,10,100.00%
 10 Aug - 16 Aug,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,6,6,100.00%
-10 Aug - 16 Aug,Khushal Joshi (UAE),11,D,PCM,Achievers,0,6,0.00%
+10 Aug - 16 Aug,Khushal Joshi (UAE),11,D,PCM,Achievers,6,6,100.00%
 10 Aug - 16 Aug,Mohammed Koltharkar (KUWAIT),11,D,PCM,Achievers,6,6,100.00%
 10 Aug - 16 Aug,Giya Grace Samuel (BAHRAIN),11,D,PCM,Achievers,0,6,0.00%
 10 Aug - 16 Aug,Anvi Tyagi (KSA),11,D,PCM,Achievers,6,6,100.00%
