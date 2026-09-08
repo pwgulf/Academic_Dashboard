@@ -2372,10 +2372,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 12-Jun-2026,Bilal Ahmad (KSA),11,D,PCB,Achievers,Subjective Test - 03 Physics,40,6,15.00%,Week3
 12-Jun-2026,Jiya Hareshbhai Mathukiya (KSA),11,D,PCB,Achievers,Subjective Test - 03 Physics,40,11,27.50%,Week3
 12-Jun-2026,Johann Joseph Mascarenhas (KUWAIT),11,D,PCB,Achievers,Subjective Test - 03 Physics,40,32,80.00%,Week3
-15-May-2026,Zarfisha Ameenuddin Qadri (UAE),#N/A,#N/A,#N/A,#N/A,Subjective Test - 02 Botany,20,17,85.00%,Week2
-15-May-2026,Zarfisha Ameenuddin Qadri (UAE),#N/A,#N/A,#N/A,#N/A,Subjective Test - 02 Zoology,20,14,70.00%,Week2
-15-May-2026,Zarfisha Ameenuddin Qadri (UAE),#N/A,#N/A,#N/A,#N/A,Subjective Test - 02 Chemistry,40,29.5,73.75%,Week2
-12-Jun-2026,Zarfisha Ameenuddin Qadri (UAE),#N/A,#N/A,#N/A,#N/A,Subjective Test - 03 Physics,40,19.5,48.75%,Week3
 12-Jun-2026,Amina Khan (KSA),11,D,PCB,Achievers,Subjective Test - 03 Physics,40,8,20.00%,Week3
 12-Jun-2026,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,Subjective Test - 03 Physics,40,29,72.50%,Week3
 12-Jun-2026,Saira Sabu (KSA),11,B,PCB,Achievers,Subjective Test - 03 Physics,40,25,62.50%,Week3
@@ -3325,7 +3321,6 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 10-Jul-2026,Syona Sunil (KSA),11,C,PCB,Achievers,Subjective Test - 04 Botany,20,19.5,97.50%,Week4
 10-Jul-2026,Bilal Ahmad (KSA),11,D,PCB,Achievers,Subjective Test - 04 Botany,20,5,25.00%,Week4
 10-Jul-2026,Mohamed Suhail (QATAR),11,D,PCB,Achievers,Subjective Test - 04 Botany,20,17,85.00%,Week4
-10-Jul-2026,Zarfisha Ameenuddin Qadri (UAE),#N/A,#N/A,#N/A,#N/A,Subjective Test - 04 Botany,20,20,100.00%,Week4
 10-Jul-2026,Shifa Tasneem (KUWAIT),11,C,PCB,Achievers,Subjective Test - 04 Botany,20,18,90.00%,Week4
 10-Jul-2026,Vaibhavi Kamleshkumar Baraiya (KSA),11,C,PCB,Achievers,Subjective Test - 04 Botany,20,18,90.00%,Week4
 10-Jul-2026,Amina Khan (KSA),11,D,PCB,Achievers,Subjective Test - 04 Botany,20,19,95.00%,Week4
@@ -3455,35 +3450,35 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 3-Jul-2026,Rida Mariam Ayazuddin (KSA),12,C,PCMB,Triumph,Subjective Test - 04 Chemistry,40,35.5,88.75%,Week4
 3-Jul-2026,Aparna Ramkumar (QATAR),12,D,PCMB,Triumph,Subjective Test - 04 Chemistry,40,31,77.50%,Week4
 3-Jul-2026,Zuha Hafeez (KSA),12,C,PCMB,Triumph,Subjective Test - 04 Chemistry,40,35,87.50%,Week4
-12-Jun-2026,Mahrukh Shoeb (UAE),11,A,PCM,Achievers,Subjective Test - 03 Maths,40,33,82.50%,Week4
+12-Jun-2026,Mahrukh Shoeb (UAE),11,A,PCM,Achievers,Subjective Test - 03 Maths,40,33,82.50%,Week3
 14-Aug-2026,Mahrukh Shoeb (UAE),11,A,PCM,Achievers,Subjective Test - 05 Maths,40,38,95.00%,Week5
-12-Jun-2026,Sahasra Suru (QATAR),11,A,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week4
-12-Jun-2026,Aariz Hasan Nihal (KSA),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,34,85.00%,Week4
-12-Jun-2026,Hayyan Binyamin Yahya (KSA),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,25,62.50%,Week4
-12-Jun-2026,Sarveshwaran Baranidaran (BAHRAIN),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,38,95.00%,Week4
-12-Jun-2026,Naavarasu Arumugam (UAE),11,A,PCM,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week4
-12-Jun-2026,Mohd Ayaan Khan (KUWAIT),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,30,75.00%,Week4
-12-Jun-2026,Smaranika Ankesh Manore (KSA),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week4
-12-Jun-2026,Saptarshee Sarkar (UAE),11,A,PCMB,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week4
-12-Jun-2026,Abdul Muqeet Kola (KSA),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,32,80.00%,Week4
-12-Jun-2026,Adrienne Mariam Felix (KUWAIT),11,C,PCMB,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week4
-12-Jun-2026,Akshith Jose (KUWAIT),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week4
-12-Jun-2026,Angelo Joy (UAE),11,D,PCMB,Achievers,Subjective Test - 03 Maths,40,38,95.00%,Week4
-12-Jun-2026,Anvi Tyagi (KSA),11,D,PCM,Achievers,Subjective Test - 03 Maths,40,38,95.00%,Week4
-12-Jun-2026,Deepshika Kishore (BAHRAIN),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,34,85.00%,Week4
-12-Jun-2026,Emaan Parkar (BAHRAIN),11,C,PCMB,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week4
-12-Jun-2026,Ezhil Aadhav Kaladharan (KUWAIT),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week4
-12-Jun-2026,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,Subjective Test - 03 Maths,40,34,85.00%,Week4
-12-Jun-2026,Hajira Fathima (KUWAIT),11,C,PCMB,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week4
-12-Jun-2026,Leon Reuven Fernandes (OMAN),11,D,PCM,Achievers,Subjective Test - 03 Maths,40,36,90.00%,Week4
-12-Jun-2026,Malhar Dave (OMAN),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,35,87.50%,Week4
-12-Jun-2026,Priyansh Kukadia (BAHRAIN),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week4
-12-Jun-2026,Rimsha Imam (KSA),11,C,PCB,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week4
-12-Jun-2026,Sakina Ismail Limdiwala (KUWAIT),11,D,PCM,Achievers,Subjective Test - 03 Maths,40,38,95.00%,Week4
-12-Jun-2026,Samriddhi Chakraborty (KUWAIT),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week4
-12-Jun-2026,Shlok Kumar Detroja (BAHRAIN),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week4
-12-Jun-2026,Sneha Ashok (OMAN),11,C,PCMB,Achievers,Subjective Test - 03 Maths,40,29,72.50%,Week4
-12-Jun-2026,Tharun Kannan (QATAR),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,31,77.50%,Week4
+12-Jun-2026,Sahasra Suru (QATAR),11,A,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week3
+12-Jun-2026,Aariz Hasan Nihal (KSA),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,34,85.00%,Week3
+12-Jun-2026,Hayyan Binyamin Yahya (KSA),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,25,62.50%,Week3
+12-Jun-2026,Sarveshwaran Baranidaran (BAHRAIN),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,38,95.00%,Week3
+12-Jun-2026,Naavarasu Arumugam (UAE),11,A,PCM,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week3
+12-Jun-2026,Mohd Ayaan Khan (KUWAIT),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,30,75.00%,Week3
+12-Jun-2026,Smaranika Ankesh Manore (KSA),11,B,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week3
+12-Jun-2026,Saptarshee Sarkar (UAE),11,A,PCMB,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week3
+12-Jun-2026,Abdul Muqeet Kola (KSA),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,32,80.00%,Week3
+12-Jun-2026,Adrienne Mariam Felix (KUWAIT),11,C,PCMB,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week3
+12-Jun-2026,Akshith Jose (KUWAIT),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week3
+12-Jun-2026,Angelo Joy (UAE),11,D,PCMB,Achievers,Subjective Test - 03 Maths,40,38,95.00%,Week3
+12-Jun-2026,Anvi Tyagi (KSA),11,D,PCM,Achievers,Subjective Test - 03 Maths,40,38,95.00%,Week3
+12-Jun-2026,Deepshika Kishore (BAHRAIN),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,34,85.00%,Week3
+12-Jun-2026,Emaan Parkar (BAHRAIN),11,C,PCMB,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week3
+12-Jun-2026,Ezhil Aadhav Kaladharan (KUWAIT),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week3
+12-Jun-2026,Haizel Riya Dsilva (KUWAIT),11,D,PCMB,Achievers,Subjective Test - 03 Maths,40,34,85.00%,Week3
+12-Jun-2026,Hajira Fathima (KUWAIT),11,C,PCMB,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week3
+12-Jun-2026,Leon Reuven Fernandes (OMAN),11,D,PCM,Achievers,Subjective Test - 03 Maths,40,36,90.00%,Week3
+12-Jun-2026,Malhar Dave (OMAN),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,35,87.50%,Week3
+12-Jun-2026,Priyansh Kukadia (BAHRAIN),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week3
+12-Jun-2026,Rimsha Imam (KSA),11,C,PCB,Achievers,Subjective Test - 03 Maths,40,39,97.50%,Week3
+12-Jun-2026,Sakina Ismail Limdiwala (KUWAIT),11,D,PCM,Achievers,Subjective Test - 03 Maths,40,38,95.00%,Week3
+12-Jun-2026,Samriddhi Chakraborty (KUWAIT),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week3
+12-Jun-2026,Shlok Kumar Detroja (BAHRAIN),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,40,100.00%,Week3
+12-Jun-2026,Sneha Ashok (OMAN),11,C,PCMB,Achievers,Subjective Test - 03 Maths,40,29,72.50%,Week3
+12-Jun-2026,Tharun Kannan (QATAR),11,C,PCM,Achievers,Subjective Test - 03 Maths,40,31,77.50%,Week3
 17-April-2026,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,Subjective Test - 01 Maths,40,39,97.50%,Week1
 17-April-2026,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,Subjective Test - 01 Physics,40,35,87.50%,Week1
 15-May-2026,Ryan Anthony Dlima (KUWAIT),11,D,PCM,Achievers,Subjective Test - 02 Chemistry,40,38,95.00%,Week2
@@ -4104,175 +4099,176 @@ DateRange,StudentName,Grade,Section,Stream,Batch,Subject,TotalMarks,MarksAchieve
 14-Aug-2026,Vignesh D.U (QATAR),11,D,PCM,Achievers,Subjective Test - 05 Physics,40,24,60.00%,Week5
 14-Aug-2026,Vignesh D.U (QATAR),11,D,PCM,Achievers,Subjective Test - 05 Maths,40,24,60.00%,Week5
 14-Aug-2026,Naavarasu Arumugam (UAE),11,A,PCM,Achievers,Subjective Test - 05 Physics,40,14,35.00%,Week5
-21-Aug-2026,Aarav Prasad (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,14,100.00%,Week6
-21-Aug-2026,Agastya Chetan Joshi (MALAYSIA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11.5,82.14%,Week6
-21-Aug-2026,Aarav Prasad (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Agastya Chetan Joshi (MALAYSIA),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Aarav Prasad (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Agastya Chetan Joshi (MALAYSIA),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week6
-21-Aug-2026,Aisha Mehreen Abbas (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,9.5,67.86%,Week6
-21-Aug-2026,Aisha Mehreen Abbas (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Aisha Mehreen Abbas (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Ajinkya Tushar Deshpande (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,13.5,96.43%,Week6
-21-Aug-2026,Ajinkya Tushar Deshpande (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Ajinkya Tushar Deshpande (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week6
-21-Aug-2026,Ammar Hussain (BAHRAIN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,9,64.29%,Week6
-21-Aug-2026,Ananya Verma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Ananya Verma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Ananya Verma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Anvi Kamlesh Wamankar (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week6
-21-Aug-2026,Anvi Kamlesh Wamankar (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Anvi Kamlesh Wamankar (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Anya Singh (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week6
-21-Aug-2026,Anya Singh (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Anya Singh (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Aryan Dutta (KUWAIT),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11.5,82.14%,Week6
-21-Aug-2026,Asaad Aman (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week6
-21-Aug-2026,Asaad Aman (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Asaad Aman (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Ayaan Badhei (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week6
-21-Aug-2026,Ayaan Badhei (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Ayaan Badhei (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week6
-21-Aug-2026,Ayeesha Bint Alferah (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week6
-21-Aug-2026,Ayeesha Bint Alferah (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,8,61.54%,Week6
-21-Aug-2026,Ayeesha Bint Alferah (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week6
-21-Aug-2026,Calista Fernandes (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Calista Fernandes (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,11,84.62%,Week6
-21-Aug-2026,Calista Fernandes (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Daksh Kumar (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week6
-21-Aug-2026,Daksh Kumar (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Daksh Kumar (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Darren Vaz (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week6
-21-Aug-2026,Darren Vaz (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Darren Vaz (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Efrah Parveen Ibrahim (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,14,100.00%,Week6
-21-Aug-2026,Efrah Parveen Ibrahim (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Efrah Parveen Ibrahim (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Emaan Rahman (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Physics,14,6,42.86%,Week6
-21-Aug-2026,Emaan Rahman (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Chemistry,13,8,61.54%,Week6
-21-Aug-2026,Emaan Rahman (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,4,30.77%,Week6
-21-Aug-2026,Ericka Buenaventura Sharma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,9.5,67.86%,Week6
-21-Aug-2026,Ericka Buenaventura Sharma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Ericka Buenaventura Sharma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Gouri Nanjangud (QATAR),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,8,57.14%,Week6
-21-Aug-2026,Gouri Nanjangud (QATAR),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,12.5,96.15%,Week6
-21-Aug-2026,Gunika Koul (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Gunika Koul (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,9.5,73.08%,Week6
-21-Aug-2026,Hamdan Bin Zayyad (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,6,42.86%,Week6
-21-Aug-2026,Hamdan Bin Zayyad (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,0,0.00%,Week6
-21-Aug-2026,Hamdan Bin Zayyad (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,0,0.00%,Week6
-21-Aug-2026,Hamdan Bin Zayyad (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Maths,40,16,40.00%,Week6
-21-Aug-2026,Haneen Mohammed Shoeb (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Haneen Mohammed Shoeb (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Haneen Mohammed Shoeb (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Hasiba Ovesbhai Madhiya (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,10.5,80.77%,Week6
-21-Aug-2026,Johan George Jinu (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week6
-21-Aug-2026,Johan George Jinu (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Johan George Jinu (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Kush Trupeshkumar Patel (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week6
-21-Aug-2026,Kush Trupeshkumar Patel (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Kush Trupeshkumar Patel (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Lakshmi Kritika Thanneeru (BAHRAIN),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,13.5,96.43%,Week6
-21-Aug-2026,Lakshmi Kritika Thanneeru (BAHRAIN),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Lakshmi Kritika Thanneeru (BAHRAIN),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Leksha Sree Rakurthi (BAHRAIN),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Manaal Khan (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Manaal Khan (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Manaal Khan (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Minathi Banala (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Minathi Banala (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Minathi Banala (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Mithraa Kamalakannan Priya (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Physics,14,8,57.14%,Week6
-21-Aug-2026,Mithraa Kamalakannan Priya (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Chemistry,13,10,76.92%,Week6
-21-Aug-2026,Mithraa Kamalakannan Priya (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Mohammad Sadan Siddiqui (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,9,64.29%,Week6
-21-Aug-2026,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,10,76.92%,Week6
-21-Aug-2026,Muddamsetty Sathya Niharika (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week6
-21-Aug-2026,Muddamsetty Sathya Niharika (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Muddamsetty Sathya Niharika (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Om Thakare (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week6
-21-Aug-2026,Prapti Sagar Gharat (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,8,57.14%,Week6
-21-Aug-2026,Prapti Sagar Gharat (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week6
-21-Aug-2026,Prapti Sagar Gharat (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,7.5,57.69%,Week6
-21-Aug-2026,Priyanshi Panchakarla (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Priyanshi Panchakarla (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week6
-21-Aug-2026,Priyanshi Panchakarla (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Rajveer Soni (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,7,50.00%,Week6
-21-Aug-2026,Rajveer Soni (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,4.5,34.62%,Week6
-21-Aug-2026,Rajveer Soni (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,10,76.92%,Week6
+21-Aug-2026,Aarav Prasad (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,14,100.00%,Week5
+21-Aug-2026,Agastya Chetan Joshi (MALAYSIA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11.5,82.14%,Week5
+21-Aug-2026,Aarav Prasad (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Agastya Chetan Joshi (MALAYSIA),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Aarav Prasad (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Agastya Chetan Joshi (MALAYSIA),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week5
+21-Aug-2026,Aisha Mehreen Abbas (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,9.5,67.86%,Week5
+21-Aug-2026,Aisha Mehreen Abbas (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Aisha Mehreen Abbas (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Ajinkya Tushar Deshpande (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,13.5,96.43%,Week5
+21-Aug-2026,Ajinkya Tushar Deshpande (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Ajinkya Tushar Deshpande (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week5
+21-Aug-2026,Ammar Hussain (BAHRAIN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,9,64.29%,Week5
+21-Aug-2026,Ananya Verma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Ananya Verma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Ananya Verma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Anvi Kamlesh Wamankar (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week5
+21-Aug-2026,Anvi Kamlesh Wamankar (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Anvi Kamlesh Wamankar (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Anya Singh (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week5
+21-Aug-2026,Anya Singh (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Anya Singh (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Aryan Dutta (KUWAIT),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11.5,82.14%,Week5
+21-Aug-2026,Asaad Aman (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week5
+21-Aug-2026,Asaad Aman (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Asaad Aman (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Ayaan Badhei (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week5
+21-Aug-2026,Ayaan Badhei (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Ayaan Badhei (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week5
+21-Aug-2026,Ayeesha Bint Alferah (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week5
+21-Aug-2026,Ayeesha Bint Alferah (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,8,61.54%,Week5
+21-Aug-2026,Ayeesha Bint Alferah (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week5
+21-Aug-2026,Calista Fernandes (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Calista Fernandes (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,11,84.62%,Week5
+21-Aug-2026,Calista Fernandes (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Daksh Kumar (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week5
+21-Aug-2026,Daksh Kumar (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Daksh Kumar (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Darren Vaz (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week5
+21-Aug-2026,Darren Vaz (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Darren Vaz (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Efrah Parveen Ibrahim (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,14,100.00%,Week5
+21-Aug-2026,Efrah Parveen Ibrahim (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Efrah Parveen Ibrahim (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Emaan Rahman (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Physics,14,6,42.86%,Week5
+21-Aug-2026,Emaan Rahman (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Chemistry,13,8,61.54%,Week5
+21-Aug-2026,Emaan Rahman (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,4,30.77%,Week5
+21-Aug-2026,Ericka Buenaventura Sharma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,9.5,67.86%,Week5
+21-Aug-2026,Ericka Buenaventura Sharma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Ericka Buenaventura Sharma (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Gouri Nanjangud (QATAR),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,8,57.14%,Week5
+21-Aug-2026,Gouri Nanjangud (QATAR),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,12.5,96.15%,Week5
+21-Aug-2026,Gunika Koul (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Gunika Koul (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,9.5,73.08%,Week5
+21-Aug-2026,Hamdan Bin Zayyad (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,6,42.86%,Week5
+21-Aug-2026,Hamdan Bin Zayyad (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,0,0.00%,Week5
+21-Aug-2026,Hamdan Bin Zayyad (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,0,0.00%,Week5
+21-Aug-2026,Hamdan Bin Zayyad (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Maths,40,16,40.00%,Week5
+21-Aug-2026,Haneen Mohammed Shoeb (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Haneen Mohammed Shoeb (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Haneen Mohammed Shoeb (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Hasiba Ovesbhai Madhiya (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,10.5,80.77%,Week5
+21-Aug-2026,Johan George Jinu (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week5
+21-Aug-2026,Johan George Jinu (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Johan George Jinu (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Kush Trupeshkumar Patel (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week5
+21-Aug-2026,Kush Trupeshkumar Patel (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Kush Trupeshkumar Patel (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Lakshmi Kritika Thanneeru (BAHRAIN),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,13.5,96.43%,Week5
+21-Aug-2026,Lakshmi Kritika Thanneeru (BAHRAIN),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Lakshmi Kritika Thanneeru (BAHRAIN),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Leksha Sree Rakurthi (BAHRAIN),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Manaal Khan (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Manaal Khan (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Manaal Khan (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Minathi Banala (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Minathi Banala (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Minathi Banala (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Mithraa Kamalakannan Priya (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Physics,14,8,57.14%,Week5
+21-Aug-2026,Mithraa Kamalakannan Priya (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Chemistry,13,10,76.92%,Week5
+21-Aug-2026,Mithraa Kamalakannan Priya (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Mohammad Sadan Siddiqui (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,9,64.29%,Week5
+21-Aug-2026,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Mohammed Ayser Shaikh (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,10,76.92%,Week5
+21-Aug-2026,Muddamsetty Sathya Niharika (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week5
+21-Aug-2026,Muddamsetty Sathya Niharika (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Muddamsetty Sathya Niharika (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Om Thakare (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week5
+21-Aug-2026,Prapti Sagar Gharat (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,8,57.14%,Week5
+21-Aug-2026,Prapti Sagar Gharat (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week5
+21-Aug-2026,Prapti Sagar Gharat (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,7.5,57.69%,Week5
+21-Aug-2026,Priyanshi Panchakarla (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Priyanshi Panchakarla (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week5
+21-Aug-2026,Priyanshi Panchakarla (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Rajveer Soni (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,7,50.00%,Week5
+21-Aug-2026,Rajveer Soni (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,4.5,34.62%,Week5
+21-Aug-2026,Rajveer Soni (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,10,76.92%,Week5
 21-Aug-2026,Riston Roussean (BAHRAIN),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week5
 21-Aug-2026,Riston Roussean (BAHRAIN),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week5
 21-Aug-2026,Riston Roussean (BAHRAIN),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,8.5,65.38%,Week5
-21-Aug-2026,Ritvika H Nayak (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week6
-21-Aug-2026,Riyanshi Bhardwaj (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,8,61.54%,Week6
-21-Aug-2026,Saad Tahir Khan (KSA),9,D,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week6
-21-Aug-2026,Saad Tahir Khan (KSA),9,D,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week6
-21-Aug-2026,Saad Tahir Khan (KSA),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Sabreen Sharma (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week6
-21-Aug-2026,Sabreen Sharma (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Sabreen Sharma (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,9.5,73.08%,Week6
-21-Aug-2026,Sai Sriram Perla (KUWAIT),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week6
-21-Aug-2026,Sai Sriram Perla (KUWAIT),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,9.5,73.08%,Week6
-21-Aug-2026,Sai Sriram Perla (KUWAIT),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Saima Imam (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Saima Imam (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,11.5,88.46%,Week6
-21-Aug-2026,Saima Imam (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,10,76.92%,Week6
-21-Aug-2026,Sainath Sathyamoorthy Sunil Kumar Deepaa (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week6
-21-Aug-2026,Sainath Sathyamoorthy Sunil Kumar Deepaa (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,11,84.62%,Week6
-21-Aug-2026,Sainath Sathyamoorthy Sunil Kumar Deepaa (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Samarth Sudhakar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,3,21.43%,Week6
-21-Aug-2026,Samarth Sudhakar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week6
-21-Aug-2026,Samarth Sudhakar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Sana Juned Loharia (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week6
-21-Aug-2026,Sana Juned Loharia (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,8,61.54%,Week6
-21-Aug-2026,Sana Juned Loharia (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,8,61.54%,Week6
-21-Aug-2026,Sharon Ranjiv (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week6
-21-Aug-2026,Sharon Ranjiv (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Sharon Ranjiv (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Shaurya Shrivastava (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,14,100.00%,Week6
-21-Aug-2026,Shaurya Shrivastava (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Shaurya Shrivastava (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Shreya Sujit Nair (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,10.5,75.00%,Week6
-21-Aug-2026,Shreya Sujit Nair (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,10,76.92%,Week6
-21-Aug-2026,Shreya Sujit Nair (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week6
-21-Aug-2026,Shubhra Prashant Buranpur (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,9,64.29%,Week6
-21-Aug-2026,Shubhra Prashant Buranpur (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week6
-21-Aug-2026,Shubhra Prashant Buranpur (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,7,53.85%,Week6
-21-Aug-2026,Siya Vasantha Kumar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,8.5,60.71%,Week6
-21-Aug-2026,Siya Vasantha Kumar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week6
-21-Aug-2026,Siya Vasantha Kumar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12.5,96.15%,Week6
-21-Aug-2026,Sparsh Somankar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,8.5,60.71%,Week6
-21-Aug-2026,Sparsh Somankar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week6
-21-Aug-2026,Sparsh Somankar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,10.5,80.77%,Week6
-21-Aug-2026,Sree Akshara (OMAN),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,9,69.23%,Week6
-21-Aug-2026,Srijan Pandey (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,9.5,67.86%,Week6
-21-Aug-2026,Srijan Pandey (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Srijan Pandey (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Stavya Kalamkar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,10.5,75.00%,Week6
-21-Aug-2026,Stavya Kalamkar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week6
-21-Aug-2026,Stavya Kalamkar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Swara Pathak (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week6
-21-Aug-2026,Swara Pathak (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,10,76.92%,Week6
-21-Aug-2026,Swara Pathak (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,7,53.85%,Week6
-21-Aug-2026,Syed Ali (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,7.5,53.57%,Week6
-21-Aug-2026,Syed Ali (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,9,69.23%,Week6
-21-Aug-2026,Syed Ali (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,10.5,80.77%,Week6
-21-Aug-2026,Syed Muhammad Uzair (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,10.5,75.00%,Week6
-21-Aug-2026,Syed Muhammad Uzair (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,11,84.62%,Week6
-21-Aug-2026,Syed Muhammad Uzair (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Tiksha (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week6
-21-Aug-2026,Tiksha (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Tiksha (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
-21-Aug-2026,Vaishvi Kaushik Kumar Soni (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Vaishvi Kaushik Kumar Soni (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Yuvraj Sudarshan Bilava (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,12.5,89.29%,Week6
-21-Aug-2026,Yuvraj Sudarshan Bilava (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week6
-21-Aug-2026,Yuvraj Sudarshan Bilava (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week6
-21-Aug-2026,Zaina (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,8.5,60.71%,Week6
-21-Aug-2026,Zaina (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,10.5,80.77%,Week6
-21-Aug-2026,Zaina (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week6
+21-Aug-2026,Ritvika H Nayak (UAE),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week5
+21-Aug-2026,Riyanshi Bhardwaj (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,8,61.54%,Week5
+21-Aug-2026,Saad Tahir Khan (KSA),9,D,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week5
+21-Aug-2026,Saad Tahir Khan (KSA),9,D,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week5
+21-Aug-2026,Saad Tahir Khan (KSA),9,D,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Sabreen Sharma (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week5
+21-Aug-2026,Sabreen Sharma (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Sabreen Sharma (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,9.5,73.08%,Week5
+21-Aug-2026,Sai Sriram Perla (KUWAIT),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week5
+21-Aug-2026,Sai Sriram Perla (KUWAIT),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,9.5,73.08%,Week5
+21-Aug-2026,Sai Sriram Perla (KUWAIT),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Saima Imam (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Saima Imam (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,11.5,88.46%,Week5
+21-Aug-2026,Saima Imam (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,10,76.92%,Week5
+21-Aug-2026,Sainath Sathyamoorthy Sunil Kumar Deepaa (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,11,78.57%,Week5
+21-Aug-2026,Sainath Sathyamoorthy Sunil Kumar Deepaa (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,11,84.62%,Week5
+21-Aug-2026,Sainath Sathyamoorthy Sunil Kumar Deepaa (KUWAIT),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Samarth Sudhakar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,3,21.43%,Week5
+21-Aug-2026,Samarth Sudhakar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week5
+21-Aug-2026,Samarth Sudhakar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Sana Juned Loharia (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,10,71.43%,Week5
+21-Aug-2026,Sana Juned Loharia (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,8,61.54%,Week5
+21-Aug-2026,Sana Juned Loharia (KSA),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,8,61.54%,Week5
+21-Aug-2026,Sharon Ranjiv (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,13,92.86%,Week5
+21-Aug-2026,Sharon Ranjiv (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Sharon Ranjiv (QATAR),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Shaurya Shrivastava (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,14,100.00%,Week5
+21-Aug-2026,Shaurya Shrivastava (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Shaurya Shrivastava (KSA),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Shreya Sujit Nair (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,10.5,75.00%,Week5
+21-Aug-2026,Shreya Sujit Nair (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,10,76.92%,Week5
+21-Aug-2026,Shreya Sujit Nair (KUWAIT),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,11,84.62%,Week5
+21-Aug-2026,Shubhra Prashant Buranpur (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,9,64.29%,Week5
+21-Aug-2026,Shubhra Prashant Buranpur (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week5
+21-Aug-2026,Shubhra Prashant Buranpur (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,7,53.85%,Week5
+21-Aug-2026,Siya Vasantha Kumar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,8.5,60.71%,Week5
+21-Aug-2026,Siya Vasantha Kumar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,13,100.00%,Week5
+21-Aug-2026,Siya Vasantha Kumar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12.5,96.15%,Week5
+21-Aug-2026,Siya Vasantha Kumar (UAE),9,B,PCMB,Succeed,Subjective Test - 05 Maths,40,34,85.00%,Week5
+21-Aug-2026,Sparsh Somankar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,8.5,60.71%,Week5
+21-Aug-2026,Sparsh Somankar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week5
+21-Aug-2026,Sparsh Somankar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,10.5,80.77%,Week5
+21-Aug-2026,Sree Akshara (OMAN),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,9,69.23%,Week5
+21-Aug-2026,Srijan Pandey (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,9.5,67.86%,Week5
+21-Aug-2026,Srijan Pandey (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Srijan Pandey (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Stavya Kalamkar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,10.5,75.00%,Week5
+21-Aug-2026,Stavya Kalamkar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12.5,96.15%,Week5
+21-Aug-2026,Stavya Kalamkar (OMAN),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Swara Pathak (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week5
+21-Aug-2026,Swara Pathak (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Chemistry,13,10,76.92%,Week5
+21-Aug-2026,Swara Pathak (UAE),9,C,PCMB,Succeed,Subjective Test - 05 Biology,13,7,53.85%,Week5
+21-Aug-2026,Syed Ali (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,7.5,53.57%,Week5
+21-Aug-2026,Syed Ali (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,9,69.23%,Week5
+21-Aug-2026,Syed Ali (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,10.5,80.77%,Week5
+21-Aug-2026,Syed Muhammad Uzair (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,10.5,75.00%,Week5
+21-Aug-2026,Syed Muhammad Uzair (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,11,84.62%,Week5
+21-Aug-2026,Syed Muhammad Uzair (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Tiksha (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Physics,14,12,85.71%,Week5
+21-Aug-2026,Tiksha (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Tiksha (OMAN),9,B,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
+21-Aug-2026,Vaishvi Kaushik Kumar Soni (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Vaishvi Kaushik Kumar Soni (QATAR),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Yuvraj Sudarshan Bilava (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,12.5,89.29%,Week5
+21-Aug-2026,Yuvraj Sudarshan Bilava (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,12,92.31%,Week5
+21-Aug-2026,Yuvraj Sudarshan Bilava (UAE),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,12,92.31%,Week5
+21-Aug-2026,Zaina (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Physics,14,8.5,60.71%,Week5
+21-Aug-2026,Zaina (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Chemistry,13,10.5,80.77%,Week5
+21-Aug-2026,Zaina (KSA),9,A,PCMB,Succeed,Subjective Test - 05 Biology,13,13,100.00%,Week5
 28-Aug-2026,Aarya Sanjay Mane (UAE),8,B,PCMB,Impact,Subjective Test - 05 Physics,27,10,37.04%,Week5
 28-Aug-2026,Adittya Arjun Saha (OMAN),8,B,PCMB,Impact,Subjective Test - 05 Physics,27,15.5,57.41%,Week5
 28-Aug-2026,Ajay Rajkrishna.G (QATAR),8,A,PCMB,Impact,Subjective Test - 05 Physics,27,24,88.89%,Week5
