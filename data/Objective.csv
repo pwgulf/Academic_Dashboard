@@ -1774,9 +1774,8 @@ Week1,Objective Test - 01,Tasneem Yusuf Mandsorwala (KUWAIT),12,D,PCM,Triumph,36
 Week1,Objective Test - 01,Adrian Petzersam Thottayath (KUWAIT),12,D,PCM,Triumph,28,24,16,-,-,-,-,-,68,3,120,56.67%
 Week1,Objective Test - 01,Tanmaya Kumawat (OMAN),12,D,PCM,Triumph,40,40,36,-,-,-,-,-,116,3,120,96.67%
 Week1,Objective Test - 01,Ahad Zayan (KSA),12,D,PCM,Triumph,28,36,32,-,-,-,-,-,96,3,120,80.00%
-Week1,Objective Test - 01,Abu Laise Sayed (BAHRAIN),12,C,PCM,Bahrain,28,24,28,-,-,-,-,-,80,3,120,66.67%
+Week1,Objective Test - 01,Abu Laise Sayed (BAHRAIN),12,C,PCM,Triumph,28,24,28,-,-,-,-,-,80,3,120,66.67%
 Week1,Objective Test - 01,Riya Roussean (BAHRAIN),12,D,PCMB,Triumph,32,28,32,40,32,-,-,-,164,5,200,82.00%
-Week1,Objective Test - 01,Leeneshwar Reddy (QATAR),12,D,PCM,Triumph,40,32,32,-,-,-,-,-,104,3,120,86.67%
 Week1,Objective Test - 01,Liyana Omar (KUWAIT),12,D,PCB,Triumph,8,24,-,16,24,-,-,-,72,4,160,45.00%
 Week1,Objective Test - 01,Fahad Mohamed Yousuff (QATAR),12,D,PCB,Triumph,36,40,-,36,24,-,-,-,136,4,160,85.00%
 Week1,Objective Test - 01,Jahnab Borah Deuri (QATAR),12,D,PCMB,Triumph,32,40,24,24,28,-,-,-,148,5,200,74.00%
@@ -1824,7 +1823,6 @@ Week4,Objective Test - 04,Tanmaya Kumawat (OMAN),12,D,PCM,Triumph,40,40,32,-,-,-
 Week4,Objective Test - 04,Tasneem Yusuf Mandsorwala (KUWAIT),12,D,PCM,Triumph,36,40,36,0,0,-,-,-,112,5,200,56.00%
 Week5,Objective Test - 05,Abdul Hadi Matheen (KSA),12,D,PCM,Triumph,75,40,50,-,-,-,-,-,165,3,300,55.00%
 Week5,Objective Test - 05,Krishivkumar Hitesh Gajjar (KUWAIT),12,D,PCM,Triumph,72,92,53,-,-,-,-,-,217,3,300,72.33%
-Week5,Objective Test - 05,Leeneshwar Reddy (QATAR),12,D,PCM,Triumph,45,55,55,-,-,-,-,-,155,3,300,51.67%
 Week5,Objective Test - 05,Mohammad Uzair Ali (KSA),12,D,PCB,Triumph,131,93,-,136,98,-,-,-,458,4,720,63.61%
 Week5,Objective Test - 05,Rihanna Lobo (BAHRAIN),12,D,PCM,Triumph,61,85,72,-,-,-,-,-,218,3,300,72.67%
 Week5,Objective Test - 05,Srivani Jagadheesh (KSA),12,D,PCB,Triumph,35,45,-,140,109,-,-,-,329,4,720,45.69%
@@ -2712,3 +2710,44 @@ Week8,Objective Test - 08,Sarker Shehzad Shahid (KSA),9,D,PCMB,Succeed,20,28,12,
 Week8,Objective Test - 08,Suhaas Prince Bollam (UAE),9,D,PCMB,Succeed,8,16,16,-,-,32,4,32,108,6,240,45.00%
 Week8,Objective Test - 08,Vihan (KSA),9,D,PCMB,Succeed,28,16,28,-,-,24,32,36,164,6,240,68.33%
 Week7,Objective Test - 07,Suha Fatima (QATAR),12,B,PCB,Triumph,74,91,-,141,106,-,-,-,412,4,720,57.22%
+Week8,Objective Test - 08,Annis Jaslin (UAE),12,A,PCM,Triumph,8,12,24,-,-,-,-,-,44,3,120,36.67%
+Week8,Objective Test - 08,Fareeha Aabed (UAE),12,A,PCB,Triumph,32,12,-,36,36,-,-,-,116,4,160,72.50%
+Week8,Objective Test - 08,Fatima Nadeem (UAE),12,A,PCB,Triumph,20,16,-,36,28,-,-,-,100,4,160,62.50%
+Week8,Objective Test - 08,Kalp Miteshkumar Modi (UAE),12,A,PCM,Triumph,32,32,36,-,-,-,-,-,100,3,120,83.33%
+Week8,Objective Test - 08,Riya Sambhwani (UAE),12,A,PCB,Triumph,24,16,-,28,32,-,-,-,100,4,160,62.50%
+Week8,Objective Test - 08,Saanvi Sachdeva (UAE),12,A,PCM,Triumph,32,24,28,-,-,-,-,-,84,3,120,70.00%
+Week8,Objective Test - 08,Aaisha Binte Rameez (KUWAIT),12,B,PCB,Triumph,20,12,-,8,16,-,-,-,56,4,160,35.00%
+Week8,Objective Test - 08,Aleena Bint Abuzar (QATAR),12,B,PCB,Triumph,32,32,-,40,36,-,-,-,140,4,160,87.50%
+Week8,Objective Test - 08,Alina Maria Joseph (KUWAIT),12,B,PCB,Triumph,28,24,-,28,32,-,-,-,112,4,160,70.00%
+Week8,Objective Test - 08,Michelle Prince (BAHRAIN),12,B,PCM,Triumph,8,16,20,-,-,-,-,-,44,3,120,36.67%
+Week8,Objective Test - 08,Nazneen Patel (KSA),12,B,PCB,Triumph,20,8,-,28,24,-,-,-,80,4,160,50.00%
+Week8,Objective Test - 08,Syed Abdul Rabb (KUWAIT),12,B,PCM,Triumph,32,40,32,-,-,-,-,-,104,3,120,86.67%
+Week8,Objective Test - 08,Vishvajit Mangesh Chandorkar (OMAN),12,B,PCM,Triumph,36,28,32,-,-,-,-,-,96,3,120,80.00%
+Week8,Objective Test - 08,Abdullah Ali (KSA),12,C,PCM,Triumph,32,24,36,-,-,-,-,-,92,3,120,76.67%
+Week8,Objective Test - 08,Akhil Kandukuri (BAHRAIN),12,C,PCM,Triumph,24,0,0,-,-,-,-,-,24,3,120,20.00%
+Week8,Objective Test - 08,Areeba Parveen (KSA),12,C,PCB,Triumph,36,36,-,40,40,-,-,-,152,4,160,95.00%
+Week8,Objective Test - 08,Ayush Nayak (KUWAIT),12,C,PCM,Triumph,32,28,20,-,-,-,-,-,80,3,120,66.67%
+Week8,Objective Test - 08,Ebrahim Ali (BAHRAIN),12,C,PCMB,Triumph,24,24,-,28,32,-,-,-,108,5,200,54.00%
+Week8,Objective Test - 08,Falisha Fayaz (BAHRAIN),12,C,PCB,Triumph,28,24,-,36,16,-,-,-,104,4,160,65.00%
+Week8,Objective Test - 08,Hari Charan Veera Sai Mallik Noolu (KSA),12,C,PCM,Triumph,36,28,32,-,-,-,-,-,96,3,120,80.00%
+Week8,Objective Test - 08,Jeevan Johnson (BAHRAIN),12,C,PCM,Triumph,28,28,32,-,-,-,-,-,88,3,120,73.33%
+Week8,Objective Test - 08,Mohammad Aahil Dilshar (KSA),12,C,PCM,Triumph,36,28,32,-,-,-,-,-,96,3,120,80.00%
+Week8,Objective Test - 08,Mohammed Abrar Hussain (QATAR),12,C,PCM,Triumph,28,32,24,-,-,-,-,-,84,3,120,70.00%
+Week8,Objective Test - 08,Purva Ashwin Akbari (BAHRAIN),12,C,PCM,Triumph,32,28,20,-,-,-,-,-,80,3,120,66.67%
+Week8,Objective Test - 08,Ryan Christon Rodrigues (BAHRAIN),12,C,PCM,Triumph,20,28,20,-,-,-,-,-,68,3,120,56.67%
+Week8,Objective Test - 08,Sana Mohamed Abdul Kadir (KSA),12,C,PCM,Triumph,40,36,36,-,-,-,-,-,112,3,120,93.33%
+Week8,Objective Test - 08,Shivani Chirag Patel (KSA),12,C,PCB,Triumph,28,36,-,32,36,-,-,-,132,4,160,82.50%
+Week8,Objective Test - 08,Sudarshan Ravindranath Ayyar (KSA),12,C,PCM,Triumph,36,36,36,-,-,-,-,-,108,3,120,90.00%
+Week8,Objective Test - 08,Sudhanva Jithendra Rao (KUWAIT),12,C,PCM,Triumph,16,8,12,-,-,-,-,-,36,3,120,30.00%
+Week8,Objective Test - 08,Zunaira Mehreen (KSA),12,C,PCM,Triumph,8,8,16,-,-,-,-,-,32,3,120,26.67%
+Week8,Objective Test - 08,Aasher Suresh (QATAR),12,D,PCMB,Triumph,32,32,28,28,32,-,-,-,152,3,300,50.67%
+Week8,Objective Test - 08,Adrian Petzersam Thottayath (KUWAIT),12,D,PCM,Triumph,40,40,40,-,-,-,-,-,120,3,300,40.00%
+Week8,Objective Test - 08,Anika Aditya Kulkarni (KSA),12,D,PCB,Triumph,36,32,-,40,40,-,-,-,148,4,720,20.56%
+Week8,Objective Test - 08,Arya Sawant (QATAR),12,D,PCB,Triumph,36,36,-,40,40,-,-,-,152,4,720,21.11%
+Week8,Objective Test - 08,Azma Khan (KSA),12,D,PCM,Triumph,32,28,32,-,-,-,-,-,92,3,300,30.67%
+Week8,Objective Test - 08,Keerthi Prasanna Goda (KSA),12,D,PCM,Triumph,36,32,32,-,-,-,-,-,100,3,300,33.33%
+Week8,Objective Test - 08,Liyana Omar (KUWAIT),12,D,PCB,Triumph,32,36,-,28,32,-,-,-,128,4,720,17.78%
+Week8,Objective Test - 08,Mohammad Uzair Ali (KSA),12,D,PCB,Triumph,40,20,-,40,32,-,-,-,132,4,720,18.33%
+Week8,Objective Test - 08,Nima Kamarudheen (BAHRAIN),12,D,PCB,Triumph,4,0,-,0,0,-,-,-,4,4,720,0.56%
+Week8,Objective Test - 08,Rihanna Lobo (BAHRAIN),12,D,PCM,Triumph,32,40,32,-,-,-,-,-,104,3,300,34.67%
+Week8,Objective Test - 08,Srivani Jagadheesh (KSA),12,D,PCB,Triumph,20,12,-,24,24,-,-,-,80,4,720,11.11%
